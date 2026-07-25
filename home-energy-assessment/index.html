@@ -146,6 +146,12 @@
                 </div>
               </div>
 
+              <!-- Validation message. It lives at the TOP of the form, next to the
+                   progress indicator, so that whichever stage you are on the
+                   message appears in the same predictable place rather than
+                   somewhere below the button you just pressed. -->
+              <p class="aw-form__error" id="aw-form-error" role="alert" tabindex="-1"></p>
+
               <!-- ---------- STAGE 1: PROPERTY BASICS ---------- -->
               <section class="aw-stage is-active" id="aw-stage-1" aria-label="Stage 1: your property">
                 <h2>Your property</h2>
@@ -395,8 +401,6 @@
                   <button type="button" class="aw-btn aw-btn--outline" data-aw-back>Back to change an answer</button>
                 </div>
               </section>
-
-              <p class="aw-form__error" id="aw-form-error" role="alert" tabindex="-1"></p>
             </form>
 
             <!-- If JavaScript is unavailable the form cannot work, so offer

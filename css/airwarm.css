@@ -68,8 +68,9 @@
   --airwarm-space-lg: 40px;
   --airwarm-space-xl: 72px;
 
-  /* --- Page width --- */
-  --airwarm-max-width: 1140px;
+  /* --- Page width ---
+     1200px matches the desktop breakpoint in the brand pack's design tokens. */
+  --airwarm-max-width: 1200px;
 }
 
 /* ==========================================================================
@@ -196,8 +197,11 @@ hr {
    tap targets. That is easier to maintain and cannot break.
    ========================================================================== */
 .aw-header {
-  position: sticky;
-  top: 0;
+  /* Deliberately NOT sticky on small screens. The navigation needs three
+     lines on a phone, and a sticky bar that tall would obstruct the content
+     the visitor came to read. It becomes sticky on desktop, where it is one
+     line. See section 11. */
+  position: static;
   z-index: 50;
   background: var(--airwarm-navy);
   color: var(--airwarm-white);
@@ -811,12 +815,33 @@ textarea:focus-visible,
   .aw-footer__grid { grid-template-columns: repeat(3, 1fr); }
 }
 
-/* Desktop */
-@media (min-width: 1024px) {
-  /* On desktop the navigation sits on the same line as the wordmark. */
-  .aw-nav { flex: 0 1 auto; order: 2; margin-left: auto; }
-  .aw-header__cta { order: 3; margin-left: var(--airwarm-space-md); }
-  .aw-nav__list { gap: var(--airwarm-space-md); }
+/* Desktop — 1200px rather than 1024px because that is the width at which the
+   wordmark, all seven navigation links and the assessment button fit on one
+   line together. Below it, the tablet layout puts the navigation on its own
+   full-width row, which is roomier. */
+@media (min-width: 1200px) {
+  /* On desktop the whole header fits on one line, so it can be sticky
+     without getting in the way. */
+  .aw-header { position: sticky; top: 0; }
+
+  /* One row: wordmark, then navigation, then the assessment button.
+     nowrap stops the button dropping onto a second line if the navigation
+     is wide; min-width:0 lets the navigation shrink instead. */
+  .aw-header__inner { flex-wrap: nowrap; gap: var(--airwarm-space-xs); }
+  /* The wordmark keeps its natural width and its tagline stays on one line;
+     the navigation takes whatever is left. */
+  .aw-wordmark { flex: 0 0 auto; }
+  .aw-tagline { white-space: nowrap; }
+  .aw-nav { flex: 1 1 auto; min-width: 0; order: 2; margin-left: auto; }
+  .aw-header__cta { order: 3; margin-left: var(--airwarm-space-sm); flex: 0 0 auto; }
+  /* Navigation labels are small by design ("small navigation labels" are one
+     of the few places the brand rules allow tighter type). This keeps all
+     seven links on one line alongside the wordmark and the button. */
+  .aw-nav__list { gap: var(--airwarm-space-xs) 14px; justify-content: flex-end; }
+  .aw-nav__list a { font-size: 0.875rem; }
+  /* The tagline is slightly tighter here so the whole header stays on one
+     line. The colour order is unchanged: orange, blue, green. */
+  .aw-tagline { font-size: 0.5rem; }
   .aw-header__cta .aw-btn { padding: 10px var(--airwarm-space-sm); font-size: 0.9375rem; }
 
   .aw-grid--4 { grid-template-columns: repeat(4, 1fr); }
