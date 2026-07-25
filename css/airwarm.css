@@ -398,6 +398,12 @@ hr {
   padding: var(--airwarm-space-md);
 }
 .aw-card h3 { margin-bottom: var(--airwarm-space-xs); }
+/* Some cards, notes and step lists sit directly under the page h1, so their
+   heading has to be an <h2> to keep the heading order sensible. These rules
+   make an <h2> in those places look the same size as an <h3> elsewhere. */
+.aw-card h2,
+.aw-note h2,
+.aw-steps h2 { font-size: 1.15rem; margin-bottom: var(--airwarm-space-xs); }
 .aw-card p { color: var(--airwarm-grey); }
 .aw-card--link { text-decoration: none; display: block; color: inherit; }
 .aw-card--link:hover { border-color: var(--airwarm-navy); text-decoration: none; }
@@ -456,6 +462,7 @@ hr {
   background: var(--airwarm-orange);
   color: var(--airwarm-dark-text);
 }
+.aw-steps h2,
 .aw-steps h3,
 .aw-steps h4 { margin-bottom: 4px; }
 
@@ -786,6 +793,9 @@ textarea:focus-visible,
   h1 { font-size: 2.75rem; }
   h2 { font-size: 1.875rem; }
   h3 { font-size: 1.25rem; }
+  .aw-card h2,
+  .aw-note h2,
+  .aw-steps h2 { font-size: 1.25rem; }
 
   .aw-section { padding: var(--airwarm-space-xl) 0; }
   .aw-section--tight { padding: var(--airwarm-space-lg) 0; }
