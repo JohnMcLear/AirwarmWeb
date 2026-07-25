@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <!-- ============================================================= -->
+  <!-- HEAD — the only per-page parts are the <title>, the meta       -->
+  <!-- description, the canonical URL and the Open Graph URL/title.   -->
+  <!-- Everything else is identical on every page.                    -->
+  <!-- ============================================================= -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Home Energy Assessment | Airwarm</title>
+  <meta name="description" content="A free, indicative first step: four short stages to see whether an air source heat pump is worth exploring for your West Yorkshire home. No photographs needed.">
+  <link rel="canonical" href="https://airwarm.co.uk/home-energy-assessment/">
+
+  <!-- Open Graph: how the page looks when shared in a message or post. -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Airwarm">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:title" content="Home Energy Assessment | Airwarm">
+  <meta property="og:description" content="A free, indicative first step: four short stages to see whether an air source heat pump is worth exploring for your West Yorkshire home. No photographs needed.">
+  <meta property="og:url" content="https://airwarm.co.uk/home-energy-assessment/">
+  <!-- OG IMAGE GOES HERE once a real Airwarm share image exists, e.g.
+       <meta property="og:image" content="https://airwarm.co.uk/img/share.png">
+       Do not point this at a stock photograph or a third-party host. -->
+
+  <!-- FAVICON SWAP POINT: no icon files exist yet, because the circular
+       Airwarm emblem has not been supplied as an image. When it is, add:
+       <link rel="icon" href="/favicon.ico" sizes="any">
+       <link rel="icon" href="/img/airwarm-emblem.svg" type="image/svg+xml">
+       <link rel="apple-touch-icon" href="/img/airwarm-emblem-180.png">
+       The favicon must be the emblem only, per the brand rules. -->
+
+  <!-- Montserrat, the fixed brand typeface. This is the only thing on the
+       whole site that loads from another company's server. The CSS names a
+       system-safe fallback stack so the site still reads correctly if the
+       font does not arrive. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;display=swap">
+
+  <!-- One stylesheet for the whole site. Colours live at the top of it. -->
+  <link rel="stylesheet" href="/css/airwarm.css">
+</head>
+<body>
+
+  <a class="aw-skip" href="#main">Skip to main content</a>
+
+  <!-- ============================================================= -->
+  <!-- HEADER — keep identical across pages                            -->
+  <!-- If you change anything between here and /HEADER, make the same  -->
+  <!-- change in every index.html file, or the site will look           -->
+  <!-- inconsistent. There is no JavaScript and no hamburger menu: on   -->
+  <!-- small screens the navigation simply wraps onto more lines.       -->
+  <!-- ============================================================= -->
+  <header class="aw-header">
+    <div class="aw-wrap aw-header__inner">
+
+      <!-- LOGO SWAP POINT ------------------------------------------------
+           This is a TEXT wordmark, not the circular Airwarm emblem. No
+           vector version of the emblem exists in the brand pack yet, and the
+           brand rules forbid redrawing or approximating it. When the real
+           asset arrives, replace the two spans below with, for example:
+             <img src="/img/airwarm-logo.svg" alt="Airwarm" width="180" height="48">
+           and update the favicon lines in the <head> of every page.
+           The tagline colour order is FIXED: orange, blue, green.
+           --------------------------------------------------------------- -->
+      <a class="aw-wordmark" href="/">
+        <span class="aw-wordmark__name">AIRWARM</span>
+        <span class="aw-tagline">
+          <span class="warmer">WARMER HOMES</span><span class="aw-dot">&bull;</span><span class="bills">LOWER BILLS</span><span class="aw-dot">&bull;</span><span class="energy">CLEAN ENERGY</span>
+        </span>
+      </a>
+
+      <!-- The Home Energy Assessment is the principal action on the site,
+           so it gets a button in the header on every page. -->
+      <div class="aw-header__cta">
+        <a class="aw-btn aw-btn--primary" href="/home-energy-assessment/">Start the assessment</a>
+      </div>
+
+      <nav class="aw-nav" aria-label="Main">
+        <ul class="aw-nav__list">
+          <li><a href="/">Home</a></li>
+          <li><a href="/air-source-heat-pumps/">Heat pumps</a></li>
+          <li><a href="/how-it-works/">How it works</a></li>
+          <li><a href="/home-energy-assessment/" aria-current="page">Home Energy Assessment</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/advice/">Advice</a></li>
+          <li><a href="/contact/">Contact</a></li>
+          <!-- Phase 2 navigation, not built yet. Uncomment the matching
+               page first, otherwise this link will 404:
+          <li><a href="/servicing-support/">Servicing &amp; support</a></li>
+          -->
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+  <!-- /HEADER -->
+
+  <main id="main">
+  <!-- Breadcrumbs: helps people and search engines see where this
+       page sits. Update if you move the page. -->
+  <nav class="aw-crumbs" aria-label="Breadcrumb">
+    <div class="aw-wrap">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li aria-current="page">Home Energy Assessment</li>
+      </ol>
+    </div>
+  </nav>
+
+      <section class="aw-section aw-section--tight">
+        <div class="aw-wrap">
+          <h1>Find out whether a heat pump is worth exploring for your home</h1>
+          <p class="aw-lead aw-measure">
+            Four short stages, a few minutes, no photographs and nothing to
+            measure. You get an honest first view of where your property
+            stands and what a sensible next step would be.
+          </p>
+        </div>
+      </section>
+
+      <section class="aw-section aw-section--tight">
+        <div class="aw-wrap aw-split">
+          <div>
+
+            <!-- =========================================================
+                 THE ASSESSMENT FORM
+                 Progressively revealed: one stage visible at a time, driven
+                 by /js/assessment.js. Every question has a real <label> or a
+                 <legend>, so it works with a screen reader and with a
+                 keyboard alone.
+
+                 NOTHING IS SENT ANYWHERE. There is no action attribute and
+                 no submit button on purpose. See the WIRE-UP POINT comment
+                 in /js/assessment.js for the one place to change when a CRM
+                 and a privacy policy exist.
+                 ========================================================= -->
+            <form class="aw-form" id="aw-assessment" novalidate>
+
+              <div class="aw-progress">
+                <p class="aw-progress__label" id="aw-progress-label">Stage 1 of 4</p>
+                <div class="aw-progress__bar">
+                  <span class="aw-progress__fill" id="aw-progress-fill"></span>
+                </div>
+              </div>
+
+              <!-- ---------- STAGE 1: PROPERTY BASICS ---------- -->
+              <section class="aw-stage is-active" id="aw-stage-1" aria-label="Stage 1: your property">
+                <h2>Your property</h2>
+
+                <div class="aw-field">
+                  <label for="postcodeArea">Postcode area</label>
+                  <span class="aw-field__hint" id="postcodeArea-hint">
+                    Just the first part, for example BD18 or LS6. We only use
+                    this to check whether you are in the area we cover.
+                  </span>
+                  <input type="text" id="postcodeArea" name="postcodeArea"
+                         aria-describedby="postcodeArea-hint"
+                         autocomplete="off" maxlength="5" required>
+                </div>
+
+                <div class="aw-field">
+                  <label for="propertyType">Property type</label>
+                  <select id="propertyType" name="propertyType" required>
+                    <option value="">Please choose</option>
+                    <option value="detached">Detached house</option>
+                    <option value="semiDetached">Semi-detached house</option>
+                    <option value="endTerrace">End-of-terrace house</option>
+                    <option value="midTerrace">Mid-terrace house</option>
+                    <option value="backToBack">Back-to-back terrace</option>
+                    <option value="bungalow">Bungalow</option>
+                    <option value="flat">Flat or maisonette</option>
+                  </select>
+                </div>
+
+                <div class="aw-field">
+                  <label for="propertyAge">Roughly when was it built?</label>
+                  <span class="aw-field__hint" id="propertyAge-hint">
+                    An approximate answer is fine. &ldquo;Not sure&rdquo; is a
+                    perfectly good answer too.
+                  </span>
+                  <select id="propertyAge" name="propertyAge"
+                          aria-describedby="propertyAge-hint" required>
+                    <option value="">Please choose</option>
+                    <option value="pre1919">Before 1919</option>
+                    <option value="interwar1919to1944">1919 to 1944</option>
+                    <option value="postwar1945to1975">1945 to 1975</option>
+                    <option value="modern1976to2002">1976 to 2002</option>
+                    <option value="newest2003onwards">2003 or later</option>
+                    <option value="notSure">Not sure</option>
+                  </select>
+                </div>
+
+                <div class="aw-field">
+                  <label for="bedrooms">How many bedrooms?</label>
+                  <select id="bedrooms" name="bedrooms" required>
+                    <option value="">Please choose</option>
+                    <option value="one">1</option>
+                    <option value="two">2</option>
+                    <option value="three">3</option>
+                    <option value="four">4</option>
+                    <option value="fiveOrMore">5 or more</option>
+                  </select>
+                </div>
+
+                <div class="aw-field">
+                  <label for="currentHeating">How is the home heated at the moment?</label>
+                  <select id="currentHeating" name="currentHeating" required>
+                    <option value="">Please choose</option>
+                    <option value="mainsGasBoiler">Mains gas boiler</option>
+                    <option value="oilBoiler">Oil boiler</option>
+                    <option value="lpgBoiler">LPG boiler</option>
+                    <option value="electricStorageHeaters">Electric storage heaters</option>
+                    <option value="directElectric">Direct electric heaters</option>
+                    <option value="solidFuel">Solid fuel</option>
+                    <option value="existingHeatPump">An existing heat pump</option>
+                    <option value="noHeating">No working heating at present</option>
+                  </select>
+                </div>
+
+                <div class="aw-form__actions">
+                  <button type="button" class="aw-btn aw-btn--primary" data-aw-next>Continue to stage 2</button>
+                </div>
+              </section>
+
+              <!-- ---------- STAGE 2: CURRENT CONDITION ---------- -->
+              <section class="aw-stage" id="aw-stage-2" aria-label="Stage 2: current condition">
+                <h2>Current condition</h2>
+                <p class="aw-small">
+                  Best guesses are fine. We are looking for a general picture,
+                  not a survey.
+                </p>
+
+                <fieldset class="aw-fieldset">
+                  <legend>How well insulated do you think the home is?</legend>
+                  <label class="aw-choice"><input type="radio" name="insulationConfidence" value="goodThroughout" required> Well insulated throughout &mdash; loft and walls dealt with</label>
+                  <label class="aw-choice"><input type="radio" name="insulationConfidence" value="partial" required> Partly &mdash; some of it has been done</label>
+                  <label class="aw-choice"><input type="radio" name="insulationConfidence" value="limited" required> Very little insulation as far as I know</label>
+                  <label class="aw-choice"><input type="radio" name="insulationConfidence" value="notSure" required> Not sure</label>
+                </fieldset>
+
+                <div class="aw-field">
+                  <label for="windows">What are the windows like?</label>
+                  <select id="windows" name="windows" required>
+                    <option value="">Please choose</option>
+                    <option value="doubleOrTripleThroughout">Double or triple glazed throughout</option>
+                    <option value="mixed">A mixture</option>
+                    <option value="mostlySingle">Mostly single glazed</option>
+                    <option value="notSure">Not sure</option>
+                  </select>
+                </div>
+
+                <div class="aw-field">
+                  <label for="radiators">What are the radiators like?</label>
+                  <select id="radiators" name="radiators" required>
+                    <option value="">Please choose</option>
+                    <option value="modernAndGenerous">Modern and generously sized</option>
+                    <option value="standard">Standard, in reasonable condition</option>
+                    <option value="smallOrOld">Small, old or a mixture of ages</option>
+                    <option value="noneOrUnderfloor">Underfloor heating, or no radiators</option>
+                    <option value="notSure">Not sure</option>
+                  </select>
+                </div>
+
+                <fieldset class="aw-fieldset">
+                  <legend>Is there space outside for the heat pump unit?</legend>
+                  <span class="aw-field__hint">
+                    It needs roughly the footprint of a large washing machine,
+                    against an outside wall, with clear air around it.
+                  </span>
+                  <label class="aw-choice"><input type="radio" name="outdoorSpace" value="yesClearSpace" required> Yes &mdash; there is a clear spot with room around it</label>
+                  <label class="aw-choice"><input type="radio" name="outdoorSpace" value="possiblyTight" required> Possibly, but it would be tight</label>
+                  <label class="aw-choice"><input type="radio" name="outdoorSpace" value="noObviousLocation" required> No obvious location that I can see</label>
+                  <label class="aw-choice"><input type="radio" name="outdoorSpace" value="notSure" required> Not sure</label>
+                </fieldset>
+
+                <div class="aw-field">
+                  <label for="hotWaterSpace">Is there space for a hot-water cylinder?</label>
+                  <span class="aw-field__hint" id="hotWaterSpace-hint">
+                    A heat pump heats hot water into a cylinder, so one is
+                    needed even if you currently have a combination boiler.
+                  </span>
+                  <select id="hotWaterSpace" name="hotWaterSpace"
+                          aria-describedby="hotWaterSpace-hint" required>
+                    <option value="">Please choose</option>
+                    <option value="existingCylinder">There is already a cylinder</option>
+                    <option value="spaceAvailable">No cylinder, but there is space for one</option>
+                    <option value="noSpaceIdentified">I cannot see where one would go</option>
+                    <option value="notSure">Not sure</option>
+                  </select>
+                </div>
+
+                <fieldset class="aw-fieldset">
+                  <legend>Is the property listed, in a conservation area, or leasehold?</legend>
+                  <span class="aw-field__hint">
+                    None of these rules a heat pump out. They change what is
+                    permitted, so it helps to know early.
+                  </span>
+                  <label class="aw-choice"><input type="radio" name="propertyRestrictions" value="yes" required> Yes, one or more of those applies</label>
+                  <label class="aw-choice"><input type="radio" name="propertyRestrictions" value="no" required> No</label>
+                  <label class="aw-choice"><input type="radio" name="propertyRestrictions" value="notSure" required> Not sure</label>
+                </fieldset>
+
+                <div class="aw-form__actions">
+                  <button type="button" class="aw-btn aw-btn--outline" data-aw-back>Back</button>
+                  <button type="button" class="aw-btn aw-btn--primary" data-aw-next>Continue to stage 3</button>
+                </div>
+              </section>
+
+              <!-- ---------- STAGE 3: YOUR PLANS ---------- -->
+              <section class="aw-stage" id="aw-stage-3" aria-label="Stage 3: your plans">
+                <h2>Your plans</h2>
+
+                <div class="aw-field">
+                  <label for="reasonForEnquiry">What is prompting you to look at this?</label>
+                  <select id="reasonForEnquiry" name="reasonForEnquiry" required>
+                    <option value="">Please choose</option>
+                    <option value="boilerNearEndOfLife">The current heating is near the end of its life</option>
+                    <option value="runningCosts">Concern about running costs</option>
+                    <option value="comfort">The house is not comfortable enough</option>
+                    <option value="environmental">Wanting to move away from fossil fuels</option>
+                    <option value="renovation">A renovation or extension</option>
+                    <option value="researching">General research at this stage</option>
+                  </select>
+                </div>
+
+                <div class="aw-field">
+                  <label for="renovationPlans">Any building work planned?</label>
+                  <select id="renovationPlans" name="renovationPlans" required>
+                    <option value="">Please choose</option>
+                    <option value="majorRenovation">Yes, a major renovation or extension</option>
+                    <option value="someWork">Some work, for example insulation or new floors</option>
+                    <option value="noWorkPlanned">No work planned</option>
+                  </select>
+                </div>
+
+                <div class="aw-field">
+                  <label for="timescale">When would you like this done?</label>
+                  <select id="timescale" name="timescale" required>
+                    <option value="">Please choose</option>
+                    <option value="withinSixMonths">Within six months</option>
+                    <option value="sixToTwelveMonths">Six to twelve months</option>
+                    <option value="overTwelveMonths">More than a year away</option>
+                    <option value="justResearching">No timescale, just researching</option>
+                  </select>
+                </div>
+
+                <fieldset class="aw-fieldset">
+                  <legend>Would you consider changing some radiators if the design needed it?</legend>
+                  <span class="aw-field__hint">
+                    A heat pump runs at a lower temperature than a boiler, so
+                    some rooms often need a larger radiator. There is no wrong
+                    answer here &mdash; it just changes the advice.
+                  </span>
+                  <label class="aw-choice"><input type="radio" name="emitterWillingness" value="yesIfNeeded" required> Yes, if it is genuinely needed</label>
+                  <label class="aw-choice"><input type="radio" name="emitterWillingness" value="maybeWithExplanation" required> Possibly &mdash; I would want it explained first</label>
+                  <label class="aw-choice"><input type="radio" name="emitterWillingness" value="notWilling" required> I would rather keep the radiators as they are</label>
+                </fieldset>
+
+                <div class="aw-field">
+                  <label for="solarInterest">Interested in solar or battery storage alongside it?</label>
+                  <select id="solarInterest" name="solarInterest">
+                    <option value="">Please choose (optional)</option>
+                    <option value="yes">Yes</option>
+                    <option value="maybe">Maybe, later</option>
+                    <option value="no">No</option>
+                  </select>
+                </div>
+
+                <div class="aw-form__actions">
+                  <button type="button" class="aw-btn aw-btn--outline" data-aw-back>Back</button>
+                  <button type="button" class="aw-btn aw-btn--primary" data-aw-next>See my result</button>
+                </div>
+              </section>
+
+              <!-- ---------- STAGE 4: RESULT AND NEXT STEP ----------
+                   Stage 4 in the original flow was a contact form asking for
+                   name, e-mail, phone, preferred contact time and consent.
+                   It is deliberately NOT built yet, because Airwarm has no
+                   CRM, no privacy policy and no registered data controller,
+                   so there is nobody to be responsible for the data. Instead
+                   the visitor sees their result and is invited to e-mail us,
+                   which keeps them in control of their own details.
+
+                   The contact fields and the endpoint go here when those
+                   decisions are made. See the WIRE-UP POINT comment in
+                   /js/assessment.js.
+                   -------------------------------------------------- -->
+              <section class="aw-stage" id="aw-stage-4" aria-label="Stage 4: your result">
+                <h2>Your result</h2>
+                <div id="aw-result" class="aw-hidden" role="status" aria-live="polite"></div>
+                <div class="aw-form__actions">
+                  <button type="button" class="aw-btn aw-btn--outline" data-aw-back>Back to change an answer</button>
+                </div>
+              </section>
+
+              <p class="aw-form__error" id="aw-form-error" role="alert" tabindex="-1"></p>
+            </form>
+
+            <!-- If JavaScript is unavailable the form cannot work, so offer
+                 the honest alternative rather than a broken page. -->
+            <noscript>
+              <div class="aw-note">
+                <h2>The assessment needs JavaScript</h2>
+                <p>
+                  The assessment runs entirely in your browser, so it needs
+                  JavaScript switched on. If you would rather not, just e-mail
+                  <a href="mailto:hello@airwarm.co.uk">hello@airwarm.co.uk</a>
+                  with a short description of your property and we will reply
+                  with the same advice.
+                </p>
+              </div>
+            </noscript>
+
+          </div>
+
+          <div>
+            <div class="aw-card">
+              <h2>What this is, and what it is not</h2>
+              <p>
+                This is an indicative first step, not a technical heat-loss
+                survey. It does not produce a design, a specification or a
+                price, and it is not a final answer &mdash; a person at Airwarm
+                makes that judgement.
+              </p>
+              <h3>Your answers stay on your device</h3>
+              <p>
+                Stages one to three run entirely in your browser. Nothing you
+                enter is sent to Airwarm, saved, or shared with anyone. There
+                are no cookies and no analytics on this website. If you want to
+                talk to us, you e-mail us &mdash; so you decide what to share
+                and when.
+              </p>
+              <h3>No photographs needed</h3>
+              <p>
+                We do not ask for pictures at this stage. Nothing to measure,
+                nothing to look up.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="aw-section aw-section--light">
+        <div class="aw-wrap">
+          <h2>What the three results mean</h2>
+          <div class="aw-grid aw-grid--3" style="margin-top:24px">
+            <div class="aw-card">
+              <h3>Likely suitable</h3>
+              <p>
+                Several positive indicators. A short review call is worthwhile
+                so we can confirm the main details and decide whether a full
+                survey is the right next step.
+              </p>
+            </div>
+            <div class="aw-card">
+              <h3>Potentially suitable</h3>
+              <p>
+                Your property may be suitable, but one or two details need
+                clarification. This is common, and we will explain what matters
+                and what may need improving before a survey.
+              </p>
+            </div>
+            <div class="aw-card">
+              <h3>Not currently suitable</h3>
+              <p>
+                A heat pump may not be the best next step today. That is rarely
+                permanent. We will explain the main constraints and suggest
+                practical improvements or alternatives.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FINAL CALL TO ACTION — repeated on every page, per the blueprint.
+           The assessment is the primary action; e-mail is the route for
+           anything unusual. -->
+      <section class="aw-section aw-section--navy">
+        <div class="aw-wrap">
+          <h2>Start with your home, not a product</h2>
+          <p class="aw-hero__support">
+            The Home Energy Assessment takes a few minutes, asks for no
+            photographs and gives you an honest first view of whether an air
+            source heat pump is worth exploring for your property.
+          </p>
+          <div class="aw-btn-row">
+            <a class="aw-btn aw-btn--primary" href="/home-energy-assessment/">Check your home&rsquo;s suitability</a>
+            <a class="aw-btn aw-btn--secondary" href="mailto:hello@airwarm.co.uk">E-mail hello@airwarm.co.uk</a>
+          </div>
+          <p class="aw-small" style="margin-top:24px">
+            Unusual property? Listed building, off-grid, a renovation part way
+            through? E-mail us and describe it. We would rather have the
+            conversation than have you guess.
+          </p>
+        </div>
+      </section>
+  </main>
+
+  <!-- ============================================================= -->
+  <!-- FOOTER — keep identical across pages                            -->
+  <!-- ============================================================= -->
+  <footer class="aw-footer">
+    <div class="aw-wrap">
+      <div class="aw-footer__grid">
+
+        <div>
+          <!-- LOGO SWAP POINT (footer) — see the note in the header. -->
+          <span class="aw-wordmark" style="display:inline-flex">
+            <span class="aw-wordmark__name">AIRWARM</span>
+            <span class="aw-tagline">
+              <span class="warmer">WARMER HOMES</span><span class="aw-dot">&bull;</span><span class="bills">LOWER BILLS</span><span class="aw-dot">&bull;</span><span class="energy">CLEAN ENERGY</span>
+            </span>
+          </span>
+          <p class="aw-small" style="margin-top:16px">
+            Air Source Heat Pumps &bull; West Yorkshire
+          </p>
+          <ul>
+            <li><a href="/">airwarm.co.uk</a></li>
+            <li><a href="mailto:hello@airwarm.co.uk">hello@airwarm.co.uk</a></li>
+            <!-- PHONE NUMBER GOES HERE once the business line is provisioned.
+                 Do not invent one. Format:
+            <li><a href="tel:+44NUMBER-GOES-HERE">NUMBER GOES HERE</a></li>
+            -->
+          </ul>
+        </div>
+
+        <div>
+          <h2>Services</h2>
+          <ul>
+            <li><a href="/air-source-heat-pumps/">Air source heat pumps</a></li>
+            <li><a href="/heat-pump-survey/">Heat pump survey</a></li>
+            <li><a href="/heat-pump-installation/">Heat pump installation</a></li>
+            <li><a href="/how-it-works/">How it works</a></li>
+            <li><a href="/home-energy-assessment/">Home Energy Assessment</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2>Service areas</h2>
+          <ul>
+            <li><a href="/areas/bradford/">Bradford</a></li>
+            <li><a href="/areas/leeds/">Leeds</a></li>
+            <li><a href="/areas/shipley/">Shipley</a></li>
+          </ul>
+          <h2 style="margin-top:24px">Company</h2>
+          <ul>
+            <li><a href="/about/">About Airwarm</a></li>
+            <li><a href="/advice/">Advice</a></li>
+            <li><a href="/contact/">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2>Legal</h2>
+          <ul>
+            <li><a href="/privacy/">Privacy policy</a></li>
+            <li><a href="/cookies/">Cookie policy</a></li>
+            <li><a href="/terms/">Terms and conditions</a></li>
+            <!-- STILL TO BE WRITTEN, then linked here:
+                 complaints procedure, accessibility statement.
+                 Both are named in the brand pack footer structure. -->
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="aw-footer__base">
+        <p>
+          Airwarm is a new West Yorkshire business preparing to install and
+          support air source heat pumps. Company registration and VAT details
+          will be shown here once they are confirmed.
+        </p>
+        <!-- COMPANY DETAILS GO HERE: registered name, company number,
+             registered office, VAT number. Do not add them until they exist. -->
+        <!-- SOCIAL LINKS: add only channels that are actively maintained. -->
+        <p>&copy; 2026 Airwarm.</p>
+      </div>
+    </div>
+  </footer>
+  <!-- /FOOTER -->
+
+  <!-- The assessment logic. Loaded only on this page. -->
+  <script src="/js/assessment.js"></script>
+</body>
+</html>
