@@ -1,0 +1,8 @@
+# Airwarm — robots.txt
+# Everything on this site is intended to be found. Nothing is hidden and
+# nothing is private, so there is nothing to disallow.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://airwarm.co.uk/sitemap.xml

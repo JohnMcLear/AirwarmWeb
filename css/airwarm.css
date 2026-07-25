@@ -1,0 +1,821 @@
+/* ==========================================================================
+   AIRWARM — airwarm.css
+   The single stylesheet for the whole website. There is no build step:
+   this file is served to the browser exactly as it is written here.
+
+   HOW THIS FILE IS ORGANISED
+   01. Brand tokens (colours, type, spacing)   <- change colours HERE only
+   02. Base and typography
+   03. Layout helpers (page width, sections, grids)
+   04. Header and navigation
+   05. Buttons
+   06. Hero and navy panels
+   07. Cards, lists, steps, icons
+   08. Assessment form (Home Energy Assessment)
+   09. Footer
+   10. Utilities and accessibility
+   11. Responsive rules (mobile-first: these ADD to the mobile styles)
+
+   SAFE TO EDIT: any value inside section 01, and any text in comments.
+   TAKE CARE: the brand colours and the tagline colour order are fixed by
+   the Airwarm brand rules. Do not introduce new colours.
+   ========================================================================== */
+
+/* ==========================================================================
+   01. BRAND TOKENS
+   These come from website/02_Brand_System/airwarm-design-tokens.css in the
+   Airwarm brand pack. The eight colours below are the ENTIRE approved
+   palette. Nothing else in this file uses a colour value that is not
+   derived from them.
+   ========================================================================== */
+:root {
+  /* --- Approved colour palette (do not add to this list) --- */
+  --airwarm-navy: #071A2B;        /* principal background */
+  --airwarm-white: #FFFFFF;
+  --airwarm-orange: #F28C28;      /* WARMER HOMES */
+  --airwarm-blue: #2F80ED;        /* LOWER BILLS  */
+  --airwarm-green: #63C174;       /* CLEAN ENERGY, and positive outcomes only */
+  --airwarm-light-bg: #F4F7F9;    /* light neutral section background */
+  --airwarm-grey: #65717C;        /* supporting text on white */
+  --airwarm-dark-text: #14212B;   /* body copy */
+
+  /* --- Translucent tints derived from the palette ---
+     These are rgba() versions of white and navy. They are used for hairline
+     borders and subtle panels so that we never need an extra colour. */
+  --airwarm-white-line: rgba(255, 255, 255, 0.18);
+  --airwarm-white-panel: rgba(255, 255, 255, 0.06);
+  --airwarm-white-soft: rgba(255, 255, 255, 0.78);
+  --airwarm-navy-line: rgba(7, 26, 43, 0.14);
+  --airwarm-navy-shade: rgba(7, 26, 43, 0.05);
+
+  /* --- Typography --- */
+  /* Montserrat is the fixed brand typeface. The rest of the stack is the
+     system-safe fallback required by the brand rules. */
+  --airwarm-font: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+                  Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --airwarm-body-size: 17px;      /* desktop body copy, per the framework */
+  --airwarm-body-size-mobile: 16px;
+
+  /* --- Radii (moderate rounding: professional, not playful) --- */
+  --airwarm-radius-sm: 6px;
+  --airwarm-radius-md: 12px;
+  --airwarm-radius-lg: 18px;
+
+  /* --- Spacing scale --- */
+  --airwarm-space-xs: 8px;
+  --airwarm-space-sm: 16px;
+  --airwarm-space-md: 24px;
+  --airwarm-space-lg: 40px;
+  --airwarm-space-xl: 72px;
+
+  /* --- Page width --- */
+  --airwarm-max-width: 1140px;
+}
+
+/* ==========================================================================
+   02. BASE AND TYPOGRAPHY
+   ========================================================================== */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  /* Anchor links land below the sticky header rather than under it. */
+  scroll-padding-top: 90px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--airwarm-font);
+  font-weight: 400;
+  font-size: var(--airwarm-body-size-mobile);
+  line-height: 1.65;
+  color: var(--airwarm-dark-text);
+  background: var(--airwarm-white);
+  /* Nothing on this site may scroll sideways. */
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0 0 var(--airwarm-space-sm) 0;
+  /* Long words such as postcodes or e-mail addresses must not overflow. */
+  overflow-wrap: break-word;
+}
+
+h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.01em; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.15rem; }
+h4 { font-size: 1rem; }
+
+p, li { margin: 0 0 var(--airwarm-space-sm) 0; }
+p:last-child, li:last-child { margin-bottom: 0; }
+
+/* A comfortable measure for reading. Roughly 70 characters per line. */
+.aw-measure { max-width: 62ch; }
+
+a {
+  color: var(--airwarm-dark-text);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+a:hover { text-decoration-thickness: 2px; }
+
+strong { font-weight: 600; }
+
+small, .aw-small {
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--airwarm-grey);
+}
+
+/* Text that supports a heading. Grey on white passes AA contrast (4.99:1). */
+.aw-lead {
+  font-size: 1.0625rem;
+  color: var(--airwarm-grey);
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--airwarm-navy-line);
+  margin: var(--airwarm-space-lg) 0;
+}
+
+/* ==========================================================================
+   03. LAYOUT HELPERS
+   ========================================================================== */
+
+/* .aw-wrap centres content and holds the page gutters. Put it inside a
+   section, never around one. */
+.aw-wrap {
+  width: 100%;
+  max-width: var(--airwarm-max-width);
+  margin: 0 auto;
+  padding: 0 var(--airwarm-space-md);
+}
+
+/* Every band of content on a page is a <section class="aw-section">. */
+.aw-section { padding: var(--airwarm-space-lg) 0; }
+.aw-section--tight { padding: var(--airwarm-space-md) 0; }
+
+/* Background variants for sections. */
+.aw-section--light { background: var(--airwarm-light-bg); }
+.aw-section--navy {
+  background: var(--airwarm-navy);
+  color: var(--airwarm-white);
+}
+.aw-section--navy .aw-lead,
+.aw-section--navy .aw-small,
+.aw-section--navy small { color: var(--airwarm-white-soft); }
+.aw-section--navy a { color: var(--airwarm-white); }
+
+/* Simple responsive grid. Single column on mobile; see section 11. */
+.aw-grid {
+  display: grid;
+  gap: var(--airwarm-space-md);
+  grid-template-columns: 1fr;
+}
+
+/* A two-column text-and-aside arrangement. */
+.aw-split {
+  display: grid;
+  gap: var(--airwarm-space-lg);
+  grid-template-columns: 1fr;
+}
+
+/* ==========================================================================
+   04. HEADER AND NAVIGATION
+   The header markup is identical on every page. If you change it, change it
+   everywhere, or the site will look inconsistent.
+
+   There is deliberately no hamburger menu and no JavaScript in the header.
+   On small screens the navigation simply wraps onto more lines with large
+   tap targets. That is easier to maintain and cannot break.
+   ========================================================================== */
+.aw-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--airwarm-navy);
+  color: var(--airwarm-white);
+  border-bottom: 1px solid var(--airwarm-white-line);
+}
+
+.aw-header__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--airwarm-space-sm);
+  padding-top: var(--airwarm-space-sm);
+  padding-bottom: var(--airwarm-space-sm);
+}
+
+/* ---- The wordmark ------------------------------------------------------
+   LOGO SWAP POINT. This is a text wordmark, not the Airwarm emblem. No
+   vector version of the circular emblem exists in the brand pack, and the
+   brand rules forbid redrawing or approximating it. When the real asset
+   arrives, replace the .aw-wordmark__name span with an <img> and delete the
+   font-size/letter-spacing rules below.
+   ---------------------------------------------------------------------- */
+.aw-wordmark {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 2px;
+  text-decoration: none;
+  color: var(--airwarm-white);
+  /* Clear space around the identity, per the brand rules. */
+  padding: var(--airwarm-space-xs) 0;
+}
+.aw-wordmark:hover { text-decoration: none; }
+
+.aw-wordmark__name {
+  font-weight: 700;
+  font-size: 1.375rem;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  color: var(--airwarm-white);
+}
+
+/* The tagline colour order is FIXED: orange, then blue, then green.
+   Never reorder or recolour these three spans. */
+.aw-tagline {
+  font-size: 0.5625rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+.aw-tagline .warmer { color: var(--airwarm-orange); }
+.aw-tagline .bills  { color: var(--airwarm-blue); }
+.aw-tagline .energy { color: var(--airwarm-green); }
+.aw-tagline .aw-dot { color: var(--airwarm-white-soft); padding: 0 2px; }
+
+/* ---- Navigation ---- */
+.aw-nav {
+  flex: 1 1 100%;
+  order: 3;
+}
+.aw-nav__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--airwarm-space-xs) var(--airwarm-space-md);
+}
+.aw-nav__list li { margin: 0; }
+.aw-nav__list a {
+  display: block;
+  /* Large tap targets on mobile. */
+  padding: 10px 0;
+  color: var(--airwarm-white);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+.aw-nav__list a:hover { text-decoration: underline; text-underline-offset: 6px; }
+
+/* The current page is marked with aria-current="page" in the HTML. */
+.aw-nav__list a[aria-current="page"] {
+  font-weight: 600;
+  box-shadow: inset 0 -2px 0 0 var(--airwarm-orange);
+}
+
+.aw-header__cta { order: 2; margin-left: auto; }
+
+/* ==========================================================================
+   05. BUTTONS
+   Button labels always describe the action ("Start the assessment"),
+   never "Click here".
+
+   Why the primary button is orange with dark text: the brand rules allow a
+   solid blue or orange primary button and ask for one consistent choice.
+   White text on the brand blue reaches only 3.9:1 against that blue, which
+   fails the 4.5:1 accessibility threshold for normal-size text. Dark text on
+   the brand orange reaches 7.5:1, so orange is the accessible choice and is
+   used consistently site-wide.
+   ========================================================================== */
+.aw-btn {
+  display: inline-block;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.3;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid transparent;
+  border-radius: var(--airwarm-radius-sm);
+  padding: 14px var(--airwarm-space-md);
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+.aw-btn:hover { text-decoration: none; }
+
+/* Primary: the main action on the page. One per page where possible. */
+.aw-btn--primary {
+  background: var(--airwarm-orange);
+  color: var(--airwarm-dark-text);
+  border-color: var(--airwarm-orange);
+}
+.aw-btn--primary:hover { background: var(--airwarm-white); border-color: var(--airwarm-white); }
+
+/* Secondary on navy: transparent with a clear white border. */
+.aw-btn--secondary {
+  background: transparent;
+  color: var(--airwarm-white);
+  border-color: var(--airwarm-white);
+}
+.aw-btn--secondary:hover { background: var(--airwarm-white); color: var(--airwarm-navy); }
+
+/* Secondary on white or light backgrounds. */
+.aw-btn--outline {
+  background: transparent;
+  color: var(--airwarm-dark-text);
+  border-color: var(--airwarm-dark-text);
+}
+.aw-btn--outline:hover { background: var(--airwarm-navy); color: var(--airwarm-white); }
+
+/* A row of buttons that stacks on very small screens. */
+.aw-btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--airwarm-space-sm);
+  margin-top: var(--airwarm-space-md);
+}
+.aw-btn-row .aw-btn { flex: 1 1 auto; }
+
+/* ==========================================================================
+   06. HERO AND NAVY PANELS
+   There is no photography anywhere on this site yet. Navy panels and
+   generous type do the work instead. See the commented image placeholders
+   in the page HTML for where real Airwarm photographs belong.
+   ========================================================================== */
+.aw-hero {
+  background: var(--airwarm-navy);
+  color: var(--airwarm-white);
+  padding: var(--airwarm-space-lg) 0 var(--airwarm-space-xl) 0;
+}
+.aw-hero h1 { color: var(--airwarm-white); max-width: 20ch; }
+.aw-hero__support {
+  font-size: 1.0625rem;
+  color: var(--airwarm-white-soft);
+  max-width: 56ch;
+}
+
+/* The launch positioning line. The wording is fixed. */
+.aw-positioning {
+  display: inline-block;
+  margin-bottom: var(--airwarm-space-md);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--airwarm-white-soft);
+  border: 1px solid var(--airwarm-white-line);
+  border-radius: 999px;
+  padding: 6px 14px;
+}
+
+/* A quiet panel used inside navy sections. */
+.aw-panel {
+  background: var(--airwarm-white-panel);
+  border: 1px solid var(--airwarm-white-line);
+  border-radius: var(--airwarm-radius-md);
+  padding: var(--airwarm-space-md);
+}
+
+/* ==========================================================================
+   07. CARDS, LISTS, STEPS AND ICONS
+   Subtle borders and generous spacing, not heavy shadows.
+   ========================================================================== */
+.aw-card {
+  background: var(--airwarm-white);
+  border: 1px solid var(--airwarm-navy-line);
+  border-radius: var(--airwarm-radius-md);
+  padding: var(--airwarm-space-md);
+}
+.aw-card h3 { margin-bottom: var(--airwarm-space-xs); }
+.aw-card p { color: var(--airwarm-grey); }
+.aw-card--link { text-decoration: none; display: block; color: inherit; }
+.aw-card--link:hover { border-color: var(--airwarm-navy); text-decoration: none; }
+
+/* The three brand benefits. Each keeps its own fixed accent colour. */
+.aw-benefit { border-top: 4px solid var(--airwarm-navy-line); }
+.aw-benefit--warmer { border-top-color: var(--airwarm-orange); }
+.aw-benefit--bills  { border-top-color: var(--airwarm-blue); }
+.aw-benefit--energy { border-top-color: var(--airwarm-green); }
+
+/* Inline SVG line icons. Simple, one consistent family, drawn by hand in
+   the HTML with stroke="currentColor" so they inherit the text colour. */
+.aw-icon {
+  width: 32px;
+  height: 32px;
+  display: block;
+  margin-bottom: var(--airwarm-space-sm);
+}
+.aw-icon--warmer { color: var(--airwarm-orange); }
+.aw-icon--bills  { color: var(--airwarm-blue); }
+.aw-icon--energy { color: var(--airwarm-green); }
+
+/* Numbered process steps, used on How It Works. */
+.aw-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: awstep;
+}
+.aw-steps > li {
+  counter-increment: awstep;
+  position: relative;
+  padding: 0 0 var(--airwarm-space-md) var(--airwarm-space-lg);
+  border-left: 1px solid var(--airwarm-navy-line);
+  margin-left: 14px;
+}
+.aw-steps > li:last-child { border-left-color: transparent; padding-bottom: 0; }
+.aw-steps > li::before {
+  content: counter(awstep);
+  position: absolute;
+  left: -15px;
+  top: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: var(--airwarm-navy);
+  color: var(--airwarm-white);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.aw-section--navy .aw-steps > li { border-left-color: var(--airwarm-white-line); }
+.aw-section--navy .aw-steps > li::before {
+  background: var(--airwarm-orange);
+  color: var(--airwarm-dark-text);
+}
+.aw-steps h3,
+.aw-steps h4 { margin-bottom: 4px; }
+
+/* Tick list, used for "what is included" style lists. */
+.aw-ticks { list-style: none; margin: 0; padding: 0; }
+.aw-ticks > li {
+  position: relative;
+  padding-left: var(--airwarm-space-md);
+  margin-bottom: var(--airwarm-space-xs);
+}
+.aw-ticks > li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: var(--airwarm-blue);
+}
+
+/* An honest "what to be aware of" block. Not a warning banner: a plain,
+   calm panel, because limitations are part of the advice, not an alarm. */
+.aw-note {
+  background: var(--airwarm-light-bg);
+  border-left: 4px solid var(--airwarm-blue);
+  border-radius: 0 var(--airwarm-radius-sm) var(--airwarm-radius-sm) 0;
+  padding: var(--airwarm-space-md);
+}
+.aw-note h3 { margin-bottom: var(--airwarm-space-xs); }
+
+/* Frequently asked questions use native <details> so they work without
+   JavaScript and remain readable when printed. */
+.aw-faq { border-top: 1px solid var(--airwarm-navy-line); }
+.aw-faq details {
+  border-bottom: 1px solid var(--airwarm-navy-line);
+  padding: var(--airwarm-space-sm) 0;
+}
+.aw-faq summary {
+  font-weight: 600;
+  cursor: pointer;
+  padding: 6px 0;
+  list-style: none;
+}
+.aw-faq summary::-webkit-details-marker { display: none; }
+.aw-faq summary::before { content: "+ "; color: var(--airwarm-blue); font-weight: 700; }
+.aw-faq details[open] summary::before { content: "– "; }
+.aw-faq details > *:not(summary) { margin-top: var(--airwarm-space-xs); max-width: 62ch; }
+
+/* An empty slot waiting for real evidence. Visible on the page as a quiet
+   line of text, NOT as an invented claim. */
+.aw-evidence-slot {
+  border: 1px dashed var(--airwarm-navy-line);
+  border-radius: var(--airwarm-radius-sm);
+  padding: var(--airwarm-space-md);
+  color: var(--airwarm-grey);
+  font-size: 0.9375rem;
+}
+.aw-section--navy .aw-evidence-slot {
+  border-color: var(--airwarm-white-line);
+  color: var(--airwarm-white-soft);
+}
+
+/* ==========================================================================
+   08. ASSESSMENT FORM
+   Used only on /home-energy-assessment/. One question group per screen,
+   with a progress indicator, per the mobile design rules.
+   ========================================================================== */
+.aw-form { max-width: 640px; }
+
+.aw-progress { margin-bottom: var(--airwarm-space-md); }
+.aw-progress__bar {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--airwarm-navy-shade);
+  overflow: hidden;
+}
+.aw-progress__fill {
+  display: block;
+  height: 100%;
+  width: 25%;
+  background: var(--airwarm-blue);
+  border-radius: 999px;
+  transition: width 0.25s ease;
+}
+.aw-progress__label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--airwarm-grey);
+  margin-bottom: var(--airwarm-space-xs);
+}
+
+.aw-stage { display: none; }
+.aw-stage.is-active { display: block; }
+
+.aw-field { margin-bottom: var(--airwarm-space-md); }
+.aw-field > label,
+.aw-fieldset > legend {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  margin-bottom: 6px;
+  padding: 0;
+}
+.aw-field__hint {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--airwarm-grey);
+  margin-bottom: 6px;
+}
+
+.aw-fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0 0 var(--airwarm-space-md) 0;
+}
+
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+  font-family: inherit;
+  font-size: 1rem;
+  width: 100%;
+  min-height: 48px;              /* large tap target */
+  padding: 12px var(--airwarm-space-sm);
+  color: var(--airwarm-dark-text);
+  background: var(--airwarm-white);
+  border: 1px solid var(--airwarm-grey);
+  border-radius: var(--airwarm-radius-sm);
+}
+textarea { min-height: 130px; line-height: 1.6; }
+select { appearance: none; background-image: none; }
+
+/* Radio and checkbox rows with the label as the tap target. */
+.aw-choice {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--airwarm-space-xs);
+  border: 1px solid var(--airwarm-navy-line);
+  border-radius: var(--airwarm-radius-sm);
+  padding: 12px var(--airwarm-space-sm);
+  margin-bottom: var(--airwarm-space-xs);
+  cursor: pointer;
+  font-size: 0.9375rem;
+}
+.aw-choice:hover { border-color: var(--airwarm-navy); }
+.aw-choice input { margin: 3px 0 0 0; width: 20px; height: 20px; flex: 0 0 auto; }
+
+.aw-form__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--airwarm-space-sm);
+  margin-top: var(--airwarm-space-md);
+}
+
+/* Validation message. Uses the navy/orange palette, not a new red. */
+.aw-form__error {
+  margin-top: var(--airwarm-space-sm);
+  padding: 12px var(--airwarm-space-sm);
+  border-left: 4px solid var(--airwarm-orange);
+  background: var(--airwarm-light-bg);
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+.aw-form__error:empty { display: none; }
+
+/* ---- Outcome cards ----
+   The traffic-light colour is a SUPPORTING indicator only. The explanation
+   carries the message. There is no red rejection screen anywhere. */
+.aw-outcome {
+  border: 1px solid var(--airwarm-navy-line);
+  border-left-width: 6px;
+  border-radius: 0 var(--airwarm-radius-md) var(--airwarm-radius-md) 0;
+  padding: var(--airwarm-space-md);
+  background: var(--airwarm-white);
+}
+.aw-outcome--likely      { border-left-color: var(--airwarm-green); }
+.aw-outcome--potentially { border-left-color: var(--airwarm-orange); }
+/* "Not currently suitable" uses navy, not red. It is an explanation, not a
+   refusal, and the copy always offers a route forward. */
+.aw-outcome--not-currently { border-left-color: var(--airwarm-navy); }
+
+.aw-outcome__label {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  padding: 4px 12px;
+  margin-bottom: var(--airwarm-space-sm);
+  color: var(--airwarm-dark-text);
+}
+.aw-outcome--likely .aw-outcome__label      { background: var(--airwarm-green); }
+.aw-outcome--potentially .aw-outcome__label { background: var(--airwarm-orange); }
+.aw-outcome--not-currently .aw-outcome__label {
+  background: var(--airwarm-navy);
+  color: var(--airwarm-white);
+}
+
+/* ==========================================================================
+   09. FOOTER
+   The footer markup is identical on every page.
+   ========================================================================== */
+.aw-footer {
+  background: var(--airwarm-navy);
+  color: var(--airwarm-white);
+  padding: var(--airwarm-space-lg) 0 var(--airwarm-space-md) 0;
+  margin-top: var(--airwarm-space-lg);
+}
+.aw-footer a { color: var(--airwarm-white); text-decoration: none; }
+.aw-footer a:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+.aw-footer__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--airwarm-space-md);
+}
+.aw-footer h2 {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--airwarm-white-soft);
+  margin-bottom: var(--airwarm-space-xs);
+}
+.aw-footer ul { list-style: none; margin: 0; padding: 0; }
+.aw-footer li { margin: 0 0 6px 0; font-size: 0.9375rem; }
+
+.aw-footer__base {
+  margin-top: var(--airwarm-space-lg);
+  padding-top: var(--airwarm-space-md);
+  border-top: 1px solid var(--airwarm-white-line);
+  font-size: 0.8125rem;
+  color: var(--airwarm-white-soft);
+}
+
+/* ==========================================================================
+   10. UTILITIES AND ACCESSIBILITY
+   ========================================================================== */
+
+/* Visible focus state on every interactive element. Do not remove this. */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--airwarm-orange);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Skip link: first thing in the tab order, hidden until focused. */
+.aw-skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--airwarm-white);
+  color: var(--airwarm-dark-text);
+  padding: 12px var(--airwarm-space-sm);
+  z-index: 100;
+}
+.aw-skip:focus {
+  left: var(--airwarm-space-sm);
+  top: var(--airwarm-space-sm);
+}
+
+/* Visually hidden but still read by screen readers. */
+.aw-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.aw-hidden { display: none !important; }
+
+.aw-eyebrow {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--airwarm-grey);
+  margin-bottom: var(--airwarm-space-xs);
+}
+.aw-section--navy .aw-eyebrow { color: var(--airwarm-white-soft); }
+
+.aw-stack > * + * { margin-top: var(--airwarm-space-md); }
+
+/* Breadcrumbs on deeper pages. */
+.aw-crumbs {
+  font-size: 0.875rem;
+  color: var(--airwarm-grey);
+  padding-top: var(--airwarm-space-md);
+}
+.aw-crumbs ol { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; }
+.aw-crumbs li { margin: 0; }
+.aw-crumbs li + li::before { content: "/ "; color: var(--airwarm-navy-line); }
+
+/* Respect a reader's request for less movement. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ==========================================================================
+   11. RESPONSIVE RULES
+   Mobile-first: everything above is the mobile layout. These blocks only
+   add to it on larger screens.
+   ========================================================================== */
+
+/* Tablet and up */
+@media (min-width: 768px) {
+  body { font-size: var(--airwarm-body-size); }
+
+  h1 { font-size: 2.75rem; }
+  h2 { font-size: 1.875rem; }
+  h3 { font-size: 1.25rem; }
+
+  .aw-section { padding: var(--airwarm-space-xl) 0; }
+  .aw-section--tight { padding: var(--airwarm-space-lg) 0; }
+  .aw-hero { padding: var(--airwarm-space-xl) 0; }
+  .aw-hero__support { font-size: 1.1875rem; }
+
+  .aw-grid--2 { grid-template-columns: repeat(2, 1fr); }
+  .aw-grid--3 { grid-template-columns: repeat(3, 1fr); }
+  .aw-split { grid-template-columns: 3fr 2fr; }
+
+  .aw-btn-row .aw-btn { flex: 0 0 auto; }
+
+  .aw-footer__grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  /* On desktop the navigation sits on the same line as the wordmark. */
+  .aw-nav { flex: 0 1 auto; order: 2; margin-left: auto; }
+  .aw-header__cta { order: 3; margin-left: var(--airwarm-space-md); }
+  .aw-nav__list { gap: var(--airwarm-space-md); }
+  .aw-header__cta .aw-btn { padding: 10px var(--airwarm-space-sm); font-size: 0.9375rem; }
+
+  .aw-grid--4 { grid-template-columns: repeat(4, 1fr); }
+  .aw-footer__grid { grid-template-columns: 1.4fr 1fr 1fr 1fr; }
+}
+
+/* Print: keep pages legible on paper without wasting ink on navy panels. */
+@media print {
+  .aw-header, .aw-footer, .aw-btn-row, .aw-header__cta { display: none; }
+  .aw-section--navy, .aw-hero { background: var(--airwarm-white); color: var(--airwarm-dark-text); }
+  a { text-decoration: none; }
+}

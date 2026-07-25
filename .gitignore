@@ -1,0 +1,37 @@
+# Airwarm website — things that should never be committed.
+
+# Operating-system and editor clutter
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*~
+.vscode/
+.idea/
+
+# There is no build step, no package manager and no toolchain in this
+# project. If any of these ever appear, something has gone wrong: this site
+# must stay as plain HTML and CSS so it deploys to GitHub Pages as-is and can
+# be edited without installing anything.
+node_modules/
+package-lock.json
+yarn.lock
+dist/
+build/
+.cache/
+
+# Local previews and scratch files
+*.log
+.env
+.env.*
+_local/
+_scratch/
+
+# Working copies of source material. The Airwarm business pack is
+# confidential — financial assumptions, pay scenarios, the risk register and
+# funding terms. None of it belongs in this public-facing repository. Only
+# approved website copy and the brand colour tokens have been used here.
+Airwarm/
+airwarm-pack/
+*.docx
+*.pdf

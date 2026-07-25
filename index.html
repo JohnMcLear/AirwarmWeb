@@ -1,0 +1,610 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <!-- ============================================================= -->
+  <!-- HEAD — the only per-page parts are the <title>, the meta       -->
+  <!-- description, the canonical URL and the Open Graph URL/title.   -->
+  <!-- Everything else is identical on every page.                    -->
+  <!-- ============================================================= -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Warmer Homes, Lower Bills | Airwarm West Yorkshire</title>
+  <meta name="description" content="Air source heat pumps designed properly for your home, installed with care and supported for the long term. Airwarm serves Bradford, Leeds and Shipley in West Yorkshire.">
+  <link rel="canonical" href="https://airwarm.co.uk/">
+
+  <!-- Open Graph: how the page looks when shared in a message or post. -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Airwarm">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:title" content="Warmer Homes, Lower Bills | Airwarm West Yorkshire">
+  <meta property="og:description" content="Air source heat pumps designed properly for your home, installed with care and supported for the long term. Airwarm serves Bradford, Leeds and Shipley in West Yorkshire.">
+  <meta property="og:url" content="https://airwarm.co.uk/">
+  <!-- OG IMAGE GOES HERE once a real Airwarm share image exists, e.g.
+       <meta property="og:image" content="https://airwarm.co.uk/img/share.png">
+       Do not point this at a stock photograph or a third-party host. -->
+
+  <!-- FAVICON SWAP POINT: no icon files exist yet, because the circular
+       Airwarm emblem has not been supplied as an image. When it is, add:
+       <link rel="icon" href="/favicon.ico" sizes="any">
+       <link rel="icon" href="/img/airwarm-emblem.svg" type="image/svg+xml">
+       <link rel="apple-touch-icon" href="/img/airwarm-emblem-180.png">
+       The favicon must be the emblem only, per the brand rules. -->
+
+  <!-- Montserrat, the fixed brand typeface. This is the only thing on the
+       whole site that loads from another company's server. The CSS names a
+       system-safe fallback stack so the site still reads correctly if the
+       font does not arrive. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;display=swap">
+
+  <!-- One stylesheet for the whole site. Colours live at the top of it. -->
+  <link rel="stylesheet" href="/css/airwarm.css">
+</head>
+<body>
+
+  <a class="aw-skip" href="#main">Skip to main content</a>
+
+  <!-- ============================================================= -->
+  <!-- HEADER — keep identical across pages                            -->
+  <!-- If you change anything between here and /HEADER, make the same  -->
+  <!-- change in every index.html file, or the site will look           -->
+  <!-- inconsistent. There is no JavaScript and no hamburger menu: on   -->
+  <!-- small screens the navigation simply wraps onto more lines.       -->
+  <!-- ============================================================= -->
+  <header class="aw-header">
+    <div class="aw-wrap aw-header__inner">
+
+      <!-- LOGO SWAP POINT ------------------------------------------------
+           This is a TEXT wordmark, not the circular Airwarm emblem. No
+           vector version of the emblem exists in the brand pack yet, and the
+           brand rules forbid redrawing or approximating it. When the real
+           asset arrives, replace the two spans below with, for example:
+             <img src="/img/airwarm-logo.svg" alt="Airwarm" width="180" height="48">
+           and update the favicon lines in the <head> of every page.
+           The tagline colour order is FIXED: orange, blue, green.
+           --------------------------------------------------------------- -->
+      <a class="aw-wordmark" href="/">
+        <span class="aw-wordmark__name">AIRWARM</span>
+        <span class="aw-tagline">
+          <span class="warmer">WARMER HOMES</span><span class="aw-dot">&bull;</span><span class="bills">LOWER BILLS</span><span class="aw-dot">&bull;</span><span class="energy">CLEAN ENERGY</span>
+        </span>
+      </a>
+
+      <!-- The Home Energy Assessment is the principal action on the site,
+           so it gets a button in the header on every page. -->
+      <div class="aw-header__cta">
+        <a class="aw-btn aw-btn--primary" href="/home-energy-assessment/">Start the assessment</a>
+      </div>
+
+      <nav class="aw-nav" aria-label="Main">
+        <ul class="aw-nav__list">
+          <li><a href="/" aria-current="page">Home</a></li>
+          <li><a href="/air-source-heat-pumps/">Heat pumps</a></li>
+          <li><a href="/how-it-works/">How it works</a></li>
+          <li><a href="/home-energy-assessment/">Home Energy Assessment</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/advice/">Advice</a></li>
+          <li><a href="/contact/">Contact</a></li>
+          <!-- Phase 2 navigation, not built yet. Uncomment the matching
+               page first, otherwise this link will 404:
+          <li><a href="/servicing-support/">Servicing &amp; support</a></li>
+          -->
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+  <!-- /HEADER -->
+
+  <main id="main">
+
+      <!-- 2. HERO ------------------------------------------------------
+           Headline and supporting copy are the approved wording from the
+           brand pack. Keep the headline to two lines on desktop.
+           HERO PHOTOGRAPH GOES HERE eventually: a real West Yorkshire home
+           or a finished outdoor unit. Until then this is a plain navy panel,
+           which is on-brand and loads instantly.
+           ------------------------------------------------------------- -->
+      <section class="aw-hero">
+        <div class="aw-wrap">
+          <span class="aw-positioning">Air Source Heat Pumps &bull; West Yorkshire</span>
+          <h1>Warmer homes. Lower bills. Cleaner energy.</h1>
+          <p class="aw-hero__support">
+            Air source heat pumps designed properly for your home, installed
+            with care and supported for the long term.
+          </p>
+          <div class="aw-btn-row">
+            <a class="aw-btn aw-btn--primary" href="/home-energy-assessment/">Check your home&rsquo;s suitability</a>
+            <a class="aw-btn aw-btn--secondary" href="/how-it-works/">See how the process works</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. THREE BRAND BENEFITS -------------------------------------
+           Each benefit keeps its own fixed accent colour: warmer homes is
+           orange, lower bills is blue, clean energy is green. Do not swap
+           them. The icons are hand-drawn inline SVG line icons; they inherit
+           their colour from the CSS class on the <svg>.
+           ------------------------------------------------------------- -->
+      <section class="aw-section">
+        <div class="aw-wrap">
+          <div class="aw-grid aw-grid--3">
+
+            <div class="aw-card aw-benefit aw-benefit--warmer">
+              <svg class="aw-icon aw-icon--warmer" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <path d="M4 14 16 5l12 9"/>
+                <path d="M7 13v13h18V13"/>
+                <path d="M13 22c0-2 3-2.5 3-4.5S13.5 15 13.5 13"/>
+                <path d="M19 22c0-2 3-2.5 3-4.5S19.5 15 19.5 13"/>
+              </svg>
+              <h3>Warmer homes</h3>
+              <p>
+                A heat pump works best when the whole system is designed to run
+                at a lower temperature. Done properly, rooms hold a steady,
+                even warmth rather than swinging between hot and cold.
+              </p>
+            </div>
+
+            <div class="aw-card aw-benefit aw-benefit--bills">
+              <svg class="aw-icon aw-icon--bills" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <path d="M5 27h22"/>
+                <path d="M9 27V17"/>
+                <path d="M16 27v-6"/>
+                <path d="M23 27v-3"/>
+                <path d="M27 6 17 14l-4-3-8 6"/>
+                <path d="M22 6h5v5"/>
+              </svg>
+              <h3>Lower bills</h3>
+              <p>
+                A heat pump moves heat rather than burning fuel, so it delivers
+                more heat than the electricity it uses. What that means for
+                your bills depends on your home, your tariff and how the system
+                is set up &mdash; which is exactly what a survey is for.
+              </p>
+            </div>
+
+            <div class="aw-card aw-benefit aw-benefit--energy">
+              <svg class="aw-icon aw-icon--energy" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <path d="M16 28c0-9 4-14 11-15 1 9-3 15-11 15Z"/>
+                <path d="M16 28C8 27 4 21 5 12c4 .6 7 2.2 9 4.6"/>
+                <path d="M16 28v-9"/>
+              </svg>
+              <h3>Clean energy</h3>
+              <p>
+                No gas, oil or LPG burnt in the home, no flue and no combustion
+                products. As the electricity grid gets cleaner, so does the
+                heating.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. SUITABILITY-FIRST MESSAGE (approved copy from the pack) --- -->
+      <section class="aw-section aw-section--light">
+        <div class="aw-wrap aw-split">
+          <div>
+            <span class="aw-eyebrow">Suitability first</span>
+            <h2>A good installation begins with the home, not the product</h2>
+            <p class="aw-measure">
+              Airwarm checks the building, the radiators or underfloor heating,
+              your hot-water requirements, the controls and the practical
+              installation details before making a recommendation.
+            </p>
+            <p class="aw-measure">
+              That order matters. A heat pump sized for a home that has not
+              been assessed is the single most common reason people end up
+              disappointed. If your property needs work first, we will say so
+              and explain why. If a heat pump is not the right next step for
+              you today, we will tell you that too.
+            </p>
+          </div>
+          <div>
+            <div class="aw-card">
+              <h3>What we look at</h3>
+              <ul class="aw-ticks">
+                <li>Building fabric and insulation</li>
+                <li>Radiator or underfloor emitter capacity</li>
+                <li>Hot-water demand and cylinder space</li>
+                <li>A sensible, quiet outdoor unit location</li>
+                <li>Controls and how you actually use the house</li>
+                <li>Electrical supply and practical pipe routes</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. HOME ENERGY ASSESSMENT — the principal conversion path ---- -->
+      <section class="aw-section">
+        <div class="aw-wrap aw-split">
+          <div>
+            <span class="aw-eyebrow">The first step</span>
+            <h2>The Home Energy Assessment</h2>
+            <p class="aw-measure">
+              A quick first step to understand whether a heat pump is worth
+              exploring for your property.
+            </p>
+            <p class="aw-measure">
+              It is four short stages of straightforward questions about your
+              home. No photographs. No measuring. Nothing to prepare. At the
+              end you get a plain-English view of where your property stands
+              and what a sensible next step would be.
+            </p>
+            <p class="aw-measure aw-small">
+              The assessment is an indicative first step. It is not a technical
+              heat-loss survey, and it does not produce a design or a price.
+            </p>
+            <div class="aw-btn-row">
+              <a class="aw-btn aw-btn--primary" href="/home-energy-assessment/">Start the assessment</a>
+            </div>
+          </div>
+          <div>
+            <div class="aw-card">
+              <h3>Four short stages</h3>
+              <ol class="aw-steps" style="margin-top:16px">
+                <li><h4>Your property</h4><p>Type, rough age, size and current heating.</p></li>
+                <li><h4>Current condition</h4><p>Insulation, windows, radiators and space.</p></li>
+                <li><h4>Your plans</h4><p>Why now, timescale and what you are open to.</p></li>
+                <li><h4>Your result</h4><p>An honest read of where you stand.</p></li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. HOW AIRWARM WORKS — the eight-step sequence, summarised.
+           The full version lives on /how-it-works/. Keep the two in step. -->
+      <section class="aw-section aw-section--navy">
+        <div class="aw-wrap">
+          <span class="aw-eyebrow">The process</span>
+          <h2>How Airwarm works</h2>
+          <p class="aw-hero__support">
+            Eight stages, in order, with a decision point at each one. You are
+            not committed to anything by starting at the beginning.
+          </p>
+          <div class="aw-grid aw-grid--2" style="margin-top:40px">
+            <ol class="aw-steps">
+              <li><h3>Home Energy Assessment</h3><p>A few minutes online.</p></li>
+              <li><h3>We review your answers</h3><p>A person reads them, not a scoring engine.</p></li>
+              <li><h3>Short suitability call</h3><p>We check the details that matter.</p></li>
+              <li><h3>Detailed home survey</h3><p>Only where it is justified.</p></li>
+            </ol>
+            <ol class="aw-steps" start="5" style="counter-reset:awstep 4">
+              <li><h3>Design and clear proposal</h3><p>Written down, with the assumptions shown.</p></li>
+              <li><h3>Planned installation</h3><p>Dates, protection and daily updates.</p></li>
+              <li><h3>Commissioning and handover</h3><p>Tested, balanced and explained to you.</p></li>
+              <li><h3>Servicing and support</h3><p>We stay contactable afterwards.</p></li>
+            </ol>
+          </div>
+          <div class="aw-btn-row">
+            <a class="aw-btn aw-btn--secondary" href="/how-it-works/">See the full process</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. WHY CHOOSE AIRWARM ---------------------------------------- -->
+      <section class="aw-section">
+        <div class="aw-wrap">
+          <h2>Why choose Airwarm</h2>
+          <div class="aw-grid aw-grid--2" style="margin-top:24px">
+            <div class="aw-card">
+              <h3>Honest advice, including when the answer is no</h3>
+              <p>
+                Not every property is ready for a heat pump. We will explain
+                the reason rather than quietly quoting for something that will
+                not perform.
+              </p>
+            </div>
+            <div class="aw-card">
+              <h3>Technical preparation before installation</h3>
+              <p>
+                Heat loss, emitter capacity, flow temperature, hot water,
+                controls, electrical requirements and unit siting are all
+                checked and written down before work starts.
+              </p>
+            </div>
+            <div class="aw-card">
+              <h3>Respectful workmanship</h3>
+              <p>
+                Floors and furniture protected, tidy storage, dust and noise
+                controlled, daily updates and the property left safe every
+                evening.
+              </p>
+            </div>
+            <div class="aw-card">
+              <h3>Clear documentation and aftercare</h3>
+              <p>
+                A plain-English system guide, your operating settings, what to
+                expect through the seasons, warranty information, a service
+                schedule and a follow-up call.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. CORE SERVICES -------------------------------------------- -->
+      <section class="aw-section aw-section--light">
+        <div class="aw-wrap">
+          <h2>What Airwarm does</h2>
+          <div class="aw-grid aw-grid--3" style="margin-top:24px">
+            <a class="aw-card aw-card--link" href="/air-source-heat-pumps/">
+              <h3>Air source heat pumps</h3>
+              <p>What they are, where they work well and where they need help.</p>
+            </a>
+            <a class="aw-card aw-card--link" href="/heat-pump-survey/">
+              <h3>Heat pump survey</h3>
+              <p>The detailed technical assessment behind a proper design.</p>
+            </a>
+            <a class="aw-card aw-card--link" href="/heat-pump-installation/">
+              <h3>Installation</h3>
+              <p>Planned, protected, commissioned and handed over properly.</p>
+            </a>
+          </div>
+          <p class="aw-small" style="margin-top:24px">
+            Radiator and emitter upgrades, low-temperature heating
+            improvements, cylinder work, controls setup and commissioning are
+            part of the installation service. Servicing, optimisation visits
+            and solar or battery coordination are planned additions &mdash;
+            pages for those will follow.
+          </p>
+        </div>
+      </section>
+
+      <!-- 9. PROOF AND TRUST ------------------------------------------
+           IMPORTANT: everything in this section must be TRUE TODAY.
+           Airwarm has not started trading, so there are no reviews, no star
+           ratings, no accreditation badges, no completed-job photographs and
+           no customer counts. Do not add any until they are real and can be
+           evidenced. The empty slots below are marked for exactly that.
+           ------------------------------------------------------------- -->
+      <section class="aw-section">
+        <div class="aw-wrap">
+          <span class="aw-eyebrow">What we can show you today</span>
+          <h2>Judge us on the process, because that is what exists</h2>
+          <div class="aw-grid aw-grid--3" style="margin-top:24px">
+            <div class="aw-card">
+              <h3>A documented process</h3>
+              <p>
+                Survey, design review, installation control and commissioning
+                are written procedures, not habits. You can ask to see what
+                happens at each stage.
+              </p>
+            </div>
+            <div class="aw-card">
+              <h3>Suitability before sales</h3>
+              <p>
+                We would rather turn down a job than install a system that will
+                not perform. The assessment exists to find that out early, for
+                both of us.
+              </p>
+            </div>
+            <div class="aw-card">
+              <h3>A commitment to aftercare</h3>
+              <p>
+                Follow-up contact after handover, a comfort review once the
+                system has been running, seasonal optimisation where it is
+                needed and an annual service reminder.
+              </p>
+            </div>
+          </div>
+
+          <!-- ============ EMPTY EVIDENCE SLOTS ============================
+               Fill these in when the evidence exists. Delete the slot rather
+               than leaving a placeholder claim.
+               1. Customer reviews and testimonials — real, with permission.
+               2. Photographs of completed installations — real Airwarm work.
+               3. Accreditation and certification — only once held and current.
+               4. Manufacturer training credentials — only once completed.
+               5. Case studies — problem, survey decision, solution, outcome.
+               ============================================================ -->
+          <div class="aw-grid aw-grid--2" style="margin-top:24px">
+            <div class="aw-evidence-slot">
+              <strong>Customer reviews:</strong> none yet, because we have not
+              installed for customers yet. When there are reviews they will be
+              real ones, published with permission.
+            </div>
+            <div class="aw-evidence-slot">
+              <strong>Photographs of our work:</strong> this site deliberately
+              uses no stock photography. Pictures here will be Airwarm
+              installations in real West Yorkshire homes.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 10. SERVICE AREA -------------------------------------------- -->
+      <section class="aw-section aw-section--light">
+        <div class="aw-wrap">
+          <span class="aw-eyebrow">Service area</span>
+          <h2>West Yorkshire</h2>
+          <p class="aw-measure">
+            Airwarm is based in West Yorkshire and is starting with a small
+            area it can genuinely cover well: Bradford, Leeds and Shipley.
+            Neighbouring towns will be added as coverage grows, rather than
+            claimed in advance.
+          </p>
+          <div class="aw-grid aw-grid--3" style="margin-top:24px">
+            <a class="aw-card aw-card--link" href="/areas/bradford/">
+              <h3>Bradford</h3>
+              <p>Stone terraces, solid walls and steep streets.</p>
+            </a>
+            <a class="aw-card aw-card--link" href="/areas/leeds/">
+              <h3>Leeds</h3>
+              <p>Back-to-backs, interwar semis and suburban detached homes.</p>
+            </a>
+            <a class="aw-card aw-card--link" href="/areas/shipley/">
+              <h3>Shipley</h3>
+              <p>Airedale mill housing, Saltaire and valley-side properties.</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 11. ADVICE CONTENT ------------------------------------------
+           The blueprint asks for three cornerstone guides here. None are
+           written yet, so these are labelled as planned rather than linked
+           to empty pages. Replace with real article links when they exist.
+           ------------------------------------------------------------- -->
+      <section class="aw-section">
+        <div class="aw-wrap">
+          <span class="aw-eyebrow">Advice</span>
+          <h2>Guides we are writing</h2>
+          <p class="aw-measure">
+            Practical, jargon-free guidance rather than sales material. These
+            are in preparation and will be published as they are finished.
+          </p>
+          <div class="aw-grid aw-grid--3" style="margin-top:24px">
+            <div class="aw-card">
+              <h3>Is my home suitable for a heat pump?</h3>
+              <p class="aw-small">Planned guide</p>
+            </div>
+            <div class="aw-card">
+              <h3>Why radiators matter more than the heat pump</h3>
+              <p class="aw-small">Planned guide</p>
+            </div>
+            <div class="aw-card">
+              <h3>What running costs actually depend on</h3>
+              <p class="aw-small">Planned guide</p>
+            </div>
+          </div>
+          <div class="aw-btn-row">
+            <a class="aw-btn aw-btn--outline" href="/advice/">See all planned guides</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="aw-section aw-section--tight">
+        <div class="aw-wrap">
+      <!-- LAUNCH-STAGE HONESTY NOTE ------------------------------------
+           Airwarm has not started trading. This block exists so the site
+           never implies trading history. Keep it until the company is
+           registered and genuinely operating, then rewrite it factually.
+           ---------------------------------------------------------------- -->
+      <div class="aw-note">
+        <h3>Where Airwarm is today</h3>
+        <p class="aw-measure">
+          Airwarm is a new business, and we would rather say so than pretend
+          otherwise. The process, the survey method and the aftercare
+          commitment described on this site are written down and being put in
+          place before we take on work. Reviews, photographs of completed
+          installations and accreditation details will appear here when they
+          are real and can be checked &mdash; not before.
+        </p>
+      </div>
+        </div>
+      </section>
+
+      <!-- FINAL CALL TO ACTION — repeated on every page, per the blueprint.
+           The assessment is the primary action; e-mail is the route for
+           anything unusual. -->
+      <section class="aw-section aw-section--navy">
+        <div class="aw-wrap">
+          <h2>Start with your home, not a product</h2>
+          <p class="aw-hero__support">
+            The Home Energy Assessment takes a few minutes, asks for no
+            photographs and gives you an honest first view of whether an air
+            source heat pump is worth exploring for your property.
+          </p>
+          <div class="aw-btn-row">
+            <a class="aw-btn aw-btn--primary" href="/home-energy-assessment/">Check your home&rsquo;s suitability</a>
+            <a class="aw-btn aw-btn--secondary" href="mailto:hello@airwarm.co.uk">E-mail hello@airwarm.co.uk</a>
+          </div>
+          <p class="aw-small" style="margin-top:24px">
+            Unusual property? Listed building, off-grid, a renovation part way
+            through? E-mail us and describe it. We would rather have the
+            conversation than have you guess.
+          </p>
+        </div>
+      </section>
+  </main>
+
+  <!-- ============================================================= -->
+  <!-- FOOTER — keep identical across pages                            -->
+  <!-- ============================================================= -->
+  <footer class="aw-footer">
+    <div class="aw-wrap">
+      <div class="aw-footer__grid">
+
+        <div>
+          <!-- LOGO SWAP POINT (footer) — see the note in the header. -->
+          <span class="aw-wordmark" style="display:inline-flex">
+            <span class="aw-wordmark__name">AIRWARM</span>
+            <span class="aw-tagline">
+              <span class="warmer">WARMER HOMES</span><span class="aw-dot">&bull;</span><span class="bills">LOWER BILLS</span><span class="aw-dot">&bull;</span><span class="energy">CLEAN ENERGY</span>
+            </span>
+          </span>
+          <p class="aw-small" style="margin-top:16px">
+            Air Source Heat Pumps &bull; West Yorkshire
+          </p>
+          <ul>
+            <li><a href="/">airwarm.co.uk</a></li>
+            <li><a href="mailto:hello@airwarm.co.uk">hello@airwarm.co.uk</a></li>
+            <!-- PHONE NUMBER GOES HERE once the business line is provisioned.
+                 Do not invent one. Format:
+            <li><a href="tel:+44NUMBER-GOES-HERE">NUMBER GOES HERE</a></li>
+            -->
+          </ul>
+        </div>
+
+        <div>
+          <h2>Services</h2>
+          <ul>
+            <li><a href="/air-source-heat-pumps/">Air source heat pumps</a></li>
+            <li><a href="/heat-pump-survey/">Heat pump survey</a></li>
+            <li><a href="/heat-pump-installation/">Heat pump installation</a></li>
+            <li><a href="/how-it-works/">How it works</a></li>
+            <li><a href="/home-energy-assessment/">Home Energy Assessment</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2>Service areas</h2>
+          <ul>
+            <li><a href="/areas/bradford/">Bradford</a></li>
+            <li><a href="/areas/leeds/">Leeds</a></li>
+            <li><a href="/areas/shipley/">Shipley</a></li>
+          </ul>
+          <h2 style="margin-top:24px">Company</h2>
+          <ul>
+            <li><a href="/about/">About Airwarm</a></li>
+            <li><a href="/advice/">Advice</a></li>
+            <li><a href="/contact/">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2>Legal</h2>
+          <ul>
+            <li><a href="/privacy/">Privacy policy</a></li>
+            <li><a href="/cookies/">Cookie policy</a></li>
+            <li><a href="/terms/">Terms and conditions</a></li>
+            <!-- STILL TO BE WRITTEN, then linked here:
+                 complaints procedure, accessibility statement.
+                 Both are named in the brand pack footer structure. -->
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="aw-footer__base">
+        <p>
+          Airwarm is a new West Yorkshire business preparing to install and
+          support air source heat pumps. Company registration and VAT details
+          will be shown here once they are confirmed.
+        </p>
+        <!-- COMPANY DETAILS GO HERE: registered name, company number,
+             registered office, VAT number. Do not add them until they exist. -->
+        <!-- SOCIAL LINKS: add only channels that are actively maintained. -->
+        <p>&copy; 2026 Airwarm.</p>
+      </div>
+    </div>
+  </footer>
+  <!-- /FOOTER -->
+
+</body>
+</html>
