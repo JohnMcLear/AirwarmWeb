@@ -1501,6 +1501,13 @@ footer .aw-wordmark__emblem { width: 34px; height: 34px; }
 h1 > .aw-icon, h2 > .aw-icon, h3 > .aw-icon,
 h4 > .aw-icon, h5 > .aw-icon, h6 > .aw-icon {
   margin-right: 0.45em;
+  /* The large variant is 1.5em, which would otherwise ride high against
+     heading type. Pull it back to the same optical line as the small one. */
+}
+h1 > .aw-icon--lg, h2 > .aw-icon--lg, h3 > .aw-icon--lg,
+h4 > .aw-icon--lg, h5 > .aw-icon--lg, h6 > .aw-icon--lg {
+  vertical-align: -0.22em;
+  margin-right: 0.35em;
   /* Optical alignment: heading type is heavier than body text, so the icon
      needs to sit slightly higher than the default baseline nudge. */
   vertical-align: -0.1em;
