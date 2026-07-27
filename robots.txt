@@ -1,8 +1,14 @@
 # Airwarm — robots.txt
-# Everything on this site is intended to be found. Nothing is hidden and
-# nothing is private, so there is nothing to disallow.
+#
+# PREVIEW STATE. This site is a work in progress hosted on a temporary
+# GitHub Pages URL. It is deliberately blocked from search engines so that
+# an unfinished site is not indexed under the Airwarm name.
+#
+# ON LAUNCH DAY: delete the Disallow line below, restore the Sitemap line to
+# the real domain, and remove the <meta name="robots" content="noindex">
+# tag from every page.
 
 User-agent: *
-Allow: /
+Disallow: /
 
-Sitemap: https://airwarm.co.uk/sitemap.xml
+# Sitemap: https://airwarm.co.uk/sitemap.xml

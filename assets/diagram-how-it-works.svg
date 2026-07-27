@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ===========================================================================
+  AIRWARM — diagram-how-it-works.svg
+  The refrigeration cycle: outside air, evaporator, compressor, condenser,
+  expansion valve, and the heat leaving for the water circuit.
+
+  HOW TO CHANGE A LABEL
+  Every word a visitor reads sits between <text ...> and </text>. Search this
+  file for the words you want to change and type over them. Nothing else needs
+  to move. Keep labels short: they grow on small screens, and a long label can
+  run past the edge of the drawing.
+
+  The wording is also repeated in the <desc> below, which is what a screen
+  reader announces. If you change a label, change the <desc> to match.
+
+  Colours are the approved Airwarm palette only. They are declared once, in
+  the <style> block, and nowhere else.
+  ===========================================================================
+-->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 640 440"
+     role="img"
+     aria-labelledby="hiw-title hiw-desc">
+
+  <title id="hiw-title">How an air source heat pump works</title>
+  <desc id="hiw-desc">A closed refrigerant circuit drawn as a loop with four
+    stages. Outside air enters the evaporator at the bottom left, where the
+    refrigerant absorbs heat from the air. The refrigerant travels up to the
+    compressor, which raises its pressure so its temperature rises. It then
+    passes across to the condenser, which gives that heat to the water
+    circuit. Finally it passes down to the expansion valve, where the pressure
+    drops and the refrigerant cools, and returns to the evaporator to start
+    again. Electricity powers the compressor.</desc>
+
+  <style>
+    /* ---------------------------------------------------------------------
+       AIRWARM DIAGRAM STYLES
+       The approved palette, and nothing else:
+         navy #071A2B    white #FFFFFF        orange #F28C28
+         blue #2F80ED    green #63C174        light neutral #F4F7F9
+         mid grey #65717C                     dark text #14212B
+       These class names are identical in every Airwarm diagram, so the whole
+       set keeps one line weight and one set of type sizes.
+       --------------------------------------------------------------------- */
+    .d-surface { fill: #F4F7F9; }
+    .d-frame   { fill: none; stroke: #071A2B; stroke-width: 1.5; opacity: 0.16; }
+    .d-box     { fill: #FFFFFF; stroke: #071A2B; stroke-width: 2; }
+    .d-box--quiet { fill: none; stroke: #65717C; stroke-width: 1.5; }
+    .d-line    { fill: none; stroke: #071A2B; stroke-width: 2;
+                 stroke-linecap: round; stroke-linejoin: round; }
+    .d-line--thin { stroke-width: 1.5; }
+    .d-line--dash { stroke-dasharray: 6 6; }
+    .d-hot     { stroke: #F28C28; }   /* warmer, higher pressure */
+    .d-cool    { stroke: #2F80ED; }   /* cooler, lower pressure  */
+    .d-quiet   { stroke: #65717C; }
+    .d-fill-navy  { fill: #071A2B; }
+    .d-fill-hot   { fill: #F28C28; }
+    .d-fill-cool  { fill: #2F80ED; }
+    .d-fill-quiet { fill: #65717C; }
+
+    /* TEXT. .d-label is a name, .d-sub an explanatory line, .d-num a number
+       inside a step marker, .d-cap a small caption or key entry. */
+    .d-label { font-family: Montserrat, 'Segoe UI', Arial, sans-serif;
+               font-size: 18px; font-weight: 600; fill: #14212B; }
+    .d-sub   { font-family: Montserrat, 'Segoe UI', Arial, sans-serif;
+               font-size: 15px; font-weight: 500; fill: #65717C; }
+    .d-num   { font-family: Montserrat, 'Segoe UI', Arial, sans-serif;
+               font-size: 15px; font-weight: 700; fill: #FFFFFF; }
+    .d-cap   { font-family: Montserrat, 'Segoe UI', Arial, sans-serif;
+               font-size: 15px; font-weight: 500; fill: #65717C; }
+
+    /* NARROW SCREENS. Below about 520px the explanatory lines and the key are
+       hidden and the remaining labels grow, so the drawing still reads on a
+       phone. Nothing is lost: the page copy carries the detail, and the
+       description near the top of this file carries it for screen readers. */
+    .d-narrow-only { display: none; }
+    @media (max-width: 520px) {
+      .d-label { font-size: 24px; }
+      .d-num   { font-size: 18px; }
+      .d-cap   { font-size: 20px; }
+      .d-sub, .d-wide-only { display: none; }
+      .d-narrow-only { display: inline; }
+    }
+
+    /* DARK BROWSER THEME. The panel turns navy and the ink turns white, so
+       the diagram never depends on sitting on a white page. */
+    @media (prefers-color-scheme: dark) {
+      .d-surface { fill: #071A2B; }
+      .d-frame   { stroke: #FFFFFF; opacity: 0.28; }
+      .d-box     { fill: #071A2B; stroke: #FFFFFF; }
+      .d-line    { stroke: #FFFFFF; }
+      .d-hot     { stroke: #F28C28; }
+      .d-cool    { stroke: #2F80ED; }
+      .d-label   { fill: #FFFFFF; }
+      .d-sub, .d-cap { fill: #F4F7F9; }
+      .d-fill-navy { fill: #FFFFFF; }
+      .d-num       { fill: #071A2B; }
+    }
+  </style>
+
+  <defs>
+    <!-- Arrowheads. One per colour, so each takes the dark-theme change with
+         its line. Do not change these. -->
+    <marker id="arrow-ink" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path class="d-fill-navy" d="M0 0 L10 5 L0 10 Z"/>
+    </marker>
+    <marker id="arrow-hot" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path class="d-fill-hot" d="M0 0 L10 5 L0 10 Z"/>
+    </marker>
+    <marker id="arrow-cool" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path class="d-fill-cool" d="M0 0 L10 5 L0 10 Z"/>
+    </marker>
+    <marker id="arrow-quiet" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path class="d-fill-quiet" d="M0 0 L10 5 L0 10 Z"/>
+    </marker>
+  </defs>
+
+  <!-- The diagram carries its own background panel, so it is legible on a
+       white, a pale grey or a navy section. -->
+  <rect class="d-surface" x="0" y="0" width="640" height="440" rx="12"/>
+  <rect class="d-frame" x="0.75" y="0.75" width="638.5" height="438.5" rx="11.25"/>
+
+  <!-- ===================== THE REFRIGERANT CIRCUIT ====================== -->
+  <!-- Up the left side: cooler, lower pressure -->
+  <path class="d-line d-cool" d="M215 268 V174" marker-end="url(#arrow-cool)"/>
+  <!-- Across the top: warmer, higher pressure -->
+  <path class="d-line d-hot" d="M269 140 H371" marker-end="url(#arrow-hot)"/>
+  <!-- Down the right side: still warm, still high pressure -->
+  <path class="d-line d-hot" d="M425 172 V266" marker-end="url(#arrow-hot)"/>
+  <!-- Back along the bottom: cooler, lower pressure -->
+  <path class="d-line d-cool" d="M371 300 H269" marker-end="url(#arrow-cool)"/>
+
+  <!-- ===================== 1. EVAPORATOR (bottom left) ================== -->
+  <g>
+    <rect class="d-box" x="165" y="270" width="100" height="60" rx="6"/>
+    <circle class="d-fill-navy" cx="190" cy="300" r="13"/>
+    <text class="d-num" x="190" y="305" text-anchor="middle">1</text>
+    <!-- heat-exchanger coil symbol -->
+    <path class="d-line d-line--thin" d="M212 312 L220 288 L228 312 L236 288 L244 312 L252 288"/>
+  </g>
+  <text class="d-label" x="150" y="292" text-anchor="end">Evaporator</text>
+  <text class="d-sub"   x="150" y="313" text-anchor="end">refrigerant takes heat</text>
+  <text class="d-sub"   x="150" y="331" text-anchor="end">out of the outside air</text>
+
+  <!-- ===================== 2. COMPRESSOR (top left) ===================== -->
+  <g>
+    <rect class="d-box" x="165" y="110" width="100" height="60" rx="6"/>
+    <circle class="d-fill-navy" cx="190" cy="140" r="13"/>
+    <text class="d-num" x="190" y="145" text-anchor="middle">2</text>
+    <!-- compressor symbol: circle with a chord -->
+    <circle class="d-line d-line--thin" cx="234" cy="140" r="16" fill="none"/>
+    <path class="d-line d-line--thin" d="M221 131 L247 149"/>
+  </g>
+  <text class="d-label" x="150" y="132" text-anchor="end">Compressor</text>
+  <text class="d-sub"   x="150" y="153" text-anchor="end">raises the pressure,</text>
+  <text class="d-sub"   x="150" y="171" text-anchor="end">so it gets hotter</text>
+
+  <!-- ===================== 3. CONDENSER (top right) ===================== -->
+  <g>
+    <rect class="d-box" x="375" y="110" width="100" height="60" rx="6"/>
+    <circle class="d-fill-navy" cx="400" cy="140" r="13"/>
+    <text class="d-num" x="400" y="145" text-anchor="middle">3</text>
+    <path class="d-line d-line--thin" d="M422 152 L430 128 L438 152 L446 128 L454 152 L462 128"/>
+  </g>
+  <text class="d-label" x="490" y="132">Condenser</text>
+  <text class="d-sub"   x="490" y="153">passes that heat</text>
+  <text class="d-sub"   x="490" y="171">into the water</text>
+
+  <!-- ===================== 4. EXPANSION VALVE (bottom right) =========== -->
+  <g>
+    <rect class="d-box" x="375" y="270" width="100" height="60" rx="6"/>
+    <circle class="d-fill-navy" cx="400" cy="300" r="13"/>
+    <text class="d-num" x="400" y="305" text-anchor="middle">4</text>
+    <!-- expansion valve symbol: two triangles meeting -->
+    <path class="d-fill-navy" d="M424 286 L424 314 L446 300 Z"/>
+    <path class="d-fill-navy" d="M462 286 L462 314 L440 300 Z"/>
+  </g>
+  <!-- "Expansion valve" is set on one line normally, and on two lines on a
+       narrow screen where the type is larger. Change both if you change it. -->
+  <text class="d-label d-wide-only" x="490" y="292">Expansion valve</text>
+  <text class="d-label d-narrow-only" x="490" y="288">Expansion</text>
+  <text class="d-label d-narrow-only" x="490" y="316">valve</text>
+  <text class="d-sub"   x="490" y="313">pressure drops and</text>
+  <text class="d-sub"   x="490" y="331">the refrigerant cools</text>
+
+  <!-- ===================== CENTRE NOTE ================================== -->
+  <text class="d-sub" x="320" y="212" text-anchor="middle">The same refrigerant</text>
+  <text class="d-sub" x="320" y="230" text-anchor="middle">goes round and round</text>
+
+  <!-- ===================== OUTSIDE AIR IN (bottom left) ================= -->
+  <path class="d-line d-cool" d="M190 386 V338" marker-end="url(#arrow-cool)"/>
+  <path class="d-line d-cool" d="M240 386 V338" marker-end="url(#arrow-cool)"/>
+  <text class="d-label" x="215" y="414" text-anchor="middle">Outside air in</text>
+
+  <!-- ===================== HEAT OUT TO THE WATER (top right) ============ -->
+  <path class="d-line d-hot" d="M400 104 V58" marker-end="url(#arrow-hot)"/>
+  <path class="d-line d-hot" d="M450 104 V58" marker-end="url(#arrow-hot)"/>
+  <text class="d-label" x="425" y="40" text-anchor="middle">Heat to the water circuit</text>
+
+  <!-- ===================== ELECTRICITY IN (top left) ==================== -->
+  <path class="d-line d-line--thin d-quiet" d="M215 58 V104" marker-end="url(#arrow-quiet)"/>
+  <text class="d-label" x="180" y="40" text-anchor="middle">Electricity in</text>
+
+  <!-- ===================== KEY TO THE TWO LINE COLOURS =================
+       Hidden on narrow screens, where the drawing itself has to do the work.
+       ==================================================================== -->
+  <g class="d-wide-only">
+    <path class="d-line d-hot" d="M378 388 H414"/>
+    <text class="d-cap" x="424" y="393">warmer, higher pressure</text>
+    <path class="d-line d-cool" d="M378 414 H414"/>
+    <text class="d-cap" x="424" y="419">cooler, lower pressure</text>
+  </g>
+</svg>
