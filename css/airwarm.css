@@ -305,13 +305,20 @@ hr {
 
 /* The tagline colour order is FIXED: orange, then blue, then green.
    Never reorder or recolour these three spans. */
+/* The tagline sits under the wordmark and must not be wider than it, or the
+   whole identity block bloats and pushes the navigation around. Three promises
+   on one line measured 267px against the wordmark's 144px, so it breaks over
+   two lines. Fitting it on one line would need a ~5px type size. */
 .aw-tagline {
-  font-size: 0.5625rem;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.5rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   line-height: 1.4;
   text-transform: uppercase;
 }
+.aw-tagline__line { display: block; white-space: nowrap; }
 .aw-tagline .warmer { color: var(--airwarm-orange); }
 .aw-tagline .bills  { color: var(--airwarm-blue); }
 .aw-tagline .energy { color: var(--airwarm-green); }
@@ -779,7 +786,11 @@ select { appearance: none; background-image: none; }
   background: var(--airwarm-navy);
   color: var(--airwarm-white);
   padding: var(--airwarm-space-lg) 0 var(--airwarm-space-md) 0;
-  margin-top: var(--airwarm-space-lg);
+  /* No margin-top. It used to add 40px above the footer, which showed as a
+     white bar wherever the preceding section was navy — the closing call to
+     action on most pages. The footer's own top padding gives the breathing
+     room, and butting straight up against the section above reads as
+     deliberate rather than as a gap. */
 }
 .aw-footer a { color: var(--airwarm-white); text-decoration: none; }
 .aw-footer a:hover { text-decoration: underline; text-underline-offset: 4px; }
@@ -1482,4 +1493,16 @@ footer .aw-wordmark__emblem { width: 34px; height: 34px; }
   }
   .aw-nav__list a { white-space: nowrap; }
   .aw-wordmark__emblem { width: 40px; height: 40px; }
+}
+
+/* An icon that introduces a heading belongs inside it. As a sibling it sat on
+   its own line, because the heading is block level. Inside the heading it runs
+   inline with the text and moves with it when the text wraps. */
+h1 > .aw-icon, h2 > .aw-icon, h3 > .aw-icon,
+h4 > .aw-icon, h5 > .aw-icon, h6 > .aw-icon {
+  margin-right: 0.45em;
+  /* Optical alignment: heading type is heavier than body text, so the icon
+     needs to sit slightly higher than the default baseline nudge. */
+  vertical-align: -0.1em;
+  flex: 0 0 auto;
 }
