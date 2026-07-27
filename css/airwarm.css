@@ -279,9 +279,10 @@ hr {
 /* ---- The wordmark ------------------------------------------------------
    LOGO SWAP POINT. This is a text wordmark, not the Airwarm emblem. No
    vector version of the circular emblem exists in the brand pack, and the
-   brand rules forbid redrawing or approximating it. When the real asset
-   arrives, replace the .aw-wordmark__name span with an <img> and delete the
-   font-size/letter-spacing rules below.
+   The emblem now exists as assets/airwarm-emblem.svg and sits to the left of
+   this wordmark; see section 13 for the lockup. The wordmark is deliberately
+   left as live text rather than baked into the SVG so it scales, reflows and
+   stays selectable and readable by a screen reader.
    ---------------------------------------------------------------------- */
 .aw-wordmark {
   display: inline-flex;
@@ -1418,4 +1419,67 @@ details:focus-visible,
   .aw-header, .aw-footer, .aw-btn-row, .aw-header__cta { display: none; }
   .aw-section--navy, .aw-hero { background: var(--airwarm-white); color: var(--airwarm-dark-text); }
   a { text-decoration: none; }
+}
+
+/* ==========================================================================
+   13. LOGO LOCKUP
+   Emblem plus live-text wordmark. The emblem is a flat SVG with no gradient
+   or glow; the wordmark stays real text so it scales, reflows and can be
+   selected and read by a screen reader. The emblem carries alt="" because
+   the wordmark beside it already names the company — announcing both would
+   make a screen reader say "Airwarm Airwarm".
+   ========================================================================== */
+
+.aw-wordmark {
+  display: inline-flex;
+  /* Overrides the column direction set in section 05, which assumed a
+     text-only wordmark with the tagline stacked beneath it. */
+  flex-direction: row;
+  align-items: center;
+  gap: var(--airwarm-space-sm);
+  text-decoration: none;
+}
+
+.aw-wordmark__emblem {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  display: block;
+}
+
+.aw-wordmark__text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* Footer lockup sits a little smaller. */
+footer .aw-wordmark__emblem { width: 34px; height: 34px; }
+
+/* On narrow screens keep the emblem and drop to a tighter gap rather than
+   shrinking the wordmark, which would hurt legibility. */
+@media (max-width: 480px) {
+  .aw-wordmark { gap: var(--airwarm-space-xs); }
+  .aw-wordmark__emblem { width: 34px; height: 34px; }
+}
+
+/* Adding the emblem widened the identity, which pushed the last nav item onto
+   a second line between roughly 1000px and 1400px. Tighten the nav gap and the
+   emblem in that band rather than shrinking the type, which would hurt
+   legibility. Below the mobile breakpoint the nav collapses anyway. */
+@media (min-width: 901px) {
+  /* Keep the nav as one unit. If it does not fit beside the identity and the
+     call to action, the header wraps it onto its own row, which reads far
+     better than a single orphaned link dropping below the rest. No width
+     guesswork: the browser decides when it stops fitting. */
+  .aw-nav { flex: 1 1 auto; }
+  .aw-nav__list {
+    flex-wrap: nowrap;
+    /* Left-aligned so that when the nav wraps onto its own row it lines up
+       with the identity above it rather than floating off to the right. */
+    justify-content: flex-start;
+    gap: var(--airwarm-space-sm);
+  }
+  .aw-nav__list a { white-space: nowrap; }
+  .aw-wordmark__emblem { width: 40px; height: 40px; }
 }

@@ -26,12 +26,10 @@
        <meta property="og:image" content="https://airwarm.co.uk/img/share.png">
        Do not point this at a stock photograph or a third-party host. -->
 
-  <!-- FAVICON SWAP POINT: no icon files exist yet, because the circular
-       Airwarm emblem has not been supplied as an image. When it is, add:
-       <link rel="icon" href="../../favicon.ico" sizes="any">
-       <link rel="icon" href="../../img/airwarm-emblem.svg" type="image/svg+xml">
-       <link rel="apple-touch-icon" href="../../img/airwarm-emblem-180.png">
-       The favicon must be the emblem only, per the brand rules. -->
+  <!-- Favicon: the Airwarm emblem on a navy tile. Source of truth for all brand
+       artwork is 02_Strategy_and_Brand/logo/ in the business pack. -->
+  <link rel="icon" href="../../assets/airwarm-favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../assets/airwarm-favicon.svg">
 
   <!-- Montserrat, the fixed brand typeface. This is the only thing on the
        whole site that loads from another company's server. The CSS names a
@@ -58,19 +56,16 @@
   <header class="aw-header">
     <div class="aw-wrap aw-header__inner">
 
-      <!-- LOGO SWAP POINT ------------------------------------------------
-           This is a TEXT wordmark, not the circular Airwarm emblem. No
-           vector version of the emblem exists in the brand pack yet, and the
-           brand rules forbid redrawing or approximating it. When the real
-           asset arrives, replace the two spans below with, for example:
-             <img src="../../img/airwarm-logo.svg" alt="Airwarm" width="180" height="48">
-           and update the favicon lines in the <head> of every page.
-           The tagline colour order is FIXED: orange, blue, green.
-           --------------------------------------------------------------- -->
+      <!-- Logo: emblem + wordmark. The emblem is assets/airwarm-emblem.svg;
+           the wordmark stays live text so it scales and stays selectable.
+           Tagline colour order is FIXED: orange, blue, green. -->
       <a class="aw-wordmark" href="../../">
+        <img class="aw-wordmark__emblem" src="../../assets/airwarm-emblem.svg" alt="" width="44" height="44">
+        <span class="aw-wordmark__text">
         <span class="aw-wordmark__name">AIRWARM</span>
         <span class="aw-tagline">
           <span class="warmer">WARMER HOMES</span><span class="aw-dot">&bull;</span><span class="bills">LOWER BILLS</span><span class="aw-dot">&bull;</span><span class="energy">CLEAN ENERGY</span>
+        </span>
         </span>
       </a>
 
@@ -473,8 +468,9 @@
       <div class="aw-footer__grid">
 
         <div>
-          <!-- LOGO SWAP POINT (footer) — see the note in the header. -->
+          <!-- Footer logo. Same emblem, smaller. -->
           <span class="aw-wordmark" style="display:inline-flex">
+            <img class="aw-wordmark__emblem" src="../../assets/airwarm-emblem.svg" alt="" width="34" height="34">
             <span class="aw-wordmark__name">AIRWARM</span>
             <span class="aw-tagline">
               <span class="warmer">WARMER HOMES</span><span class="aw-dot">&bull;</span><span class="bills">LOWER BILLS</span><span class="aw-dot">&bull;</span><span class="energy">CLEAN ENERGY</span>
