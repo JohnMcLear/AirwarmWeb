@@ -80,7 +80,88 @@
 
   <url>
     <loc>https://johnmclear.github.io/AirwarmWeb/advice/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- The eleven advice articles. These are full guides, not stubs, so they
+       carry the same priority as the other content pages. Add a block here
+       whenever a twelfth article is published. -->
+
+  <url>
+    <loc>https://johnmclear.github.io/AirwarmWeb/advice/is-my-home-suitable/</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://johnmclear.github.io/AirwarmWeb/advice/heat-loss-explained/</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://johnmclear.github.io/AirwarmWeb/advice/radiators-and-emitters/</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://johnmclear.github.io/AirwarmWeb/advice/hot-water-and-cylinders/</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://johnmclear.github.io/AirwarmWeb/advice/weather-compensation/</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://johnmclear.github.io/AirwarmWeb/advice/what-determines-running-costs/</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://johnmclear.github.io/AirwarmWeb/advice/solar-and-battery/</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://johnmclear.github.io/AirwarmWeb/advice/grants-and-funding/</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://johnmclear.github.io/AirwarmWeb/advice/heat-pumps-during-renovation/</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://johnmclear.github.io/AirwarmWeb/advice/servicing-and-maintenance/</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://johnmclear.github.io/AirwarmWeb/advice/common-faults/</loc>
+    <lastmod>2026-07-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

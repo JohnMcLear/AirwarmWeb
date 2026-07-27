@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ===========================================================================
+  AIRWARM — diagram-system-layout.svg
+  A whole system, drawn as a cutaway cross section: the outdoor unit, the
+  pipework through the wall, the hot water cylinder, a buffer or volumiser, the
+  emitters and the controls. Numbered, with a key underneath.
+
+  HOW TO CHANGE A LABEL
+  Every word a visitor reads sits between <text ...> and </text>. Search this
+  file for the words you want to change and type over them. Nothing else has
+  to move. Keep labels short: they are set larger on small screens, and a long
+  label can run past the edge of the drawing.
+
+  The same wording is repeated in the description below, which is what a
+  screen reader announces. If you change a label, change that to match.
+
+  Colours are the approved Airwarm palette only. They are declared once, in
+  the style block, and nowhere else in this file.
+  ===========================================================================
+-->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 640 560"
+     role="img"
+     aria-labelledby="sys-title sys-desc">
+
+  <title id="sys-title">How the parts of a heat pump system fit together</title>
+  <desc id="sys-desc">A cutaway cross section of a house with the outdoor unit standing
+    outside on a plinth. Flow and return pipes run from the outdoor
+    unit through the wall and along the inside of the house. Numbered
+    items are: one, the outdoor unit; two, the pipes passing through
+    the wall; three, the hot water cylinder; four, a buffer or
+    volumiser, fitted only where the design needs one; five, the
+    emitters, meaning radiators or underfloor heating; six, the
+    controls on the wall.</desc>
+
+  <style>
+    /* ---------------------------------------------------------------------
+       AIRWARM DIAGRAM STYLES
+       The approved palette, and nothing else:
+         navy #071A2B    white #FFFFFF        orange #F28C28
+         blue #2F80ED    green #63C174        light neutral #F4F7F9
+         mid grey #65717C                     dark text #14212B
+
+       These class names are identical in every Airwarm diagram, so the whole
+       set keeps one line weight and one set of type sizes.
+
+       ONE DELIBERATE EXCEPTION, FOR LEGIBILITY.
+       The brand orange #F28C28 reaches only 2.3:1 against this pale panel,
+       which is below the 3:1 that WCAG asks for a line or a shape that
+       carries meaning. So a thin orange LINE on the pale panel is drawn in
+       the darker orange #B55F0B (4.6:1), and switches back to #F28C28 on the
+       navy panel used by the dark browser theme, where the brand orange
+       reaches 7.2:1. Solid orange shapes keep the brand orange and are given
+       a navy outline instead, so their edge carries the contrast.
+       The same note is in css/airwarm.css and assets/README.md.
+       --------------------------------------------------------------------- */
+    .d-surface { fill: #F4F7F9; }
+    .d-frame   { fill: none; stroke: #071A2B; stroke-width: 1.5; opacity: 0.16; }
+    .d-box     { fill: #FFFFFF; stroke: #071A2B; stroke-width: 2; }
+    .d-box--quiet { fill: none; stroke: #65717C; stroke-width: 1.5; }
+    .d-line    { fill: none; stroke: #071A2B; stroke-width: 2;
+                 stroke-linecap: round; stroke-linejoin: round; }
+    .d-line--thin { stroke-width: 1.5; }
+    .d-line--dash { stroke-dasharray: 6 6; }
+    .d-hot     { stroke: #B55F0B; }   /* warmth, and the higher of two temperatures */
+    .d-cool    { stroke: #2F80ED; }   /* the cool side, and the lower of two temperatures */
+    .d-quiet   { stroke: #65717C; }
+    .d-fill-navy  { fill: #071A2B; }
+    .d-fill-hot   { fill: #B55F0B; }
+    .d-fill-cool  { fill: #2F80ED; }
+    .d-fill-quiet { fill: #65717C; }
+    .d-fill-white { fill: #FFFFFF; }
+
+    /* TEXT. .d-label is a name, .d-sub an explanatory line, .d-num a number
+       inside a step marker, .d-cap a small caption or key entry. */
+    .d-label { font-family: Montserrat, 'Segoe UI', Arial, sans-serif;
+               font-size: 18px; font-weight: 600; fill: #14212B; }
+    .d-sub   { font-family: Montserrat, 'Segoe UI', Arial, sans-serif;
+               font-size: 15px; font-weight: 500; fill: #65717C; }
+    .d-num   { font-family: Montserrat, 'Segoe UI', Arial, sans-serif;
+               font-size: 15px; font-weight: 700; fill: #FFFFFF; }
+    .d-cap   { font-family: Montserrat, 'Segoe UI', Arial, sans-serif;
+               font-size: 15px; font-weight: 500; fill: #65717C; }
+
+    /* NARROW SCREENS. Below about 520px the explanatory lines are hidden and
+       the remaining labels are set larger, so the drawing still reads on a
+       phone. Nothing is lost: the page copy carries the detail, and the
+       description near the top of this file carries it for screen readers. */
+    .d-narrow-only { display: none; }
+    @media (max-width: 520px) {
+      .d-label { font-size: 24px; }
+      .d-num   { font-size: 18px; }
+      .d-cap   { font-size: 20px; }
+      .d-sub, .d-wide-only { display: none; }
+      .d-narrow-only { display: inline; }
+    }
+
+    /* DARK BROWSER THEME. The panel turns navy and the ink turns white, so
+       the diagram never depends on sitting on a white page. Grey text is
+       replaced with the light neutral, because mid grey on navy is only
+       3.5:1 and that is not enough for small text. */
+    @media (prefers-color-scheme: dark) {
+      .d-surface { fill: #071A2B; }
+      .d-frame   { stroke: #FFFFFF; opacity: 0.28; }
+      .d-box     { fill: #071A2B; stroke: #FFFFFF; }
+      .d-line    { stroke: #FFFFFF; }
+      .d-hot     { stroke: #F28C28; }
+      .d-fill-hot { fill: #F28C28; }
+      .d-label   { fill: #FFFFFF; }
+      .d-sub, .d-cap { fill: #F4F7F9; }
+      .d-fill-navy  { fill: #FFFFFF; }
+      .d-fill-white { fill: #071A2B; }
+      .d-num        { fill: #071A2B; }
+    }
+
+    /* Extra styles for this diagram only. */
+    .d-hatch { stroke: #65717C; stroke-width: 1.5; opacity: 0.5; }
+  </style>
+
+  <defs>
+    <!-- Arrowheads. One per colour, so each takes the dark theme change with
+         its line. There is no need to change these. -->
+    <marker id="arrow-ink" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path class="d-fill-navy" d="M0 0 L10 5 L0 10 Z"/>
+    </marker>
+    <marker id="arrow-hot" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path class="d-fill-hot" d="M0 0 L10 5 L0 10 Z"/>
+    </marker>
+    <marker id="arrow-cool" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path class="d-fill-cool" d="M0 0 L10 5 L0 10 Z"/>
+    </marker>
+    <marker id="arrow-quiet" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path class="d-fill-quiet" d="M0 0 L10 5 L0 10 Z"/>
+    </marker>
+  </defs>
+
+  <!-- The diagram carries its own background panel, so it stays legible on a
+       white, a pale grey or a navy section. -->
+  <rect class="d-surface" x="0" y="0" width="640" height="560" rx="12"/>
+  <rect class="d-frame" x="0.75" y="0.75" width="638.5" height="558.5" rx="11.25"/>
+
+  <!-- ======================= GROUND AND HOUSE SHELL ==================== -->
+  <path class="d-line d-quiet" d="M20 376 H620"/>
+  <g class="d-hatch">
+    <path d="M40 376 L30 386"/><path d="M90 376 L80 386"/><path d="M140 376 L130 386"/>
+    <path d="M190 376 L180 386"/><path d="M240 376 L230 386"/><path d="M290 376 L280 386"/>
+    <path d="M340 376 L330 386"/><path d="M390 376 L380 386"/><path d="M440 376 L430 386"/>
+    <path d="M490 376 L480 386"/><path d="M540 376 L530 386"/><path d="M590 376 L580 386"/>
+  </g>
+
+  <!-- Roof, walls and the loft floor. Geometric, not pictorial. -->
+  <path class="d-line" d="M238 178 L431 88 L624 178"/>
+  <path class="d-line d-line--thin" d="M250 178 H612"/>
+  <path class="d-line" d="M612 178 V376"/>
+  <!-- The left wall is drawn in two pieces, with a gap where the pipes pass
+       through it. -->
+  <path class="d-line" d="M250 178 V278"/>
+  <path class="d-line" d="M250 302 V376"/>
+  <text class="d-sub" x="431" y="140" text-anchor="middle">loft</text>
+
+  <!-- ======================= 1. OUTDOOR UNIT =========================== -->
+  <rect class="d-box" x="45" y="246" width="110" height="90" rx="6"/>
+  <circle class="d-line d-line--thin" cx="100" cy="291" r="26" fill="none"/>
+  <path class="d-line d-line--thin" d="M100 265 V317"/>
+  <path class="d-line d-line--thin" d="M74 291 H126"/>
+  <path class="d-line d-line--thin" d="M70 336 V356"/>
+  <path class="d-line d-line--thin" d="M130 336 V356"/>
+  <rect class="d-box--quiet" x="50" y="356" width="100" height="20" rx="3"/>
+  <circle class="d-fill-navy" cx="100" cy="222" r="13"/>
+  <text class="d-num" x="100" y="227" text-anchor="middle">1</text>
+
+  <!-- ======================= 2. PIPES THROUGH THE WALL ================== -->
+  <!-- Flow (warmer) out to the house, and return (cooler) back again. -->
+  <path class="d-line d-hot"  d="M155 284 H250 V204 H596"/>
+  <path class="d-line d-cool" d="M596 216 H250 V296 H155"/>
+  <circle class="d-fill-navy" cx="206" cy="248" r="13"/>
+  <text class="d-num" x="206" y="253" text-anchor="middle">2</text>
+
+  <!-- ======================= 3. HOT WATER CYLINDER ====================== -->
+  <rect class="d-box" x="278" y="228" width="60" height="140" rx="10"/>
+  <path class="d-line d-line--thin" d="M278 258 H338"/>
+  <path class="d-line d-line--thin" d="M278 338 H338"/>
+  <path class="d-line d-line--thin" d="M308 216 V228"/>
+  <circle class="d-fill-navy" cx="308" cy="292" r="13"/>
+  <text class="d-num" x="308" y="297" text-anchor="middle">3</text>
+
+  <!-- ======================= 4. BUFFER OR VOLUMISER ===================== -->
+  <rect class="d-box" x="362" y="280" width="50" height="88" rx="10"/>
+  <path class="d-line d-line--thin" d="M387 216 V280"/>
+  <circle class="d-fill-navy" cx="387" cy="324" r="13"/>
+  <text class="d-num" x="387" y="329" text-anchor="middle">4</text>
+
+  <!-- ======================= 5. EMITTERS ================================ -->
+  <!-- A radiator, and a length of underfloor heating. -->
+  <rect class="d-box" x="452" y="296" width="60" height="50" rx="4"/>
+  <path class="d-line d-line--thin" d="M467 296 V346"/>
+  <path class="d-line d-line--thin" d="M482 296 V346"/>
+  <path class="d-line d-line--thin" d="M497 296 V346"/>
+  <path class="d-line d-line--thin" d="M482 216 V296"/>
+  <path class="d-line d-line--thin" d="M540 358 q10 -14 20 0 q10 14 20 0 q10 -14 20 0"/>
+  <path class="d-line d-line--thin" d="M572 216 V344"/>
+  <circle class="d-fill-navy" cx="452" cy="272" r="13"/>
+  <text class="d-num" x="452" y="277" text-anchor="middle">5</text>
+
+  <!-- ======================= 6. CONTROLS ================================ -->
+  <rect class="d-box" x="572" y="236" width="34" height="32" rx="4"/>
+  <circle class="d-line d-line--thin" cx="589" cy="250" r="6" fill="none"/>
+  <path class="d-line d-line--thin" d="M581 261 H597"/>
+  <circle class="d-fill-navy" cx="548" cy="252" r="13"/>
+  <text class="d-num" x="548" y="257" text-anchor="middle">6</text>
+
+  <!-- ======================= KEY ========================================
+       Change the words after each number to rename an item. Keep them short:
+       roughly twenty characters is as much as will fit.
+       =================================================================== -->
+  <path class="d-line d-line--thin d-quiet" d="M40 398 H600"/>
+
+  <circle class="d-fill-navy" cx="51" cy="435" r="12"/>
+  <text class="d-num" x="51" y="440" text-anchor="middle">1</text>
+  <text class="d-label" x="73" y="441">Outdoor unit</text>
+
+  <circle class="d-fill-navy" cx="51" cy="479" r="12"/>
+  <text class="d-num" x="51" y="484" text-anchor="middle">2</text>
+  <text class="d-label" x="73" y="485">Pipes through wall</text>
+
+  <circle class="d-fill-navy" cx="51" cy="523" r="12"/>
+  <text class="d-num" x="51" y="528" text-anchor="middle">3</text>
+  <text class="d-label" x="73" y="529">Hot water cylinder</text>
+
+  <circle class="d-fill-navy" cx="351" cy="435" r="12"/>
+  <text class="d-num" x="351" y="440" text-anchor="middle">4</text>
+  <text class="d-label" x="373" y="441">Buffer or volumiser</text>
+  <text class="d-sub" x="373" y="459">only where the design needs one</text>
+
+  <circle class="d-fill-navy" cx="351" cy="479" r="12"/>
+  <text class="d-num" x="351" y="484" text-anchor="middle">5</text>
+  <text class="d-label" x="373" y="485">Emitters</text>
+  <text class="d-sub" x="373" y="503">radiators or underfloor heating</text>
+
+  <circle class="d-fill-navy" cx="351" cy="523" r="12"/>
+  <text class="d-num" x="351" y="528" text-anchor="middle">6</text>
+  <text class="d-label" x="373" y="529">Controls</text>
+</svg>

@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <!-- ============================================================= -->
+  <!-- HEAD — the only per-page parts are the <title>, the meta       -->
+  <!-- description, the canonical URL and the Open Graph URL/title.   -->
+  <!-- Everything else is identical on every page.                    -->
+  <!-- ============================================================= -->
+  <meta charset="utf-8">
+  <!-- PREVIEW ONLY: remove this line on launch day so the site can be indexed. -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Heat Pump Hot Water and Cylinders | Airwarm</title>
+  <meta name="description" content="How a heat pump heats your hot water, why a cylinder is normally needed, how capacity is sized and what it means if you currently have a combi boiler.">
+  <link rel="canonical" href="https://airwarm.co.uk/advice/hot-water-and-cylinders/">
+
+  <!-- Open Graph: how the page looks when shared in a message or post. -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Airwarm">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:title" content="Heat Pump Hot Water and Cylinders | Airwarm">
+  <meta property="og:description" content="How a heat pump heats your hot water, why a cylinder is normally needed, how capacity is sized and what it means if you currently have a combi boiler.">
+  <meta property="og:url" content="https://airwarm.co.uk/advice/hot-water-and-cylinders/">
+  <!-- OG IMAGE GOES HERE once a real Airwarm share image exists, e.g.
+       <meta property="og:image" content="https://airwarm.co.uk/img/share.png">
+       Do not point this at a stock photograph or a third-party host. -->
+
+  <!-- FAVICON SWAP POINT: no icon files exist yet, because the circular
+       Airwarm emblem has not been supplied as an image. When it is, add:
+       <link rel="icon" href="../../favicon.ico" sizes="any">
+       <link rel="icon" href="../../img/airwarm-emblem.svg" type="image/svg+xml">
+       <link rel="apple-touch-icon" href="../../img/airwarm-emblem-180.png">
+       The favicon must be the emblem only, per the brand rules. -->
+
+  <!-- Montserrat, the fixed brand typeface. This is the only thing on the
+       whole site that loads from another company's server. The CSS names a
+       system-safe fallback stack so the site still reads correctly if the
+       font does not arrive. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;display=swap">
+
+  <!-- One stylesheet for the whole site. Colours live at the top of it. -->
+  <link rel="stylesheet" href="../../css/airwarm.css">
+</head>
+<body>
+
+  <a class="aw-skip" href="#main">Skip to main content</a>
+
+  <!-- ============================================================= -->
+  <!-- HEADER — keep identical across pages                            -->
+  <!-- If you change anything between here and /HEADER, make the same  -->
+  <!-- change in every index.html file, or the site will look           -->
+  <!-- inconsistent. There is no JavaScript and no hamburger menu: on   -->
+  <!-- small screens the navigation simply wraps onto more lines.       -->
+  <!-- ============================================================= -->
+  <header class="aw-header">
+    <div class="aw-wrap aw-header__inner">
+
+      <!-- LOGO SWAP POINT ------------------------------------------------
+           This is a TEXT wordmark, not the circular Airwarm emblem. No
+           vector version of the emblem exists in the brand pack yet, and the
+           brand rules forbid redrawing or approximating it. When the real
+           asset arrives, replace the two spans below with, for example:
+             <img src="../../img/airwarm-logo.svg" alt="Airwarm" width="180" height="48">
+           and update the favicon lines in the <head> of every page.
+           The tagline colour order is FIXED: orange, blue, green.
+           --------------------------------------------------------------- -->
+      <a class="aw-wordmark" href="../../">
+        <span class="aw-wordmark__name">AIRWARM</span>
+        <span class="aw-tagline">
+          <span class="warmer">WARMER HOMES</span><span class="aw-dot">&bull;</span><span class="bills">LOWER BILLS</span><span class="aw-dot">&bull;</span><span class="energy">CLEAN ENERGY</span>
+        </span>
+      </a>
+
+      <!-- The Home Energy Assessment is the principal action on the site,
+           so it gets a button in the header on every page. -->
+      <div class="aw-header__cta">
+        <a class="aw-btn aw-btn--primary" href="../../home-energy-assessment/">Start the assessment</a>
+      </div>
+
+      <nav class="aw-nav" aria-label="Main">
+        <ul class="aw-nav__list">
+          <li><a href="../../">Home</a></li>
+          <li><a href="../../air-source-heat-pumps/">Heat pumps</a></li>
+          <li><a href="../../how-it-works/">How it works</a></li>
+          <li><a href="../../home-energy-assessment/">Home Energy Assessment</a></li>
+          <li><a href="../../about/">About</a></li>
+          <li><a href="../../advice/">Advice</a></li>
+          <li><a href="../../contact/">Contact</a></li>
+          <!-- Phase 2 navigation, not built yet. Uncomment the matching
+               page first, otherwise this link will 404:
+          <li><a href="../../servicing-support/">Servicing &amp; support</a></li>
+          -->
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+  <!-- /HEADER -->
+
+  <main id="main">
+  <!-- Breadcrumbs: helps people and search engines see where this
+       page sits. Update if you move the page. -->
+  <nav class="aw-crumbs" aria-label="Breadcrumb">
+    <div class="aw-wrap">
+      <ol>
+        <li><a href="../../">Home</a></li>
+        <li><a href="../../advice/">Advice</a></li>
+        <li aria-current="page">Hot water and cylinders</li>
+      </ol>
+    </div>
+  </nav>
+
+      <section class="aw-section aw-section--tight">
+        <div class="aw-wrap">
+          <span class="aw-eyebrow">Advice</span>
+          <h1>Hot water with a heat pump: cylinders, capacity and what changes</h1>
+          <p class="aw-lede aw-measure">
+            An air source heat pump heats hot water by warming a stored tank
+            rather than heating it instantly at the tap, so almost every
+            installation needs a hot water cylinder. Finding a sensible place
+            for that cylinder is one of the first practical questions a survey
+            has to answer, and for some homes it is the deciding one.
+          </p>
+
+          <nav class="aw-toc" aria-labelledby="toc-heading">
+            <h2 id="toc-heading">On this page</h2>
+            <ol>
+              <li><a href="#what-it-means">What it actually means</a></li>
+              <li><a href="#why-it-matters">Why it matters for the outcome in your home</a></li>
+              <li><a href="#where-it-goes">Where a cylinder can realistically go</a></li>
+              <li><a href="#what-airwarm-checks">What Airwarm checks</a></li>
+              <li><a href="#misconceptions">Common misconceptions, stated fairly</a></li>
+              <li><a href="#next">What you should do next</a></li>
+              <li><a href="#faqs">Frequently asked questions</a></li>
+            </ol>
+          </nav>
+        </div>
+      </section>
+
+      <section class="aw-section">
+        <div class="aw-wrap">
+          <div class="aw-prose aw-measure">
+
+            <h2 id="what-it-means">What it actually means</h2>
+
+            <p>
+              A combi boiler heats water on demand. You open a tap, the boiler
+              fires hard for as long as it is open, and it delivers a continuous
+              stream at high power. A heat pump cannot work that way, because
+              its output is modest and steady rather than sudden and large.
+            </p>
+
+            <p>
+              Instead, a heat pump heats a cylinder of water in advance, usually
+              at a time of day chosen deliberately, and the household draws from
+              that store. When the store is depleted, the heat pump reheats it.
+            </p>
+
+            <p>
+              Two features distinguish a heat pump cylinder from an older boiler
+              cylinder.
+            </p>
+
+            <p>
+              The first is <strong>the coil</strong>, the heat exchanger inside
+              the tank. Because the heat pump supplies water at a lower
+              temperature than a boiler, the coil needs much more surface area
+              to transfer heat quickly enough. Cylinders designed for heat pumps
+              typically have a coil area of around three square metres or more,
+              where older boiler cylinders were often well under one. An old
+              cylinder is usually not suitable even if it looks serviceable.
+            </p>
+
+            <p>
+              The second is <strong>insulation</strong>. Modern cylinders are far
+              better insulated, which matters because the water is stored rather
+              than made on demand.
+            </p>
+
+            <p>
+              Most installations use an unvented cylinder, which is fed at mains
+              pressure and gives balanced pressure at hot and cold taps.
+              Unvented cylinders are covered by Part G of the Building
+              Regulations and must be installed and commissioned by someone
+              competent to do so.
+            </p>
+            <!-- REVIEW: confirm current Approved Document G reference and competency
+                 wording -->
+
+            <h2 id="why-it-matters">Why it matters for the outcome in your home</h2>
+
+            <p>
+              Three things follow from the cylinder decision, and households
+              notice all of them.
+            </p>
+
+            <div class="aw-table-wrap">
+              <table class="aw-table">
+                <caption>What the cylinder decision determines</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Factor</th>
+                    <th scope="col">What it depends on</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Capacity &mdash; whether you run out</th>
+                    <td>
+                      How the household actually uses hot water: how many
+                      people, how many bathrooms, whether anyone takes long
+                      showers, and whether demand is concentrated in one part of
+                      the day.
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Reheat time &mdash; how quickly the store recovers</th>
+                    <td>
+                      The coil area, the heat pump output and the temperature
+                      the cylinder is heated to.
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Timing &mdash; when the heat pump does the work</th>
+                    <td>
+                      Because a store can be filled in advance, hot water
+                      heating can often be scheduled to suit the
+                      household&rsquo;s routine and its electricity tariff. What
+                      that is worth depends entirely on your tariff and usage,
+                      so it is something to plan rather than something to
+                      promise.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h2 id="where-it-goes">Where a cylinder can realistically go</h2>
+
+            <p>
+              Space is the constraint that most often decides the answer. A
+              cylinder takes up real room, typically in an airing cupboard, a
+              bedroom cupboard, a loft with adequate access and support, or a
+              utility area.
+            </p>
+
+            <figure class="aw-figure">
+              <img src="../../assets/diagram-cylinder-siting.svg" alt="Diagram showing four candidate positions for a hot water cylinder in a house: an airing cupboard on the landing, a bedroom cupboard, a loft space with a boarded and supported floor and safe access, and a ground-floor utility area. Each position is annotated with the four things it must provide: physical space for the cylinder, structural support for its weight when full, servicing access to the controls and safety components, and a route for the discharge pipe an unvented cylinder requires." class="aw-diagram">
+              <figcaption class="aw-figure__caption">
+                A cylinder needs four things wherever it goes: space, support
+                for its weight when full, access to service it, and a safe
+                discharge route. A survey checks each candidate position against
+                all four.
+              </figcaption>
+            </figure>
+
+            <div class="aw-callout aw-callout--caution">
+              <p>
+                <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../../assets/icons.svg#icon-warning"></use></svg>
+                If there is genuinely nowhere for a cylinder, Airwarm will say
+                so rather than working around it. That is not the end of the
+                conversation &mdash; cylinders come in a range of shapes and
+                footprints, and a survey often finds a position the household
+                had not considered &mdash; but it is an honest constraint rather
+                than something to fudge.
+              </p>
+            </div>
+
+            <div class="aw-photo-placeholder">
+              <!-- PHOTOGRAPH GOES HERE: a real Airwarm cylinder installation showing
+                   tidy pipework, labelled valves and the discharge arrangement.
+                   Airwarm's own work only, with the householder's permission. -->
+              <p>
+                A photograph of a finished Airwarm cylinder installation will
+                appear here once we have our own work to show.
+              </p>
+            </div>
+
+            <h2 id="what-airwarm-checks">What Airwarm checks</h2>
+
+            <p>
+              <a href="../../heat-pump-survey/">The survey</a> records your hot water
+              demand and how the household uses it, not just the number of
+              bedrooms. It records candidate cylinder positions and assesses
+              each for access, structural support, pipe routes, the discharge
+              arrangement an unvented cylinder requires, and the practicalities
+              of servicing it later.
+            </p>
+
+            <p>
+              It also records the incoming mains flow rate and pressure, because
+              an unvented cylinder depends on the mains supply. A weak incoming
+              main is worth knowing about before anything is ordered.
+            </p>
+
+            <p>
+              Airwarm considers how legionella control will be handled. Stored
+              water needs a periodic higher-temperature cycle to manage
+              bacterial risk, using either an immersion heater or the heat pump
+              itself. The frequency and temperature follow the
+              manufacturer&rsquo;s instructions and relevant guidance, and the
+              configuration is set at commissioning and explained at handover.
+            </p>
+
+            <p>
+              Hot water performance is tested at commissioning, alongside the
+              flush, pressure test, filters and strainers, controls,
+              <a href="../../advice/weather-compensation/">weather compensation</a>,
+              emitter balancing, noise check and handover.
+            </p>
+
+            <h2 id="misconceptions">Common misconceptions, stated fairly</h2>
+
+            <p>
+              <strong>&ldquo;Heat pump hot water is lukewarm.&rdquo;</strong>
+              A correctly configured cylinder stores water at a normal usable
+              temperature. What is different is that the store is finite, so an
+              unusually heavy sequence of showers can deplete it before it
+              recovers. That is a sizing question, and it is why the survey asks
+              about your routine.
+            </p>
+
+            <p>
+              <strong>&ldquo;I can keep my existing cylinder to save work.&rdquo;</strong>
+              Usually not. The coil in most existing cylinders is too small for
+              low-temperature operation, so keeping it tends to force the heat
+              pump to run hotter and slower than it should.
+            </p>
+
+            <p>
+              <strong>&ldquo;You can get a heat pump that works like a combi.&rdquo;</strong>
+              Some arrangements reduce the storage requirement, but the
+              underlying physics does not change. A design that removes storage
+              entirely is normally leaning on direct electric heating for hot
+              water, and that should be stated openly rather than presented as a
+              feature.
+            </p>
+
+            <p>
+              <strong>&ldquo;I have no airing cupboard so a heat pump is out of the question.&rdquo;</strong>
+              Not necessarily. Cylinders come in a range of shapes and
+              footprints, and a survey often finds a position the household had
+              not considered. But if there is genuinely no viable location, that
+              is an honest constraint rather than something to fudge.
+            </p>
+
+            <h2 id="next">What you should do next</h2>
+
+            <p>
+              Start with the
+              <a href="../../home-energy-assessment/">Home Energy Assessment</a>. It
+              asks about your hot water arrangement and your available space,
+              which is enough to flag whether this is likely to be a
+              straightforward part of the project or the main question.
+            </p>
+
+            <p>
+              A quick first step to understand whether a heat pump is worth
+              exploring for your property.
+            </p>
+
+            <div class="aw-callout">
+              <p>
+                <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../../assets/icons.svg#icon-cylinder"></use></svg>
+                If you currently have a combi boiler and no cylinder space, say
+                so clearly. It does not automatically rule you out, but it moves
+                the cylinder question to the front of the survey rather than the
+                middle.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <section class="aw-section aw-section--light">
+        <div class="aw-wrap">
+          <h2 id="faqs">Frequently asked questions</h2>
+          <div class="aw-faq aw-measure">
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">How big a cylinder will I need?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  It depends on the number of occupants, bathrooms and your
+                  usage pattern rather than a standard figure. The survey sizes
+                  it, and Airwarm will explain the reasoning rather than simply
+                  stating a volume.
+                </p>
+              </div>
+            </details>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">Does the cylinder need servicing?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  Yes. Unvented cylinders have safety components that should be
+                  checked as part of
+                  <a href="../../advice/servicing-and-maintenance/">routine servicing</a>,
+                  and this forms part of Airwarm&rsquo;s annual service scope.
+                </p>
+              </div>
+            </details>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">Can the heat pump heat the cylinder and the radiators at the same time?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  Most systems prioritise one at a time, switching to hot water
+                  for a period and then returning to heating. In practice this is
+                  not usually noticeable, and the scheduling is part of the
+                  commissioning setup.
+                </p>
+              </div>
+            </details>
+
+          </div>
+        </div>
+      </section>
+
+      <section class="aw-section">
+        <div class="aw-wrap">
+          <h2>Read next</h2>
+          <div class="aw-card-grid" style="margin-top:24px">
+            <a class="aw-card aw-card--link" href="../../advice/is-my-home-suitable/">
+              <svg class="aw-icon aw-icon--lg" aria-hidden="true" focusable="false"><use href="../../assets/icons.svg#icon-home"></use></svg>
+              <h3 class="aw-card__title">Is my home suitable?</h3>
+              <p>Cylinder space is one of the five questions. Here are the other four.</p>
+            </a>
+            <a class="aw-card aw-card--link" href="../../advice/what-determines-running-costs/">
+              <svg class="aw-icon aw-icon--lg" aria-hidden="true" focusable="false"><use href="../../assets/icons.svg#icon-controls"></use></svg>
+              <h3 class="aw-card__title">What determines running costs</h3>
+              <p>How scheduling hot water into a chosen period interacts with your tariff.</p>
+            </a>
+            <a class="aw-card aw-card--link" href="../../heat-pump-survey/">
+              <svg class="aw-icon aw-icon--lg" aria-hidden="true" focusable="false"><use href="../../assets/icons.svg#icon-survey"></use></svg>
+              <h3 class="aw-card__title">What a survey covers</h3>
+              <p>Including mains flow and pressure, candidate cylinder positions and discharge routes.</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- FINAL CALL TO ACTION — repeated on every page, per the blueprint.
+           The assessment is the primary action; e-mail is the route for
+           anything unusual. -->
+      <section class="aw-section aw-section--navy aw-cta-band">
+        <div class="aw-wrap">
+          <h2>Start with your home, not a product</h2>
+          <p class="aw-hero__support">
+            The Home Energy Assessment takes a few minutes, asks for no
+            photographs and gives you an honest first view of whether an air
+            source heat pump is worth exploring for your property.
+          </p>
+          <div class="aw-btn-row">
+            <a class="aw-btn aw-btn--primary" href="../../home-energy-assessment/">Check your home&rsquo;s suitability</a>
+            <a class="aw-btn aw-btn--secondary" href="mailto:hello@airwarm.co.uk">E-mail hello@airwarm.co.uk</a>
+          </div>
+          <p class="aw-small" style="margin-top:24px">
+            Unusual property? Listed building, off-grid, a renovation part way
+            through? E-mail us and describe it. We would rather have the
+            conversation than have you guess.
+          </p>
+        </div>
+      </section>
+  </main>
+
+  <!-- ============================================================= -->
+  <!-- FOOTER — keep identical across pages                            -->
+  <!-- ============================================================= -->
+  <footer class="aw-footer">
+    <div class="aw-wrap">
+      <div class="aw-footer__grid">
+
+        <div>
+          <!-- LOGO SWAP POINT (footer) — see the note in the header. -->
+          <span class="aw-wordmark" style="display:inline-flex">
+            <span class="aw-wordmark__name">AIRWARM</span>
+            <span class="aw-tagline">
+              <span class="warmer">WARMER HOMES</span><span class="aw-dot">&bull;</span><span class="bills">LOWER BILLS</span><span class="aw-dot">&bull;</span><span class="energy">CLEAN ENERGY</span>
+            </span>
+          </span>
+          <p class="aw-small" style="margin-top:16px">
+            Air Source Heat Pumps &bull; West Yorkshire
+          </p>
+          <ul>
+            <li><a href="../../">airwarm.co.uk</a></li>
+            <li><a href="mailto:hello@airwarm.co.uk">hello@airwarm.co.uk</a></li>
+            <!-- PHONE NUMBER GOES HERE once the business line is provisioned.
+                 Do not invent one. Format:
+            <li><a href="tel:+44NUMBER-GOES-HERE">NUMBER GOES HERE</a></li>
+            -->
+          </ul>
+        </div>
+
+        <div>
+          <h2>Services</h2>
+          <ul>
+            <li><a href="../../air-source-heat-pumps/">Air source heat pumps</a></li>
+            <li><a href="../../heat-pump-survey/">Heat pump survey</a></li>
+            <li><a href="../../heat-pump-installation/">Heat pump installation</a></li>
+            <li><a href="../../how-it-works/">How it works</a></li>
+            <li><a href="../../home-energy-assessment/">Home Energy Assessment</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2>Service areas</h2>
+          <ul>
+            <li><a href="../../areas/bradford/">Bradford</a></li>
+            <li><a href="../../areas/leeds/">Leeds</a></li>
+            <li><a href="../../areas/shipley/">Shipley</a></li>
+          </ul>
+          <h2 style="margin-top:24px">Company</h2>
+          <ul>
+            <li><a href="../../about/">About Airwarm</a></li>
+            <li><a href="../../advice/">Advice</a></li>
+            <li><a href="../../contact/">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2>Legal</h2>
+          <ul>
+            <li><a href="../../privacy/">Privacy policy</a></li>
+            <li><a href="../../cookies/">Cookie policy</a></li>
+            <li><a href="../../terms/">Terms and conditions</a></li>
+            <!-- STILL TO BE WRITTEN, then linked here:
+                 complaints procedure, accessibility statement.
+                 Both are named in the brand pack footer structure. -->
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="aw-footer__base">
+        <p>
+          Airwarm is a new West Yorkshire business preparing to install and
+          support air source heat pumps.
+        </p>
+        <p class="aw-small">
+          AIRWARM LTD is a company registered in England and Wales, company
+          number 17362672. Registered office: 2 Aireview Crescent, Baildon,
+          Shipley, BD17 7LS.
+        </p>
+        <!-- VAT NUMBER GOES HERE if and when Airwarm registers for VAT. Add it
+             as a further sentence in the paragraph above, for example
+             "VAT registration number GB000000000." Do not invent one, and do
+             not display a VAT number before registration is confirmed. -->
+        <!-- SOCIAL LINKS: add only channels that are actively maintained. -->
+        <!-- SOCIAL LINKS: add only channels that are actively maintained. -->
+        <p>&copy; 2026 Airwarm.</p>
+      </div>
+    </div>
+  </footer>
+  <!-- /FOOTER -->
+
+</body>
+</html>

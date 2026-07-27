@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   ===========================================================================
-  AIRWARM — diagram-how-it-works.svg
-  The refrigeration cycle: outside air, evaporator, compressor, condenser,
-  expansion valve, and the heat leaving for the water circuit. This is the
-  flagship diagram on the site.
+  AIRWARM — diagram-emitter-comparison.svg
+  Four kinds of emitter compared: single panel radiator, double panel radiator,
+  fan assisted radiator and underfloor heating. Bar lengths and filled markers
+  show proportion only. There are no output figures anywhere on this drawing,
+  and none should be added.
 
   HOW TO CHANGE A LABEL
   Every word a visitor reads sits between <text ...> and </text>. Search this
@@ -22,18 +23,19 @@
 <svg xmlns="http://www.w3.org/2000/svg"
      viewBox="0 0 640 440"
      role="img"
-     aria-labelledby="hiw-title hiw-desc">
+     aria-labelledby="ec-title ec-desc">
 
-  <title id="hiw-title">How an air source heat pump works</title>
-  <desc id="hiw-desc">A closed refrigerant circuit drawn as a loop with four stages. Outside
-    air enters the evaporator at the bottom left, where the
-    refrigerant absorbs heat from the air. The refrigerant travels up
-    to the compressor, which raises its pressure so its temperature
-    rises. It then passes across to the condenser, which gives that
-    heat to the water circuit. Finally it passes down to the expansion
-    valve, where the pressure drops and the refrigerant cools, and
-    returns to the evaporator to start again. Electricity powers the
-    compressor.</desc>
+  <title id="ec-title">Emitter types compared</title>
+  <desc id="ec-desc">Four kinds of emitter listed one under another: a single panel
+    radiator, a double panel radiator, a fan assisted radiator and
+    underfloor heating. For each, a bar shows relative heat output for
+    a given size, and a row of four markers shows how well it suits a
+    lower flow temperature. The single panel has the shortest bar and
+    one marker filled. The double panel is longer with two filled. The
+    fan assisted radiator has the longest bar with three filled.
+    Underfloor heating is between the two with all four filled.
+    Everything shown is proportional and illustrative; there are no
+    output figures.</desc>
 
   <style>
     /* ---------------------------------------------------------------------
@@ -114,6 +116,12 @@
       .d-fill-white { fill: #071A2B; }
       .d-num        { fill: #071A2B; }
     }
+
+    /* Extra styles for this diagram only. */
+    .d-bar  { fill: #2F80ED; }
+    .d-pip  { fill: #071A2B; }
+    .d-pip-empty { fill: none; stroke: #65717C; stroke-width: 1.5; }
+    @media (prefers-color-scheme: dark) { .d-pip { fill: #FFFFFF; } }
   </style>
 
   <defs>
@@ -142,86 +150,67 @@
   <rect class="d-surface" x="0" y="0" width="640" height="440" rx="12"/>
   <rect class="d-frame" x="0.75" y="0.75" width="638.5" height="438.5" rx="11.25"/>
 
-  <!-- ===================== THE REFRIGERANT CIRCUIT ====================== -->
-  <!-- Up the left side: cooler, lower pressure -->
-  <path class="d-line d-cool" d="M215 268 V174" marker-end="url(#arrow-cool)"/>
-  <!-- Across the top: warmer, higher pressure -->
-  <path class="d-line d-hot" d="M269 140 H371" marker-end="url(#arrow-hot)"/>
-  <!-- Down the right side: still warm, still high pressure -->
-  <path class="d-line d-hot" d="M425 172 V266" marker-end="url(#arrow-hot)"/>
-  <!-- Back along the bottom: cooler, lower pressure -->
-  <path class="d-line d-cool" d="M371 300 H269" marker-end="url(#arrow-cool)"/>
+  <!-- ======================= COLUMN HEADINGS =========================== -->
+  <text class="d-label" x="252" y="52">Heat output</text>
+  <text class="d-sub"   x="252" y="72">for a given size</text>
+  <text class="d-label d-wide-only"   x="452" y="52">Suits a lower flow</text>
+  <text class="d-label d-wide-only"   x="452" y="72">temperature</text>
+  <text class="d-label d-narrow-only" x="452" y="46">Lower flow</text>
+  <text class="d-label d-narrow-only" x="452" y="74">temperature</text>
+  <path class="d-line d-line--thin d-quiet" d="M20 88 H620"/>
 
-  <!-- ===================== 1. EVAPORATOR (bottom left) ================== -->
-  <rect class="d-box" x="165" y="270" width="100" height="60" rx="6"/>
-  <circle class="d-fill-navy" cx="190" cy="300" r="13"/>
-  <text class="d-num" x="190" y="305" text-anchor="middle">1</text>
-  <!-- the heat exchanger symbol: a coil -->
-  <path class="d-line d-line--thin" d="M212 312 L220 288 L228 312 L236 288 L244 312 L252 288"/>
-  <text class="d-label" x="150" y="292" text-anchor="end">Evaporator</text>
-  <text class="d-sub"   x="150" y="313" text-anchor="end">refrigerant takes heat</text>
-  <text class="d-sub"   x="150" y="331" text-anchor="end">out of the outside air</text>
+  <!-- ======================= 1. SINGLE PANEL =========================== -->
+  <text class="d-label" x="176" y="132" text-anchor="end">Single panel</text>
+  <rect class="d-box" x="192" y="112" width="44" height="30" rx="3"/>
+  <path class="d-line d-line--thin" d="M203 112 V142"/>
+  <path class="d-line d-line--thin" d="M214 112 V142"/>
+  <path class="d-line d-line--thin" d="M225 112 V142"/>
+  <rect class="d-bar" x="252" y="118" width="70" height="16" rx="3"/>
+  <circle class="d-pip" cx="459" cy="126" r="7"/>
+  <circle class="d-pip-empty" cx="483" cy="126" r="7"/>
+  <circle class="d-pip-empty" cx="507" cy="126" r="7"/>
+  <circle class="d-pip-empty" cx="531" cy="126" r="7"/>
 
-  <!-- ===================== 2. COMPRESSOR (top left) ===================== -->
-  <rect class="d-box" x="165" y="110" width="100" height="60" rx="6"/>
-  <circle class="d-fill-navy" cx="190" cy="140" r="13"/>
-  <text class="d-num" x="190" y="145" text-anchor="middle">2</text>
-  <!-- the compressor symbol: a circle with a chord -->
-  <circle class="d-line d-line--thin" cx="234" cy="140" r="16" fill="none"/>
-  <path class="d-line d-line--thin" d="M221 131 L247 149"/>
-  <text class="d-label" x="150" y="132" text-anchor="end">Compressor</text>
-  <text class="d-sub"   x="150" y="153" text-anchor="end">raises the pressure,</text>
-  <text class="d-sub"   x="150" y="171" text-anchor="end">so it gets hotter</text>
+  <!-- ======================= 2. DOUBLE PANEL =========================== -->
+  <text class="d-label" x="176" y="212" text-anchor="end">Double panel</text>
+  <rect class="d-box" x="192" y="186" width="44" height="30" rx="3"/>
+  <rect class="d-box" x="198" y="196" width="44" height="30" rx="3"/>
+  <path class="d-line d-line--thin" d="M209 196 V226"/>
+  <path class="d-line d-line--thin" d="M220 196 V226"/>
+  <path class="d-line d-line--thin" d="M231 196 V226"/>
+  <rect class="d-bar" x="252" y="198" width="120" height="16" rx="3"/>
+  <circle class="d-pip" cx="459" cy="206" r="7"/>
+  <circle class="d-pip" cx="483" cy="206" r="7"/>
+  <circle class="d-pip-empty" cx="507" cy="206" r="7"/>
+  <circle class="d-pip-empty" cx="531" cy="206" r="7"/>
 
-  <!-- ===================== 3. CONDENSER (top right) ===================== -->
-  <rect class="d-box" x="375" y="110" width="100" height="60" rx="6"/>
-  <circle class="d-fill-navy" cx="400" cy="140" r="13"/>
-  <text class="d-num" x="400" y="145" text-anchor="middle">3</text>
-  <path class="d-line d-line--thin" d="M422 152 L430 128 L438 152 L446 128 L454 152 L462 128"/>
-  <text class="d-label" x="490" y="132">Condenser</text>
-  <text class="d-sub"   x="490" y="153">passes that heat</text>
-  <text class="d-sub"   x="490" y="171">into the water</text>
+  <!-- ======================= 3. FAN ASSISTED =========================== -->
+  <text class="d-label" x="176" y="292" text-anchor="end">Fan assisted</text>
+  <rect class="d-box" x="192" y="264" width="44" height="26" rx="3"/>
+  <path class="d-line d-line--thin" d="M205 264 V290"/>
+  <path class="d-line d-line--thin" d="M223 264 V290"/>
+  <circle class="d-line d-line--thin" cx="205" cy="301" r="8" fill="none"/>
+  <circle class="d-line d-line--thin" cx="223" cy="301" r="8" fill="none"/>
+  <rect class="d-bar" x="252" y="278" width="168" height="16" rx="3"/>
+  <circle class="d-pip" cx="459" cy="286" r="7"/>
+  <circle class="d-pip" cx="483" cy="286" r="7"/>
+  <circle class="d-pip" cx="507" cy="286" r="7"/>
+  <circle class="d-pip-empty" cx="531" cy="286" r="7"/>
 
-  <!-- ===================== 4. EXPANSION VALVE (bottom right) ============ -->
-  <rect class="d-box" x="375" y="270" width="100" height="60" rx="6"/>
-  <circle class="d-fill-navy" cx="400" cy="300" r="13"/>
-  <text class="d-num" x="400" y="305" text-anchor="middle">4</text>
-  <!-- the expansion valve symbol: two triangles meeting -->
-  <path class="d-fill-navy" d="M424 286 L424 314 L446 300 Z"/>
-  <path class="d-fill-navy" d="M462 286 L462 314 L440 300 Z"/>
-  <!-- Set on one line normally and on two lines on a narrow screen, where the
-       type is larger. Change both if you change it. -->
-  <text class="d-label d-wide-only"   x="490" y="292">Expansion valve</text>
-  <text class="d-label d-narrow-only" x="490" y="288">Expansion</text>
-  <text class="d-label d-narrow-only" x="490" y="316">valve</text>
-  <text class="d-sub" x="490" y="313">pressure drops and</text>
-  <text class="d-sub" x="490" y="331">the refrigerant cools</text>
+  <!-- ======================= 4. UNDERFLOOR ============================= -->
+  <text class="d-label" x="176" y="372" text-anchor="end">Underfloor</text>
+  <path class="d-line d-line--thin" d="M190 352 H240"/>
+  <path class="d-line d-line--thin" d="M192 370 q8 -12 16 0 q8 12 16 0 q8 -12 16 0"/>
+  <path class="d-line d-line--thin" d="M190 384 H240"/>
+  <rect class="d-bar" x="252" y="358" width="140" height="16" rx="3"/>
+  <circle class="d-pip" cx="459" cy="366" r="7"/>
+  <circle class="d-pip" cx="483" cy="366" r="7"/>
+  <circle class="d-pip" cx="507" cy="366" r="7"/>
+  <circle class="d-pip" cx="531" cy="366" r="7"/>
 
-  <!-- ===================== CENTRE NOTE ================================== -->
-  <text class="d-sub" x="320" y="212" text-anchor="middle">The same refrigerant</text>
-  <text class="d-sub" x="320" y="230" text-anchor="middle">goes round and round</text>
-
-  <!-- ===================== OUTSIDE AIR IN (bottom left) ================= -->
-  <path class="d-line d-cool" d="M190 386 V338" marker-end="url(#arrow-cool)"/>
-  <path class="d-line d-cool" d="M240 386 V338" marker-end="url(#arrow-cool)"/>
-  <text class="d-label" x="215" y="414" text-anchor="middle">Outside air in</text>
-
-  <!-- ===================== HEAT OUT TO THE WATER (top right) ============ -->
-  <path class="d-line d-hot" d="M400 104 V58" marker-end="url(#arrow-hot)"/>
-  <path class="d-line d-hot" d="M450 104 V58" marker-end="url(#arrow-hot)"/>
-  <text class="d-label" x="425" y="40" text-anchor="middle">Heat to the water circuit</text>
-
-  <!-- ===================== ELECTRICITY IN (top left) ==================== -->
-  <path class="d-line d-line--thin d-quiet" d="M215 58 V104" marker-end="url(#arrow-quiet)"/>
-  <text class="d-label" x="180" y="40" text-anchor="middle">Electricity in</text>
-
-  <!-- ===================== KEY TO THE TWO LINE COLOURS ==================
-       Hidden on a narrow screen, where the drawing itself has to do the work.
-       ==================================================================== -->
-  <g class="d-wide-only">
-    <path class="d-line d-hot" d="M378 388 H414"/>
-    <text class="d-cap" x="424" y="393">warmer, higher pressure</text>
-    <path class="d-line d-cool" d="M378 414 H414"/>
-    <text class="d-cap" x="424" y="419">cooler, lower pressure</text>
-  </g>
+  <!-- ======================= CAPTION ====================================
+       Please keep this caption. The bars carry proportion only.
+       =================================================================== -->
+  <text class="d-cap" x="320" y="412" text-anchor="middle">Proportions are illustrative.</text>
+  <text class="d-cap" x="320" y="432" text-anchor="middle">Bar lengths are not output figures.</text>
 </svg>

@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ===========================================================================
+  AIRWARM — icons.svg
+  One sprite holding the whole icon family. Twenty line icons, all drawn on a
+  24 by 24 grid with a 1.5 pixel stroke, rounded ends and no fills, so they
+  sit together as one set.
+
+  HOW TO USE ONE
+  In a page, put an empty svg with a use element inside it, and name the icon
+  you want:
+
+      <svg class="aw-icon" aria-hidden="true" focusable="false">
+        <use href="/assets/icons.svg#icon-home"></use>
+      </svg>
+
+  The icon takes the colour of the surrounding text, because every shape is
+  drawn with stroke="currentColor". There is a larger size as well: its class
+  name is written out in assets/README.md. (It cannot be printed here, because
+  an XML comment is not allowed to contain two hyphens in a row and the class
+  name has exactly that in the middle of it.)
+
+  Keep aria-hidden="true" whenever the icon sits next to a word that already
+  says the same thing, which is nearly always. If an icon is on its own with no
+  label, give the svg role="img" and an aria-label instead.
+
+  If you would rather not load a second file, paste the whole of this sprite
+  in once, immediately after the opening body tag, inside a wrapper with
+  style="display:none", and the same use elements will find it.
+
+  THE TWENTY IDs
+    icon-home           icon-radiator      icon-check      icon-clock
+    icon-survey         icon-cylinder      icon-question   icon-document
+    icon-design         icon-outdoor-unit  icon-warning    icon-arrow-right
+    icon-install        icon-controls      icon-email
+    icon-commission     icon-solar         icon-location
+    icon-service        icon-battery
+
+  This file has no colour in it at all, which is why it needs no palette
+  block: the page decides the colour. Please keep it that way.
+
+  Accessibility note: the root svg below is marked aria-hidden because a
+  sprite is a container, not a picture. The picture is the use element on the
+  page, and that is where role, title or aria-label belong. Every symbol still
+  carries a title so the shapes are named for anyone reading the file.
+  ===========================================================================
+-->
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="display:none">
+
+  <!-- ================= JOURNEY AND SERVICE ================= -->
+
+  <symbol id="icon-home" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <title>Home</title>
+    <path d="M3 10.6 L12 3.4 L21 10.6"/>
+    <path d="M5.4 9.2 V20.6 H18.6 V9.2"/>
+  </symbol>
+
+  <symbol id="icon-survey" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <title>Survey</title>
+    <rect x="3.4" y="3.4" width="12.2" height="17.2" rx="2"/>
+    <path d="M6.6 8 H12.4"/>
+    <path d="M6.6 11.2 H10.6"/>
+    <circle cx="16.2" cy="15" r="4.2"/>
+    <path d="M19.2 18 L21.6 20.4"/>
+  </symbol>
+
+  <symbol id="icon-design" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <title>Design</title>
+    <path d="M3.4 20.6 L3.4 6 L18 20.6 Z"/>
+    <path d="M3.4 10 H6.2"/>
+    <path d="M3.4 14 H6.2"/>
+  </symbol>
+
+  <symbol id="icon-install" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <title>Installation</title>
+    <path d="M14.7 6.3 a1 1 0 0 0 0 1.4 l1.6 1.6 a1 1 0 0 0 1.4 0 l3.8 -3.8
+             a6 6 0 0 1 -7.9 7.9 l-6.9 6.9 a2.1 2.1 0 0 1 -3 -3 l6.9 -6.9
+             a6 6 0 0 1 7.9 -7.9 Z"/>
+  </symbol>
+
+  <symbol id="icon-commission" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <title>Commissioning</title>
+    <path d="M3.6 17.4 a8.4 8.4 0 1 1 16.8 0"/>
+    <path d="M12 17.4 L16.6 11.6"/>
+    <path d="M12 17.3 L12 17.5"/>
+    <path d="M3.6 17.4 H6.2"/>
+    <path d="M17.8 17.4 H20.4"/>
+  </symbol>
+
+  <symbol id="icon-service" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <title>Servicing</title>
+    <path d="M20.6 12 a8.6 8.6 0 1 1 -2.5 -6.1"/>
+    <path d="M20.6 3.4 V6.4 H17.6"/>
+    <path d="M3.4 12 a8.6 8.6 0 0 0 2.5 6.1"/>
+  </symbol>
+
+  <!-- ================= PARTS OF A SYSTEM ================= -->
+
+  <symbol id="icon-radiator" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <title>Radiator</title>
+    <rect x="3.4" y="5.4" width="17.2" height="13.2" rx="2"/>
+    <path d="M7.8 5.4 V18.6"/>
+    <path d="M12 5.4 V18.6"/>
+    <path d="M16.2 5.4 V18.6"/>
+    <path d="M6.6 18.6 V21"/>
+    <path d="M17.4 18.6 V21"/>
+  </symbol>
+
+  <symbol id="icon-cylinder" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <title>Hot water cylinder</title>
+    <rect x="7" y="3.4" width="10" height="17.2" rx="5"/>
+    <path d="M7 8.4 H17"/>
+    <path d="M7 15.6 H17"/>
+    <path d="M17 6.4 H20.4"/>
+  </symbol>
+
+  <symbol id="icon-outdoor-unit" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <title>Outdoor unit</title>
+    <rect x="2.6" y="6" width="18.8" height="12" rx="2"/>
+    <circle cx="12" cy="12" r="3.6"/>
+    <path d="M12 8.4 V15.6"/>
+    <path d="M8.4 12 H15.6"/>
+    <path d="M6 18 V20.6"/>
+    <path d="M18 18 V20.6"/>
+  </symbol>
+
+  <symbol id="icon-controls" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <title>Controls</title>
+    <rect x="5.4" y="2.4" width="13.2" height="19.2" rx="3"/>
+    <circle cx="12" cy="9" r="3.2"/>
+    <path d="M8.6 15.4 H15.4"/>
+    <path d="M8.6 18.2 H12.6"/>
+  </symbol>
+
+  <symbol id="icon-solar" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <title>Solar panels</title>
+    <path d="M3.4 15.6 L6.6 7 H20.6 L17.4 15.6 Z"/>
+    <path d="M9.4 15.6 L11.6 7"/>
+    <path d="M13.4 15.6 L15.6 7"/>
+    <path d="M5 11.3 H19"/>
+    <path d="M11 15.6 V20.6"/>
+    <path d="M7.4 20.6 H14.6"/>
+  </symbol>
+
+  <symbol id="icon-battery" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <title>Battery storage</title>
+    <rect x="2.6" y="7" width="16.4" height="10" rx="2"/>
+    <path d="M21.4 10.4 V13.6"/>
+    <path d="M6.6 10.4 V13.6"/>
+    <path d="M10 10.4 V13.6"/>
+    <path d="M13.4 10.4 V13.6"/>
+  </symbol>
+
+  <!-- ================= STATES AND MARKERS ================= -->
+
+  <symbol id="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <title>Yes</title>
+    <path d="M4 12.6 L9.4 18 L20 6.6"/>
+  </symbol>
+
+  <symbol id="icon-question" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <title>Something to check</title>
+    <circle cx="12" cy="12" r="8.6"/>
+    <path d="M9.4 9.6 a2.7 2.7 0 1 1 3.3 2.6 c-0.8 0.2 -1.1 0.9 -1.1 1.7 V14.4"/>
+    <path d="M11.9 17.4 L11.9 17.5"/>
+  </symbol>
+
+  <symbol id="icon-warning" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <title>Worth knowing</title>
+    <path d="M12 3.4 L21.6 20.2 H2.4 Z"/>
+    <path d="M12 9.4 V14.4"/>
+    <path d="M12 17.4 L12 17.5"/>
+  </symbol>
+
+  <!-- ================= CONTACT AND DOCUMENTS ================= -->
+
+  <symbol id="icon-email" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <title>E-mail</title>
+    <rect x="2.4" y="5" width="19.2" height="14" rx="2"/>
+    <path d="M3 6.4 L12 13.4 L21 6.4"/>
+  </symbol>
+
+  <symbol id="icon-location" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <title>Location</title>
+    <path d="M12 21.4 C12 21.4 19 15 19 10.2 A7 7 0 0 0 5 10.2 C5 15 12 21.4 12 21.4 Z"/>
+    <circle cx="12" cy="10" r="2.6"/>
+  </symbol>
+
+  <symbol id="icon-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <title>Time</title>
+    <circle cx="12" cy="12" r="8.6"/>
+    <path d="M12 6.8 V12.4 L16.2 14.8"/>
+  </symbol>
+
+  <symbol id="icon-document" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <title>Document</title>
+    <path d="M6 2.6 H14 L18.6 7.2 V21.4 H6 Z"/>
+    <path d="M14 2.6 V7.2 H18.6"/>
+    <path d="M8.8 12 H15.6"/>
+    <path d="M8.8 15.2 H15.6"/>
+    <path d="M8.8 18.4 H13"/>
+  </symbol>
+
+  <symbol id="icon-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <title>Next</title>
+    <path d="M3.6 12 H19.6"/>
+    <path d="M13.6 6 L19.6 12 L13.6 18"/>
+  </symbol>
+
+</svg>

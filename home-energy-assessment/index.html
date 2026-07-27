@@ -12,7 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Home Energy Assessment | Airwarm</title>
-  <meta name="description" content="A free, indicative first step: four short stages to see whether an air source heat pump is worth exploring for your West Yorkshire home. No photographs needed.">
+  <meta name="description" content="An indicative first step in four short stages: see whether an air source heat pump is worth exploring for your West Yorkshire home. No photographs, and nothing is sent to us.">
   <link rel="canonical" href="https://airwarm.co.uk/home-energy-assessment/">
 
   <!-- Open Graph: how the page looks when shared in a message or post. -->
@@ -20,7 +20,7 @@
   <meta property="og:site_name" content="Airwarm">
   <meta property="og:locale" content="en_GB">
   <meta property="og:title" content="Home Energy Assessment | Airwarm">
-  <meta property="og:description" content="A free, indicative first step: four short stages to see whether an air source heat pump is worth exploring for your West Yorkshire home. No photographs needed.">
+  <meta property="og:description" content="An indicative first step in four short stages: see whether an air source heat pump is worth exploring for your West Yorkshire home. No photographs, and nothing is sent to us.">
   <meta property="og:url" content="https://airwarm.co.uk/home-energy-assessment/">
   <!-- OG IMAGE GOES HERE once a real Airwarm share image exists, e.g.
        <meta property="og:image" content="https://airwarm.co.uk/img/share.png">
@@ -112,13 +112,23 @@
     </div>
   </nav>
 
-      <section class="aw-section aw-section--tight">
+      <!-- HERO. The quiet tiled pattern behind the type comes from the
+           .aw-hero-pattern class in the stylesheet, which puts
+           assets/hero-pattern.svg over navy. Remove that one class to get a
+           plain navy panel; there is nothing else to undo. -->
+      <section class="aw-hero aw-hero-pattern">
         <div class="aw-wrap">
+          <span class="aw-positioning">Air Source Heat Pumps &bull; West Yorkshire</span>
           <h1>Find out whether a heat pump is worth exploring for your home</h1>
-          <p class="aw-lead aw-measure">
-            Four short stages, a few minutes, no photographs and nothing to
-            measure. You get an honest first view of where your property
-            stands and what a sensible next step would be.
+          <p class="aw-hero__support">
+            A quick first step to understand whether a heat pump is worth
+            exploring for your property. Four short stages, a few minutes, no
+            photographs and nothing to measure. You get an honest first view of
+            where your property stands and what a sensible next step would be.
+          </p>
+          <p class="aw-small" style="margin-top:24px">
+            Your answers stay in your browser. Nothing is sent to Airwarm,
+            stored or shared.
           </p>
         </div>
       </section>
@@ -138,11 +148,20 @@
                  no submit button on purpose. See the WIRE-UP POINT comment
                  in /js/assessment.js for the one place to change when a CRM
                  and a privacy policy exist.
+
+                 DO NOT add, remove or rename anything inside this form
+                 without reading /js/assessment.js first. The script finds the
+                 stages by the class "aw-stage", and every answer value maps to
+                 a scored value in the config at the top of that file.
                  ========================================================= -->
             <form class="aw-form" id="aw-assessment" novalidate>
 
+              <!-- Progress. The stage number is TEXT as well as a bar, so it
+                   does not depend on seeing the fill, and the paragraph is
+                   aria-live so a screen reader hears the change. The script
+                   also moves focus to the new stage heading. -->
               <div class="aw-progress">
-                <p class="aw-progress__label" id="aw-progress-label">Stage 1 of 4</p>
+                <p class="aw-progress__label" id="aw-progress-label" aria-live="polite">Stage 1 of 4</p>
                 <div class="aw-progress__bar">
                   <span class="aw-progress__fill" id="aw-progress-fill"></span>
                 </div>
@@ -151,12 +170,26 @@
               <!-- Validation message. It lives at the TOP of the form, next to the
                    progress indicator, so that whichever stage you are on the
                    message appears in the same predictable place rather than
-                   somewhere below the button you just pressed. -->
+                   somewhere below the button you just pressed.
+
+                   It names the questions that are unanswered rather than
+                   saying "some fields are missing", and it does not rely on
+                   colour. When a question is unanswered the script points that
+                   field's aria-describedby at this paragraph and sets
+                   aria-invalid="true" on it, so the message is reachable from
+                   the field itself. -->
               <p class="aw-form__error" id="aw-form-error" role="alert" tabindex="-1"></p>
 
               <!-- ---------- STAGE 1: PROPERTY BASICS ---------- -->
               <section class="aw-stage is-active" id="aw-stage-1" aria-label="Stage 1: your property">
                 <h2>Your property</h2>
+
+                <!-- The whole stage is one <fieldset> with a <legend> naming
+                     it, so assistive technology announces which stage these
+                     questions belong to. The legend repeats the heading above,
+                     so it is hidden visually rather than printed twice. -->
+                <fieldset class="aw-fieldset">
+                  <legend class="aw-visually-hidden">Stage 1 of 4: your property</legend>
 
                 <div class="aw-field">
                   <label for="postcodeArea">Postcode area</label>
@@ -228,6 +261,8 @@
                   </select>
                 </div>
 
+                </fieldset>
+
                 <div class="aw-form__actions">
                   <button type="button" class="aw-btn aw-btn--primary" data-aw-next>Continue to stage 2</button>
                 </div>
@@ -240,6 +275,12 @@
                   Best guesses are fine. We are looking for a general picture,
                   not a survey.
                 </p>
+
+                <!-- Stage-level grouping, as on stage 1. The radio groups
+                     below are each their own <fieldset> with a visible
+                     <legend>, nested inside it. -->
+                <fieldset class="aw-fieldset">
+                  <legend class="aw-visually-hidden">Stage 2 of 4: current condition</legend>
 
                 <fieldset class="aw-fieldset">
                   <legend>How well insulated do you think the home is?</legend>
@@ -311,6 +352,8 @@
                   <label class="aw-choice"><input type="radio" name="propertyRestrictions" value="notSure" required> Not sure</label>
                 </fieldset>
 
+                </fieldset>
+
                 <div class="aw-form__actions">
                   <button type="button" class="aw-btn aw-btn--outline" data-aw-back>Back</button>
                   <button type="button" class="aw-btn aw-btn--primary" data-aw-next>Continue to stage 3</button>
@@ -320,6 +363,10 @@
               <!-- ---------- STAGE 3: YOUR PLANS ---------- -->
               <section class="aw-stage" id="aw-stage-3" aria-label="Stage 3: your plans">
                 <h2>Your plans</h2>
+
+                <!-- Stage-level grouping, as on stages 1 and 2. -->
+                <fieldset class="aw-fieldset">
+                  <legend class="aw-visually-hidden">Stage 3 of 4: your plans</legend>
 
                 <div class="aw-field">
                   <label for="reasonForEnquiry">What is prompting you to look at this?</label>
@@ -377,6 +424,8 @@
                   </select>
                 </div>
 
+                </fieldset>
+
                 <div class="aw-form__actions">
                   <button type="button" class="aw-btn aw-btn--outline" data-aw-back>Back</button>
                   <button type="button" class="aw-btn aw-btn--primary" data-aw-next>See my result</button>
@@ -395,6 +444,15 @@
                    The contact fields and the endpoint go here when those
                    decisions are made. See the WIRE-UP POINT comment in
                    /js/assessment.js.
+
+                   WHEN THOSE FIELDS ARE ADDED, they must have:
+                     - a real <label for="..."> each, not a placeholder;
+                     - autocomplete="name", autocomplete="email" and
+                       autocomplete="tel" respectively;
+                     - their own <fieldset> and <legend>;
+                     - an unticked consent checkbox with its own <label>.
+                   The first three are WCAG 2.2 AA requirements, not
+                   preferences.
                    -------------------------------------------------- -->
               <section class="aw-stage" id="aw-stage-4" aria-label="Stage 4: your result">
                 <h2>Your result</h2>
@@ -424,7 +482,7 @@
 
           <div>
             <div class="aw-card">
-              <h2>What this is, and what it is not</h2>
+              <h2 class="aw-card__title">What this is, and what it is not</h2>
               <p>
                 This is an indicative first step, not a technical heat-loss
                 survey. It does not produce a design, a specification or a
@@ -444,47 +502,274 @@
                 We do not ask for pictures at this stage. Nothing to measure,
                 nothing to look up.
               </p>
+              <h3>Nothing to prepare</h3>
+              <p>
+                Best guesses are genuinely fine, and &ldquo;not sure&rdquo; is a
+                real answer rather than a failure. Where an answer is uncertain,
+                the result says so.
+              </p>
+            </div>
+
+            <div class="aw-callout aw-callout--positive" style="margin-top:24px">
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-clock"></use></svg>
+              <h3>About five minutes</h3>
+              <p>
+                Sixteen short questions across three stages, then your result.
+                You can go back and change any answer before you finish.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
+      <!-- WHAT THE THREE OUTCOMES MEAN ------------------------------- -->
       <section class="aw-section aw-section--light">
         <div class="aw-wrap">
           <h2>What the three results mean</h2>
-          <div class="aw-grid aw-grid--3" style="margin-top:24px">
-            <div class="aw-card">
-              <h3>Likely suitable</h3>
+          <p class="aw-measure">
+            There is no pass and no fail. The three outcomes describe what
+            happens next, and every one of them has a route forward attached.
+          </p>
+
+          <figure class="aw-figure" style="margin-top:24px">
+            <img class="aw-diagram" src="../assets/diagram-assessment-outcomes.svg" alt="The three assessment outcomes and what follows each: likely suitable leads to a short review call; potentially suitable leads to a conversation about the specific details that need checking; not currently suitable leads to an explanation of the constraint and the improvements that would change it.">
+            <figcaption class="aw-figure__caption">
+              The outcome decides the next conversation, not whether there is
+              one. The colour is a supporting indicator, never the whole
+              message.
+            </figcaption>
+          </figure>
+
+          <div class="aw-table-wrap" style="margin-top:40px">
+            <table class="aw-table">
+              <caption>The three assessment outcomes</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Outcome</th>
+                  <th scope="col">What it means</th>
+                  <th scope="col">What happens next</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Likely suitable</th>
+                  <td>
+                    Several positive indicators: reasonable fabric, workable
+                    emitters, somewhere sensible for the unit and the cylinder.
+                  </td>
+                  <td>
+                    A short review call to confirm the main details and decide
+                    whether a full survey is the right next step.
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Potentially suitable</th>
+                  <td>
+                    Your property may well be suitable, but one or two details
+                    need clarification. This is the most common outcome and it
+                    is not a problem.
+                  </td>
+                  <td>
+                    We explain which details matter and what may need improving
+                    before a survey would be worthwhile.
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Not currently suitable</th>
+                  <td>
+                    A heat pump may not be the best next step today. Note the
+                    word <em>currently</em> &mdash; this is about the
+                    property&rsquo;s condition now, not for ever.
+                  </td>
+                  <td>
+                    We name the main constraint, explain what would resolve it,
+                    and suggest practical improvements or alternatives.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="aw-grid aw-grid--2" style="margin-top:40px">
+            <div class="aw-callout aw-callout--positive">
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-check"></use></svg>
+              <h3>&ldquo;Not sure&rdquo; is a useful answer</h3>
               <p>
-                Several positive indicators. A short review call is worthwhile
-                so we can confirm the main details and decide whether a full
-                survey is the right next step.
+                Plenty of people do not know how their walls are built or
+                whether the loft was topped up. The assessment is designed to
+                cope with that: uncertainty moves the result towards
+                &ldquo;needs checking&rdquo; rather than counting against you.
               </p>
             </div>
-            <div class="aw-card">
-              <h3>Potentially suitable</h3>
+            <div class="aw-callout aw-callout--caution">
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-warning"></use></svg>
+              <h3>What this cannot tell you</h3>
               <p>
-                Your property may be suitable, but one or two details need
-                clarification. This is common, and we will explain what matters
-                and what may need improving before a survey.
+                It cannot size a heat pump, tell you which radiators need
+                changing, confirm a cylinder position, assess noise at a
+                neighbour&rsquo;s window or produce a price. All of that needs a
+                survey, and the survey needs measurements rather than
+                recollections.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHAT HAPPENS AFTERWARDS ----------------------------------- -->
+      <section class="aw-section">
+        <div class="aw-wrap aw-split">
+          <div class="aw-prose">
+            <h2>What happens after you get your result</h2>
+            <p class="aw-measure">
+              Nothing, unless you decide otherwise. Because the assessment sends
+              us nothing, the next move is yours: read the result, and if it is
+              worth a conversation, e-mail us and say what you got.
+            </p>
+            <p class="aw-measure">
+              A person then reads what you have described &mdash; not a scoring
+              engine. If something in it looks like it needs clarifying, or
+              looks like a genuine obstacle, we would rather find it in an
+              e-mail than three visits later. If a survey is not justified, we
+              will say so and explain why.
+            </p>
+            <p class="aw-measure">
+              <a href="../how-it-works/">The full eight-stage process is here</a>,
+              including what a survey covers and what you receive afterwards.
+            </p>
+            <div class="aw-btn-row">
+              <a class="aw-btn aw-btn--secondary" href="mailto:hello@airwarm.co.uk?subject=Home%20Energy%20Assessment%20enquiry">E-mail us about your result</a>
+            </div>
+          </div>
+          <div>
             <div class="aw-card">
-              <h3>Not currently suitable</h3>
-              <p>
-                A heat pump may not be the best next step today. That is rarely
-                permanent. We will explain the main constraints and suggest
-                practical improvements or alternatives.
+              <h3 class="aw-card__title">Useful things to put in that e-mail</h3>
+              <ul class="aw-ticks">
+                <li>The outcome the assessment gave you</li>
+                <li>The town or postcode area</li>
+                <li>What kind of property it is, and roughly how old</li>
+                <li>How it is heated at the moment</li>
+                <li>Anything you already suspect might be a problem</li>
+              </ul>
+              <p class="aw-small" style="margin-top:16px">
+                You do not have to include any of it. It just means the first
+                reply is useful rather than a round of questions.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQS ----------------------------------------------------- -->
+      <section class="aw-section aw-section--light">
+        <div class="aw-wrap">
+          <h2>Questions about the assessment</h2>
+          <div class="aw-faq" style="margin-top:24px">
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">Will a heat pump work in my house?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  Most homes can be heated well by a heat pump, but not every
+                  home today and not every home without changes. It depends on
+                  how much heat your house loses, whether the radiators can
+                  deliver that heat at a lower water temperature, whether there
+                  is a sensible position for the outdoor unit and room for a hot
+                  water cylinder, and whether the electrical supply is adequate.
+                  The Home Energy Assessment is a short first check, and a
+                  survey gives the real answer.
+                </p>
+              </div>
+            </details>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">What if the assessment says my home is not currently suitable?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  You will be told which constraint caused that and what would
+                  resolve it. It is a statement about the property&rsquo;s
+                  condition today, not a permanent verdict, and there is nearly
+                  always something worth doing even if a heat pump is not the
+                  immediate next step.
+                </p>
+              </div>
+            </details>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">What happens to my answers?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  Nothing. They are held in your browser while you fill the form
+                  in and they are gone when you close the tab. There is no form
+                  submission, no e-mail sent automatically, no database, no
+                  cookie and no analytics anywhere on this site. If you want us
+                  to see your answers, you tell us yourself.
+                </p>
+              </div>
+            </details>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">Why not just ask for my details at the end?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  Because Airwarm is not yet registered as a company and has not
+                  yet published a privacy policy, so there is nobody who could
+                  properly be responsible for your personal data today. Rather
+                  than collect it anyway and sort the paperwork out afterwards,
+                  the form has been built to work without it.
+                </p>
+              </div>
+            </details>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">Is this the same as a survey?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  No, and it is important that it is not mistaken for one. A
+                  survey measures every room, records the construction, measures
+                  the existing emitters and assesses siting, noise and the
+                  electrical supply. This is a triage tool that tells you whether
+                  that visit is likely to be worthwhile.
+                  <a href="../heat-pump-survey/">Here is what a survey actually involves</a>.
+                </p>
+              </div>
+            </details>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">I do not know the answer to some of the questions.</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  Answer &ldquo;not sure&rdquo;. It is offered on every question
+                  where uncertainty is normal, and the result accounts for it by
+                  telling you what needs checking rather than by assuming the
+                  worst.
+                </p>
+              </div>
+            </details>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">I am outside Bradford, Leeds or Shipley.</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  You are welcome to run the assessment anyway &mdash; it will
+                  still tell you something useful about your property. Whether
+                  Airwarm can help you yet is a separate question, and the honest
+                  answer depends on where you are.
+                  <a href="mailto:hello@airwarm.co.uk?subject=Coverage%20enquiry">Ask us</a>
+                  and you will get a straight answer either way.
+                </p>
+              </div>
+            </details>
+
           </div>
         </div>
       </section>
 
       <!-- FINAL CALL TO ACTION — repeated on every page, per the blueprint.
            The assessment is the primary action; e-mail is the route for
-           anything unusual. -->
-      <section class="aw-section aw-section--navy">
+           anything unusual. This block is the same on every page: if you
+           change the wording, change it everywhere. -->
+      <section class="aw-section aw-section--navy aw-cta-band">
         <div class="aw-wrap">
           <h2>Start with your home, not a product</h2>
           <p class="aw-hero__support">
@@ -576,11 +861,28 @@
       <div class="aw-footer__base">
         <p>
           Airwarm is a new West Yorkshire business preparing to install and
-          support air source heat pumps. Company registration and VAT details
-          will be shown here once they are confirmed.
+          support air source heat pumps.
         </p>
-        <!-- COMPANY DETAILS GO HERE: registered name, company number,
-             registered office, VAT number. Do not add them until they exist. -->
+        <!-- STATUTORY COMPANY DISCLOSURE — required by law. Do not remove,
+             move off the footer, or hide it behind a link.
+             The Companies Act 2006 s.82, the Company, Limited Liability
+             Partnership and Business (Names and Trading Disclosures)
+             Regulations 2015 and the Electronic Commerce (EC Directive)
+             Regulations 2002 together require the registered name, the
+             company number, the place of registration and the registered
+             office address to be easily and permanently accessible on the
+             website. The footer appears on every page, which is what makes it
+             permanently accessible. If any of these details change, change
+             them here in every page at the same time. -->
+        <p class="aw-small">
+          AIRWARM LTD is a company registered in England and Wales, company
+          number 17362672. Registered office: 2 Aireview Crescent, Baildon,
+          Shipley, BD17 7LS.
+        </p>
+        <!-- VAT NUMBER GOES HERE if and when Airwarm registers for VAT. Add it
+             as a further sentence in the paragraph above, for example
+             "VAT registration number GB000000000." Do not invent one, and do
+             not display a VAT number before registration is confirmed. -->
         <!-- SOCIAL LINKS: add only channels that are actively maintained. -->
         <p>&copy; 2026 Airwarm.</p>
       </div>

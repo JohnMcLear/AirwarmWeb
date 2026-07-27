@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <!-- ============================================================= -->
+  <!-- HEAD — the only per-page parts are the <title>, the meta       -->
+  <!-- description, the canonical URL and the Open Graph URL/title.   -->
+  <!-- Everything else is identical on every page.                    -->
+  <!-- ============================================================= -->
+  <meta charset="utf-8">
+  <!-- PREVIEW ONLY: remove this line on launch day so the site can be indexed. -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Heat Pumps with Solar and Battery | Airwarm</title>
+  <meta name="description" content="How solar PV and battery storage interact with an air source heat pump, where the combination genuinely helps, and the seasonal mismatch to plan around.">
+  <link rel="canonical" href="https://airwarm.co.uk/advice/solar-and-battery/">
+
+  <!-- Open Graph: how the page looks when shared in a message or post. -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Airwarm">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:title" content="Heat Pumps with Solar and Battery | Airwarm">
+  <meta property="og:description" content="How solar PV and battery storage interact with an air source heat pump, where the combination genuinely helps, and the seasonal mismatch to plan around.">
+  <meta property="og:url" content="https://airwarm.co.uk/advice/solar-and-battery/">
+  <!-- OG IMAGE GOES HERE once a real Airwarm share image exists, e.g.
+       <meta property="og:image" content="https://airwarm.co.uk/img/share.png">
+       Do not point this at a stock photograph or a third-party host. -->
+
+  <!-- FAVICON SWAP POINT: no icon files exist yet, because the circular
+       Airwarm emblem has not been supplied as an image. When it is, add:
+       <link rel="icon" href="../../favicon.ico" sizes="any">
+       <link rel="icon" href="../../img/airwarm-emblem.svg" type="image/svg+xml">
+       <link rel="apple-touch-icon" href="../../img/airwarm-emblem-180.png">
+       The favicon must be the emblem only, per the brand rules. -->
+
+  <!-- Montserrat, the fixed brand typeface. This is the only thing on the
+       whole site that loads from another company's server. The CSS names a
+       system-safe fallback stack so the site still reads correctly if the
+       font does not arrive. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;display=swap">
+
+  <!-- One stylesheet for the whole site. Colours live at the top of it. -->
+  <link rel="stylesheet" href="../../css/airwarm.css">
+</head>
+<body>
+
+  <a class="aw-skip" href="#main">Skip to main content</a>
+
+  <!-- ============================================================= -->
+  <!-- HEADER — keep identical across pages                            -->
+  <!-- If you change anything between here and /HEADER, make the same  -->
+  <!-- change in every index.html file, or the site will look           -->
+  <!-- inconsistent. There is no JavaScript and no hamburger menu: on   -->
+  <!-- small screens the navigation simply wraps onto more lines.       -->
+  <!-- ============================================================= -->
+  <header class="aw-header">
+    <div class="aw-wrap aw-header__inner">
+
+      <!-- LOGO SWAP POINT ------------------------------------------------
+           This is a TEXT wordmark, not the circular Airwarm emblem. No
+           vector version of the emblem exists in the brand pack yet, and the
+           brand rules forbid redrawing or approximating it. When the real
+           asset arrives, replace the two spans below with, for example:
+             <img src="../../img/airwarm-logo.svg" alt="Airwarm" width="180" height="48">
+           and update the favicon lines in the <head> of every page.
+           The tagline colour order is FIXED: orange, blue, green.
+           --------------------------------------------------------------- -->
+      <a class="aw-wordmark" href="../../">
+        <span class="aw-wordmark__name">AIRWARM</span>
+        <span class="aw-tagline">
+          <span class="warmer">WARMER HOMES</span><span class="aw-dot">&bull;</span><span class="bills">LOWER BILLS</span><span class="aw-dot">&bull;</span><span class="energy">CLEAN ENERGY</span>
+        </span>
+      </a>
+
+      <!-- The Home Energy Assessment is the principal action on the site,
+           so it gets a button in the header on every page. -->
+      <div class="aw-header__cta">
+        <a class="aw-btn aw-btn--primary" href="../../home-energy-assessment/">Start the assessment</a>
+      </div>
+
+      <nav class="aw-nav" aria-label="Main">
+        <ul class="aw-nav__list">
+          <li><a href="../../">Home</a></li>
+          <li><a href="../../air-source-heat-pumps/">Heat pumps</a></li>
+          <li><a href="../../how-it-works/">How it works</a></li>
+          <li><a href="../../home-energy-assessment/">Home Energy Assessment</a></li>
+          <li><a href="../../about/">About</a></li>
+          <li><a href="../../advice/">Advice</a></li>
+          <li><a href="../../contact/">Contact</a></li>
+          <!-- Phase 2 navigation, not built yet. Uncomment the matching
+               page first, otherwise this link will 404:
+          <li><a href="../../servicing-support/">Servicing &amp; support</a></li>
+          -->
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+  <!-- /HEADER -->
+
+  <main id="main">
+  <!-- Breadcrumbs: helps people and search engines see where this
+       page sits. Update if you move the page. -->
+  <nav class="aw-crumbs" aria-label="Breadcrumb">
+    <div class="aw-wrap">
+      <ol>
+        <li><a href="../../">Home</a></li>
+        <li><a href="../../advice/">Advice</a></li>
+        <li aria-current="page">Solar and battery</li>
+      </ol>
+    </div>
+  </nav>
+
+      <section class="aw-section aw-section--tight">
+        <div class="aw-wrap">
+          <span class="aw-eyebrow">Advice</span>
+          <h1>Combining a heat pump with solar panels and a battery</h1>
+          <p class="aw-lede aw-measure">
+            Solar panels and a battery can supply some of the electricity a heat
+            pump uses, and the two technologies coexist well, but they do not
+            solve the same problem. Solar generation is highest in summer while
+            heating demand is highest in winter, so the honest way to plan the
+            combination is around hot water and around when electricity is
+            bought, rather than around eliminating a winter bill.
+          </p>
+
+          <nav class="aw-toc" aria-labelledby="toc-heading">
+            <h2 id="toc-heading">On this page</h2>
+            <ol>
+              <li><a href="#three-things">Three different technologies, three different jobs</a></li>
+              <li><a href="#seasonal-mismatch">The seasonal mismatch, stated plainly</a></li>
+              <li><a href="#why-it-matters">Why it matters for the outcome in your home</a></li>
+              <li><a href="#what-airwarm-does">What Airwarm checks and does about it</a></li>
+              <li><a href="#misconceptions">Common misconceptions, stated fairly</a></li>
+              <li><a href="#next">What you should do next</a></li>
+              <li><a href="#faqs">Frequently asked questions</a></li>
+            </ol>
+          </nav>
+        </div>
+      </section>
+
+      <section class="aw-section">
+        <div class="aw-wrap">
+          <div class="aw-prose aw-measure">
+
+            <h2 id="three-things">Three different technologies, three different jobs</h2>
+
+            <p>
+              There are three separate things people mean by &ldquo;solar and
+              battery&rdquo;, and they behave differently.
+            </p>
+          </div>
+
+          <div class="aw-card-grid" style="margin-top:24px">
+            <div class="aw-card">
+              <svg class="aw-icon aw-icon--lg" aria-hidden="true" focusable="false"><use href="../../assets/icons.svg#icon-solar"></use></svg>
+              <h3 class="aw-card__title">Solar PV</h3>
+              <p>
+                Generates electricity from daylight: most in the middle of long
+                summer days, considerably less in winter, nothing at night.
+                Output is affected by roof orientation, pitch, shading and the
+                time of year.
+              </p>
+            </div>
+            <div class="aw-card">
+              <svg class="aw-icon aw-icon--lg" aria-hidden="true" focusable="false"><use href="../../assets/icons.svg#icon-battery"></use></svg>
+              <h3 class="aw-card__title">Battery storage</h3>
+              <p>
+                Does not generate anything. It shifts electricity in time:
+                storing surplus solar for later, or charging from the grid during
+                a cheaper tariff period and discharging when electricity costs
+                more. For a heat pump, the second use is often the more relevant
+                one.
+              </p>
+            </div>
+            <div class="aw-card">
+              <svg class="aw-icon aw-icon--lg" aria-hidden="true" focusable="false"><use href="../../assets/icons.svg#icon-cylinder"></use></svg>
+              <h3 class="aw-card__title">Solar thermal</h3>
+              <p>
+                A different technology again, using panels to heat water
+                directly. It can contribute to hot water, but it competes with
+                the heat pump for the same cylinder and adds hydraulic
+                complexity, so combining the two needs care.
+              </p>
+            </div>
+          </div>
+
+          <div class="aw-prose aw-measure" style="margin-top:40px">
+
+            <h2 id="seasonal-mismatch">The seasonal mismatch, stated plainly</h2>
+
+            <div class="aw-callout aw-callout--caution">
+              <p>
+                <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../../assets/icons.svg#icon-warning"></use></svg>
+                In December, when a heat pump is working hardest, a domestic solar
+                array in West Yorkshire produces a small fraction of its summer
+                output. Anyone implying that solar will cover winter heating is
+                not being straight with you.
+              </p>
+            </div>
+
+            <p>
+              Where the combination earns its place is more specific: covering
+              <a href="../../advice/hot-water-and-cylinders/">hot water</a> for much of
+              the year, supplying a share of the heat pump&rsquo;s electricity in
+              the shoulder seasons, and using a battery to move consumption into
+              cheaper tariff periods.
+            </p>
+
+            <h2 id="why-it-matters">Why it matters for the outcome in your home</h2>
+
+            <p>
+              The practical consequence is one of sequencing and electrical
+              capacity rather than heating performance.
+            </p>
+
+            <p>
+              The heat pump&rsquo;s design does not change because you have
+              solar. The
+              <a href="../../advice/heat-loss-explained/">heat loss calculation</a>,
+              the emitters, the flow temperature and the cylinder are all decided
+              by the building. Solar changes where some of the electricity comes
+              from, not how much heat the house needs.
+            </p>
+
+            <p>
+              What does change is the electrical picture. A heat pump is a
+              significant load, and solar PV, a battery and an EV charger are all
+              further loads or sources on the same consumer unit and incoming
+              supply. Adding them without a plan is how households end up with an
+              overloaded board or a main fuse that is too small.
+            </p>
+
+            <p>
+              There is also a control question. Directing surplus solar to the
+              heat pump or the cylinder requires the two systems to communicate,
+              or at least to be scheduled coherently. Two well-installed systems
+              that ignore each other will still work; they simply will not
+              cooperate.
+            </p>
+
+            <h2 id="what-airwarm-does">What Airwarm checks and does about it</h2>
+
+            <p>
+              Airwarm&rsquo;s
+              <a href="../../home-energy-assessment/">Home Energy Assessment</a> asks
+              whether you are interested in solar or battery integration.
+              Answering yes is useful even if the solar is years away, because it
+              changes what the survey plans for.
+            </p>
+
+            <p>
+              <a href="../../heat-pump-survey/">The survey</a> records the electrical
+              supply, the existing consumer unit and any existing or planned
+              generation and storage, and identifies where the network operator
+              would need to be notified. Electrical work is carried out by vetted
+              regional contractors working to Airwarm&rsquo;s design and
+              coordination.
+            </p>
+
+            <div class="aw-callout aw-callout--positive">
+              <p>
+                <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../../assets/icons.svg#icon-design"></use></svg>
+                Where solar is planned but not yet installed, Airwarm will design
+                the heat pump installation so the later work does not mean undoing
+                the first: cable routes, spare capacity, sensible positioning of
+                the cylinder and controls, and a note of what the future installer
+                will need.
+              </p>
+            </div>
+
+            <p>
+              Airwarm will also tell you where the combination does not stack up.
+              A heavily shaded roof, a north-facing main elevation, a small roof
+              area or a conservation restriction on visible panels are all real
+              constraints, and the practical route forward may be a battery on a
+              time-of-use tariff without solar, or nothing beyond the heat pump.
+            </p>
+
+            <h2 id="misconceptions">Common misconceptions, stated fairly</h2>
+
+            <p>
+              <strong>&ldquo;Solar panels will run my heat pump.&rdquo;</strong>
+              They will contribute, mostly outside the heating season. They will
+              not cover midwinter heating from a domestic roof in West Yorkshire.
+            </p>
+
+            <p>
+              <strong>&ldquo;A battery makes the heat pump more efficient.&rdquo;</strong>
+              It does not touch efficiency. It changes when electricity is drawn
+              and at what price, which may be worth having, but it is
+              <a href="../../advice/what-determines-running-costs/">a tariff effect</a>
+              rather than an efficiency one.
+            </p>
+
+            <p>
+              <strong>&ldquo;A solar diverter and a heat pump work well together.&rdquo;</strong>
+              A diverter sends surplus solar to an immersion heater. That is
+              direct electric heating, which is far less efficient than using the
+              heat pump to heat the same water. Sending surplus to the heat pump
+              is usually better where the equipment supports it, and it is worth a
+              specific conversation rather than a default.
+            </p>
+
+            <p>
+              <strong>&ldquo;Solar thermal plus a heat pump is the best of both.&rdquo;</strong>
+              It can work, but it means two heat sources sharing a cylinder, more
+              controls and more that can go wrong. A considered decision, not an
+              add-on.
+            </p>
+
+            <h2 id="next">What you should do next</h2>
+
+            <p>
+              Start with the
+              <a href="../../home-energy-assessment/">Home Energy Assessment</a> and
+              say that solar or battery integration interests you. A quick first
+              step to understand whether a heat pump is worth exploring for your
+              property.
+            </p>
+
+            <p>
+              If you already have solar PV or a battery, have the details ready
+              for the survey: array size, inverter make and model, battery
+              capacity, and whether you have a smart meter or a time-of-use
+              tariff.
+            </p>
+
+            <div class="aw-callout">
+              <p>
+                <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../../assets/icons.svg#icon-email"></use></svg>
+                For a project involving several technologies, or an unusual
+                property, e-mail
+                <a href="mailto:hello@airwarm.co.uk">hello@airwarm.co.uk</a>
+                describing what you are planning. Coordinated design is easier at
+                the start than as a retrofit.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <section class="aw-section aw-section--light">
+        <div class="aw-wrap">
+          <h2 id="faqs">Frequently asked questions</h2>
+          <div class="aw-faq aw-measure">
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">Do I need solar to make a heat pump worthwhile?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  No. They are independent decisions. A heat pump is a heating
+                  system; solar is a generation system.
+                </p>
+              </div>
+            </details>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">Will my existing solar installation need changing?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  Usually not, but the survey will check the electrical
+                  arrangement, the total load and whether the inverter and any
+                  battery can be scheduled alongside the heat pump.
+                </p>
+              </div>
+            </details>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">Will I need my electricity supply upgraded?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  It depends on the existing supply, the main fuse rating and the
+                  total load once everything is added. This is checked at survey,
+                  and where a network operator application is needed Airwarm will
+                  say so early rather than late.
+                </p>
+              </div>
+            </details>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">Does a battery mean the heating keeps working in a power cut?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  Only if the battery system is specifically configured for backup
+                  supply, which is a separate design feature and not a standard
+                  one. A heat pump is a substantial load, so backup running is not
+                  a small ask.
+                </p>
+              </div>
+            </details>
+
+          </div>
+        </div>
+      </section>
+
+      <section class="aw-section">
+        <div class="aw-wrap">
+          <h2>Read next</h2>
+          <div class="aw-card-grid" style="margin-top:24px">
+            <a class="aw-card aw-card--link" href="../../advice/what-determines-running-costs/">
+              <svg class="aw-icon aw-icon--lg" aria-hidden="true" focusable="false"><use href="../../assets/icons.svg#icon-controls"></use></svg>
+              <h3 class="aw-card__title">What determines running costs</h3>
+              <p>Where a tariff effect sits alongside efficiency, flow temperature and building heat loss.</p>
+            </a>
+            <a class="aw-card aw-card--link" href="../../advice/heat-pumps-during-renovation/">
+              <svg class="aw-icon aw-icon--lg" aria-hidden="true" focusable="false"><use href="../../assets/icons.svg#icon-design"></use></svg>
+              <h3 class="aw-card__title">Heat pumps in a renovation</h3>
+              <p>The cheapest moment to plan cable routes, spare capacity and a cylinder position.</p>
+            </a>
+            <a class="aw-card aw-card--link" href="../../heat-pump-survey/">
+              <svg class="aw-icon aw-icon--lg" aria-hidden="true" focusable="false"><use href="../../assets/icons.svg#icon-survey"></use></svg>
+              <h3 class="aw-card__title">What a survey covers</h3>
+              <p>Including the incoming supply, the consumer unit and existing generation.</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- FINAL CALL TO ACTION — repeated on every page, per the blueprint.
+           The assessment is the primary action; e-mail is the route for
+           anything unusual. -->
+      <section class="aw-section aw-section--navy aw-cta-band">
+        <div class="aw-wrap">
+          <h2>Start with your home, not a product</h2>
+          <p class="aw-hero__support">
+            The Home Energy Assessment takes a few minutes, asks for no
+            photographs and gives you an honest first view of whether an air
+            source heat pump is worth exploring for your property.
+          </p>
+          <div class="aw-btn-row">
+            <a class="aw-btn aw-btn--primary" href="../../home-energy-assessment/">Check your home&rsquo;s suitability</a>
+            <a class="aw-btn aw-btn--secondary" href="mailto:hello@airwarm.co.uk">E-mail hello@airwarm.co.uk</a>
+          </div>
+          <p class="aw-small" style="margin-top:24px">
+            Unusual property? Listed building, off-grid, a renovation part way
+            through? E-mail us and describe it. We would rather have the
+            conversation than have you guess.
+          </p>
+        </div>
+      </section>
+  </main>
+
+  <!-- ============================================================= -->
+  <!-- FOOTER — keep identical across pages                            -->
+  <!-- ============================================================= -->
+  <footer class="aw-footer">
+    <div class="aw-wrap">
+      <div class="aw-footer__grid">
+
+        <div>
+          <!-- LOGO SWAP POINT (footer) — see the note in the header. -->
+          <span class="aw-wordmark" style="display:inline-flex">
+            <span class="aw-wordmark__name">AIRWARM</span>
+            <span class="aw-tagline">
+              <span class="warmer">WARMER HOMES</span><span class="aw-dot">&bull;</span><span class="bills">LOWER BILLS</span><span class="aw-dot">&bull;</span><span class="energy">CLEAN ENERGY</span>
+            </span>
+          </span>
+          <p class="aw-small" style="margin-top:16px">
+            Air Source Heat Pumps &bull; West Yorkshire
+          </p>
+          <ul>
+            <li><a href="../../">airwarm.co.uk</a></li>
+            <li><a href="mailto:hello@airwarm.co.uk">hello@airwarm.co.uk</a></li>
+            <!-- PHONE NUMBER GOES HERE once the business line is provisioned.
+                 Do not invent one. Format:
+            <li><a href="tel:+44NUMBER-GOES-HERE">NUMBER GOES HERE</a></li>
+            -->
+          </ul>
+        </div>
+
+        <div>
+          <h2>Services</h2>
+          <ul>
+            <li><a href="../../air-source-heat-pumps/">Air source heat pumps</a></li>
+            <li><a href="../../heat-pump-survey/">Heat pump survey</a></li>
+            <li><a href="../../heat-pump-installation/">Heat pump installation</a></li>
+            <li><a href="../../how-it-works/">How it works</a></li>
+            <li><a href="../../home-energy-assessment/">Home Energy Assessment</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2>Service areas</h2>
+          <ul>
+            <li><a href="../../areas/bradford/">Bradford</a></li>
+            <li><a href="../../areas/leeds/">Leeds</a></li>
+            <li><a href="../../areas/shipley/">Shipley</a></li>
+          </ul>
+          <h2 style="margin-top:24px">Company</h2>
+          <ul>
+            <li><a href="../../about/">About Airwarm</a></li>
+            <li><a href="../../advice/">Advice</a></li>
+            <li><a href="../../contact/">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2>Legal</h2>
+          <ul>
+            <li><a href="../../privacy/">Privacy policy</a></li>
+            <li><a href="../../cookies/">Cookie policy</a></li>
+            <li><a href="../../terms/">Terms and conditions</a></li>
+            <!-- STILL TO BE WRITTEN, then linked here:
+                 complaints procedure, accessibility statement.
+                 Both are named in the brand pack footer structure. -->
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="aw-footer__base">
+        <p>
+          Airwarm is a new West Yorkshire business preparing to install and
+          support air source heat pumps.
+        </p>
+        <p class="aw-small">
+          AIRWARM LTD is a company registered in England and Wales, company
+          number 17362672. Registered office: 2 Aireview Crescent, Baildon,
+          Shipley, BD17 7LS.
+        </p>
+        <!-- VAT NUMBER GOES HERE if and when Airwarm registers for VAT. Add it
+             as a further sentence in the paragraph above, for example
+             "VAT registration number GB000000000." Do not invent one, and do
+             not display a VAT number before registration is confirmed. -->
+        <!-- SOCIAL LINKS: add only channels that are actively maintained. -->
+        <!-- SOCIAL LINKS: add only channels that are actively maintained. -->
+        <p>&copy; 2026 Airwarm.</p>
+      </div>
+    </div>
+  </footer>
+  <!-- /FOOTER -->
+
+</body>
+</html>

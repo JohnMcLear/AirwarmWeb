@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ===========================================================================
+  AIRWARM — diagram-assessment-outcomes.svg
+  The three possible outcomes of the Home Energy Assessment.
+
+  IMPORTANT, and set by the Airwarm pack: green is used for the positive
+  outcome only. The other two use blue and mid grey. There is no red anywhere,
+  and "not currently suitable" is never presented as a rejection: it always
+  comes with an explanation and a next step.
+
+  Each outcome carries a shape as well as a colour (a tick, a question mark, a
+  level dash) and a plain label, so the meaning survives in black and white and
+  for a reader who cannot distinguish the colours.
+
+  HOW TO CHANGE A LABEL
+  Every word a visitor reads sits between <text ...> and </text>. Search this
+  file for the words you want to change and type over them. Nothing else has
+  to move. Keep labels short: they are set larger on small screens, and a long
+  label can run past the edge of the drawing.
+
+  The same wording is repeated in the description below, which is what a
+  screen reader announces. If you change a label, change that to match.
+
+  Colours are the approved Airwarm palette only. They are declared once, in
+  the style block, and nowhere else in this file.
+  ===========================================================================
+-->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 640 380"
+     role="img"
+     aria-labelledby="ao-title ao-desc">
+
+  <title id="ao-title">The three possible outcomes of the assessment</title>
+  <desc id="ao-desc">Three calm outcome cards side by side. The first, likely suitable, is
+    marked in green with a tick: the next step is a home survey. The
+    second, potentially suitable, is marked in blue with a question
+    mark: there are a few things to look at first. The third, not
+    currently suitable, is marked in mid grey with a level dash: it
+    comes with an explanation of what would need to change. None of
+    the three is a refusal.</desc>
+
+  <style>
+    /* ---------------------------------------------------------------------
+       AIRWARM DIAGRAM STYLES
+       The approved palette, and nothing else:
+         navy #071A2B    white #FFFFFF        orange #F28C28
+         blue #2F80ED    green #63C174        light neutral #F4F7F9
+         mid grey #65717C                     dark text #14212B
+
+       These class names are identical in every Airwarm diagram, so the whole
+       set keeps one line weight and one set of type sizes.
+
+       ONE DELIBERATE EXCEPTION, FOR LEGIBILITY.
+       The brand orange #F28C28 reaches only 2.3:1 against this pale panel,
+       which is below the 3:1 that WCAG asks for a line or a shape that
+       carries meaning. So a thin orange LINE on the pale panel is drawn in
+       the darker orange #B55F0B (4.6:1), and switches back to #F28C28 on the
+       navy panel used by the dark browser theme, where the brand orange
+       reaches 7.2:1. Solid orange shapes keep the brand orange and are given
+       a navy outline instead, so their edge carries the contrast.
+       The same note is in css/airwarm.css and assets/README.md.
+       --------------------------------------------------------------------- */
+    .d-surface { fill: #F4F7F9; }
+    .d-frame   { fill: none; stroke: #071A2B; stroke-width: 1.5; opacity: 0.16; }
+    .d-box     { fill: #FFFFFF; stroke: #071A2B; stroke-width: 2; }
+    .d-box--quiet { fill: none; stroke: #65717C; stroke-width: 1.5; }
+    .d-line    { fill: none; stroke: #071A2B; stroke-width: 2;
+                 stroke-linecap: round; stroke-linejoin: round; }
+    .d-line--thin { stroke-width: 1.5; }
+    .d-line--dash { stroke-dasharray: 6 6; }
+    .d-hot     { stroke: #B55F0B; }   /* warmth, and the higher of two temperatures */
+    .d-cool    { stroke: #2F80ED; }   /* the cool side, and the lower of two temperatures */
+    .d-quiet   { stroke: #65717C; }
+    .d-fill-navy  { fill: #071A2B; }
+    .d-fill-hot   { fill: #B55F0B; }
+    .d-fill-cool  { fill: #2F80ED; }
+    .d-fill-quiet { fill: #65717C; }
+    .d-fill-white { fill: #FFFFFF; }
+
+    /* TEXT. .d-label is a name, .d-sub an explanatory line, .d-num a number
+       inside a step marker, .d-cap a small caption or key entry. */
+    .d-label { font-family: Montserrat, 'Segoe UI', Arial, sans-serif;
+               font-size: 18px; font-weight: 600; fill: #14212B; }
+    .d-sub   { font-family: Montserrat, 'Segoe UI', Arial, sans-serif;
+               font-size: 15px; font-weight: 500; fill: #65717C; }
+    .d-num   { font-family: Montserrat, 'Segoe UI', Arial, sans-serif;
+               font-size: 15px; font-weight: 700; fill: #FFFFFF; }
+    .d-cap   { font-family: Montserrat, 'Segoe UI', Arial, sans-serif;
+               font-size: 15px; font-weight: 500; fill: #65717C; }
+
+    /* NARROW SCREENS. Below about 520px the explanatory lines are hidden and
+       the remaining labels are set larger, so the drawing still reads on a
+       phone. Nothing is lost: the page copy carries the detail, and the
+       description near the top of this file carries it for screen readers. */
+    .d-narrow-only { display: none; }
+    @media (max-width: 520px) {
+      .d-label { font-size: 24px; }
+      .d-num   { font-size: 18px; }
+      .d-cap   { font-size: 20px; }
+      .d-sub, .d-wide-only { display: none; }
+      .d-narrow-only { display: inline; }
+    }
+
+    /* DARK BROWSER THEME. The panel turns navy and the ink turns white, so
+       the diagram never depends on sitting on a white page. Grey text is
+       replaced with the light neutral, because mid grey on navy is only
+       3.5:1 and that is not enough for small text. */
+    @media (prefers-color-scheme: dark) {
+      .d-surface { fill: #071A2B; }
+      .d-frame   { stroke: #FFFFFF; opacity: 0.28; }
+      .d-box     { fill: #071A2B; stroke: #FFFFFF; }
+      .d-line    { stroke: #FFFFFF; }
+      .d-hot     { stroke: #F28C28; }
+      .d-fill-hot { fill: #F28C28; }
+      .d-label   { fill: #FFFFFF; }
+      .d-sub, .d-cap { fill: #F4F7F9; }
+      .d-fill-navy  { fill: #FFFFFF; }
+      .d-fill-white { fill: #071A2B; }
+      .d-num        { fill: #071A2B; }
+    }
+
+    /* Extra styles for this diagram only.
+       The state disc is filled with the state colour and outlined and marked
+       in navy, so the glyph inside always has contrast against it and the edge
+       of the disc has contrast against the panel. */
+    .d-disc-good  { fill: #63C174; stroke: #071A2B; stroke-width: 1.5; }
+    .d-disc-maybe { fill: #2F80ED; stroke: #071A2B; stroke-width: 1.5; }
+    .d-disc-notyet{ fill: #65717C; stroke: #071A2B; stroke-width: 1.5; }
+    .d-glyph { fill: none; stroke: #071A2B; stroke-width: 2.5;
+               stroke-linecap: round; stroke-linejoin: round; }
+    .d-glyph-text { font-family: Montserrat, 'Segoe UI', Arial, sans-serif;
+                    font-size: 26px; font-weight: 700; fill: #071A2B; }
+    .d-accent-good  { fill: #63C174; }
+    .d-accent-maybe { fill: #2F80ED; }
+    .d-accent-notyet{ fill: #65717C; }
+  </style>
+
+  <defs>
+    <!-- Arrowheads. One per colour, so each takes the dark theme change with
+         its line. There is no need to change these. -->
+    <marker id="arrow-ink" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path class="d-fill-navy" d="M0 0 L10 5 L0 10 Z"/>
+    </marker>
+    <marker id="arrow-hot" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path class="d-fill-hot" d="M0 0 L10 5 L0 10 Z"/>
+    </marker>
+    <marker id="arrow-cool" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path class="d-fill-cool" d="M0 0 L10 5 L0 10 Z"/>
+    </marker>
+    <marker id="arrow-quiet" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path class="d-fill-quiet" d="M0 0 L10 5 L0 10 Z"/>
+    </marker>
+  </defs>
+
+  <!-- The diagram carries its own background panel, so it stays legible on a
+       white, a pale grey or a navy section. -->
+  <rect class="d-surface" x="0" y="0" width="640" height="380" rx="12"/>
+  <rect class="d-frame" x="0.75" y="0.75" width="638.5" height="378.5" rx="11.25"/>
+
+  <!-- ======================= 1. LIKELY SUITABLE (green) =================
+       Green is used here and nowhere else in the set: it is the positive
+       outcome.
+       =================================================================== -->
+  <rect class="d-box" x="20" y="60" width="185" height="220" rx="10"/>
+  <rect class="d-accent-good" x="32" y="57" width="161" height="6" rx="3"/>
+  <circle class="d-disc-good" cx="112" cy="118" r="24"/>
+  <path class="d-glyph" d="M101 118 L109 127 L124 109"/>
+  <text class="d-label" x="112" y="188" text-anchor="middle">Likely</text>
+  <text class="d-label" x="112" y="212" text-anchor="middle">suitable</text>
+  <text class="d-sub"   x="112" y="240" text-anchor="middle">the next step is</text>
+  <text class="d-sub"   x="112" y="258" text-anchor="middle">a home survey</text>
+
+  <!-- ======================= 2. POTENTIALLY SUITABLE (blue) ============= -->
+  <rect class="d-box" x="227" y="60" width="185" height="220" rx="10"/>
+  <rect class="d-accent-maybe" x="239" y="57" width="161" height="6" rx="3"/>
+  <circle class="d-disc-maybe" cx="319" cy="118" r="24"/>
+  <text class="d-glyph-text" x="319" y="128" text-anchor="middle">?</text>
+  <text class="d-label" x="319" y="188" text-anchor="middle">Potentially</text>
+  <text class="d-label" x="319" y="212" text-anchor="middle">suitable</text>
+  <text class="d-sub"   x="319" y="240" text-anchor="middle">a few things to</text>
+  <text class="d-sub"   x="319" y="258" text-anchor="middle">look at first</text>
+
+  <!-- ======================= 3. NOT CURRENTLY SUITABLE (mid grey) =======
+       A level dash, not a cross. This outcome is an explanation, never a
+       refusal, so it is never drawn in red and never drawn as a rejection.
+       =================================================================== -->
+  <rect class="d-box" x="434" y="60" width="185" height="220" rx="10"/>
+  <rect class="d-accent-notyet" x="446" y="57" width="161" height="6" rx="3"/>
+  <circle class="d-disc-notyet" cx="526" cy="118" r="24"/>
+  <path class="d-glyph" d="M514 118 H538"/>
+  <text class="d-label" x="526" y="188" text-anchor="middle">Not currently</text>
+  <text class="d-label" x="526" y="212" text-anchor="middle">suitable</text>
+  <text class="d-sub"   x="526" y="240" text-anchor="middle">we explain what</text>
+  <text class="d-sub"   x="526" y="258" text-anchor="middle">would change that</text>
+
+  <!-- ======================= CAPTION ==================================== -->
+  <text class="d-cap" x="320" y="322" text-anchor="middle">Every outcome comes with an explanation</text>
+  <text class="d-cap" x="320" y="344" text-anchor="middle">and a next step. None of them is a refusal.</text>
+</svg>

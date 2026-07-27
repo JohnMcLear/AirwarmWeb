@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ===========================================================================
+  AIRWARM — diagram-heat-loss.svg
+  Where heat escapes from a house: roof, walls, windows, floor and draughts.
+  There are deliberately NO percentage figures on this drawing. How much heat
+  goes where varies from one property to another, and the Airwarm pack does not
+  allow figures that are not evidenced for the property in question.
+
+  HOW TO CHANGE A LABEL
+  Every word a visitor reads sits between <text ...> and </text>. Search this
+  file for the words you want to change and type over them. Nothing else has
+  to move. Keep labels short: they are set larger on small screens, and a long
+  label can run past the edge of the drawing.
+
+  The same wording is repeated in the description below, which is what a
+  screen reader announces. If you change a label, change that to match.
+
+  Colours are the approved Airwarm palette only. They are declared once, in
+  the style block, and nowhere else in this file.
+  ===========================================================================
+-->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 640 520"
+     role="img"
+     aria-labelledby="hl-title hl-desc">
+
+  <title id="hl-title">Where heat escapes from a house</title>
+  <desc id="hl-desc">A cross section of a house with arrows leaving it in five places:
+    upwards through the roof, outwards through the walls, outwards
+    through the windows, downwards through the floor, and out through
+    gaps and draughts at the eaves and around the door. The arrows are
+    drawn at different widths to suggest that some routes lose more
+    than others. No figures are given, because the proportions differ
+    from one property to another.</desc>
+
+  <style>
+    /* ---------------------------------------------------------------------
+       AIRWARM DIAGRAM STYLES
+       The approved palette, and nothing else:
+         navy #071A2B    white #FFFFFF        orange #F28C28
+         blue #2F80ED    green #63C174        light neutral #F4F7F9
+         mid grey #65717C                     dark text #14212B
+
+       These class names are identical in every Airwarm diagram, so the whole
+       set keeps one line weight and one set of type sizes.
+
+       ONE DELIBERATE EXCEPTION, FOR LEGIBILITY.
+       The brand orange #F28C28 reaches only 2.3:1 against this pale panel,
+       which is below the 3:1 that WCAG asks for a line or a shape that
+       carries meaning. So a thin orange LINE on the pale panel is drawn in
+       the darker orange #B55F0B (4.6:1), and switches back to #F28C28 on the
+       navy panel used by the dark browser theme, where the brand orange
+       reaches 7.2:1. Solid orange shapes keep the brand orange and are given
+       a navy outline instead, so their edge carries the contrast.
+       The same note is in css/airwarm.css and assets/README.md.
+       --------------------------------------------------------------------- */
+    .d-surface { fill: #F4F7F9; }
+    .d-frame   { fill: none; stroke: #071A2B; stroke-width: 1.5; opacity: 0.16; }
+    .d-box     { fill: #FFFFFF; stroke: #071A2B; stroke-width: 2; }
+    .d-box--quiet { fill: none; stroke: #65717C; stroke-width: 1.5; }
+    .d-line    { fill: none; stroke: #071A2B; stroke-width: 2;
+                 stroke-linecap: round; stroke-linejoin: round; }
+    .d-line--thin { stroke-width: 1.5; }
+    .d-line--dash { stroke-dasharray: 6 6; }
+    .d-hot     { stroke: #B55F0B; }   /* warmth, and the higher of two temperatures */
+    .d-cool    { stroke: #2F80ED; }   /* the cool side, and the lower of two temperatures */
+    .d-quiet   { stroke: #65717C; }
+    .d-fill-navy  { fill: #071A2B; }
+    .d-fill-hot   { fill: #B55F0B; }
+    .d-fill-cool  { fill: #2F80ED; }
+    .d-fill-quiet { fill: #65717C; }
+    .d-fill-white { fill: #FFFFFF; }
+
+    /* TEXT. .d-label is a name, .d-sub an explanatory line, .d-num a number
+       inside a step marker, .d-cap a small caption or key entry. */
+    .d-label { font-family: Montserrat, 'Segoe UI', Arial, sans-serif;
+               font-size: 18px; font-weight: 600; fill: #14212B; }
+    .d-sub   { font-family: Montserrat, 'Segoe UI', Arial, sans-serif;
+               font-size: 15px; font-weight: 500; fill: #65717C; }
+    .d-num   { font-family: Montserrat, 'Segoe UI', Arial, sans-serif;
+               font-size: 15px; font-weight: 700; fill: #FFFFFF; }
+    .d-cap   { font-family: Montserrat, 'Segoe UI', Arial, sans-serif;
+               font-size: 15px; font-weight: 500; fill: #65717C; }
+
+    /* NARROW SCREENS. Below about 520px the explanatory lines are hidden and
+       the remaining labels are set larger, so the drawing still reads on a
+       phone. Nothing is lost: the page copy carries the detail, and the
+       description near the top of this file carries it for screen readers. */
+    .d-narrow-only { display: none; }
+    @media (max-width: 520px) {
+      .d-label { font-size: 24px; }
+      .d-num   { font-size: 18px; }
+      .d-cap   { font-size: 20px; }
+      .d-sub, .d-wide-only { display: none; }
+      .d-narrow-only { display: inline; }
+    }
+
+    /* DARK BROWSER THEME. The panel turns navy and the ink turns white, so
+       the diagram never depends on sitting on a white page. Grey text is
+       replaced with the light neutral, because mid grey on navy is only
+       3.5:1 and that is not enough for small text. */
+    @media (prefers-color-scheme: dark) {
+      .d-surface { fill: #071A2B; }
+      .d-frame   { stroke: #FFFFFF; opacity: 0.28; }
+      .d-box     { fill: #071A2B; stroke: #FFFFFF; }
+      .d-line    { stroke: #FFFFFF; }
+      .d-hot     { stroke: #F28C28; }
+      .d-fill-hot { fill: #F28C28; }
+      .d-label   { fill: #FFFFFF; }
+      .d-sub, .d-cap { fill: #F4F7F9; }
+      .d-fill-navy  { fill: #FFFFFF; }
+      .d-fill-white { fill: #071A2B; }
+      .d-num        { fill: #071A2B; }
+    }
+
+    /* Extra styles for this diagram only.
+       Escaping heat is drawn as solid tapered arrows rather than stroked
+       lines, so the width of an arrow can carry the proportion while every
+       stroked line in the set keeps the same weight. The arrows keep the
+       brand orange and take a navy outline, so their edge carries the
+       contrast against the pale panel. */
+    .d-loss { fill: #F28C28; stroke: #071A2B; stroke-width: 1.5; }
+    .d-hatch { stroke: #65717C; stroke-width: 1.5; opacity: 0.5; }
+    @media (prefers-color-scheme: dark) { .d-loss { stroke: #FFFFFF; } }
+  </style>
+
+  <defs>
+    <!-- Arrowheads. One per colour, so each takes the dark theme change with
+         its line. There is no need to change these. -->
+    <marker id="arrow-ink" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path class="d-fill-navy" d="M0 0 L10 5 L0 10 Z"/>
+    </marker>
+    <marker id="arrow-hot" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path class="d-fill-hot" d="M0 0 L10 5 L0 10 Z"/>
+    </marker>
+    <marker id="arrow-cool" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path class="d-fill-cool" d="M0 0 L10 5 L0 10 Z"/>
+    </marker>
+    <marker id="arrow-quiet" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path class="d-fill-quiet" d="M0 0 L10 5 L0 10 Z"/>
+    </marker>
+  </defs>
+
+  <!-- The diagram carries its own background panel, so it stays legible on a
+       white, a pale grey or a navy section. -->
+  <rect class="d-surface" x="0" y="0" width="640" height="520" rx="12"/>
+  <rect class="d-frame" x="0.75" y="0.75" width="638.5" height="518.5" rx="11.25"/>
+
+  <!-- ======================= GROUND ===================================== -->
+  <path class="d-line d-quiet" d="M20 400 H620"/>
+  <g class="d-hatch">
+    <path d="M50 400 L40 410"/><path d="M110 400 L100 410"/><path d="M170 400 L160 410"/>
+    <path d="M230 400 L220 410"/><path d="M290 400 L280 410"/><path d="M350 400 L340 410"/>
+    <path d="M410 400 L400 410"/><path d="M470 400 L460 410"/><path d="M530 400 L520 410"/>
+    <path d="M590 400 L580 410"/>
+  </g>
+
+  <!-- ======================= THE HOUSE ================================== -->
+  <path class="d-line" d="M150 240 L320 150 L490 240"/>
+  <path class="d-line" d="M180 240 V400"/>
+  <path class="d-line" d="M460 240 V400"/>
+  <path class="d-line d-line--thin" d="M180 240 H460"/>
+  <!-- A window in each wall, and a door. -->
+  <rect class="d-box" x="452" y="278" width="16" height="44" rx="2"/>
+  <path class="d-line d-line--thin" d="M452 300 H468"/>
+  <rect class="d-box" x="172" y="278" width="16" height="44" rx="2"/>
+  <path class="d-line d-line--thin" d="M172 300 H188"/>
+  <rect class="d-box" x="336" y="330" width="34" height="70" rx="2"/>
+  <circle class="d-fill-navy" cx="343" cy="366" r="2.5"/>
+
+  <!-- ======================= HEAT LEAVING ==============================
+       Each arrow is one solid shape. To make an arrow narrower or wider,
+       change the numbers in its "d" attribute. Do not add figures to this
+       drawing: the proportions are not the same in any two properties.
+       =================================================================== -->
+  <!-- Roof: the widest arrows -->
+  <path class="d-loss" d="M245 186 L245 154 L237 154 L252 136 L267 154 L259 154 L259 186 Z"/>
+  <path class="d-loss" d="M381 186 L381 154 L373 154 L388 136 L403 154 L395 154 L395 186 Z"/>
+  <!-- Walls -->
+  <path class="d-loss" d="M178 339 L144 339 L144 332 L126 345 L144 358 L144 351 L178 351 Z"/>
+  <path class="d-loss" d="M462 339 L496 339 L496 332 L514 345 L496 358 L496 351 L462 351 Z"/>
+  <!-- Windows -->
+  <path class="d-loss" d="M470 295 L488 295 L488 289 L502 300 L488 311 L488 305 L470 305 Z"/>
+  <!-- Floor -->
+  <path class="d-loss" d="M273.5 398 L273.5 418 L268 418 L278 432 L288 418 L282.5 418 L282.5 398 Z"/>
+  <!-- Draughts: the narrowest arrows, at the eaves and beside the door.
+       These two are drawn pointing up and then turned by the transform, so
+       they leave the eaves at an angle. -->
+  <path class="d-loss" transform="translate(186 244) rotate(-40)" d="M-3 0 L-3 -22 L-8 -22 L0 -34 L8 -22 L3 -22 L3 0 Z"/>
+  <path class="d-loss" transform="translate(454 244) rotate(40)" d="M-3 0 L-3 -22 L-8 -22 L0 -34 L8 -22 L3 -22 L3 0 Z"/>
+  <path class="d-loss" d="M372 359 L396 359 L396 354 L408 362 L396 370 L396 365 L372 365 Z"/>
+
+  <!-- ======================= LABELS ===================================== -->
+  <text class="d-label" x="320" y="126" text-anchor="middle">Roof</text>
+  <text class="d-label" x="616" y="306" text-anchor="end">Windows</text>
+  <text class="d-sub"   x="616" y="326" text-anchor="end">and doors</text>
+  <text class="d-label" x="120" y="351" text-anchor="end">Walls</text>
+  <text class="d-label" x="120" y="252" text-anchor="end">Draughts</text>
+  <text class="d-sub"   x="120" y="272" text-anchor="end">and gaps</text>
+  <text class="d-label" x="258" y="440" text-anchor="end">Floor</text>
+
+  <!-- ======================= HONEST CAPTION =============================
+       Please keep this caption. It is the reason the drawing carries no
+       figures.
+       =================================================================== -->
+  <text class="d-cap" x="320" y="478" text-anchor="middle">Arrow sizes are illustrative.</text>
+  <text class="d-cap" x="320" y="500" text-anchor="middle">Every property is different.</text>
+</svg>

@@ -105,11 +105,17 @@
       <!-- 2. HERO ------------------------------------------------------
            Headline and supporting copy are the approved wording from the
            brand pack. Keep the headline to two lines on desktop.
+
+           The quiet tiled pattern behind the type is the .aw-hero-pattern
+           class in the stylesheet, which puts assets/hero-pattern.svg over
+           navy. It is decoration and carries no meaning, so there is nothing
+           to describe to a screen reader. Remove that one class for a plain
+           navy panel; there is nothing else to undo.
+
            HERO PHOTOGRAPH GOES HERE eventually: a real West Yorkshire home
-           or a finished outdoor unit. Until then this is a plain navy panel,
-           which is on-brand and loads instantly.
+           or a finished outdoor unit, on a navy panel behind the type.
            ------------------------------------------------------------- -->
-      <section class="aw-hero">
+      <section class="aw-hero aw-hero-pattern">
         <div class="aw-wrap">
           <span class="aw-positioning">Air Source Heat Pumps &bull; West Yorkshire</span>
           <h1>Warmer homes. Lower bills. Cleaner energy.</h1>
@@ -121,6 +127,10 @@
             <a class="aw-btn aw-btn--primary" href="home-energy-assessment/">Check your home&rsquo;s suitability</a>
             <a class="aw-btn aw-btn--secondary" href="how-it-works/">See how the process works</a>
           </div>
+          <p class="aw-small" style="margin-top:24px">
+            Bradford &bull; Leeds &bull; Shipley. Four short stages, no
+            photographs, nothing to measure.
+          </p>
         </div>
       </section>
 
@@ -128,11 +138,13 @@
            Each benefit keeps its own fixed accent colour: warmer homes is
            orange, lower bills is blue, clean energy is green. Do not swap
            them. The icons are hand-drawn inline SVG line icons; they inherit
-           their colour from the CSS class on the <svg>.
+           their colour from the CSS class on the <svg>. They are drawn here
+           rather than pulled from /assets/icons.svg because the accent colour
+           is part of the brand rule for this section.
            ------------------------------------------------------------- -->
       <section class="aw-section">
         <div class="aw-wrap">
-          <div class="aw-grid aw-grid--3">
+          <div class="aw-card-grid">
 
             <div class="aw-card aw-benefit aw-benefit--warmer">
               <svg class="aw-icon aw-icon--warmer" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
@@ -141,11 +153,16 @@
                 <path d="M13 22c0-2 3-2.5 3-4.5S13.5 15 13.5 13"/>
                 <path d="M19 22c0-2 3-2.5 3-4.5S19.5 15 19.5 13"/>
               </svg>
-              <h2>Warmer homes</h2>
+              <h2 class="aw-card__title">Warmer homes</h2>
               <p>
                 A heat pump works best when the whole system is designed to run
                 at a lower temperature. Done properly, rooms hold a steady,
                 even warmth rather than swinging between hot and cold.
+              </p>
+              <p class="aw-small">
+                What it depends on: heat loss calculated room by room, and
+                emitters that can deliver that heat at a lower flow
+                temperature.
               </p>
             </div>
 
@@ -158,12 +175,16 @@
                 <path d="M27 6 17 14l-4-3-8 6"/>
                 <path d="M22 6h5v5"/>
               </svg>
-              <h2>Lower bills</h2>
+              <h2 class="aw-card__title">Lower bills</h2>
               <p>
                 A heat pump moves heat rather than burning fuel, so it delivers
                 more heat than the electricity it uses. What that means for
                 your bills depends on your home, your tariff and how the system
                 is set up &mdash; which is exactly what a survey is for.
+              </p>
+              <p class="aw-small">
+                We will not put a savings figure on this page. Anyone who does
+                it before seeing your house is guessing.
               </p>
             </div>
 
@@ -173,11 +194,16 @@
                 <path d="M16 28C8 27 4 21 5 12c4 .6 7 2.2 9 4.6"/>
                 <path d="M16 28v-9"/>
               </svg>
-              <h2>Clean energy</h2>
+              <h2 class="aw-card__title">Clean energy</h2>
               <p>
                 No gas, oil or LPG burnt in the home, no flue and no combustion
                 products. As the electricity grid gets cleaner, so does the
                 heating.
+              </p>
+              <p class="aw-small">
+                There is no gas safety check on a heat pump, but there is still
+                an annual service. It keeps the efficiency where the design
+                put it.
               </p>
             </div>
 
@@ -185,28 +211,43 @@
         </div>
       </section>
 
-      <!-- 4. SUITABILITY-FIRST MESSAGE (approved copy from the pack) --- -->
+      <!-- 4. SUITABILITY-FIRST MESSAGE
+           The opening paragraph is the approved suitability wording from the
+           brand pack. Do not paraphrase it. -->
       <section class="aw-section aw-section--light">
         <div class="aw-wrap aw-split">
-          <div>
+          <div class="aw-prose">
             <span class="aw-eyebrow">Suitability first</span>
-            <h2>A good installation begins with the home, not the product</h2>
-            <p class="aw-measure">
-              Airwarm checks the building, the radiators or underfloor heating,
-              your hot-water requirements, the controls and the practical
-              installation details before making a recommendation.
+            <h2>A good heat-pump installation begins with the home, not the product</h2>
+            <p class="aw-lede aw-measure">
+              Airwarm checks the building, emitters, hot-water requirements,
+              controls and practical installation details before making a
+              recommendation.
             </p>
             <p class="aw-measure">
               That order matters. A heat pump sized for a home that has not
               been assessed is the single most common reason people end up
-              disappointed. If your property needs work first, we will say so
-              and explain why. If a heat pump is not the right next step for
-              you today, we will tell you that too.
+              disappointed. Too large a unit cycles and costs more to run than
+              it should; too small a unit cannot hold the house at temperature
+              on the coldest few days of the year. Neither problem is visible
+              on a quotation.
+            </p>
+            <p class="aw-measure">
+              So the first question is never &ldquo;which heat pump?&rdquo; It
+              is how much heat your house loses, room by room, and what your
+              existing radiators or underfloor pipework can actually give out
+              at a lower water temperature. If your property needs work first,
+              we will say so and explain why. If a heat pump is not the right
+              next step for you today, we will tell you that too.
+            </p>
+            <p class="aw-measure">
+              <a href="advice/is-my-home-suitable/">Read our guide to what actually decides suitability</a>,
+              or start with the assessment and let us look at your answers.
             </p>
           </div>
           <div>
             <div class="aw-card">
-              <h3>What we look at</h3>
+              <h3 class="aw-card__title">What we look at</h3>
               <ul class="aw-ticks">
                 <li>Building fabric and insulation</li>
                 <li>Radiator or underfloor emitter capacity</li>
@@ -216,17 +257,29 @@
                 <li>Electrical supply and practical pipe routes</li>
               </ul>
             </div>
+            <div class="aw-callout aw-callout--caution" style="margin-top:24px">
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#icon-warning"></use></svg>
+              <h3>Not every home, and not every home today</h3>
+              <p>
+                Some properties are not ready for a heat pump, and a few are
+                not suitable at all. That is a statement about a building&rsquo;s
+                condition today rather than a verdict on it, and there is
+                nearly always something worth doing either way. You will get
+                the reason and the practical options, not a brush-off.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- 5. HOME ENERGY ASSESSMENT — the principal conversion path ---- -->
+      <!-- 5. HOME ENERGY ASSESSMENT — the principal conversion path.
+           The first paragraph is the approved assessment wording. -->
       <section class="aw-section">
         <div class="aw-wrap aw-split">
-          <div>
+          <div class="aw-prose">
             <span class="aw-eyebrow">The first step</span>
             <h2>The Home Energy Assessment</h2>
-            <p class="aw-measure">
+            <p class="aw-lede aw-measure">
               A quick first step to understand whether a heat pump is worth
               exploring for your property.
             </p>
@@ -235,6 +288,12 @@
               home. No photographs. No measuring. Nothing to prepare. At the
               end you get a plain-English view of where your property stands
               and what a sensible next step would be.
+            </p>
+            <p class="aw-measure">
+              Your answers stay in your browser. Nothing is sent to Airwarm,
+              stored or shared, and this site sets no cookies and runs no
+              analytics. If you want to talk to us afterwards, you e-mail us
+              &mdash; so you decide what to share, and when.
             </p>
             <p class="aw-measure aw-small">
               The assessment is an indicative first step. It is not a technical
@@ -246,13 +305,22 @@
           </div>
           <div>
             <div class="aw-card">
-              <h3>Four short stages</h3>
+              <h3 class="aw-card__title">Four short stages</h3>
               <ol class="aw-steps" style="margin-top:16px">
-                <li><h4>Your property</h4><p>Type, rough age, size and current heating.</p></li>
-                <li><h4>Current condition</h4><p>Insulation, windows, radiators and space.</p></li>
-                <li><h4>Your plans</h4><p>Why now, timescale and what you are open to.</p></li>
-                <li><h4>Your result</h4><p>An honest read of where you stand.</p></li>
+                <li class="aw-step"><h4 class="aw-step__title">Your property</h4><p>Type, rough age, size and current heating.</p></li>
+                <li class="aw-step"><h4 class="aw-step__title">Current condition</h4><p>Insulation, windows, radiators and space.</p></li>
+                <li class="aw-step"><h4 class="aw-step__title">Your plans</h4><p>Why now, timescale and what you are open to.</p></li>
+                <li class="aw-step"><h4 class="aw-step__title">Your result</h4><p>An honest read of where you stand.</p></li>
               </ol>
+            </div>
+            <div class="aw-callout aw-callout--positive" style="margin-top:24px">
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#icon-check"></use></svg>
+              <h3>Three possible outcomes</h3>
+              <p>
+                Likely suitable, potentially suitable, or not currently
+                suitable. Whichever you get, it comes with the reason and a
+                route forward rather than a score.
+              </p>
             </div>
           </div>
         </div>
@@ -265,21 +333,32 @@
           <span class="aw-eyebrow">The process</span>
           <h2>How Airwarm works</h2>
           <p class="aw-hero__support">
-            Eight stages, in order, with a decision point at each one. You are
-            not committed to anything by starting at the beginning.
+            Clear advice, careful surveying, transparent design, respectful
+            installation and long-term support. Eight stages, in order, with a
+            decision point at each one. You are not committed to anything by
+            starting at the beginning.
           </p>
+
+          <figure class="aw-figure" style="margin-top:40px">
+            <img class="aw-diagram" src="assets/diagram-process.svg" alt="The eight stages of an Airwarm project in order: Home Energy Assessment, review of your answers, suitability call, detailed survey, design and proposal, planned installation, commissioning and handover, then servicing and support.">
+            <figcaption class="aw-figure__caption">
+              The eight stages. Each one ends with a decision, and you can stop
+              at any of them.
+            </figcaption>
+          </figure>
+
           <div class="aw-grid aw-grid--2" style="margin-top:40px">
             <ol class="aw-steps">
-              <li><h3>Home Energy Assessment</h3><p>A few minutes online.</p></li>
-              <li><h3>We review your answers</h3><p>A person reads them, not a scoring engine.</p></li>
-              <li><h3>Short suitability call</h3><p>We check the details that matter.</p></li>
-              <li><h3>Detailed home survey</h3><p>Only where it is justified.</p></li>
+              <li class="aw-step"><h3 class="aw-step__title">Home Energy Assessment</h3><p>A few minutes online, in your own time.</p></li>
+              <li class="aw-step"><h3 class="aw-step__title">We review your answers</h3><p>A person reads them, not a scoring engine.</p></li>
+              <li class="aw-step"><h3 class="aw-step__title">Short suitability call</h3><p>We check the details that matter, and whether a survey is justified at all.</p></li>
+              <li class="aw-step"><h3 class="aw-step__title">Detailed home survey</h3><p>An engineering visit, only where it is warranted.</p></li>
             </ol>
             <ol class="aw-steps" start="5" style="counter-reset:awstep 4">
-              <li><h3>Design and clear proposal</h3><p>Written down, with the assumptions shown.</p></li>
-              <li><h3>Planned installation</h3><p>Dates, protection and daily updates.</p></li>
-              <li><h3>Commissioning and handover</h3><p>Tested, balanced and explained to you.</p></li>
-              <li><h3>Servicing and support</h3><p>We stay contactable afterwards.</p></li>
+              <li class="aw-step"><h3 class="aw-step__title">Design and clear proposal</h3><p>Written down, with the assumptions shown as well as the answers.</p></li>
+              <li class="aw-step"><h3 class="aw-step__title">Planned installation</h3><p>Dates, protection, daily updates and the property left safe each evening.</p></li>
+              <li class="aw-step"><h3 class="aw-step__title">Commissioning and handover</h3><p>Tested, balanced, documented and explained to you.</p></li>
+              <li class="aw-step"><h3 class="aw-step__title">Servicing and support</h3><p>Follow-up contact, a comfort review and an annual service reminder.</p></li>
             </ol>
           </div>
           <div class="aw-btn-row">
@@ -291,38 +370,68 @@
       <!-- 7. WHY CHOOSE AIRWARM ---------------------------------------- -->
       <section class="aw-section">
         <div class="aw-wrap">
-          <h2>Why choose Airwarm</h2>
-          <div class="aw-grid aw-grid--2" style="margin-top:24px">
+          <span class="aw-eyebrow">Why Airwarm</span>
+          <h2>What we think a heating company should do</h2>
+          <p class="aw-measure">
+            None of this is unusual. It is simply written down, so you can hold
+            us to it.
+          </p>
+          <div class="aw-card-grid" style="margin-top:24px">
             <div class="aw-card">
-              <h3>Honest advice, including when the answer is no</h3>
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#icon-question"></use></svg>
+              <h3 class="aw-card__title">Honest advice, including when the answer is no</h3>
               <p>
                 Not every property is ready for a heat pump. We will explain
                 the reason rather than quietly quoting for something that will
-                not perform.
+                not perform. Turning work down is part of the job.
               </p>
             </div>
             <div class="aw-card">
-              <h3>Technical preparation before installation</h3>
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#icon-survey"></use></svg>
+              <h3 class="aw-card__title">Technical preparation before installation</h3>
               <p>
                 Heat loss, emitter capacity, flow temperature, hot water,
                 controls, electrical requirements and unit siting are all
-                checked and written down before work starts.
+                checked and written down before work starts. Every proposal is
+                reviewed against those before it is issued to you.
               </p>
             </div>
             <div class="aw-card">
-              <h3>Respectful workmanship</h3>
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#icon-home"></use></svg>
+              <h3 class="aw-card__title">Respectful workmanship</h3>
               <p>
                 Floors and furniture protected, tidy storage, dust and noise
-                controlled, daily updates and the property left safe every
+                controlled, concealed pipework photographed before it is
+                covered, daily updates and the property left safe every
                 evening.
               </p>
             </div>
             <div class="aw-card">
-              <h3>Clear documentation and aftercare</h3>
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#icon-document"></use></svg>
+              <h3 class="aw-card__title">Clear documentation and aftercare</h3>
               <p>
                 A plain-English system guide, your operating settings, what to
                 expect through the seasons, warranty information, a service
-                schedule and a follow-up call.
+                schedule and a follow-up call. Undocumented work is a problem
+                you inherit.
+              </p>
+            </div>
+            <div class="aw-card">
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#icon-design"></use></svg>
+              <h3 class="aw-card__title">Calculations you are allowed to see</h3>
+              <p>
+                Any figure we show you comes with its inputs and assumptions.
+                You should never be asked to accept a number out of a black
+                box &mdash; including ours.
+              </p>
+            </div>
+            <div class="aw-card">
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#icon-service"></use></svg>
+              <h3 class="aw-card__title">The same people afterwards</h3>
+              <p>
+                Commissioning is the start of a system&rsquo;s life, not the
+                end of the job. Airwarm plans to service and optimise what it
+                installs rather than handing you a manual and disappearing.
               </p>
             </div>
           </div>
@@ -332,28 +441,50 @@
       <!-- 8. CORE SERVICES -------------------------------------------- -->
       <section class="aw-section aw-section--light">
         <div class="aw-wrap">
+          <span class="aw-eyebrow">Services</span>
           <h2>What Airwarm does</h2>
-          <div class="aw-grid aw-grid--3" style="margin-top:24px">
+          <div class="aw-card-grid" style="margin-top:24px">
             <a class="aw-card aw-card--link" href="air-source-heat-pumps/">
-              <h3>Air source heat pumps</h3>
-              <p>What they are, where they work well and where they need help.</p>
+              <h3 class="aw-card__title">Air source heat pumps</h3>
+              <p>What they are, where they work well and where they need help first.</p>
             </a>
             <a class="aw-card aw-card--link" href="heat-pump-survey/">
-              <h3>Heat pump survey</h3>
+              <h3 class="aw-card__title">Heat pump survey</h3>
               <p>The detailed technical assessment behind a proper design.</p>
             </a>
             <a class="aw-card aw-card--link" href="heat-pump-installation/">
-              <h3>Installation</h3>
+              <h3 class="aw-card__title">Installation</h3>
               <p>Planned, protected, commissioned and handed over properly.</p>
             </a>
           </div>
-          <p class="aw-small" style="margin-top:24px">
-            Radiator and emitter upgrades, low-temperature heating
-            improvements, cylinder work, controls setup and commissioning are
-            part of the installation service. Servicing, optimisation visits
-            and solar or battery coordination are planned additions &mdash;
-            pages for those will follow.
-          </p>
+
+          <div class="aw-split" style="margin-top:40px">
+            <div class="aw-prose">
+              <h3>Part of an installation</h3>
+              <ul class="aw-ticks aw-measure">
+                <li>Room-by-room heat loss calculation and emitter design</li>
+                <li>Radiator and emitter upgrades where the design needs them</li>
+                <li>Low-temperature heating improvements and hydraulic corrections</li>
+                <li>Hot-water cylinder design, siting and installation</li>
+                <li>Controls, weather compensation and commissioning</li>
+                <li>Coordination of electrical work through vetted contractors</li>
+              </ul>
+            </div>
+            <div class="aw-prose">
+              <h3>Planned, and honest about it</h3>
+              <ul class="aw-ticks aw-measure">
+                <li>Annual servicing and optimisation visits</li>
+                <li>Underfloor heating integration</li>
+                <li>Solar and battery coordination</li>
+                <li>Developer, new-build and renovation support</li>
+              </ul>
+              <p class="aw-small">
+                These are planned additions rather than live services, and
+                pages for them will follow. Airwarm does not offer a 24-hour or
+                emergency call-out service, and will not imply otherwise.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -368,17 +499,23 @@
         <div class="aw-wrap">
           <span class="aw-eyebrow">What we can show you today</span>
           <h2>Judge us on the process, because that is what exists</h2>
-          <div class="aw-grid aw-grid--3" style="margin-top:24px">
+          <p class="aw-measure">
+            A new company cannot show you a decade of installations. It can show
+            you exactly how it intends to work, and be held to it.
+          </p>
+          <div class="aw-card-grid" style="margin-top:24px">
             <div class="aw-card">
-              <h3>A documented process</h3>
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#icon-document"></use></svg>
+              <h3 class="aw-card__title">A documented process</h3>
               <p>
                 Survey, design review, installation control and commissioning
                 are written procedures, not habits. You can ask to see what
-                happens at each stage.
+                happens at each stage, and what gets recorded.
               </p>
             </div>
             <div class="aw-card">
-              <h3>Suitability before sales</h3>
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#icon-check"></use></svg>
+              <h3 class="aw-card__title">Suitability before sales</h3>
               <p>
                 We would rather turn down a job than install a system that will
                 not perform. The assessment exists to find that out early, for
@@ -386,7 +523,8 @@
               </p>
             </div>
             <div class="aw-card">
-              <h3>A commitment to aftercare</h3>
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#icon-service"></use></svg>
+              <h3 class="aw-card__title">A commitment to aftercare</h3>
               <p>
                 Follow-up contact after handover, a comfort review once the
                 system has been running, seasonal optimisation where it is
@@ -403,6 +541,8 @@
                3. Accreditation and certification — only once held and current.
                4. Manufacturer training credentials — only once completed.
                5. Case studies — problem, survey decision, solution, outcome.
+               6. Company registration, VAT and insurance details.
+               7. Complaints procedure, once written and published.
                ============================================================ -->
           <div class="aw-grid aw-grid--2" style="margin-top:24px">
             <div class="aw-evidence-slot">
@@ -414,6 +554,17 @@
               <strong>Photographs of our work:</strong> this site deliberately
               uses no stock photography. Pictures here will be Airwarm
               installations in real West Yorkshire homes.
+            </div>
+            <div class="aw-evidence-slot">
+              <strong>Certification:</strong> Airwarm&rsquo;s certification
+              route is being confirmed. It will be stated plainly here, and it
+              will be checkable on the certification body&rsquo;s own public
+              register, rather than claimed as a logo.
+            </div>
+            <div class="aw-evidence-slot">
+              <strong>Case studies:</strong> the problem, what the survey
+              found, what was installed and how it performed. Published only
+              once real projects exist and customers have agreed to it.
             </div>
           </div>
         </div>
@@ -430,52 +581,147 @@
             Neighbouring towns will be added as coverage grows, rather than
             claimed in advance.
           </p>
-          <div class="aw-grid aw-grid--3" style="margin-top:24px">
+          <p class="aw-measure">
+            The three pages below are not the same page with the town name
+            swapped. The housing is genuinely different, and so is the advice.
+          </p>
+          <div class="aw-card-grid" style="margin-top:24px">
             <a class="aw-card aw-card--link" href="areas/bradford/">
-              <h3>Bradford</h3>
-              <p>Stone terraces, solid walls and steep streets.</p>
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#icon-location"></use></svg>
+              <h3 class="aw-card__title">Bradford</h3>
+              <p>
+                Solid stone terraces, back-to-backs, cellars and split levels,
+                and real altitude on the tops.
+              </p>
             </a>
             <a class="aw-card aw-card--link" href="areas/leeds/">
-              <h3>Leeds</h3>
-              <p>Back-to-backs, interwar semis and suburban detached homes.</p>
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#icon-location"></use></svg>
+              <h3 class="aw-card__title">Leeds</h3>
+              <p>
+                Back-to-backs where siting decides it, straightforward interwar
+                suburbs, and flats where the freeholder decides it.
+              </p>
             </a>
             <a class="aw-card aw-card--link" href="areas/shipley/">
-              <h3>Shipley</h3>
-              <p>Airedale mill housing, Saltaire and valley-side properties.</p>
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="assets/icons.svg#icon-location"></use></svg>
+              <h3 class="aw-card__title">Shipley</h3>
+              <p>
+                Cavity-walled semis and larger detached houses, valley-side
+                stone terraces, and listed property in Saltaire.
+              </p>
             </a>
           </div>
+          <p class="aw-small" style="margin-top:24px">
+            Just outside? <a href="mailto:hello@airwarm.co.uk?subject=Coverage%20enquiry">E-mail us</a>
+            and we will tell you honestly whether we can help yet.
+          </p>
         </div>
       </section>
 
-      <!-- 11. ADVICE CONTENT ------------------------------------------
-           The blueprint asks for three cornerstone guides here. None are
-           written yet, so these are labelled as planned rather than linked
-           to empty pages. Replace with real article links when they exist.
-           ------------------------------------------------------------- -->
+      <!-- 11. ADVICE CONTENT — three cornerstone guides, per the blueprint.
+           When a new guide is published, swap one of these cards for it. -->
       <section class="aw-section">
         <div class="aw-wrap">
           <span class="aw-eyebrow">Advice</span>
-          <h2>Guides we are writing</h2>
+          <h2>Start with the three that matter most</h2>
           <p class="aw-measure">
             Practical, jargon-free guidance rather than sales material. These
-            are in preparation and will be published as they are finished.
+            three cover the questions almost everybody has first.
           </p>
-          <div class="aw-grid aw-grid--3" style="margin-top:24px">
-            <div class="aw-card">
-              <h3>Is my home suitable for a heat pump?</h3>
-              <p class="aw-small">Planned guide</p>
-            </div>
-            <div class="aw-card">
-              <h3>Why radiators matter more than the heat pump</h3>
-              <p class="aw-small">Planned guide</p>
-            </div>
-            <div class="aw-card">
-              <h3>What running costs actually depend on</h3>
-              <p class="aw-small">Planned guide</p>
-            </div>
+          <div class="aw-card-grid" style="margin-top:24px">
+            <a class="aw-card aw-card--link" href="advice/is-my-home-suitable/">
+              <h3 class="aw-card__title">Is my home suitable for a heat pump?</h3>
+              <p>
+                What actually decides it, what does not, and which of the
+                common objections turn out to be solvable.
+              </p>
+            </a>
+            <a class="aw-card aw-card--link" href="advice/heat-loss-explained/">
+              <h3 class="aw-card__title">Heat loss explained, without the maths</h3>
+              <p>
+                Why every sensible heating decision starts with how much heat
+                the building loses, and what the calculation is for.
+              </p>
+            </a>
+            <a class="aw-card aw-card--link" href="advice/radiators-and-emitters/">
+              <h3 class="aw-card__title">Will I need new radiators?</h3>
+              <p>
+                Lower flow temperatures, emitter sizing, and why some rooms
+                need a change while others do not.
+              </p>
+            </a>
           </div>
+
+          <h3 style="margin-top:40px">Also published</h3>
+          <ul class="aw-ticks aw-measure">
+            <li><a href="advice/hot-water-and-cylinders/">Hot water with a heat pump: cylinders, capacity and what changes</a></li>
+            <li><a href="advice/weather-compensation/">Weather compensation, and why heat pumps should not be switched on and off</a></li>
+            <li><a href="advice/what-determines-running-costs/">What actually determines a heat pump&rsquo;s running cost</a></li>
+            <li><a href="advice/solar-and-battery/">Combining a heat pump with solar panels and a battery</a></li>
+            <li><a href="advice/heat-pumps-during-renovation/">Planning a heat pump into a renovation or extension</a></li>
+            <li><a href="advice/servicing-and-maintenance/">Heat pump servicing: what it involves and why it matters</a></li>
+            <li><a href="advice/common-faults/">Common heat pump problems and what usually causes them</a></li>
+            <li><a href="advice/grants-and-funding/">How heat pump grant funding works, in principle</a></li>
+          </ul>
+
+          <h3 style="margin-top:40px">Quick answers</h3>
+          <div class="aw-faq" style="margin-top:16px">
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">Will a heat pump work in my house?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  Most homes can be heated well by a heat pump, but not every
+                  home today and not every home without changes. It depends on
+                  how much heat your house loses, whether the radiators can
+                  deliver that heat at a lower water temperature, whether there
+                  is a sensible position for the outdoor unit and room for a hot
+                  water cylinder, and whether the electrical supply is adequate.
+                  The Home Energy Assessment is a short first check, and a
+                  survey gives the real answer.
+                </p>
+              </div>
+            </details>
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">Do heat pumps work in cold weather?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  Yes. Air source heat pumps extract heat from outside air well
+                  below freezing. Efficiency reduces as it gets colder, and
+                  demand rises at the same time, so consumption is highest in
+                  the coldest weather. The system is sized for a cold design day
+                  rather than an average one.
+                </p>
+              </div>
+            </details>
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">How much does a heat pump installation cost?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  Airwarm is not publishing prices ahead of its trading launch,
+                  and a figure quoted without a survey would be a guess. What
+                  determines the cost is the size of the system, how many
+                  emitters need changing, the cylinder and its position, the
+                  pipework and electrical work required, and access. The
+                  proposal sets all of it out itemised.
+                </p>
+              </div>
+            </details>
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">Will a heat pump reduce my energy bills?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  That depends on your building, your tariff, the efficiency the
+                  system actually achieves and how you use it, so Airwarm will
+                  not put a figure on it. What Airwarm will do is explain the
+                  things that determine running cost and design the system to
+                  run at the lowest useful flow temperature.
+                </p>
+              </div>
+            </details>
+          </div>
+
           <div class="aw-btn-row">
-            <a class="aw-btn aw-btn--outline" href="advice/">See all planned guides</a>
+            <a class="aw-btn aw-btn--outline" href="advice/">Read all the guides</a>
           </div>
         </div>
       </section>
@@ -497,14 +743,21 @@
           installations and accreditation details will appear here when they
           are real and can be checked &mdash; not before.
         </p>
+        <p class="aw-measure">
+          So if you are reading this and planning ahead, the assessment is
+          still worth doing: it tells you where your property stands, what
+          would need to change and in roughly what order. When you get in
+          touch we will tell you plainly what we can and cannot do yet.
+        </p>
       </div>
         </div>
       </section>
 
       <!-- FINAL CALL TO ACTION — repeated on every page, per the blueprint.
            The assessment is the primary action; e-mail is the route for
-           anything unusual. -->
-      <section class="aw-section aw-section--navy">
+           anything unusual. This block is the same on every page: if you
+           change the wording, change it everywhere. -->
+      <section class="aw-section aw-section--navy aw-cta-band">
         <div class="aw-wrap">
           <h2>Start with your home, not a product</h2>
           <p class="aw-hero__support">
@@ -596,11 +849,28 @@
       <div class="aw-footer__base">
         <p>
           Airwarm is a new West Yorkshire business preparing to install and
-          support air source heat pumps. Company registration and VAT details
-          will be shown here once they are confirmed.
+          support air source heat pumps.
         </p>
-        <!-- COMPANY DETAILS GO HERE: registered name, company number,
-             registered office, VAT number. Do not add them until they exist. -->
+        <!-- STATUTORY COMPANY DISCLOSURE — required by law. Do not remove,
+             move off the footer, or hide it behind a link.
+             The Companies Act 2006 s.82, the Company, Limited Liability
+             Partnership and Business (Names and Trading Disclosures)
+             Regulations 2015 and the Electronic Commerce (EC Directive)
+             Regulations 2002 together require the registered name, the
+             company number, the place of registration and the registered
+             office address to be easily and permanently accessible on the
+             website. The footer appears on every page, which is what makes it
+             permanently accessible. If any of these details change, change
+             them here in every page at the same time. -->
+        <p class="aw-small">
+          AIRWARM LTD is a company registered in England and Wales, company
+          number 17362672. Registered office: 2 Aireview Crescent, Baildon,
+          Shipley, BD17 7LS.
+        </p>
+        <!-- VAT NUMBER GOES HERE if and when Airwarm registers for VAT. Add it
+             as a further sentence in the paragraph above, for example
+             "VAT registration number GB000000000." Do not invent one, and do
+             not display a VAT number before registration is confirmed. -->
         <!-- SOCIAL LINKS: add only channels that are actively maintained. -->
         <p>&copy; 2026 Airwarm.</p>
       </div>

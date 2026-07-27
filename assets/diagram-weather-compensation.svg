@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ===========================================================================
+  AIRWARM — diagram-weather-compensation.svg
+  A weather compensation curve: as it gets milder outside, the flow temperature
+  comes down. The flat line is a system left at one fixed flow temperature all
+  year. Deliberately no numbers on either axis: the right curve depends on the
+  individual property.
+
+  HOW TO CHANGE A LABEL
+  Every word a visitor reads sits between <text ...> and </text>. Search this
+  file for the words you want to change and type over them. Nothing else has
+  to move. Keep labels short: they are set larger on small screens, and a long
+  label can run past the edge of the drawing.
+
+  The same wording is repeated in the description below, which is what a
+  screen reader announces. If you change a label, change that to match.
+
+  Colours are the approved Airwarm palette only. They are declared once, in
+  the style block, and nowhere else in this file.
+  ===========================================================================
+-->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 640 400"
+     role="img"
+     aria-labelledby="wc-title wc-desc">
+
+  <title id="wc-title">What weather compensation does</title>
+  <desc id="wc-desc">A graph with outdoor temperature along the bottom, colder on the left
+    and milder on the right, and flow temperature up the side. A
+    sloping line shows a weather compensated system: when it is cold
+    outside the flow temperature is high, and as it gets milder
+    outside the flow temperature comes down. A flat dashed line above
+    it shows a system left at one fixed flow temperature whatever the
+    weather. Neither axis carries a numeric scale, because the right
+    curve depends on the individual property.</desc>
+
+  <style>
+    /* ---------------------------------------------------------------------
+       AIRWARM DIAGRAM STYLES
+       The approved palette, and nothing else:
+         navy #071A2B    white #FFFFFF        orange #F28C28
+         blue #2F80ED    green #63C174        light neutral #F4F7F9
+         mid grey #65717C                     dark text #14212B
+
+       These class names are identical in every Airwarm diagram, so the whole
+       set keeps one line weight and one set of type sizes.
+
+       ONE DELIBERATE EXCEPTION, FOR LEGIBILITY.
+       The brand orange #F28C28 reaches only 2.3:1 against this pale panel,
+       which is below the 3:1 that WCAG asks for a line or a shape that
+       carries meaning. So a thin orange LINE on the pale panel is drawn in
+       the darker orange #B55F0B (4.6:1), and switches back to #F28C28 on the
+       navy panel used by the dark browser theme, where the brand orange
+       reaches 7.2:1. Solid orange shapes keep the brand orange and are given
+       a navy outline instead, so their edge carries the contrast.
+       The same note is in css/airwarm.css and assets/README.md.
+       --------------------------------------------------------------------- */
+    .d-surface { fill: #F4F7F9; }
+    .d-frame   { fill: none; stroke: #071A2B; stroke-width: 1.5; opacity: 0.16; }
+    .d-box     { fill: #FFFFFF; stroke: #071A2B; stroke-width: 2; }
+    .d-box--quiet { fill: none; stroke: #65717C; stroke-width: 1.5; }
+    .d-line    { fill: none; stroke: #071A2B; stroke-width: 2;
+                 stroke-linecap: round; stroke-linejoin: round; }
+    .d-line--thin { stroke-width: 1.5; }
+    .d-line--dash { stroke-dasharray: 6 6; }
+    .d-hot     { stroke: #B55F0B; }   /* warmth, and the higher of two temperatures */
+    .d-cool    { stroke: #2F80ED; }   /* the cool side, and the lower of two temperatures */
+    .d-quiet   { stroke: #65717C; }
+    .d-fill-navy  { fill: #071A2B; }
+    .d-fill-hot   { fill: #B55F0B; }
+    .d-fill-cool  { fill: #2F80ED; }
+    .d-fill-quiet { fill: #65717C; }
+    .d-fill-white { fill: #FFFFFF; }
+
+    /* TEXT. .d-label is a name, .d-sub an explanatory line, .d-num a number
+       inside a step marker, .d-cap a small caption or key entry. */
+    .d-label { font-family: Montserrat, 'Segoe UI', Arial, sans-serif;
+               font-size: 18px; font-weight: 600; fill: #14212B; }
+    .d-sub   { font-family: Montserrat, 'Segoe UI', Arial, sans-serif;
+               font-size: 15px; font-weight: 500; fill: #65717C; }
+    .d-num   { font-family: Montserrat, 'Segoe UI', Arial, sans-serif;
+               font-size: 15px; font-weight: 700; fill: #FFFFFF; }
+    .d-cap   { font-family: Montserrat, 'Segoe UI', Arial, sans-serif;
+               font-size: 15px; font-weight: 500; fill: #65717C; }
+
+    /* NARROW SCREENS. Below about 520px the explanatory lines are hidden and
+       the remaining labels are set larger, so the drawing still reads on a
+       phone. Nothing is lost: the page copy carries the detail, and the
+       description near the top of this file carries it for screen readers. */
+    .d-narrow-only { display: none; }
+    @media (max-width: 520px) {
+      .d-label { font-size: 24px; }
+      .d-num   { font-size: 18px; }
+      .d-cap   { font-size: 20px; }
+      .d-sub, .d-wide-only { display: none; }
+      .d-narrow-only { display: inline; }
+    }
+
+    /* DARK BROWSER THEME. The panel turns navy and the ink turns white, so
+       the diagram never depends on sitting on a white page. Grey text is
+       replaced with the light neutral, because mid grey on navy is only
+       3.5:1 and that is not enough for small text. */
+    @media (prefers-color-scheme: dark) {
+      .d-surface { fill: #071A2B; }
+      .d-frame   { stroke: #FFFFFF; opacity: 0.28; }
+      .d-box     { fill: #071A2B; stroke: #FFFFFF; }
+      .d-line    { stroke: #FFFFFF; }
+      .d-hot     { stroke: #F28C28; }
+      .d-fill-hot { fill: #F28C28; }
+      .d-label   { fill: #FFFFFF; }
+      .d-sub, .d-cap { fill: #F4F7F9; }
+      .d-fill-navy  { fill: #FFFFFF; }
+      .d-fill-white { fill: #071A2B; }
+      .d-num        { fill: #071A2B; }
+    }
+
+    /* Extra styles for this diagram only. The compensated line is solid and
+       the fixed line is dashed, so the two can be told apart without relying
+       on colour. */
+    .d-grid { fill: none; stroke: #65717C; stroke-width: 1; opacity: 0.28; }
+    .d-curve { fill: none; stroke: #2F80ED; stroke-width: 3;
+               stroke-linecap: round; }
+  </style>
+
+  <defs>
+    <!-- Arrowheads. One per colour, so each takes the dark theme change with
+         its line. There is no need to change these. -->
+    <marker id="arrow-ink" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path class="d-fill-navy" d="M0 0 L10 5 L0 10 Z"/>
+    </marker>
+    <marker id="arrow-hot" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path class="d-fill-hot" d="M0 0 L10 5 L0 10 Z"/>
+    </marker>
+    <marker id="arrow-cool" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path class="d-fill-cool" d="M0 0 L10 5 L0 10 Z"/>
+    </marker>
+    <marker id="arrow-quiet" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path class="d-fill-quiet" d="M0 0 L10 5 L0 10 Z"/>
+    </marker>
+  </defs>
+
+  <!-- The diagram carries its own background panel, so it stays legible on a
+       white, a pale grey or a navy section. -->
+  <rect class="d-surface" x="0" y="0" width="640" height="400" rx="12"/>
+  <rect class="d-frame" x="0.75" y="0.75" width="638.5" height="398.5" rx="11.25"/>
+
+  <!-- ======================= GRID AND AXES ==============================
+       The grid lines carry no numbers on purpose. There is no scale on this
+       drawing, because the right curve is different in every property.
+       =================================================================== -->
+  <g class="d-grid">
+    <path d="M110 240 H600"/>
+    <path d="M110 180 H600"/>
+    <path d="M110 120 H600"/>
+    <path d="M232 60 V300"/>
+    <path d="M355 60 V300"/>
+    <path d="M478 60 V300"/>
+  </g>
+  <path class="d-line" d="M110 52 V300 H608"
+        marker-start="url(#arrow-ink)" marker-end="url(#arrow-ink)"/>
+
+  <!-- ======================= THE TWO LINES ==============================
+       The sloping solid line is a weather compensated system. The flat dashed
+       line is one left at a fixed flow temperature.
+       =================================================================== -->
+  <path class="d-line d-line--dash d-quiet" d="M110 104 H592"/>
+  <path class="d-curve" d="M110 82 Q330 196 592 262"/>
+
+  <!-- ======================= LABELS ===================================== -->
+  <text class="d-label" x="592" y="92" text-anchor="end">Fixed flow temperature</text>
+  <text class="d-label d-wide-only"   x="330" y="176">Weather compensated</text>
+  <text class="d-label d-narrow-only" x="250" y="160">Weather</text>
+  <text class="d-label d-narrow-only" x="250" y="188">compensated</text>
+
+  <!-- The axis names. The one up the side is rotated: the two numbers inside
+       rotate() are the point it turns about, so if you move the text, change
+       the x and y and those two numbers together. -->
+  <text class="d-label" x="360" y="352" text-anchor="middle">Outdoor temperature</text>
+  <text class="d-label" x="34" y="180" text-anchor="middle"
+        transform="rotate(-90 34 180)">Flow temperature</text>
+
+  <text class="d-sub" x="118" y="322">colder</text>
+  <text class="d-sub" x="600" y="322" text-anchor="end">milder</text>
+  <text class="d-sub" x="98" y="66" text-anchor="end">higher</text>
+  <text class="d-sub" x="98" y="292" text-anchor="end">lower</text>
+
+  <!-- ======================= CAPTION ==================================== -->
+  <text class="d-cap" x="360" y="372" text-anchor="middle">No scale shown.</text>
+  <text class="d-cap" x="360" y="392" text-anchor="middle">The curve is set for the individual home.</text>
+</svg>

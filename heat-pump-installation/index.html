@@ -112,20 +112,48 @@
     </div>
   </nav>
 
-      <section class="aw-section aw-section--tight">
+      <!-- HERO. The quiet tiled pattern behind the type comes from the
+           .aw-hero-pattern class in the stylesheet, which puts
+           assets/hero-pattern.svg over navy. Remove that one class to get a
+           plain navy panel; there is nothing else to undo. -->
+      <section class="aw-hero aw-hero-pattern">
         <div class="aw-wrap">
+          <span class="aw-positioning">Air Source Heat Pumps &bull; West Yorkshire</span>
           <h1>An installation that is planned before it starts</h1>
-          <p class="aw-lead aw-measure">
+          <p class="aw-hero__support">
             Good installation is mostly preparation. By the time anyone arrives
             at your door, the design is settled, the equipment is on site and
             everybody knows what is happening on which day.
           </p>
+          <div class="aw-btn-row">
+            <a class="aw-btn aw-btn--primary" href="../home-energy-assessment/">Check your home&rsquo;s suitability</a>
+            <a class="aw-btn aw-btn--secondary" href="../how-it-works/">See the eight stages</a>
+          </div>
         </div>
       </section>
 
-      <section class="aw-section aw-section--light">
+      <section class="aw-section aw-section--tight">
+        <div class="aw-wrap">
+          <nav class="aw-toc" aria-label="On this page">
+            <h2>On this page</h2>
+            <ol>
+              <li><a href="#before">Before we start</a></li>
+              <li><a href="#installed">What actually gets installed</a></li>
+              <li><a href="#standards">Standards on site</a></li>
+              <li><a href="#siting">Siting the outdoor unit</a></li>
+              <li><a href="#commissioning">Commissioning, in full</a></li>
+              <li><a href="#scope">What is included, and what is not</a></li>
+              <li><a href="#handover">Handover, and what happens after</a></li>
+              <li><a href="#faqs">Frequently asked questions</a></li>
+            </ol>
+          </nav>
+        </div>
+      </section>
+
+      <!-- BEFORE ---------------------------------------------------- -->
+      <section class="aw-section aw-section--light" id="before">
         <div class="aw-wrap aw-split">
-          <div>
+          <div class="aw-prose">
             <h2>Before we start</h2>
             <p class="aw-measure">
               Design confirmed and reviewed. Equipment and materials ordered
@@ -136,12 +164,33 @@
             </p>
             <p class="aw-measure">
               This is the part customers never see and the part that decides
-              whether the week goes well.
+              whether the week goes well. Almost every installation that goes
+              badly goes badly for a reason that was knowable beforehand: a
+              cylinder that will not fit up the stairs, a pipe route nobody had
+              looked at, an electrical supply that turns out to need the network
+              operator, or a delivery with nowhere to park.
+            </p>
+            <p class="aw-measure">
+              So there is a pre-start check, and it is a real one. Nothing
+              mobilises until it is done.
             </p>
           </div>
           <div>
             <div class="aw-card">
-              <h3>Who this is for</h3>
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-document"></use></svg>
+              <h3 class="aw-card__title">The pre-start check</h3>
+              <ul class="aw-ticks">
+                <li>Design and equipment confirmed against the proposal</li>
+                <li>Deliveries booked and checked in</li>
+                <li>Subcontractors briefed on the programme and the customer standard</li>
+                <li>Access, parking and welfare agreed</li>
+                <li>Protection and pipe routes agreed</li>
+                <li>Your expectations, including the period without heating</li>
+                <li>Risk assessment for the work</li>
+              </ul>
+            </div>
+            <div class="aw-card" style="margin-top:24px">
+              <h3 class="aw-card__title">Who this is for</h3>
               <ul class="aw-ticks">
                 <li>Homeowners who have had a survey and accepted a proposal</li>
                 <li>Renovations where heating is one part of a larger programme</li>
@@ -152,12 +201,104 @@
         </div>
       </section>
 
-      <section class="aw-section">
+      <!-- WHAT GETS INSTALLED --------------------------------------- -->
+      <section class="aw-section" id="installed">
+        <div class="aw-wrap">
+          <h2>What actually gets installed</h2>
+          <p class="aw-measure">
+            A heat pump installation is not one appliance. It is an outdoor unit,
+            indoor plant, a cylinder, emitter changes, controls and the pipework
+            that ties them together &mdash; installed to a design that was
+            reviewed before anyone ordered anything.
+          </p>
+
+          <figure class="aw-figure" style="margin-top:24px">
+            <img class="aw-diagram" src="../assets/diagram-system-layout.svg" alt="A complete air source heat pump system: the outdoor unit connected by insulated flow and return pipework to indoor plant, a hot water cylinder with its controls, the radiator or underfloor circuits, and a weather-compensating controller with an outside sensor.">
+            <figcaption class="aw-figure__caption">
+              The parts of a system, and how they connect. Which of them your
+              project involves is settled at survey and written into the
+              proposal.
+            </figcaption>
+          </figure>
+
+          <div class="aw-card-grid" style="margin-top:40px">
+            <div class="aw-card">
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-outdoor-unit"></use></svg>
+              <h3 class="aw-card__title">Outdoor unit and pipework</h3>
+              <p>
+                Mounted level and clear of the ground in the agreed position,
+                with insulated flow and return pipework, a condensate route that
+                drains safely, and electrical isolation where it can be reached.
+              </p>
+            </div>
+            <div class="aw-card">
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-cylinder"></use></svg>
+              <h3 class="aw-card__title">Cylinder and hot water</h3>
+              <p>
+                Cylinder installed in the agreed position with the controls and
+                safety arrangements its type requires. An unvented cylinder
+                brings additional building regulation requirements, and the
+                documentation for our scope comes with it.
+              </p>
+              <p class="aw-small">
+                <a href="../advice/hot-water-and-cylinders/">Hot water and cylinders explained</a>
+              </p>
+            </div>
+            <div class="aw-card">
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-radiator"></use></svg>
+              <h3 class="aw-card__title">Emitter changes</h3>
+              <p>
+                The radiators the design identified, and only those. Some rooms
+                keep what they have. Where a bathroom towel rail cannot deliver
+                enough heat at the design temperature, a larger rail or an extra
+                emitter is designed in rather than discovered later.
+              </p>
+              <p class="aw-small">
+                <a href="../advice/radiators-and-emitters/">Will I need new radiators?</a>
+              </p>
+            </div>
+            <div class="aw-card">
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-controls"></use></svg>
+              <h3 class="aw-card__title">Controls</h3>
+              <p>
+                Weather compensation configured from the heat loss calculation,
+                with an outside sensor, and set up for steady low-temperature
+                running rather than left on factory defaults.
+              </p>
+            </div>
+            <div class="aw-card">
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-install"></use></svg>
+              <h3 class="aw-card__title">Hydraulics and electrical</h3>
+              <p>
+                Pipe sizes and flow rates to the design, the system flushed,
+                filled and balanced, and electrical work carried out by vetted
+                contractors working to Airwarm&rsquo;s design and coordination.
+              </p>
+            </div>
+            <div class="aw-card">
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-commission"></use></svg>
+              <h3 class="aw-card__title">Commissioning and records</h3>
+              <p>
+                Every test recorded, concealed pipework photographed before it
+                is covered, components labelled and any change from the design
+                written down with its reason.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- STANDARDS ------------------------------------------------- -->
+      <section class="aw-section aw-section--light" id="standards">
         <div class="aw-wrap">
           <h2>Standards on site</h2>
-          <div class="aw-grid aw-grid--2" style="margin-top:24px">
+          <p class="aw-measure">
+            Your house is not a building site, and it is where somebody lives.
+            These are written standards rather than good intentions.
+          </p>
+          <div class="aw-card-grid" style="margin-top:24px">
             <div class="aw-card">
-              <h3>Your home is protected</h3>
+              <h3 class="aw-card__title">Your home is protected</h3>
               <p>
                 Floors and furniture covered, materials stored tidily, dust and
                 noise controlled as far as the work allows, and the property
@@ -165,7 +306,7 @@
               </p>
             </div>
             <div class="aw-card">
-              <h3>You know what is happening</h3>
+              <h3 class="aw-card__title">You know what is happening</h3>
               <p>
                 A daily update on what was done and what happens next. If
                 something changes, you hear it from us on the day rather than
@@ -173,7 +314,7 @@
               </p>
             </div>
             <div class="aw-card">
-              <h3>The work is recorded</h3>
+              <h3 class="aw-card__title">The work is recorded</h3>
               <p>
                 Concealed pipework photographed before it is covered,
                 components labelled, and any change from the design written
@@ -181,7 +322,7 @@
               </p>
             </div>
             <div class="aw-card">
-              <h3>Commissioning is a stage, not a formality</h3>
+              <h3 class="aw-card__title">Commissioning is a stage, not a formality</h3>
               <p>
                 Flushing, filling, pressure testing, electrical confirmation,
                 control setup, weather compensation, balancing, hot-water
@@ -189,34 +330,227 @@
                 because it is producing heat.
               </p>
             </div>
+            <div class="aw-card">
+              <h3 class="aw-card__title">The team is the team</h3>
+              <p>
+                Airwarm&rsquo;s intended model is a two-person installation team
+                &mdash; a lead engineer and a second engineer &mdash; with
+                apprentices as additional training capacity rather than as
+                cheaper substitutes for competent engineers.
+              </p>
+            </div>
+            <div class="aw-card">
+              <h3 class="aw-card__title">Subcontractors work to the same standard</h3>
+              <p>
+                Written scope, agreed price, the same conduct in your home, the
+                same evidence requirements. Subcontracting does not move
+                Airwarm&rsquo;s responsibility to you onto somebody else.
+              </p>
+            </div>
+          </div>
+
+          <!-- PHOTOGRAPHS NEEDED, three separate shots:
+               1. A tidy plant room or cylinder cupboard on a finished job.
+               2. Well-finished, labelled pipework at the outdoor unit.
+               3. Protected floors and tidy storage during a live installation.
+               All must be Airwarm's own work. The brand pack is explicit that
+               stock photography must not be used to fill this gap. -->
+          <div class="aw-photo-placeholder" style="margin-top:40px">
+            <p>
+              <strong>Photographs to come:</strong> a tidy plant room, finished
+              and labelled pipework, and protected floors during a live
+              installation. Three shots, all of Airwarm&rsquo;s own work. This
+              site uses no stock imagery.
+            </p>
           </div>
         </div>
       </section>
 
-      <section class="aw-section aw-section--navy">
+      <!-- SITING --------------------------------------------------- -->
+      <section class="aw-section" id="siting">
         <div class="aw-wrap aw-split">
+          <div class="aw-prose">
+            <h2>Siting the outdoor unit</h2>
+            <p class="aw-measure">
+              The position is decided at survey, not on the first morning. By
+              the time the unit arrives, the mounting, the clearances, the
+              condensate route and the noise assessment have all been settled,
+              and you have agreed to what it will look like.
+            </p>
+            <p class="aw-measure">
+              That matters most on the sort of streets Airwarm works on. A yard
+              shared with a neighbour, a ginnel, a narrow side passage or a
+              single external elevation all constrain the answer, and the
+              trade-off between the best technical position and the least
+              obtrusive one is a conversation to have with you rather than a
+              decision to make for you.
+            </p>
+            <p class="aw-measure">
+              Where a property is listed or in a conservation area, consent
+              comes before design. Airwarm establishes that early and tells you
+              what would be required.
+            </p>
+          </div>
           <div>
+            <figure class="aw-figure">
+              <img class="aw-diagram" src="../assets/diagram-outdoor-unit-siting.svg" alt="What an outdoor unit position needs: clear space in front of the fan for air flow, clearance at the sides and rear, a level mounting clear of the ground, a route for condensate to drain away safely, service access, and an acceptable noise level at the nearest neighbouring habitable room window.">
+              <figcaption class="aw-figure__caption">
+                Air flow, clearances, level mounting, condensate drainage,
+                service access and noise at the nearest neighbouring window.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- COMMISSIONING -------------------------------------------- -->
+      <section class="aw-section aw-section--navy" id="commissioning">
+        <div class="aw-wrap">
+          <h2>Commissioning, in full</h2>
+          <p class="aw-hero__support">
+            This is the difference between a system that produces heat and a
+            system that performs. Every step is carried out and recorded.
+          </p>
+          <div class="aw-grid aw-grid--2" style="margin-top:40px">
+            <ol class="aw-steps">
+              <li class="aw-step"><h3 class="aw-step__title">Flushing and filling</h3><p>The system cleaned and filled properly, because debris from old pipework is what wrecks new plant.</p></li>
+              <li class="aw-step"><h3 class="aw-step__title">Pressure testing</h3><p>Tested before anything is boxed in or covered.</p></li>
+              <li class="aw-step"><h3 class="aw-step__title">Electrical confirmation</h3><p>Supply, isolation and protection confirmed and documented by the contractor who carried it out.</p></li>
+              <li class="aw-step"><h3 class="aw-step__title">Control setup</h3><p>Configured for this house, this design and this household.</p></li>
+            </ol>
+            <ol class="aw-steps" start="5" style="counter-reset:awstep 4">
+              <li class="aw-step"><h3 class="aw-step__title">Weather compensation</h3><p>The compensation curve set from the heat loss calculation rather than a default.</p></li>
+              <li class="aw-step"><h3 class="aw-step__title">Balancing</h3><p>Flow adjusted circuit by circuit so every room gets what the design intended.</p></li>
+              <li class="aw-step"><h3 class="aw-step__title">Hot-water checks</h3><p>Recovery, temperatures and the safety arrangements the cylinder type requires.</p></li>
+              <li class="aw-step"><h3 class="aw-step__title">Noise check and handover</h3><p>Sound checked in the position it was assessed for, then the documentation and the handover conversation.</p></li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCOPE ---------------------------------------------------- -->
+      <section class="aw-section" id="scope">
+        <div class="aw-wrap">
+          <h2>What is included, and what is not</h2>
+          <p class="aw-measure">
+            The proposal for your property is the authority on this. The table
+            below is the general shape of it, so that nothing on the day is a
+            surprise.
+          </p>
+          <div class="aw-table-wrap">
+            <table class="aw-table">
+              <caption>The usual scope of an Airwarm installation</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Item</th>
+                  <th scope="col">Normally included</th>
+                  <th scope="col">Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Heat pump and indoor plant</th>
+                  <td>Yes</td>
+                  <td>Specified from the heat loss calculation, not from the house type</td>
+                </tr>
+                <tr>
+                  <th scope="row">Hot water cylinder</th>
+                  <td>Yes, where one is needed</td>
+                  <td>Sized for your household&rsquo;s actual hot water pattern</td>
+                </tr>
+                <tr>
+                  <th scope="row">Emitter upgrades</th>
+                  <td>Yes, where the design requires them</td>
+                  <td>Only the rooms the calculation identifies</td>
+                </tr>
+                <tr>
+                  <th scope="row">Controls and commissioning</th>
+                  <td>Yes</td>
+                  <td>Configured and recorded, never left on defaults</td>
+                </tr>
+                <tr>
+                  <th scope="row">Electrical work</th>
+                  <td>Coordinated by Airwarm</td>
+                  <td>Carried out by vetted contractors; network operator involvement flagged early</td>
+                </tr>
+                <tr>
+                  <th scope="row">Making good</th>
+                  <td>To the extent set out in the proposal</td>
+                  <td>Lifting floorboards or carpet edges is usual where pipework is rerouted</td>
+                </tr>
+                <tr>
+                  <th scope="row">Decoration and joinery</th>
+                  <td>Not normally</td>
+                  <td>Named explicitly in the proposal where it is, or is not, in scope</td>
+                </tr>
+                <tr>
+                  <th scope="row">Insulation and fabric work</th>
+                  <td>Not normally</td>
+                  <td>Where it is recommended first, it is described as a separate decision</td>
+                </tr>
+                <tr>
+                  <th scope="row">Planning or listed building consent</th>
+                  <td>Not included</td>
+                  <td>Airwarm tells you what applies; consent is a matter for the local authority</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="aw-callout aw-callout--caution" style="margin-top:40px">
+            <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-warning"></use></svg>
+            <h3>There will be a period without heating and hot water</h3>
+            <p>
+              There is normally a period without heating and hot water while the
+              changeover happens. Airwarm plans that period deliberately, tells
+              you how long it is expected to be, and agrees it with you before
+              work starts rather than presenting it as an unavoidable surprise.
+              Some lifting of floorboards or carpet edges and some making good is
+              usual where pipework has to be rerouted; the survey identifies the
+              routes in advance so that what is needed is known rather than
+              discovered.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- HANDOVER ------------------------------------------------- -->
+      <section class="aw-section aw-section--light" id="handover">
+        <div class="aw-wrap aw-split">
+          <div class="aw-prose">
             <h2>Handover, and what happens after</h2>
-            <p class="aw-hero__support">
+            <p class="aw-measure">
               You get a plain-English guide to your system: what the settings
               do, what normal behaviour looks like through the seasons, what to
               check before calling anyone, warranty information and the service
               schedule.
             </p>
-            <p class="aw-hero__support">
-              Then we stay in contact: a follow-up shortly after handover, a
-              comfort review once you have lived with the system, seasonal
+            <p class="aw-measure">
+              Then we stay in contact: a follow-up within 48 hours, a comfort
+              review at two weeks once you have lived with the system, seasonal
               optimisation where it is needed and an annual service reminder.
+              The two-week review is the useful one, because it is when the
+              controls are refined against how you actually use the house rather
+              than how the design assumed you would.
             </p>
-            <p class="aw-hero__support">
-              Airwarm does not offer a 24-hour emergency service. We will tell
-              you what our actual response looks like rather than implying
-              something we cannot deliver.
+            <p class="aw-measure">
+              Airwarm does not offer a 24-hour or emergency call-out service. We
+              will tell you what our actual response looks like rather than
+              implying something we cannot deliver. If you need cover of that
+              kind, it is better to know now.
+            </p>
+            <p class="aw-measure">
+              And if something goes wrong, you contact us. Complaints are
+              acknowledged promptly, the facts established, a comfort
+              expectation distinguished from a technical fault, ownership
+              assigned, the next action agreed with you and the outcome
+              documented. Defensive communication is not acceptable to us.
             </p>
           </div>
           <div>
-            <div class="aw-panel">
-              <h3>Included in every installation</h3>
+            <div class="aw-card">
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-document"></use></svg>
+              <h3 class="aw-card__title">Included in every installation</h3>
               <ul class="aw-ticks">
                 <li>Heat pump, cylinder and hydraulic arrangement installed to the design</li>
                 <li>Emitter upgrades where the design requires them</li>
@@ -226,66 +560,209 @@
                 <li>Warranty registration and service schedule</li>
               </ul>
             </div>
+            <div class="aw-card" style="margin-top:24px">
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-service"></use></svg>
+              <h3 class="aw-card__title">The aftercare schedule</h3>
+              <ul class="aw-ticks">
+                <li>Contact within 48 hours</li>
+                <li>Comfort review at two weeks</li>
+                <li>Seasonal optimisation where required</li>
+                <li>Annual service reminder</li>
+              </ul>
+              <p class="aw-small" style="margin-top:16px">
+                There is no gas safety check on a heat pump, but manufacturers
+                commonly require documented servicing for the warranty to remain
+                valid.
+                <a href="../advice/servicing-and-maintenance/">What a service actually checks</a>.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      <section class="aw-section">
+      <!-- FAQS ---------------------------------------------------- -->
+      <section class="aw-section" id="faqs">
         <div class="aw-wrap">
-          <!-- INSTALLATION PHOTOGRAPHS GO HERE. The brand pack asks for tidy
-               plant rooms, well-finished pipework, respectful work practices
-               and customer handovers, all photographed on real Airwarm jobs.
-               No stock photography. Leave this slot empty until real images
-               exist. -->
+          <h2>Frequently asked questions</h2>
+          <div class="aw-faq" style="margin-top:24px">
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">How long does an installation take?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  It depends on how much emitter and pipework change is needed,
+                  whether a cylinder is being installed where there was none,
+                  and what electrical work is required. Airwarm gives you a
+                  realistic programme in the proposal rather than a standard
+                  figure, and confirms it at the pre-start stage.
+                </p>
+              </div>
+            </details>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">Will I be without heating or hot water?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  There is normally a period without heating and hot water while
+                  the changeover happens. Airwarm plans that period
+                  deliberately, tells you how long it is expected to be, and
+                  agrees it with you before work starts rather than presenting
+                  it as an unavoidable surprise.
+                </p>
+              </div>
+            </details>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">How much mess and damage should I expect?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  Some lifting of floorboards or carpet edges and some making
+                  good is usual where pipework has to be rerouted. The survey
+                  identifies the routes in advance so that what is needed is
+                  known rather than discovered. Airwarm&rsquo;s expectation of
+                  its own installations is respectful workmanship and a tidy
+                  site.
+                </p>
+              </div>
+            </details>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">Will it be noisy for my neighbours?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  The noise level at the nearest neighbouring window is assessed
+                  as part of the design, and it is a condition of the permitted
+                  development route. Position and mounting matter more than the
+                  equipment. Airwarm would rather discuss a position that works
+                  for the neighbours at survey stage than deal with a complaint
+                  afterwards.
+                </p>
+              </div>
+            </details>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">Who does the electrical work?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  A heat pump is a substantial electrical load, so the incoming
+                  supply, main fuse and consumer unit are all checked at survey.
+                  Electrical work is carried out by vetted regional electrical
+                  contractors working to Airwarm&rsquo;s design and
+                  coordination, and where the network operator needs to be
+                  involved Airwarm will say so early.
+                </p>
+              </div>
+            </details>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">How much does a heat pump installation cost?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  Airwarm is not publishing prices ahead of its trading launch,
+                  and a figure quoted without a survey would be a guess. What
+                  determines the cost is the size of the system, how many
+                  emitters need changing, the cylinder and its position, the
+                  pipework and electrical work required, and access. The
+                  proposal sets all of it out itemised.
+                </p>
+              </div>
+            </details>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">What warranty will I have?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  There is the manufacturer&rsquo;s product warranty, whose
+                  length and conditions depend on the equipment, and
+                  Airwarm&rsquo;s own responsibility for its workmanship. The
+                  warranty process is being finalised ahead of launch and the
+                  terms will be set out in the proposal rather than described
+                  vaguely.
+                </p>
+                <!-- REVIEW: confirm the workmanship warranty period and the
+                     manufacturer warranty registration process. Do not publish
+                     a period until it is agreed. -->
+              </div>
+            </details>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">What documents will I receive?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  A documented design showing the heat loss calculation and its
+                  assumptions, the emitter schedule, the equipment
+                  specification, a commissioning record, manufacturer
+                  documentation and warranty details, and a handover pack
+                  explaining how the system is meant to be operated.
+                </p>
+              </div>
+            </details>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">What building regulations apply?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  Heating work is subject to building regulations, and an
+                  unvented hot water cylinder brings additional requirements.
+                  Your building control body confirms what applies to your
+                  project overall, and Airwarm provides the documentation for
+                  its own scope.
+                </p>
+                <!-- REVIEW: confirm the Approved Document references and the
+                     notification route Airwarm will use. -->
+              </div>
+            </details>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">What happens after installation?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  Airwarm contacts you within 48 hours, carries out a comfort
+                  review at two weeks, provides seasonal optimisation where
+                  required, and sends an annual service reminder. The two-week
+                  review is when the controls are refined against how you
+                  actually live with the system.
+                </p>
+              </div>
+            </details>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">What if something goes wrong afterwards?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  You contact us. Complaints are acknowledged promptly, the
+                  facts established, ownership assigned, the next action agreed
+                  with you and the outcome documented. Defensive communication
+                  is not acceptable to us. There is no 24-hour or emergency
+                  call-out service, and we will not imply otherwise.
+                </p>
+              </div>
+            </details>
+
+          </div>
+        </div>
+      </section>
+
+      <section class="aw-section aw-section--tight">
+        <div class="aw-wrap">
+          <!-- CASE STUDY GOES HERE: a real installation — the problem, the
+               survey decision, what was installed, how it performed. Do not
+               write one until a real project exists and the customer has
+               agreed to it being described. -->
           <div class="aw-evidence-slot">
             <strong>Photographs of finished work:</strong> tidy plant rooms,
             pipework and completed installations will be shown here once
             Airwarm has projects of its own to photograph. This site uses no
             stock imagery.
           </div>
-
-          <div class="aw-faq" style="margin-top:40px">
-            <h2>Installation questions</h2>
-            <details>
-              <summary>How long will my heating be off?</summary>
-              <p>
-                It depends on the scope. We plan the changeover deliberately
-                and tell you before we start what to expect and on which days,
-                including any temporary arrangements.
-              </p>
-            </details>
-            <details>
-              <summary>Will you make a mess?</summary>
-              <p>
-                Some disruption is unavoidable when pipework changes, but
-                protection, tidy storage and daily clean-up are part of the
-                standard rather than a favour.
-              </p>
-            </details>
-            <details>
-              <summary>Who does the electrical work?</summary>
-              <p>
-                Vetted, qualified electrical contractors where it falls outside
-                our own scope. We coordinate it; you do not have to arrange it.
-              </p>
-            </details>
-            <details>
-              <summary>What if something goes wrong afterwards?</summary>
-              <p>
-                You contact us. Complaints are acknowledged promptly, the facts
-                established, ownership assigned, the next action agreed with
-                you and the outcome documented. Defensive communication is not
-                acceptable to us.
-              </p>
-            </details>
-          </div>
         </div>
       </section>
 
       <!-- FINAL CALL TO ACTION — repeated on every page, per the blueprint.
            The assessment is the primary action; e-mail is the route for
-           anything unusual. -->
-      <section class="aw-section aw-section--navy">
+           anything unusual. This block is the same on every page: if you
+           change the wording, change it everywhere. -->
+      <section class="aw-section aw-section--navy aw-cta-band">
         <div class="aw-wrap">
           <h2>Start with your home, not a product</h2>
           <p class="aw-hero__support">
@@ -377,11 +854,28 @@
       <div class="aw-footer__base">
         <p>
           Airwarm is a new West Yorkshire business preparing to install and
-          support air source heat pumps. Company registration and VAT details
-          will be shown here once they are confirmed.
+          support air source heat pumps.
         </p>
-        <!-- COMPANY DETAILS GO HERE: registered name, company number,
-             registered office, VAT number. Do not add them until they exist. -->
+        <!-- STATUTORY COMPANY DISCLOSURE — required by law. Do not remove,
+             move off the footer, or hide it behind a link.
+             The Companies Act 2006 s.82, the Company, Limited Liability
+             Partnership and Business (Names and Trading Disclosures)
+             Regulations 2015 and the Electronic Commerce (EC Directive)
+             Regulations 2002 together require the registered name, the
+             company number, the place of registration and the registered
+             office address to be easily and permanently accessible on the
+             website. The footer appears on every page, which is what makes it
+             permanently accessible. If any of these details change, change
+             them here in every page at the same time. -->
+        <p class="aw-small">
+          AIRWARM LTD is a company registered in England and Wales, company
+          number 17362672. Registered office: 2 Aireview Crescent, Baildon,
+          Shipley, BD17 7LS.
+        </p>
+        <!-- VAT NUMBER GOES HERE if and when Airwarm registers for VAT. Add it
+             as a further sentence in the paragraph above, for example
+             "VAT registration number GB000000000." Do not invent one, and do
+             not display a VAT number before registration is confirmed. -->
         <!-- SOCIAL LINKS: add only channels that are actively maintained. -->
         <p>&copy; 2026 Airwarm.</p>
       </div>

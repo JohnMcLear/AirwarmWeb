@@ -14,11 +14,15 @@
    08. Assessment form (Home Energy Assessment)
    09. Footer
    10. Utilities and accessibility
-   11. Responsive rules (mobile-first: these ADD to the mobile styles)
+   11. Figures, diagrams and article furniture   <- the assets/ folder
+   12. Responsive rules (mobile-first: these ADD to the mobile styles)
 
    SAFE TO EDIT: any value inside section 01, and any text in comments.
    TAKE CARE: the brand colours and the tagline colour order are fixed by
    the Airwarm brand rules. Do not introduce new colours.
+
+   The drawings and icons this stylesheet sizes live in assets/, and each one
+   is documented in assets/README.md.
    ========================================================================== */
 
 /* ==========================================================================
@@ -27,6 +31,53 @@
    Airwarm brand pack. The eight colours below are the ENTIRE approved
    palette. Nothing else in this file uses a colour value that is not
    derived from them.
+
+   --------------------------------------------------------------------------
+   CONTRAST RULES. READ THESE BEFORE PUTTING A COLOUR ON A COLOUR.
+   --------------------------------------------------------------------------
+   Airwarm is a UK service provider, so the Equality Act 2010 duty to make
+   reasonable adjustments applies, and WCAG 2.2 AA is the yardstick used to
+   judge whether a website meets it. AA asks for 4.5:1 for normal text, 3:1
+   for large text, icons, borders that carry meaning, and focus rings.
+
+   Measured against this palette:
+
+     PASSES                                 FAILS
+     white on navy          17.6:1          white on blue        3.9:1
+     orange on navy          7.2:1          white on orange      2.5:1
+     green on navy           7.9:1          white on green       2.2:1
+     blue on navy            4.6:1          blue on white        3.9:1
+     navy on orange          7.2:1          orange on white      2.5:1
+     navy on green           7.9:1          green on white       2.2:1
+     navy on blue            4.6:1          grey on navy         3.5:1
+     grey on white           5.0:1
+     grey on light neutral   4.6:1
+
+   So, as rules:
+
+   1. ORANGE AND GREEN FILLS ALWAYS CARRY NAVY OR DARK TEXT, NEVER WHITE.
+      That is why the primary button is orange with dark text (7.2:1) and not
+      blue with white text (3.9:1). See section 05.
+   2. NEVER SET ORANGE OR GREEN AS TEXT, OR AS A MEANINGFUL ICON, ON WHITE OR
+      ON THE LIGHT NEUTRAL. At 2.5:1 and 2.2:1 they are unreadable at any
+      size. Use --airwarm-orange-text or --airwarm-green-text instead, which
+      are the same hues darkened until they pass. They are for text and line
+      work only: never use them as a fill.
+   3. A BLUE FILL WITH WHITE TEXT USES --airwarm-blue-accessible, not
+      --airwarm-blue.
+   4. GREY TEXT NEVER GOES ON NAVY. On navy panels captions and supporting
+      text use white or the light neutral.
+   5. NEVER LET COLOUR BE THE ONLY SIGNAL. Every coloured state in this
+      stylesheet is paired with a shape, an icon or a word, so it still reads
+      in black and white. WCAG 1.4.1.
+
+   THIS DIVERGES FROM THE BRAND PACK, DELIBERATELY. The pack's
+   airwarm-design-tokens.css defines the primary button as white text on the
+   brand blue, which measures 3.9:1 and fails, and the framework also offers
+   white on orange, which is worse at 2.5:1. Neither is used here. The three
+   darkened tokens below are additions to the pack, not replacements: the five
+   brand colours themselves are untouched, and are still what appears on navy,
+   in fills carrying dark text, and in the tagline.
    ========================================================================== */
 :root {
   /* --- Approved colour palette (do not add to this list) --- */
@@ -38,6 +89,14 @@
   --airwarm-light-bg: #F4F7F9;    /* light neutral section background */
   --airwarm-grey: #65717C;        /* supporting text on white */
   --airwarm-dark-text: #14212B;   /* body copy */
+
+  /* --- The same three hues, darkened until they pass on a light background.
+     Read the contrast rules above before using any of them. These are not
+     new brand colours and they never appear on navy, where the brand
+     colours themselves already pass. --- */
+  --airwarm-blue-accessible: #1570EB;  /* blue fill + white text: 4.6:1     */
+  --airwarm-orange-text: #B55F0B;      /* orange as text or line: 4.6:1     */
+  --airwarm-green-text: #358644;       /* green as text or line: 4.5:1      */
 
   /* --- Translucent tints derived from the palette ---
      These are rgba() versions of white and navy. They are used for hairline
@@ -418,17 +477,70 @@ hr {
 .aw-benefit--bills  { border-top-color: var(--airwarm-blue); }
 .aw-benefit--energy { border-top-color: var(--airwarm-green); }
 
-/* Inline SVG line icons. Simple, one consistent family, drawn by hand in
-   the HTML with stroke="currentColor" so they inherit the text colour. */
+/* ---- Line icons --------------------------------------------------------
+   One consistent family, drawn by hand. They come from two places, and both
+   work the same way: either written straight into the page as inline SVG, or
+   pulled out of the sprite in assets/icons.svg:
+
+     <svg class="aw-icon" aria-hidden="true" focusable="false">
+       <use href="/assets/icons.svg#icon-radiator"></use>
+     </svg>
+
+   An icon is one em square by default, so it lines up with the text beside it
+   and grows with it. It takes the colour of the surrounding text.
+   ---------------------------------------------------------------------- */
 .aw-icon {
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  /* Sits on the text baseline rather than below it. */
+  vertical-align: -0.125em;
+  /* These two win over the same attributes written on the svg itself, so the
+     whole family behaves identically however it was written. */
+  fill: none;
+  stroke: currentColor;
+  /* Never let an icon be squashed by a flex container. */
+  flex: 0 0 auto;
+}
+
+/* A bigger icon, for the top of a card. */
+.aw-icon--lg {
+  width: 1.75em;
+  height: 1.75em;
+  vertical-align: -0.35em;
+}
+
+/* The three benefit cards on the homepage put their icon on its own line
+   above the heading at a fixed 32px. Those three are the only place this
+   applies, and it keeps that layout exactly as it was. */
+.aw-benefit > .aw-icon {
   width: 32px;
   height: 32px;
   display: block;
+  vertical-align: baseline;
   margin-bottom: var(--airwarm-space-sm);
 }
-.aw-icon--warmer { color: var(--airwarm-orange); }
-.aw-icon--bills  { color: var(--airwarm-blue); }
-.aw-icon--energy { color: var(--airwarm-green); }
+
+/* The benefit accent colours. On a white or light background these use the
+   darkened variants, because the brand orange and green reach only 2.5:1 and
+   2.2:1 there and an icon has to reach 3:1. The 4px rule along the top of
+   each card keeps the brand colour itself: it is decoration, and the card
+   heading says which benefit it is. See the contrast rules in section 01. */
+.aw-icon--warmer { color: var(--airwarm-orange-text); }
+.aw-icon--bills  { color: var(--airwarm-blue-accessible); }
+.aw-icon--energy { color: var(--airwarm-green-text); }
+
+/* On navy the brand colours themselves pass comfortably (7.2:1, 4.6:1 and
+   7.9:1), so they are used unchanged. */
+.aw-section--navy .aw-icon--warmer,
+.aw-hero .aw-icon--warmer,
+.aw-cta-band .aw-icon--warmer { color: var(--airwarm-orange); }
+.aw-section--navy .aw-icon--bills,
+.aw-hero .aw-icon--bills,
+.aw-cta-band .aw-icon--bills { color: var(--airwarm-blue); }
+.aw-section--navy .aw-icon--energy,
+.aw-hero .aw-icon--energy,
+.aw-cta-band .aw-icon--energy { color: var(--airwarm-green); }
 
 /* Numbered process steps, used on How It Works. */
 .aw-steps {
@@ -499,22 +611,12 @@ hr {
 .aw-note h3 { margin-bottom: var(--airwarm-space-xs); }
 
 /* Frequently asked questions use native <details> so they work without
-   JavaScript and remain readable when printed. */
+   JavaScript and remain readable when printed. All of the styling for them
+   now lives together in section 11, so that the older markup (.aw-faq with
+   plain <details> and <summary> inside it) and the newer markup (with
+   .aw-faq__item and .aw-faq__question on those same elements) cannot drift
+   apart. Look for "Frequently asked questions" in section 11. */
 .aw-faq { border-top: 1px solid var(--airwarm-navy-line); }
-.aw-faq details {
-  border-bottom: 1px solid var(--airwarm-navy-line);
-  padding: var(--airwarm-space-sm) 0;
-}
-.aw-faq summary {
-  font-weight: 600;
-  cursor: pointer;
-  padding: 6px 0;
-  list-style: none;
-}
-.aw-faq summary::-webkit-details-marker { display: none; }
-.aw-faq summary::before { content: "+ "; color: var(--airwarm-blue); font-weight: 700; }
-.aw-faq details[open] summary::before { content: "– "; }
-.aw-faq details > *:not(summary) { margin-top: var(--airwarm-space-xs); max-width: 62ch; }
 
 /* An empty slot waiting for real evidence. Visible on the page as a quiet
    line of text, NOT as an invented claim. */
@@ -709,17 +811,45 @@ select { appearance: none; background-image: none; }
    10. UTILITIES AND ACCESSIBILITY
    ========================================================================== */
 
-/* Visible focus state on every interactive element. Do not remove this. */
+/* Visible focus state on every interactive element. Do not remove this, and
+   never replace it with outline: none.
+
+   It is two rings, not one, and that is on purpose. WCAG asks a focus
+   indicator to reach 3:1 against whatever is next to it. The brand orange
+   reaches only 2.5:1 against white, so orange on its own is not enough on a
+   pale page. So the OUTER ring is navy, which reaches 17.6:1 on white and
+   7.2:1 against the orange inside it, and the orange stays as the inner ring
+   where it is unmistakably Airwarm. On navy panels the outer ring turns white
+   instead, which is 17.6:1 the other way round.
+
+   Both rings are 2px or more, and the offset keeps them clear of the element
+   so nothing is obscured. */
 a:focus-visible,
 button:focus-visible,
 summary:focus-visible,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible,
+details:focus-visible,
 [tabindex]:focus-visible {
-  outline: 3px solid var(--airwarm-orange);
+  outline: 3px solid var(--airwarm-navy);
   outline-offset: 2px;
+  box-shadow: 0 0 0 2px var(--airwarm-orange);
   border-radius: 2px;
+}
+
+/* On the navy surfaces, the outer ring has to be white to be seen at all. */
+.aw-header a:focus-visible,
+.aw-header button:focus-visible,
+.aw-footer a:focus-visible,
+.aw-hero a:focus-visible,
+.aw-hero button:focus-visible,
+.aw-section--navy a:focus-visible,
+.aw-section--navy button:focus-visible,
+.aw-section--navy summary:focus-visible,
+.aw-cta-band a:focus-visible,
+.aw-cta-band button:focus-visible {
+  outline-color: var(--airwarm-white);
 }
 
 /* Skip link: first thing in the tab order, hidden until focused. */
@@ -785,10 +915,445 @@ textarea:focus-visible,
 }
 
 /* ==========================================================================
-   11. RESPONSIVE RULES
+   11. FIGURES, DIAGRAMS AND ARTICLE FURNITURE
+
+   Everything in this section exists to put the drawings in assets/ on a page,
+   and to set the longer article pages. Each drawing is a plain .svg file with
+   no build step and nothing loaded from anywhere else. assets/README.md lists
+   every file, every icon name, and every class below with an example.
+
+   Three rules held throughout:
+
+   - Nothing here scrolls the page sideways, at any width down to 320px. Wide
+     things scroll inside their own box instead. See .aw-table-wrap.
+   - Nothing here sets a max-height on a box that holds text, so text can grow
+     to 200% and reflow rather than being clipped. WCAG 1.4.12.
+   - Nothing here animates. The reduced-motion rule in section 10 covers the
+     two transitions elsewhere in this file.
+   ========================================================================== */
+
+/* ---- Figures -----------------------------------------------------------
+   Every drawing goes in a <figure class="aw-figure"> with a
+   <figcaption class="aw-figure__caption"> under it. The caption is not
+   optional: it is what tells a reader what they are looking at.
+   ---------------------------------------------------------------------- */
+.aw-figure {
+  margin: var(--airwarm-space-lg) auto;
+  padding: 0;
+  text-align: center;
+}
+.aw-figure__caption {
+  margin: var(--airwarm-space-sm) auto 0 auto;
+  max-width: 60ch;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--airwarm-grey);
+  text-align: center;
+}
+/* Grey on navy is only 3.5:1, so captions on navy go light instead. */
+.aw-section--navy .aw-figure__caption,
+.aw-hero .aw-figure__caption,
+.aw-cta-band .aw-figure__caption { color: var(--airwarm-white-soft); }
+
+/* ---- The drawings themselves -------------------------------------------
+   Works the same whether the SVG is written into the page or loaded with an
+   <img src="/assets/diagram-how-it-works.svg" class="aw-diagram" alt="...">.
+
+   width:100% with height:auto means a diagram can never be wider than the
+   column it sits in, so it can never push the page sideways. The max-width
+   stops the larger drawings becoming cartoonish on a wide screen; each SVG
+   already carries its own pale background panel and its own margins, so it
+   needs no border or padding here.
+   ---------------------------------------------------------------------- */
+.aw-diagram {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 760px;
+  margin: 0 auto;
+}
+/* Two of the drawings are wider than they are tall and can take more room. */
+.aw-diagram--wide { max-width: 900px; }
+
+/* ---- Card grid ---------------------------------------------------------
+   Cards in as many columns as will fit, one column on a phone, with no
+   breakpoint to maintain. The min() is what stops a 260px minimum from
+   overflowing a container narrower than 260px.
+   ---------------------------------------------------------------------- */
+.aw-card-grid {
+  display: grid;
+  gap: var(--airwarm-space-md);
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+}
+
+/* ---- Cards ----
+   .aw-card itself is defined in section 07: a hairline border, generous
+   padding, moderate rounding and deliberately no shadow. These add the
+   heading, and fix the text colour so that a white card dropped inside a navy
+   section does not inherit white text onto its white background. */
+.aw-card { color: var(--airwarm-dark-text); }
+.aw-card__title {
+  margin: 0 0 var(--airwarm-space-xs) 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--airwarm-dark-text);
+}
+
+/* ---- Steps ----
+   .aw-steps is the numbered list defined in section 07. It expects list
+   items; .aw-step lets a page mark each one explicitly, or use a <div> where
+   a list is not the right element. Both get the same treatment. */
+.aw-steps > .aw-step {
+  counter-increment: awstep;
+  position: relative;
+  padding: 0 0 var(--airwarm-space-md) var(--airwarm-space-lg);
+  border-left: 1px solid var(--airwarm-navy-line);
+  margin-left: 14px;
+  list-style: none;
+}
+.aw-steps > .aw-step:last-child {
+  border-left-color: transparent;
+  padding-bottom: 0;
+}
+.aw-steps > .aw-step::before {
+  content: counter(awstep);
+  position: absolute;
+  left: -15px;
+  top: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: var(--airwarm-navy);
+  color: var(--airwarm-white);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.aw-section--navy .aw-steps > .aw-step { border-left-color: var(--airwarm-white-line); }
+.aw-section--navy .aw-steps > .aw-step::before {
+  background: var(--airwarm-orange);
+  color: var(--airwarm-dark-text);
+}
+.aw-step__title {
+  margin: 0 0 4px 0;
+  font-size: 1.0625rem;
+  font-weight: 600;
+}
+
+/* ---- Callouts ----------------------------------------------------------
+   A quiet panel for something a reader needs to know. Three flavours: plain
+   information, a positive outcome, and something to be careful about.
+
+   The accent is a bar down the left, and the text is always dark on the light
+   neutral: never coloured text, and never white on a colour. Each flavour is
+   meant to be used with a word or an icon that says the same thing, so the
+   meaning does not rest on the colour of a 4px bar.
+   ---------------------------------------------------------------------- */
+.aw-callout {
+  background: var(--airwarm-light-bg);
+  border-left: 4px solid var(--airwarm-blue);
+  border-radius: 0 var(--airwarm-radius-sm) var(--airwarm-radius-sm) 0;
+  padding: var(--airwarm-space-md);
+  color: var(--airwarm-dark-text);
+}
+.aw-callout > :first-child { margin-top: 0; }
+.aw-callout > :last-child { margin-bottom: 0; }
+.aw-callout h2,
+.aw-callout h3,
+.aw-callout h4 {
+  font-size: 1.0625rem;
+  margin-bottom: var(--airwarm-space-xs);
+}
+/* Green is reserved for positive outcomes and clean energy. This is one of
+   the few places it belongs. */
+.aw-callout--positive { border-left-color: var(--airwarm-green); }
+.aw-callout--caution  { border-left-color: var(--airwarm-orange); }
+
+/* An icon inside a callout uses the darkened variant, because an icon that
+   carries meaning has to reach 3:1 and the brand orange and green do not on a
+   pale panel. */
+.aw-callout .aw-icon           { color: var(--airwarm-blue-accessible); }
+.aw-callout--positive .aw-icon { color: var(--airwarm-green-text); }
+.aw-callout--caution .aw-icon  { color: var(--airwarm-orange-text); }
+
+/* On navy, a callout becomes a quiet translucent panel with white text. */
+.aw-section--navy .aw-callout,
+.aw-cta-band .aw-callout {
+  background: var(--airwarm-white-panel);
+  color: var(--airwarm-white);
+}
+.aw-section--navy .aw-callout .aw-icon { color: var(--airwarm-blue); }
+.aw-section--navy .aw-callout--positive .aw-icon { color: var(--airwarm-green); }
+.aw-section--navy .aw-callout--caution .aw-icon { color: var(--airwarm-orange); }
+
+/* ---- Frequently asked questions ---------------------------------------
+   Native <details> and <summary>, so it works with JavaScript switched off,
+   prints sensibly, and is keyboard operable without a line of script:
+
+     <div class="aw-faq">
+       <details class="aw-faq__item">
+         <summary class="aw-faq__question">Does it work in winter?</summary>
+         <div class="aw-faq__answer"><p>...</p></div>
+       </details>
+     </div>
+
+   The older pages use plain <details> and <summary> inside .aw-faq without
+   those two class names. Every rule below names both, so the two are
+   identical and cannot drift apart. This is the only place either is styled.
+   ---------------------------------------------------------------------- */
+.aw-faq details,
+.aw-faq .aw-faq__item {
+  border-bottom: 1px solid var(--airwarm-navy-line);
+  padding: var(--airwarm-space-sm) 0;
+}
+.aw-faq summary,
+.aw-faq .aw-faq__question {
+  font-weight: 600;
+  cursor: pointer;
+  /* Comfortably over the 24px minimum target size, and roomy enough to tap. */
+  min-height: 24px;
+  padding: 8px 0 8px 22px;
+  position: relative;
+  list-style: none;
+}
+.aw-faq summary::-webkit-details-marker,
+.aw-faq .aw-faq__question::-webkit-details-marker { display: none; }
+/* The plus and the dash are shapes as well as a colour, so the open and
+   closed state does not depend on colour alone. */
+.aw-faq summary::before,
+.aw-faq .aw-faq__question::before {
+  content: "+";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  color: var(--airwarm-blue-accessible);
+  font-weight: 700;
+}
+.aw-faq details[open] > summary::before,
+.aw-faq .aw-faq__item[open] > .aw-faq__question::before { content: "\2013"; }
+.aw-faq details > *:not(summary),
+.aw-faq .aw-faq__answer {
+  margin-top: var(--airwarm-space-xs);
+  max-width: 62ch;
+}
+.aw-faq .aw-faq__answer > :first-child { margin-top: 0; }
+.aw-faq .aw-faq__answer > :last-child { margin-bottom: 0; }
+.aw-section--navy .aw-faq details,
+.aw-section--navy .aw-faq .aw-faq__item { border-bottom-color: var(--airwarm-white-line); }
+.aw-section--navy .aw-faq summary::before,
+.aw-section--navy .aw-faq .aw-faq__question::before { color: var(--airwarm-orange); }
+
+/* ---- Tables -----------------------------------------------------------
+   A wide table must never widen the page. The wrapper scrolls instead:
+
+     <div class="aw-table-wrap" tabindex="0" role="region"
+          aria-label="Emitter types compared">
+       <table class="aw-table"> ... </table>
+     </div>
+
+   The tabindex and the label are worth adding: they let someone using a
+   keyboard scroll the table, and they let a screen reader announce it.
+   ---------------------------------------------------------------------- */
+.aw-table-wrap {
+  overflow-x: auto;
+  /* Keeps the momentum scroll on iOS. */
+  -webkit-overflow-scrolling: touch;
+  max-width: 100%;
+  margin: var(--airwarm-space-md) 0;
+}
+.aw-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+  text-align: left;
+}
+.aw-table caption {
+  caption-side: bottom;
+  padding-top: var(--airwarm-space-xs);
+  font-size: 0.875rem;
+  color: var(--airwarm-grey);
+  text-align: left;
+}
+.aw-table th,
+.aw-table td {
+  padding: 12px var(--airwarm-space-sm);
+  border-bottom: 1px solid var(--airwarm-navy-line);
+  vertical-align: top;
+}
+.aw-table th {
+  font-weight: 600;
+  background: var(--airwarm-light-bg);
+  color: var(--airwarm-dark-text);
+}
+.aw-table tbody tr:last-child td { border-bottom: 0; }
+
+/* ---- Where a real photograph goes -------------------------------------
+   There is no photography on this site yet, and no stock photography is
+   allowed to stand in for it. This marks a slot honestly, in the page, where
+   a real Airwarm photograph belongs:
+
+     <div class="aw-photo-placeholder">
+       <p>Photograph: a finished outdoor unit installation.</p>
+       <p class="aw-small">To be added when Airwarm has its own.</p>
+     </div>
+   ---------------------------------------------------------------------- */
+.aw-photo-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--airwarm-space-xs);
+  /* min-height, never height or max-height, so the caption can grow. */
+  min-height: 180px;
+  padding: var(--airwarm-space-md);
+  border: 2px dashed var(--airwarm-navy-line);
+  border-radius: var(--airwarm-radius-md);
+  background: var(--airwarm-light-bg);
+  color: var(--airwarm-grey);
+  font-size: 0.9375rem;
+  text-align: center;
+}
+.aw-photo-placeholder p { margin: 0; }
+.aw-section--navy .aw-photo-placeholder,
+.aw-cta-band .aw-photo-placeholder {
+  border-color: var(--airwarm-white-line);
+  background: var(--airwarm-white-panel);
+  color: var(--airwarm-white-soft);
+}
+
+/* ---- The opening paragraph of a page ---------------------------------- */
+.aw-lede {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  max-width: 58ch;
+  color: var(--airwarm-dark-text);
+}
+.aw-section--navy .aw-lede,
+.aw-hero .aw-lede,
+.aw-cta-band .aw-lede { color: var(--airwarm-white); }
+
+/* ---- Article body -----------------------------------------------------
+   Wrap the body of a guide in <div class="aw-prose"> and the measure, the
+   type size and the spacing between elements are all handled. The measure is
+   65 characters, which is the comfortable range for continuous reading; the
+   size is 16px on a phone and 18px from tablet up, per the framework.
+   ---------------------------------------------------------------------- */
+.aw-prose {
+  max-width: 65ch;
+  font-size: 1rem;
+  line-height: 1.7;
+  /* A long word, a URL or a postcode must not stretch the column. */
+  overflow-wrap: break-word;
+}
+.aw-prose > * + * { margin-top: var(--airwarm-space-sm); }
+.aw-prose h2 {
+  margin-top: var(--airwarm-space-lg);
+  margin-bottom: var(--airwarm-space-xs);
+}
+.aw-prose h3 {
+  margin-top: var(--airwarm-space-md);
+  margin-bottom: var(--airwarm-space-xs);
+}
+.aw-prose ul,
+.aw-prose ol { padding-left: var(--airwarm-space-md); }
+.aw-prose li + li { margin-top: var(--airwarm-space-xs); }
+.aw-prose img { max-width: 100%; height: auto; }
+/* A figure inside prose may be wider than the reading measure. */
+.aw-prose .aw-figure { max-width: none; }
+
+/* ---- Contents list at the top of a long guide ------------------------- */
+.aw-toc {
+  padding: var(--airwarm-space-md);
+  border: 1px solid var(--airwarm-navy-line);
+  border-radius: var(--airwarm-radius-md);
+  background: var(--airwarm-light-bg);
+}
+.aw-toc h2 {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--airwarm-grey);
+  margin-bottom: var(--airwarm-space-xs);
+}
+.aw-toc ol,
+.aw-toc ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.aw-toc li { margin: 0; }
+.aw-toc a {
+  display: block;
+  /* 24px minimum target size, with room to spare. */
+  padding: 8px 0;
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+
+/* ---- Closing call to action ------------------------------------------
+   A full-width navy band, usually the last thing on a page. Put an .aw-wrap
+   inside it, exactly like a section.
+   ---------------------------------------------------------------------- */
+.aw-cta-band {
+  background: var(--airwarm-navy);
+  color: var(--airwarm-white);
+  padding: var(--airwarm-space-lg) 0;
+}
+.aw-cta-band h2 { color: var(--airwarm-white); }
+.aw-cta-band a { color: var(--airwarm-white); }
+.aw-cta-band .aw-lead,
+.aw-cta-band .aw-small,
+.aw-cta-band small { color: var(--airwarm-white-soft); }
+/* The button keeps its orange fill and dark text: 7.2:1. */
+.aw-cta-band .aw-btn--primary { color: var(--airwarm-dark-text); }
+
+/* ---- The hero pattern ------------------------------------------------
+   assets/hero-pattern.svg tiled over navy. It is drawn in white at about a
+   tenth opacity on a transparent background, so the navy shows through and it
+   never competes with the headline. Add this class to a hero or a navy
+   section. It is decoration only and carries no information, so there is
+   nothing to describe to a screen reader.
+
+   The path below is relative, and starts with two dots on purpose. A URL
+   inside a stylesheet is resolved against the STYLESHEET, not against the page
+   that loaded it, so ../assets/ means "up out of css/, then into assets/" from
+   every page on the site whatever its depth. A path starting with a slash
+   would break, because the site is served from a sub-folder on GitHub Pages
+   rather than from the root of a domain. Please keep it relative.
+   ---------------------------------------------------------------------- */
+.aw-hero-pattern {
+  background-color: var(--airwarm-navy);
+  background-image: url('../assets/hero-pattern.svg');
+  background-repeat: repeat;
+  background-size: 240px 240px;
+  background-position: center top;
+}
+
+/* ==========================================================================
+   12. RESPONSIVE RULES
    Mobile-first: everything above is the mobile layout. These blocks only
    add to it on larger screens.
    ========================================================================== */
+
+/* The larger sizes for section 11. Kept with their own section rather than
+   mixed into the general breakpoints below. */
+@media (min-width: 768px) {
+  .aw-figure { margin: var(--airwarm-space-xl) auto; }
+  .aw-card__title { font-size: 1.25rem; }
+  .aw-step__title { font-size: 1.125rem; }
+  .aw-lede { font-size: 1.3125rem; }
+  /* 18px, which is inside the 17 to 19px the framework asks for. */
+  .aw-prose { font-size: 1.125rem; }
+  .aw-callout h2,
+  .aw-callout h3,
+  .aw-callout h4 { font-size: 1.125rem; }
+  .aw-cta-band { padding: var(--airwarm-space-xl) 0; }
+  .aw-table { font-size: 1rem; }
+}
 
 /* Tablet and up */
 @media (min-width: 768px) {

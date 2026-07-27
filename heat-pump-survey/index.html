@@ -11,7 +11,7 @@
   <meta name="robots" content="noindex, nofollow">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Heat Pump Survey & Home Assessment | Airwarm</title>
+  <title>Heat Pump Survey &amp; Home Assessment | Airwarm</title>
   <meta name="description" content="What an Airwarm heat pump survey records, why it comes before any price, and what you receive afterwards. Heat pump surveys across West Yorkshire.">
   <link rel="canonical" href="https://airwarm.co.uk/heat-pump-survey/">
 
@@ -19,7 +19,7 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Airwarm">
   <meta property="og:locale" content="en_GB">
-  <meta property="og:title" content="Heat Pump Survey & Home Assessment | Airwarm">
+  <meta property="og:title" content="Heat Pump Survey &amp; Home Assessment | Airwarm">
   <meta property="og:description" content="What an Airwarm heat pump survey records, why it comes before any price, and what you receive afterwards. Heat pump surveys across West Yorkshire.">
   <meta property="og:url" content="https://airwarm.co.uk/heat-pump-survey/">
   <!-- OG IMAGE GOES HERE once a real Airwarm share image exists, e.g.
@@ -112,20 +112,48 @@
     </div>
   </nav>
 
-      <section class="aw-section aw-section--tight">
+      <!-- HERO. The quiet tiled pattern behind the type comes from the
+           .aw-hero-pattern class in the stylesheet, which puts
+           assets/hero-pattern.svg over navy. Remove that one class to get a
+           plain navy panel; there is nothing else to undo. -->
+      <section class="aw-hero aw-hero-pattern">
         <div class="aw-wrap">
+          <span class="aw-positioning">Air Source Heat Pumps &bull; West Yorkshire</span>
           <h1>A survey that tells you what your home actually needs</h1>
-          <p class="aw-lead aw-measure">
+          <p class="aw-hero__support">
             The survey is the most important stage of the whole project. It is
             an engineering visit, not a sales appointment, and it is where the
             real answers come from.
           </p>
+          <div class="aw-btn-row">
+            <a class="aw-btn aw-btn--primary" href="../home-energy-assessment/">Start with the assessment</a>
+            <a class="aw-btn aw-btn--secondary" href="mailto:hello@airwarm.co.uk?subject=Survey%20enquiry">Ask about a survey</a>
+          </div>
         </div>
       </section>
 
-      <section class="aw-section aw-section--light">
+      <section class="aw-section aw-section--tight">
+        <div class="aw-wrap">
+          <nav class="aw-toc" aria-label="On this page">
+            <h2>On this page</h2>
+            <ol>
+              <li><a href="#purpose">What the survey is for</a></li>
+              <li><a href="#heat-loss">Heat loss, room by room</a></li>
+              <li><a href="#recorded">Everything that gets recorded</a></li>
+              <li><a href="#siting">Where the outdoor unit can go</a></li>
+              <li><a href="#method">How Airwarm surveys</a></li>
+              <li><a href="#outputs">What you get afterwards</a></li>
+              <li><a href="#limits">Honest limitations</a></li>
+              <li><a href="#faqs">Frequently asked questions</a></li>
+            </ol>
+          </nav>
+        </div>
+      </section>
+
+      <!-- PURPOSE ---------------------------------------------------- -->
+      <section class="aw-section aw-section--light" id="purpose">
         <div class="aw-wrap aw-split">
-          <div>
+          <div class="aw-prose">
             <h2>What the survey is for</h2>
             <p class="aw-measure">
               To work out whether your property can achieve comfortable rooms,
@@ -140,69 +168,228 @@
               give out at a lower temperature, and where everything can
               physically go.
             </p>
+            <p class="aw-measure">
+              It is also the point at which guesswork stops being acceptable.
+              Everything after the survey &mdash; the equipment, the emitter
+              schedule, the programme, the price &mdash; depends on the
+              measurements taken during it. A survey that skips a room, or
+              estimates a radiator instead of measuring it, produces a design
+              with a mistake built into every figure that follows.
+            </p>
           </div>
           <div>
             <div class="aw-card">
-              <h3>Who a survey is for</h3>
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-survey"></use></svg>
+              <h3 class="aw-card__title">Who a survey is for</h3>
               <ul class="aw-ticks">
                 <li>Homeowners who have completed the assessment and had the suitability call</li>
                 <li>People who want the numbers rather than a headline claim</li>
                 <li>Renovations where the heating design needs to fit the building work</li>
                 <li>Homes where a previous quotation felt like guesswork</li>
               </ul>
+              <p class="aw-small" style="margin-top:16px">
+                A survey is not the first step. The
+                <a href="../home-energy-assessment/">Home Energy Assessment</a>
+                and a short call come first, precisely so that nobody pays for a
+                survey to be told something that could have been established in
+                ten minutes. If you are still working out whether your property
+                is a candidate at all, start with
+                <a href="../advice/is-my-home-suitable/">is my home suitable for a heat pump?</a>
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="aw-section">
+      <!-- HEAT LOSS -------------------------------------------------- -->
+      <section class="aw-section" id="heat-loss">
         <div class="aw-wrap">
-          <h2>What gets recorded</h2>
+          <h2>Heat loss, room by room</h2>
+          <p class="aw-measure">
+            Everything starts here. Heat loss is how much heat a room gives up
+            to the outside on a cold day, and it decides the size of the heat
+            pump, the size of every radiator and the temperature the system has
+            to run at. It is calculated, not estimated from floor area.
+          </p>
+
+          <figure class="aw-figure" style="margin-top:24px">
+            <img class="aw-diagram" src="../assets/diagram-heat-loss.svg" alt="Where heat leaves a house: through the walls, the roof, the windows and doors, the floor, and by air changes through draughts and ventilation. Each path is calculated separately for every room and added together.">
+            <figcaption class="aw-figure__caption">
+              Every room loses heat through its walls, roof, floor, windows and
+              doors, and through the air that changes in it. Each path is
+              calculated separately and added up, room by room.
+            </figcaption>
+          </figure>
+
+          <div class="aw-card-grid" style="margin-top:40px">
+            <div class="aw-card">
+              <h3 class="aw-card__title">Why room by room, and not whole-house</h3>
+              <p>
+                Because you do not live in an average. A whole-house figure can
+                be right overall and still leave one north-facing bedroom that
+                never gets warm. The room-by-room calculation is what tells you
+                which emitters are already adequate and which are not &mdash;
+                usually a handful, not all of them.
+              </p>
+            </div>
+            <div class="aw-card">
+              <h3 class="aw-card__title">Why the construction matters</h3>
+              <p>
+                Solid stone, brick with a cavity, a filled cavity, an insulated
+                internal wall and a back-to-earth cellar wall all behave
+                differently. Age bands are a starting point, not an answer, and
+                West Yorkshire has too much solid-wall stone for assumptions to
+                be safe.
+              </p>
+              <p class="aw-small">
+                <a href="../advice/heat-loss-explained/">Heat loss explained, without the maths</a>
+              </p>
+            </div>
+            <div class="aw-card">
+              <h3 class="aw-card__title">Why exposure and altitude matter</h3>
+              <p>
+                A design external temperature copied from a sheltered valley
+                property will be undersized on the tops. Bradford district alone
+                runs from the valley floor to settlements well above 300 metres,
+                and wind exposure changes the answer too.
+              </p>
+            </div>
+            <div class="aw-card">
+              <h3 class="aw-card__title">Why the flow temperature falls out of it</h3>
+              <p>
+                Once the heat loss and the emitter capacities are known, the
+                lowest useful flow temperature can be chosen rather than
+                guessed. That single number is the biggest single influence on
+                what the system costs to run.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHAT GETS RECORDED ---------------------------------------- -->
+      <section class="aw-section aw-section--light" id="recorded">
+        <div class="aw-wrap">
+          <h2>Everything that gets recorded</h2>
           <p class="aw-measure">
             A survey that skips any of this is not really a survey.
           </p>
-          <div class="aw-grid aw-grid--2" style="margin-top:24px">
+          <div class="aw-card-grid" style="margin-top:24px">
             <div class="aw-card">
-              <h3>The building</h3>
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-home"></use></svg>
+              <h3 class="aw-card__title">The building</h3>
               <ul class="aw-ticks">
                 <li>Room dimensions, room by room</li>
                 <li>Construction and insulation as built and as improved</li>
                 <li>Windows, doors and obvious draught paths</li>
-                <li>Design temperatures for the local climate</li>
+                <li>Floor construction, including cellars and back-to-earth walls</li>
+                <li>Design temperatures for the local climate and exposure</li>
               </ul>
             </div>
             <div class="aw-card">
-              <h3>The system</h3>
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-radiator"></use></svg>
+              <h3 class="aw-card__title">The system</h3>
               <ul class="aw-ticks">
                 <li>Existing emitters, measured not estimated</li>
                 <li>Pipe routes and pipe sizes</li>
                 <li>Cylinder options and hot-water demand</li>
                 <li>Existing controls and how the house is used</li>
+                <li>Anything already installed that is worth keeping</li>
               </ul>
             </div>
             <div class="aw-card">
-              <h3>The practical side</h3>
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-outdoor-unit"></use></svg>
+              <h3 class="aw-card__title">The practical side</h3>
               <ul class="aw-ticks">
                 <li>Outdoor-unit positions and noise considerations</li>
                 <li>Condensate route and frost protection</li>
-                <li>Electrical supply and consumer unit</li>
+                <li>Electrical supply, main fuse and consumer unit</li>
                 <li>Access, parking and working space</li>
+                <li>Anything that will need making good afterwards</li>
               </ul>
             </div>
             <div class="aw-card">
-              <h3>And you</h3>
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-question"></use></svg>
+              <h3 class="aw-card__title">And you</h3>
               <ul class="aw-ticks">
                 <li>What you want the house to feel like</li>
                 <li>What you are and are not prepared to change</li>
                 <li>Which rooms matter most, and when</li>
+                <li>How your household actually uses hot water</li>
                 <li>Anything that has annoyed you about the current heating</li>
               </ul>
+            </div>
+          </div>
+
+          <!-- PHOTOGRAPH NEEDED: a survey in progress in a real home — a room
+               being measured, or radiator dimensions being recorded. Should
+               look like careful work rather than a sales visit. Airwarm's own
+               work only. No stock photography. -->
+          <div class="aw-photo-placeholder" style="margin-top:40px">
+            <p>
+              <strong>Photograph to come:</strong> a survey in progress in a real
+              West Yorkshire home &mdash; measuring a room, recording radiator
+              dimensions. Published when there is a real visit to photograph.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SITING ---------------------------------------------------- -->
+      <section class="aw-section" id="siting">
+        <div class="aw-wrap">
+          <h2>Where the outdoor unit can go</h2>
+          <p class="aw-measure">
+            On a detached house with a garden this is usually a choice. On a
+            terrace with a shared yard, or a back-to-back with one external
+            elevation, it can be the question that decides the whole project.
+            Which is why it is assessed early rather than assumed.
+          </p>
+
+          <figure class="aw-figure" style="margin-top:24px">
+            <img class="aw-diagram" src="../assets/diagram-outdoor-unit-siting.svg" alt="What an outdoor unit position needs: clear space in front of the fan for air flow, clearance at the sides and rear, a level mounting clear of the ground, a route for condensate to drain away safely, service access, and an acceptable noise level at the nearest neighbouring habitable room window.">
+            <figcaption class="aw-figure__caption">
+              Six things a position has to satisfy at once: air flow,
+              clearances, level mounting clear of the ground, condensate
+              drainage, service access, and noise at the nearest neighbouring
+              window.
+            </figcaption>
+          </figure>
+
+          <div class="aw-grid aw-grid--2" style="margin-top:40px">
+            <div class="aw-prose">
+              <h3>What makes a position work</h3>
+              <ul class="aw-ticks aw-measure">
+                <li>Enough free air in front of the fan, and clearance at the sides and rear</li>
+                <li>No recirculation of its own cold discharge air back into the inlet</li>
+                <li>A level, solid mounting, high enough to stay clear of standing water and drifted snow</li>
+                <li>A condensate route that drains somewhere sensible and will not ice over a path</li>
+                <li>A short, insulated pipe run to the plant indoors</li>
+                <li>Safe access for servicing without a ladder over a boundary</li>
+                <li>An acceptable noise level at the nearest neighbouring habitable room window</li>
+              </ul>
+            </div>
+            <div class="aw-prose">
+              <h3>What complicates it locally</h3>
+              <ul class="aw-ticks aw-measure">
+                <li>Terraces with no rear access, where the only external wall fronts the street</li>
+                <li>Shared yards and ginnels, where the position affects a neighbour as much as you</li>
+                <li>Neighbouring windows a few metres away, which makes the noise assessment decisive</li>
+                <li>Conservation areas and listed buildings, where consent is likely to be needed for anything visible</li>
+                <li>Flood-risk positions on the valley floor, where mounting height is a design decision</li>
+                <li>Steep sites, where a level position is not always obvious</li>
+              </ul>
+              <p class="aw-small">
+                None of these is automatically fatal. All of them are far better
+                established at survey stage than after a deposit has been paid.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="aw-section aw-section--navy">
+      <!-- METHOD ---------------------------------------------------- -->
+      <section class="aw-section aw-section--navy" id="method">
         <div class="aw-wrap aw-split">
           <div>
             <h2>How Airwarm surveys</h2>
@@ -221,9 +408,16 @@
               You should never be asked to accept a number from a black box
               &mdash; including ours.
             </p>
+            <p class="aw-hero__support">
+              And every design is reviewed before the proposal is issued:
+              heat loss, emitter capacity, flow temperature, hydraulic
+              arrangement, hot water, controls, electrical requirements, siting,
+              noise and scope. The review exists to catch the mistake that the
+              person who did the work cannot see.
+            </p>
           </div>
           <div>
-            <div class="aw-panel">
+            <div class="aw-panel" id="outputs">
               <h3>What you get afterwards</h3>
               <ul class="aw-ticks">
                 <li>Room-by-room heat loss</li>
@@ -231,17 +425,21 @@
                 <li>The proposed flow temperature and why</li>
                 <li>Hot-water arrangement and cylinder position</li>
                 <li>Outdoor-unit position, with the reasoning</li>
+                <li>Electrical scope, and whether the network operator is involved</li>
                 <li>Scope of work, in writing, with the assumptions listed</li>
+                <li>What is excluded, and what could change the figure</li>
               </ul>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="aw-section">
+      <!-- LIMITS ---------------------------------------------------- -->
+      <section class="aw-section" id="limits">
         <div class="aw-wrap">
           <h2>Honest limitations</h2>
-          <div class="aw-note aw-measure">
+          <div class="aw-callout aw-callout--caution aw-measure">
+            <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-warning"></use></svg>
             <h3>A survey can conclude that the answer is no</h3>
             <p>
               Sometimes the honest result is that a heat pump is not the right
@@ -252,48 +450,169 @@
               is not the one anyone was hoping for.
             </p>
           </div>
-          <div class="aw-faq" style="margin-top:40px">
-            <details>
-              <summary>How long does a survey take?</summary>
-              <p>
-                Long enough to measure every room properly. It depends on the
-                size and complexity of the property, and we will tell you what
-                to expect when it is booked.
+          <div class="aw-grid aw-grid--2" style="margin-top:40px">
+            <div class="aw-prose">
+              <h3>What a survey cannot do</h3>
+              <ul class="aw-ticks aw-measure">
+                <li>See inside a wall. Where construction is uncertain it is recorded as an assumption, and the assumption is shown to you.</li>
+                <li>Predict your bills. It can predict the flow temperature and the heat demand, which is as far as honesty goes.</li>
+                <li>Grant permission. Where consent is needed, that is a matter for the local authority.</li>
+                <li>Guarantee that nothing is found behind a floorboard. Where something is, you hear about it that day.</li>
+              </ul>
+            </div>
+            <div class="aw-prose">
+              <h3>What happens if we disagree</h3>
+              <p class="aw-measure">
+                Sometimes a survey concludes that a room needs a larger radiator
+                and the owner would rather it did not. That is a legitimate
+                position, and the honest response is not to quietly design
+                around it.
               </p>
-            </details>
-            <details>
-              <summary>Do I need a survey before I get a price?</summary>
-              <p>
-                Yes, for a price we are willing to stand behind. Anything
-                offered before the survey would be a guess dressed up as a
-                figure.
+              <p class="aw-measure">
+                What we will do is show you the effect: what flow temperature
+                the existing emitter would require, what that does to
+                efficiency, and which rooms would be affected on the coldest
+                days. Then it is an informed decision rather than an argument.
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQS ----------------------------------------------------- -->
+      <section class="aw-section aw-section--light" id="faqs">
+        <div class="aw-wrap">
+          <h2>Frequently asked questions</h2>
+          <div class="aw-faq" style="margin-top:24px">
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">How long does a survey take?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  Long enough to measure every room properly. It depends on the
+                  size and complexity of the property, and we will tell you what
+                  to expect when it is booked.
+                </p>
+              </div>
             </details>
-            <details>
-              <summary>What does a survey cost?</summary>
-              <p>
-                Survey and installation charges are being finalised before
-                Airwarm begins trading, and we are not going to publish a
-                figure we might have to change. Ask us by e-mail and you will
-                get the current position, in writing, with no obligation.
-              </p>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">Is a survey chargeable?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  Airwarm&rsquo;s commercial terms are being finalised ahead of
+                  its trading launch, and the survey arrangement will be
+                  confirmed clearly before you commit to anything. It will never
+                  be a surprise on an invoice.
+                </p>
+                <!-- REVIEW: confirm whether the detailed survey is chargeable,
+                     and whether any fee is redeemable against installation.
+                     Rewrite this answer once it is settled. -->
+              </div>
             </details>
-            <details>
-              <summary>Can I use the survey with another installer?</summary>
-              <p>
-                Ask us. We will give you a straight answer about what the
-                survey covers and what it belongs to before you commit to it,
-                rather than after.
-              </p>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">Do I need a survey before I get a price?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  Yes, for a price we are willing to stand behind. Anything
+                  offered before the survey would be a guess dressed up as a
+                  figure.
+                </p>
+              </div>
             </details>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">Do I need a big garden?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  No, but the outdoor unit needs enough free air around it, a
+                  route for condensate drainage, service access, and an
+                  acceptable noise level at neighbouring windows. Small yards
+                  and narrow side passages are often workable; the survey checks
+                  the specifics rather than applying a rule.
+                </p>
+              </div>
+            </details>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">Where will the outdoor unit go?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  Somewhere with adequate air flow, service access, a condensate
+                  drainage route and an acceptable noise level at the nearest
+                  neighbouring habitable room window. The survey assesses
+                  candidate positions and explains the reasoning for the one
+                  recommended, including any trade-off with appearance.
+                </p>
+              </div>
+            </details>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">Do I need planning permission?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  Many domestic air source heat pump installations in England
+                  proceed under permitted development, subject to conditions
+                  including a noise assessment. Flats, listed buildings and
+                  conservation areas are more restricted. Airwarm will tell you
+                  what applies to your property and where a planning application
+                  would be needed.
+                </p>
+                <!-- REVIEW: confirm current permitted development conditions
+                     and the noise assessment requirement wording before this
+                     page goes live. -->
+              </div>
+            </details>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">Is there enough hot water?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  Yes, if the cylinder is sized for how your household actually
+                  uses hot water. Because a heat pump heats a store rather than
+                  heating on demand, an unusually heavy run of showers can
+                  deplete it before it recovers, which is why the survey asks
+                  about your routine rather than counting bedrooms.
+                </p>
+              </div>
+            </details>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">Can I use the survey with another installer?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  Ask us. We will give you a straight answer about what the
+                  survey covers and what it belongs to before you commit to it,
+                  rather than after.
+                </p>
+              </div>
+            </details>
+
+          </div>
+        </div>
+      </section>
+
+      <section class="aw-section aw-section--tight">
+        <div class="aw-wrap">
+          <!-- CASE STUDY GOES HERE: a real survey and what it concluded,
+               including one where the conclusion was "not yet". Do not write
+               one until a real project exists and the customer has agreed. -->
+          <div class="aw-evidence-slot">
+            <strong>Survey example:</strong> a real worked example &mdash; the
+            property, what the calculation showed, which emitters changed and
+            why one position was chosen over another &mdash; will be published
+            here once Airwarm has surveys of its own to describe and permission
+            to describe them.
           </div>
         </div>
       </section>
 
       <!-- FINAL CALL TO ACTION — repeated on every page, per the blueprint.
            The assessment is the primary action; e-mail is the route for
-           anything unusual. -->
-      <section class="aw-section aw-section--navy">
+           anything unusual. This block is the same on every page: if you
+           change the wording, change it everywhere. -->
+      <section class="aw-section aw-section--navy aw-cta-band">
         <div class="aw-wrap">
           <h2>Start with your home, not a product</h2>
           <p class="aw-hero__support">
@@ -385,11 +704,28 @@
       <div class="aw-footer__base">
         <p>
           Airwarm is a new West Yorkshire business preparing to install and
-          support air source heat pumps. Company registration and VAT details
-          will be shown here once they are confirmed.
+          support air source heat pumps.
         </p>
-        <!-- COMPANY DETAILS GO HERE: registered name, company number,
-             registered office, VAT number. Do not add them until they exist. -->
+        <!-- STATUTORY COMPANY DISCLOSURE — required by law. Do not remove,
+             move off the footer, or hide it behind a link.
+             The Companies Act 2006 s.82, the Company, Limited Liability
+             Partnership and Business (Names and Trading Disclosures)
+             Regulations 2015 and the Electronic Commerce (EC Directive)
+             Regulations 2002 together require the registered name, the
+             company number, the place of registration and the registered
+             office address to be easily and permanently accessible on the
+             website. The footer appears on every page, which is what makes it
+             permanently accessible. If any of these details change, change
+             them here in every page at the same time. -->
+        <p class="aw-small">
+          AIRWARM LTD is a company registered in England and Wales, company
+          number 17362672. Registered office: 2 Aireview Crescent, Baildon,
+          Shipley, BD17 7LS.
+        </p>
+        <!-- VAT NUMBER GOES HERE if and when Airwarm registers for VAT. Add it
+             as a further sentence in the paragraph above, for example
+             "VAT registration number GB000000000." Do not invent one, and do
+             not display a VAT number before registration is confirmed. -->
         <!-- SOCIAL LINKS: add only channels that are actively maintained. -->
         <p>&copy; 2026 Airwarm.</p>
       </div>

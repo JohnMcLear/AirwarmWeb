@@ -232,6 +232,38 @@ var AIRWARM_TRIAGE_CONFIG = {
   var errorBox = document.getElementById("aw-form-error");
   var resultBox = document.getElementById("aw-result");
 
+  /* The id of the validation paragraph, used to point an unanswered field's
+     aria-describedby at the message about it. */
+  var ERROR_ID = "aw-form-error";
+
+  /* ---- Marking a field as unanswered, for assistive technology ---------
+     The visible message at the top of the form names the questions. These two
+     helpers make the same information reachable from the field itself, which
+     is what a screen-reader user gets when they tab back into it. Nothing here
+     stores or sends anything. */
+  function markInvalid(fields) {
+    Array.prototype.forEach.call(fields, function (field) {
+      field.setAttribute("aria-invalid", "true");
+      var ids = (field.getAttribute("aria-describedby") || "").split(/\s+/).filter(Boolean);
+      if (ids.indexOf(ERROR_ID) === -1) { ids.push(ERROR_ID); }
+      field.setAttribute("aria-describedby", ids.join(" "));
+    });
+  }
+
+  function clearInvalid(root) {
+    Array.prototype.forEach.call(root.querySelectorAll('[aria-invalid="true"]'), function (field) {
+      field.removeAttribute("aria-invalid");
+      var ids = (field.getAttribute("aria-describedby") || "").split(/\s+/).filter(function (id) {
+        return id && id !== ERROR_ID;
+      });
+      if (ids.length) {
+        field.setAttribute("aria-describedby", ids.join(" "));
+      } else {
+        field.removeAttribute("aria-describedby");
+      }
+    });
+  }
+
   /* ---- Showing one stage at a time ---------------------------------- */
   function showStage(index) {
     stages.forEach(function (stage, i) {
@@ -240,6 +272,7 @@ var AIRWARM_TRIAGE_CONFIG = {
     current = index;
     updateProgress();
     errorBox.textContent = "";
+    clearInvalid(form);
 
     /* Move focus to the new stage heading so keyboard and screen-reader
        users are not left behind at the bottom of the page. */
@@ -263,27 +296,39 @@ var AIRWARM_TRIAGE_CONFIG = {
     var missing = [];
     var groupsSeen = {};
 
+    clearInvalid(stage);
+
     Array.prototype.forEach.call(stage.querySelectorAll("[required]"), function (field) {
       if (field.type === "radio") {
         if (groupsSeen[field.name]) { return; }
         groupsSeen[field.name] = true;
         var checked = stage.querySelector('input[name="' + field.name + '"]:checked');
-        if (!checked) { missing.push(labelFor(field)); }
+        if (!checked) {
+          missing.push(labelFor(field));
+          markInvalid(stage.querySelectorAll('input[name="' + field.name + '"]'));
+        }
       } else if (!field.value) {
         missing.push(labelFor(field));
+        markInvalid([field]);
       }
     });
 
     return missing;
   }
 
+  /* The name a validation message uses for a field. The field's own <label>
+     comes first, so that a question inside a stage-level fieldset is named by
+     its question rather than by the stage. Radio groups have no label[for], so
+     they fall through to their own fieldset's <legend>, which is what names
+     them. */
   function labelFor(field) {
+    var lbl = field.id ? document.querySelector('label[for="' + field.id + '"]') : null;
+    if (lbl) { return lbl.textContent.trim(); }
     var fs = field.closest("fieldset");
     if (fs && fs.querySelector("legend")) {
       return fs.querySelector("legend").textContent.trim();
     }
-    var lbl = field.id ? document.querySelector('label[for="' + field.id + '"]') : null;
-    return lbl ? lbl.textContent.trim() : "a question above";
+    return "a question above";
   }
 
   /* ---- Reading the answers ------------------------------------------ */

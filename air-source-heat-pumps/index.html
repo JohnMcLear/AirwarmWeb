@@ -112,28 +112,65 @@
     </div>
   </nav>
 
-      <section class="aw-section aw-section--tight">
+      <!-- HERO. The headline is the one specified for this page in the brand
+           pack. The background pattern is applied inline on the hero panel
+           only; the navy behind it comes from the .aw-hero rule, so the text
+           stays readable if the pattern does not load. -->
+      <section class="aw-hero aw-hero-pattern">
         <div class="aw-wrap">
+          <span class="aw-positioning">Air Source Heat Pumps &bull; West Yorkshire</span>
           <h1>Heat pumps designed around your home</h1>
-          <p class="aw-lead aw-measure">
+          <p class="aw-hero__support">
             An air source heat pump can heat a house very well &mdash; but only
             when the rest of the system is designed to suit it. This page
             explains what one actually does, where it works well, and what
             usually needs checking first.
           </p>
+          <div class="aw-btn-row">
+            <a class="aw-btn aw-btn--primary" href="../home-energy-assessment/">Check your home&rsquo;s suitability</a>
+            <a class="aw-btn aw-btn--secondary" href="../heat-pump-survey/">What a survey covers</a>
+          </div>
         </div>
       </section>
 
-      <!-- 3. WHO THIS IS FOR ------------------------------------------ -->
-      <section class="aw-section aw-section--light">
+      <section class="aw-section aw-section--tight">
+        <div class="aw-wrap">
+          <nav class="aw-toc" aria-label="On this page">
+            <h2>On this page</h2>
+            <ol>
+              <li><a href="#what-it-does">What an air source heat pump does</a></li>
+              <li><a href="#vs-boiler">How it differs from a boiler</a></li>
+              <li><a href="#who-for">Who this suits, and who it does not</a></li>
+              <li><a href="#five-things">The five things that decide whether one works well</a></li>
+              <li><a href="#system">What a complete system looks like</a></li>
+              <li><a href="#approach">Airwarm&rsquo;s survey-led approach</a></li>
+              <li><a href="#limits">Limitations, plainly stated</a></li>
+              <li><a href="#faqs">Frequently asked questions</a></li>
+            </ol>
+          </nav>
+        </div>
+      </section>
+
+      <!-- WHAT IT DOES ------------------------------------------------- -->
+      <section class="aw-section" id="what-it-does">
         <div class="aw-wrap aw-split">
-          <div>
+          <div class="aw-prose">
             <h2>What an air source heat pump does</h2>
             <p class="aw-measure">
               It takes heat out of the outside air and moves it into your
               home&rsquo;s heating and hot water. It does not burn anything.
               Because it moves heat rather than making it, it delivers several
               units of heat for each unit of electricity it uses.
+            </p>
+            <p class="aw-measure">
+              Inside the outdoor unit, a fan draws air across a heat exchanger
+              containing a refrigerant that boils at a very low temperature. The
+              refrigerant takes up heat from the air, a compressor raises its
+              pressure and therefore its temperature, and a second heat
+              exchanger passes that heat into the water going round your
+              heating system. The refrigerant expands, cools, and goes round
+              again. It is the same principle as a fridge, working in the useful
+              direction.
             </p>
             <p class="aw-measure">
               The trade-off is temperature. A gas boiler happily pushes water
@@ -143,34 +180,180 @@
               that lower temperature. That single fact drives most of what a
               survey looks at.
             </p>
+            <p class="aw-measure">
+              It is also why a heat pump is not a like-for-like swap. The unit
+              in the garden is the easy part. The design work is in the rest of
+              the system.
+            </p>
           </div>
           <div>
             <div class="aw-card">
-              <h3>Who this suits</h3>
-              <ul class="aw-ticks">
-                <li>Homeowners who want the heating designed for the property</li>
-                <li>People willing to consider radiator or fabric improvements where they are needed</li>
-                <li>Households replacing oil, LPG, storage heaters or an ageing boiler</li>
-                <li>Renovations, where the heating can be planned alongside the building work</li>
-              </ul>
-              <p class="aw-small" style="margin-top:16px">
-                If you want the cheapest possible swap with nothing else
-                changed, Airwarm is probably not the right choice &mdash; and
-                we would rather say that now.
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-outdoor-unit"></use></svg>
+              <h3 class="aw-card__title">In one paragraph</h3>
+              <p>
+                A heat pump is a machine that moves heat from cold outside air
+                into warm water. It runs on electricity, produces no flue gases,
+                and works best when the whole system &mdash; emitters, cylinder
+                and controls &mdash; is designed for lower water temperatures
+                and steady running.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- 4 + 5. WHAT AIRWARM CHECKS, AND WHY IT MATTERS -------------- -->
-      <section class="aw-section">
+      <section class="aw-section aw-section--light">
+        <div class="aw-wrap">
+          <figure class="aw-figure">
+            <img class="aw-diagram" src="../assets/diagram-how-it-works.svg" alt="How an air source heat pump works: a fan draws outside air across an evaporator where refrigerant absorbs heat; a compressor raises its temperature; a heat exchanger transfers that heat to the water circuit serving radiators and the hot water cylinder; the refrigerant expands and the cycle repeats.">
+            <figcaption class="aw-figure__caption">
+              The refrigeration cycle, drawn out. Heat is collected from the
+              outside air, raised to a useful temperature by the compressor and
+              handed over to the water in your heating system.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- VS BOILER ---------------------------------------------------- -->
+      <section class="aw-section" id="vs-boiler">
+        <div class="aw-wrap">
+          <h2>How it differs from a boiler</h2>
+          <p class="aw-measure">
+            Most of the surprises people report come from expecting a heat pump
+            to behave like a boiler. It does not, and the differences are worth
+            knowing before you decide.
+          </p>
+          <div class="aw-table-wrap">
+            <table class="aw-table">
+              <caption>What changes when a boiler is replaced by a heat pump</caption>
+              <thead>
+                <tr>
+                  <th scope="col">What changes</th>
+                  <th scope="col">Gas or oil boiler</th>
+                  <th scope="col">Air source heat pump</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Where the heat comes from</th>
+                  <td>Burning fuel in the house</td>
+                  <td>Heat moved from the outside air by electricity</td>
+                </tr>
+                <tr>
+                  <th scope="row">Flow temperature</th>
+                  <td>Typically 65 to 80&nbsp;&deg;C</td>
+                  <td>Designed as low as the emitters allow, and varied with the weather</td>
+                </tr>
+                <tr>
+                  <th scope="row">Radiators</th>
+                  <td>Sized for hot water, so often small</td>
+                  <td>Sized for cooler water, so some rooms need larger emitters</td>
+                </tr>
+                <tr>
+                  <th scope="row">How it runs</th>
+                  <td>Short bursts at high output</td>
+                  <td>Longer, steadier running at low output</td>
+                </tr>
+                <tr>
+                  <th scope="row">Hot water</th>
+                  <td>Often heated on demand by a combination boiler</td>
+                  <td>Heated into a cylinder, so a cylinder is needed</td>
+                </tr>
+                <tr>
+                  <th scope="row">Outside the house</th>
+                  <td>A flue</td>
+                  <td>An outdoor unit needing air flow, drainage and service access</td>
+                </tr>
+                <tr>
+                  <th scope="row">Electrical supply</th>
+                  <td>A small load</td>
+                  <td>A substantial load, so the supply and consumer unit are checked</td>
+                </tr>
+                <tr>
+                  <th scope="row">Annual check</th>
+                  <td>Gas safety check and service</td>
+                  <td>No gas check, but an annual service that protects efficiency and warranty</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="aw-callout aw-callout--positive" style="margin-top:40px">
+            <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-check"></use></svg>
+            <h3>Your house will probably feel steadier</h3>
+            <p>
+              Instead of warming up quickly and then cooling, the house tends to
+              sit at a consistent temperature. Radiators feel cooler to the
+              touch than you are used to, which is normal and not a sign of
+              underperformance.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHO FOR ------------------------------------------------------ -->
+      <section class="aw-section aw-section--light" id="who-for">
+        <div class="aw-wrap aw-split">
+          <div class="aw-prose">
+            <h2>Who this suits, and who it does not</h2>
+            <p class="aw-measure">
+              Airwarm is a good fit for households who want the heating designed
+              for the property, and who are willing to hear that a room needs a
+              bigger radiator before they hear a price. It is a poor fit for
+              anyone who wants the cheapest possible swap with nothing else
+              changed.
+            </p>
+            <p class="aw-measure">
+              That is not a judgement. It is a difference in what the two jobs
+              are, and knowing which one you want saves everybody time.
+            </p>
+            <p class="aw-measure">
+              A heat pump is often a particularly strong option where the
+              current system is oil, LPG, storage heaters or direct electric,
+              and where a boiler is close to the end of its life and something
+              has to be decided anyway.
+            </p>
+          </div>
+          <div>
+            <div class="aw-card">
+              <h3 class="aw-card__title">This suits you if</h3>
+              <ul class="aw-ticks">
+                <li>You want the heating designed for the property, not a standard package</li>
+                <li>You would consider radiator or fabric improvements where they are genuinely needed</li>
+                <li>You are replacing oil, LPG, storage heaters or an ageing boiler</li>
+                <li>You are renovating, and the heating can be planned alongside the building work</li>
+                <li>You want the calculations, not a headline claim</li>
+              </ul>
+            </div>
+            <div class="aw-card" style="margin-top:24px">
+              <h3 class="aw-card__title">It probably does not suit you if</h3>
+              <ul class="aw-ticks">
+                <li>You want the cheapest possible unit fitted with nothing else touched</li>
+                <li>Nothing about the emitters or the hot water can change</li>
+                <li>You need the work done before a survey could realistically happen</li>
+              </ul>
+              <p class="aw-small" style="margin-top:16px">
+                If that is you, we would rather say so now than take a deposit
+                and disappoint you later.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FIVE THINGS -------------------------------------------------- -->
+      <section class="aw-section" id="five-things">
         <div class="aw-wrap">
           <span class="aw-eyebrow">Honest suitability</span>
           <h2>The five things that decide whether a heat pump will work well</h2>
-          <div class="aw-grid aw-grid--2" style="margin-top:24px">
+          <p class="aw-measure">
+            In roughly this order of importance. None of them is exotic, and all
+            of them are checkable.
+          </p>
+          <div class="aw-card-grid" style="margin-top:24px">
             <div class="aw-card">
-              <h3>1. Building fabric</h3>
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-home"></use></svg>
+              <h3 class="aw-card__title">1. Building fabric</h3>
               <p>
                 How much heat the house loses sets everything else: the size of
                 the heat pump, the size of the radiators and the running cost.
@@ -179,9 +362,13 @@
                 Bradford and Airedale &mdash; is not automatically unsuitable,
                 but it does need assessing rather than assuming.
               </p>
+              <p class="aw-small">
+                <a href="../advice/heat-loss-explained/">How a heat loss calculation works</a>
+              </p>
             </div>
             <div class="aw-card">
-              <h3>2. Radiators or underfloor heating</h3>
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-radiator"></use></svg>
+              <h3 class="aw-card__title">2. Radiators or underfloor heating</h3>
               <p>
                 Emitters sized for a boiler are often too small for lower flow
                 temperatures. Some rooms may need a larger radiator; others may
@@ -189,18 +376,27 @@
                 guessed, and it is the most common reason a system
                 underperforms when it is done badly.
               </p>
+              <p class="aw-small">
+                <a href="../advice/radiators-and-emitters/">Will I need new radiators?</a>
+              </p>
             </div>
             <div class="aw-card">
-              <h3>3. Hot water</h3>
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-cylinder"></use></svg>
+              <h3 class="aw-card__title">3. Hot water</h3>
               <p>
                 Heat pumps heat hot water into a cylinder rather than on demand
                 like a combination boiler. That needs somewhere sensible to put
                 a well-insulated cylinder, and enough capacity for how your
-                household actually uses hot water.
+                household actually uses hot water &mdash; which is why the
+                survey asks about your routine rather than counting bedrooms.
+              </p>
+              <p class="aw-small">
+                <a href="../advice/hot-water-and-cylinders/">Hot water and cylinders</a>
               </p>
             </div>
             <div class="aw-card">
-              <h3>4. The outdoor unit</h3>
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-outdoor-unit"></use></svg>
+              <h3 class="aw-card__title">4. The outdoor unit</h3>
               <p>
                 The unit needs a position with free air flow, sensible pipe and
                 condensate routes, tolerable noise for you and your neighbours,
@@ -208,30 +404,123 @@
                 tight side passages and shared yards all need thinking about
                 early.
               </p>
+              <p class="aw-small">
+                <a href="../heat-pump-survey/#siting">How siting is assessed</a>
+              </p>
             </div>
             <div class="aw-card">
-              <h3>5. Controls and how you live</h3>
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-controls"></use></svg>
+              <h3 class="aw-card__title">5. Controls and how you live</h3>
               <p>
                 Heat pumps prefer steady, gentle running to short blasts.
                 Weather compensation, sensible setback and a system that has
                 been balanced make a real difference. So does knowing how the
-                household actually uses the house.
+                household actually uses the house &mdash; which rooms matter,
+                and when.
+              </p>
+              <p class="aw-small">
+                <a href="../advice/weather-compensation/">What weather compensation does</a>
               </p>
             </div>
             <div class="aw-card">
-              <h3>And the electrical supply</h3>
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-install"></use></svg>
+              <h3 class="aw-card__title">And the electrical supply</h3>
               <p>
-                The incoming supply, consumer unit and cabling route all need
-                checking. Electrical work is carried out by vetted qualified
-                contractors where it falls outside our own scope.
+                A heat pump is a substantial electrical load, so the incoming
+                supply, main fuse and consumer unit are all checked at survey.
+                Electrical work is carried out by vetted regional electrical
+                contractors working to Airwarm&rsquo;s design and coordination,
+                and where the network operator needs to be involved Airwarm will
+                say so early.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- 6 + 7. WHAT IS INCLUDED AND WHAT TO EXPECT ------------------ -->
-      <section class="aw-section aw-section--navy">
+      <!-- SYSTEM LAYOUT ----------------------------------------------- -->
+      <section class="aw-section aw-section--light" id="system">
+        <div class="aw-wrap">
+          <h2>What a complete system looks like</h2>
+          <p class="aw-measure">
+            People picture the box in the garden. In practice a heat pump
+            installation is five things working together, and the quality of
+            the result depends on all of them.
+          </p>
+
+          <figure class="aw-figure" style="margin-top:24px">
+            <img class="aw-diagram" src="../assets/diagram-system-layout.svg" alt="A complete air source heat pump system: the outdoor unit connected by insulated flow and return pipework to indoor plant, a hot water cylinder with its immersion and controls, the radiator or underfloor circuits, and a weather-compensating controller with an outside sensor.">
+            <figcaption class="aw-figure__caption">
+              A typical arrangement. The outdoor unit, the indoor plant and
+              cylinder, the emitter circuits and the controls are designed as
+              one system rather than assembled as parts.
+            </figcaption>
+          </figure>
+
+          <div class="aw-card-grid" style="margin-top:40px">
+            <div class="aw-card">
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-outdoor-unit"></use></svg>
+              <h3 class="aw-card__title">The outdoor unit</h3>
+              <p>
+                Sized from the heat loss calculation, positioned for air flow,
+                noise and service access, mounted clear of the ground with a
+                route for condensate to drain safely.
+              </p>
+            </div>
+            <div class="aw-card">
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-cylinder"></use></svg>
+              <h3 class="aw-card__title">The cylinder</h3>
+              <p>
+                Sized for your household&rsquo;s actual hot water pattern, with
+                a coil large enough for a heat pump rather than a boiler, and
+                placed where the pipe runs are short and serviceable.
+              </p>
+            </div>
+            <div class="aw-card">
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-radiator"></use></svg>
+              <h3 class="aw-card__title">The emitters</h3>
+              <p>
+                Radiators or underfloor circuits checked room by room against
+                the design flow temperature. Some are already adequate; some
+                need to be larger.
+              </p>
+            </div>
+            <div class="aw-card">
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-controls"></use></svg>
+              <h3 class="aw-card__title">The controls</h3>
+              <p>
+                Weather compensation set from the heat loss calculation,
+                configured at commissioning and refined during the first
+                season &mdash; not left on factory defaults.
+              </p>
+            </div>
+            <div class="aw-card">
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-install"></use></svg>
+              <h3 class="aw-card__title">The hydraulics</h3>
+              <p>
+                Pipe sizes, flow rates and balancing. Unglamorous, invisible,
+                and one of the commonest reasons a system that looks right on
+                paper disappoints in the house.
+              </p>
+            </div>
+            <div class="aw-card">
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-solar"></use></svg>
+              <h3 class="aw-card__title">And sometimes solar</h3>
+              <p>
+                Solar will contribute, mostly outside the heating season and
+                mostly to hot water. If you are considering both, it is worth
+                planning them together.
+              </p>
+              <p class="aw-small">
+                <a href="../advice/solar-and-battery/">Solar and battery integration</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- APPROACH ---------------------------------------------------- -->
+      <section class="aw-section aw-section--navy" id="approach">
         <div class="aw-wrap aw-split">
           <div>
             <h2>Airwarm&rsquo;s survey-led approach</h2>
@@ -244,11 +533,17 @@
             <p class="aw-hero__support">
               Every proposal is reviewed for heat loss, emitter capacity, flow
               temperature, hydraulic arrangement, hot water, controls,
-              electrical requirements, siting and noise before it is issued to
-              you.
+              electrical requirements, siting, noise and commercial scope before
+              it is issued to you.
+            </p>
+            <p class="aw-hero__support">
+              You get the assumptions as well as the answers. If a calculation
+              matters to your decision, you are entitled to see what went into
+              it.
             </p>
             <div class="aw-btn-row">
               <a class="aw-btn aw-btn--primary" href="../home-energy-assessment/">Check your home&rsquo;s suitability</a>
+              <a class="aw-btn aw-btn--secondary" href="../how-it-works/">See the eight stages</a>
             </div>
           </div>
           <div>
@@ -264,77 +559,230 @@
                 <li>Warranty details and a service schedule</li>
               </ul>
             </div>
+            <!-- PHOTOGRAPH NEEDED: a finished outdoor unit on a real West
+                 Yorkshire property — ideally a stone elevation — showing
+                 clearance, level mounting and a tidy condensate route. Must be
+                 Airwarm's own work. No stock photography. -->
+            <div class="aw-photo-placeholder" style="margin-top:24px">
+              <p>
+                <strong>Photograph to come:</strong> a finished outdoor unit on
+                a real local property, showing clearances, mounting and
+                condensate route. It will be Airwarm&rsquo;s own work when there
+                is work to photograph.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- 8. COMMON CONCERNS AND LIMITATIONS -------------------------- -->
-      <section class="aw-section">
+      <!-- LIMITATIONS ------------------------------------------------- -->
+      <section class="aw-section" id="limits">
         <div class="aw-wrap">
-          <h2>Common concerns, answered plainly</h2>
+          <h2>Limitations, plainly stated</h2>
+          <div class="aw-grid aw-grid--2" style="margin-top:24px">
+            <div class="aw-callout aw-callout--caution">
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-warning"></use></svg>
+              <h3>Where a heat pump needs help first</h3>
+              <p>
+                A house with very poor fabric and no improvement plan, a
+                property with no acceptable outdoor position, severe space
+                constraints indoors, or a system where the emitters cannot
+                change: these are real constraints, not sales objections. We
+                will name the one that applies to you and tell you what would
+                resolve it.
+              </p>
+            </div>
+            <div class="aw-callout aw-callout--caution">
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-warning"></use></svg>
+              <h3>Where permission is involved</h3>
+              <p>
+                Flats, listed buildings and conservation areas restrict what can
+                be done outside, and leasehold property brings in a freeholder
+                or managing agent. None of that automatically rules out a heat
+                pump, but it changes the order of the work: establish what is
+                permitted, then design.
+              </p>
+            </div>
+          </div>
+          <p class="aw-measure" style="margin-top:40px">
+            Nothing here is a reason not to ask. It is a reason to ask early,
+            while a constraint is still information rather than a disappointment.
+          </p>
+        </div>
+      </section>
+
+      <!-- FAQS -------------------------------------------------------- -->
+      <section class="aw-section aw-section--light" id="faqs">
+        <div class="aw-wrap">
+          <h2>Frequently asked questions</h2>
           <div class="aw-faq" style="margin-top:24px">
-            <details>
-              <summary>Will it keep my house warm in a Yorkshire winter?</summary>
-              <p>
-                Yes, if it is sized and designed for your house. Heat pumps are
-                designed against a local winter design temperature, and they
-                work in far colder climates than ours. The risk is not the
-                weather; it is a system that was never properly sized.
-              </p>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">Will a heat pump work in my house?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  Most homes can be heated well by a heat pump, but not every
+                  home today and not every home without changes. It depends on
+                  how much heat your house loses, whether the radiators can
+                  deliver that heat at a lower water temperature, whether there
+                  is a sensible position for the outdoor unit and room for a hot
+                  water cylinder, and whether the electrical supply is adequate.
+                  The Home Energy Assessment is a short first check, and a
+                  survey gives the real answer.
+                </p>
+              </div>
             </details>
-            <details>
-              <summary>Do I need to replace all my radiators?</summary>
-              <p>
-                Usually not all of them. Some rooms need a larger emitter, some
-                are already adequate. It is worked out room by room during the
-                survey, and you see the results.
-              </p>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">Do heat pumps work in cold weather?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  Yes. Air source heat pumps extract heat from outside air well
+                  below freezing. Efficiency reduces as it gets colder, and
+                  demand rises at the same time, so consumption is highest in
+                  the coldest weather. The system is sized for a cold design day
+                  rather than an average one.
+                </p>
+              </div>
             </details>
-            <details>
-              <summary>Are they noisy?</summary>
-              <p>
-                A modern outdoor unit is generally a low, steady sound rather
-                than an intrusive one, but position matters a great deal
-                &mdash; distance from windows and boundaries, and reflecting
-                surfaces. Noise is assessed as part of siting, not treated as
-                an afterthought.
-              </p>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">Will my house feel different?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  Usually it feels steadier. Instead of warming up quickly and
+                  then cooling, the house tends to sit at a consistent
+                  temperature. Radiators feel cooler to the touch than you are
+                  used to, which is normal and not a sign of underperformance.
+                </p>
+              </div>
             </details>
-            <details>
-              <summary>What about my hot water?</summary>
-              <p>
-                A cylinder is needed. If you currently have a combination
-                boiler and no airing cupboard, finding a sensible cylinder
-                location becomes one of the main practical questions for your
-                property.
-              </p>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">Do I need a big garden?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  No, but the outdoor unit needs enough free air around it, a
+                  route for condensate drainage, service access, and an
+                  acceptable noise level at neighbouring windows. Small yards
+                  and narrow side passages are often workable; the survey checks
+                  the specifics rather than applying a rule.
+                </p>
+              </div>
             </details>
-            <details>
-              <summary>What will it cost, and what will I save?</summary>
-              <p>
-                We are not going to put a figure on this page. Installation
-                cost depends on the property, the emitter work and the hot-water
-                arrangement, and running cost depends on your home, your tariff
-                and how the system is set up. Anyone quoting you a number
-                before seeing your house is guessing. You will get real figures
-                after a survey, in writing, with the assumptions shown.
-              </p>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">Where will the outdoor unit go?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  Somewhere with adequate air flow, service access, a condensate
+                  drainage route and an acceptable noise level at the nearest
+                  neighbouring habitable room window. The survey assesses
+                  candidate positions and explains the reasoning for the one
+                  recommended, including any trade-off with appearance.
+                </p>
+              </div>
             </details>
-            <details>
-              <summary>What about grants and funding?</summary>
-              <p>
-                Support schemes exist, but eligibility depends on the
-                certification route of the installer as well as on your
-                property. Airwarm is finalising that route, so we are not going
-                to describe funding you may or may not be able to use. Ask us
-                by e-mail and we will tell you exactly where things stand.
-              </p>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">Will it be noisy for my neighbours?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  The noise level at the nearest neighbouring window is assessed
+                  as part of the design, and it is a condition of the permitted
+                  development route. Position and mounting matter more than the
+                  equipment. Airwarm would rather discuss a position that works
+                  for the neighbours at survey stage than deal with a complaint
+                  afterwards.
+                </p>
+              </div>
             </details>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">Do I need planning permission?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  Many domestic air source heat pump installations in England
+                  proceed under permitted development, subject to conditions
+                  including a noise assessment. Flats, listed buildings and
+                  conservation areas are more restricted. Airwarm will tell you
+                  what applies to your property and where a planning application
+                  would be needed.
+                </p>
+                <!-- REVIEW: confirm current permitted development conditions
+                     and the noise assessment requirement wording before this
+                     page goes live. -->
+              </div>
+            </details>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">How much does a heat pump installation cost?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  Airwarm is not publishing prices ahead of its trading launch,
+                  and a figure quoted without a survey would be a guess. What
+                  determines the cost is the size of the system, how many
+                  emitters need changing, the cylinder and its position, the
+                  pipework and electrical work required, and access. The
+                  proposal sets all of it out itemised.
+                </p>
+              </div>
+            </details>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">Will a heat pump reduce my energy bills?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  That depends on your building, your tariff, the efficiency the
+                  system actually achieves and how you use it, so Airwarm will
+                  not put a figure on it. What Airwarm will do is explain the
+                  things that determine running cost and design the system to
+                  run at the lowest useful flow temperature.
+                </p>
+                <p>
+                  <a href="../advice/what-determines-running-costs/">What actually determines running costs</a>
+                </p>
+              </div>
+            </details>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">Why is Airwarm not the cheapest option?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  Airwarm&rsquo;s approach involves a proper heat loss
+                  calculation, a documented design, a design review before the
+                  proposal is issued and recorded commissioning. That work costs
+                  something. Airwarm would rather compete on the result than on
+                  being the lowest number, and will tell you where a cheaper
+                  approach would be a false economy and where it genuinely would
+                  not.
+                </p>
+              </div>
+            </details>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">What about grants and funding?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  Government support for domestic heat pumps in England and
+                  Wales generally works by reducing what the homeowner pays,
+                  with a certified installer making the claim. Amounts,
+                  eligibility and deadlines change, so the scheme&rsquo;s own
+                  guidance on GOV.UK is the authoritative source rather than an
+                  installer&rsquo;s website. Whether Airwarm can make a claim on
+                  your behalf depends on the certification route it holds at the
+                  time you enquire, and it will confirm its current position
+                  directly rather than implying a capability it does not yet
+                  hold.
+                </p>
+              </div>
+            </details>
+
           </div>
         </div>
       </section>
 
-      <!-- 9. EVIDENCE SLOT ------------------------------------------- -->
+      <!-- EVIDENCE SLOT ---------------------------------------------- -->
       <section class="aw-section aw-section--tight">
         <div class="aw-wrap">
           <!-- CASE STUDY GOES HERE: problem, survey decision, installed
@@ -349,10 +797,31 @@
         </div>
       </section>
 
+      <section class="aw-section">
+        <div class="aw-wrap">
+          <h2>Where to go next</h2>
+          <div class="aw-card-grid" style="margin-top:24px">
+            <a class="aw-card aw-card--link" href="../home-energy-assessment/">
+              <h3 class="aw-card__title">Home Energy Assessment</h3>
+              <p>Four short stages. No photographs, nothing to measure.</p>
+            </a>
+            <a class="aw-card aw-card--link" href="../heat-pump-survey/">
+              <h3 class="aw-card__title">What a survey covers</h3>
+              <p>Every measurement taken, and what you receive afterwards.</p>
+            </a>
+            <a class="aw-card aw-card--link" href="../heat-pump-installation/">
+              <h3 class="aw-card__title">How installation works</h3>
+              <p>Preparation, site standards, commissioning and handover.</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
       <!-- FINAL CALL TO ACTION — repeated on every page, per the blueprint.
            The assessment is the primary action; e-mail is the route for
-           anything unusual. -->
-      <section class="aw-section aw-section--navy">
+           anything unusual. This block is the same on every page: if you
+           change the wording, change it everywhere. -->
+      <section class="aw-section aw-section--navy aw-cta-band">
         <div class="aw-wrap">
           <h2>Start with your home, not a product</h2>
           <p class="aw-hero__support">
@@ -444,11 +913,28 @@
       <div class="aw-footer__base">
         <p>
           Airwarm is a new West Yorkshire business preparing to install and
-          support air source heat pumps. Company registration and VAT details
-          will be shown here once they are confirmed.
+          support air source heat pumps.
         </p>
-        <!-- COMPANY DETAILS GO HERE: registered name, company number,
-             registered office, VAT number. Do not add them until they exist. -->
+        <!-- STATUTORY COMPANY DISCLOSURE — required by law. Do not remove,
+             move off the footer, or hide it behind a link.
+             The Companies Act 2006 s.82, the Company, Limited Liability
+             Partnership and Business (Names and Trading Disclosures)
+             Regulations 2015 and the Electronic Commerce (EC Directive)
+             Regulations 2002 together require the registered name, the
+             company number, the place of registration and the registered
+             office address to be easily and permanently accessible on the
+             website. The footer appears on every page, which is what makes it
+             permanently accessible. If any of these details change, change
+             them here in every page at the same time. -->
+        <p class="aw-small">
+          AIRWARM LTD is a company registered in England and Wales, company
+          number 17362672. Registered office: 2 Aireview Crescent, Baildon,
+          Shipley, BD17 7LS.
+        </p>
+        <!-- VAT NUMBER GOES HERE if and when Airwarm registers for VAT. Add it
+             as a further sentence in the paragraph above, for example
+             "VAT registration number GB000000000." Do not invent one, and do
+             not display a VAT number before registration is confirmed. -->
         <!-- SOCIAL LINKS: add only channels that are actively maintained. -->
         <p>&copy; 2026 Airwarm.</p>
       </div>

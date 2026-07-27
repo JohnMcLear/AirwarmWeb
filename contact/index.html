@@ -112,13 +112,19 @@
     </div>
   </nav>
 
-      <section class="aw-section aw-section--tight">
+      <!-- HERO. The quiet tiled pattern behind the type comes from the
+           .aw-hero-pattern class in the stylesheet, which puts
+           assets/hero-pattern.svg over navy. Remove that one class to get a
+           plain navy panel; there is nothing else to undo. -->
+      <section class="aw-hero aw-hero-pattern">
         <div class="aw-wrap">
+          <span class="aw-positioning">Air Source Heat Pumps &bull; West Yorkshire</span>
           <h1>Talk to Airwarm</h1>
-          <p class="aw-lead aw-measure">
-            One address, read by a person: <a href="mailto:hello@airwarm.co.uk">hello@airwarm.co.uk</a>.
-            Pick the closest reason below and the subject line will be filled
-            in for you.
+          <p class="aw-hero__support">
+            One address, read by a person:
+            <a href="mailto:hello@airwarm.co.uk">hello@airwarm.co.uk</a>.
+            Pick the closest reason below and the subject line will be filled in
+            for you.
           </p>
         </div>
       </section>
@@ -126,36 +132,63 @@
       <section class="aw-section aw-section--tight">
         <div class="aw-wrap aw-split">
           <div>
-            <h2>What are you getting in touch about?</h2>
-            <div class="aw-grid aw-grid--2" style="margin-top:24px">
+
+            <!-- REASON-FOR-CONTACT SELECTOR --------------------------------
+                 The brand pack asks for a simple reason-for-contact selector
+                 separating general enquiries, assessment enquiries, servicing
+                 and developer projects.
+
+                 It is built as a set of e-mail links rather than a <select>
+                 and a form, for one reason: there is nowhere to post a form to
+                 yet, and a form control that only works with JavaScript would
+                 exclude people. Each link carries its own subject line, so the
+                 message arrives already sorted. Every link's text names the
+                 reason, so it makes sense read out of context, and the whole
+                 group sits under the heading below which names what the group
+                 is for.
+
+                 WHEN A REAL FORM REPLACES THIS, the reason must be a <select>
+                 with a real <label for="...">, inside a <fieldset> with a
+                 <legend>, and the name, e-mail and telephone fields need
+                 autocomplete="name", autocomplete="email" and
+                 autocomplete="tel". See the prerequisites listed further down
+                 this page.
+                 ------------------------------------------------------------ -->
+            <h2 id="reason-for-contact">What are you getting in touch about?</h2>
+            <p class="aw-measure">
+              Choose the closest one. It only sets the subject line, so it does
+              not matter if you pick the wrong one.
+            </p>
+
+            <div class="aw-card-grid" style="margin-top:24px">
 
               <a class="aw-card aw-card--link" href="mailto:hello@airwarm.co.uk?subject=General%20enquiry">
-                <h3>A general question</h3>
+                <h3 class="aw-card__title">A general question</h3>
                 <p>Anything that does not fit the boxes below.</p>
               </a>
 
               <a class="aw-card aw-card--link" href="mailto:hello@airwarm.co.uk?subject=Home%20Energy%20Assessment%20enquiry">
-                <h3>My Home Energy Assessment</h3>
+                <h3 class="aw-card__title">My Home Energy Assessment</h3>
                 <p>You have completed the assessment and want to discuss the result.</p>
               </a>
 
               <a class="aw-card aw-card--link" href="mailto:hello@airwarm.co.uk?subject=Survey%20enquiry">
-                <h3>Booking a survey</h3>
+                <h3 class="aw-card__title">Booking a survey</h3>
                 <p>You would like the detailed technical assessment for your property.</p>
               </a>
 
               <a class="aw-card aw-card--link" href="mailto:hello@airwarm.co.uk?subject=Servicing%20or%20support%20enquiry">
-                <h3>Servicing or support</h3>
+                <h3 class="aw-card__title">Servicing or support</h3>
                 <p>An existing system, a service, or something not working as it should.</p>
               </a>
 
               <a class="aw-card aw-card--link" href="mailto:hello@airwarm.co.uk?subject=Developer%20or%20renovation%20project">
-                <h3>A developer or renovation project</h3>
+                <h3 class="aw-card__title">A developer or renovation project</h3>
                 <p>Multiple properties, a new build, or heating as part of a larger programme.</p>
               </a>
 
               <a class="aw-card aw-card--link" href="mailto:hello@airwarm.co.uk?subject=An%20unusual%20property">
-                <h3>An unusual property</h3>
+                <h3 class="aw-card__title">An unusual property</h3>
                 <p>Listed, off-grid, part-renovated, or something you suspect is difficult.</p>
               </a>
 
@@ -173,37 +206,73 @@
               <li>What is prompting you to look at this now</li>
               <li>Anything you already suspect might be a problem</li>
             </ul>
+            <p class="aw-measure aw-small">
+              Please do not send bank details, and there is no need to send
+              photographs at this stage. If we need pictures later we will ask
+              for specific ones.
+            </p>
+
+            <h2 style="margin-top:40px">What Airwarm cannot help with</h2>
+            <p class="aw-measure">
+              Said plainly, because a quick no is more useful than a slow maybe.
+            </p>
+            <div class="aw-callout aw-callout--caution" style="margin-top:24px">
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-warning"></use></svg>
+              <h3>Four things we will turn down</h3>
+              <ul class="aw-ticks">
+                <li><strong>Emergencies.</strong> There is no 24-hour or emergency call-out service. If you have no heating and it is urgent, contact an emergency heating engineer rather than waiting for us.</li>
+                <li><strong>Work outside our competence.</strong> If a system, make or fault is outside what Airwarm can properly support, you will be told rather than experimented on.</li>
+                <li><strong>Properties outside the service area.</strong> Bradford, Leeds and Shipley at launch. Ask and you will get a straight answer about your postcode.</li>
+                <li><strong>Projects where a genuinely necessary upgrade is refused.</strong> If the design needs a larger emitter and that is off the table, we would rather not install something that will disappoint you.</li>
+              </ul>
+            </div>
           </div>
 
           <div>
             <div class="aw-card">
-              <h2>Contact details</h2>
+              <h2 class="aw-card__title">Contact details</h2>
+              <h3>E-mail</h3>
               <p>
-                <strong>E-mail:</strong><br>
                 <a href="mailto:hello@airwarm.co.uk">hello@airwarm.co.uk</a>
               </p>
+              <h3>Area covered</h3>
               <p>
-                <strong>Area covered:</strong><br>
                 Bradford, Leeds and Shipley, West Yorkshire.
               </p>
               <!-- PHONE NUMBER GOES HERE once the business line is
                    provisioned. Add it to the footer at the same time so the
                    two never disagree. Do not invent one.
-              <p><strong>Telephone:</strong><br>
-                 <a href="tel:+44NUMBER-GOES-HERE">NUMBER GOES HERE</a></p>
+              <h3>Telephone</h3>
+              <p><a href="tel:+44NUMBER-GOES-HERE">NUMBER GOES HERE</a></p>
               -->
               <h3>About replies</h3>
               <p>
-                Every e-mail is read and answered. Airwarm is not yet trading
-                full-time, so we are not going to promise a response time we
-                cannot guarantee &mdash; but if something is going to take a
-                while, we will tell you that rather than leave you waiting.
+                Every e-mail is read and answered by a person. Airwarm is not
+                yet trading full-time, so we are not going to promise a response
+                time we cannot keep &mdash; but you should normally hear back
+                within a couple of working days, and if something is going to
+                take longer than that we will tell you rather than leave you
+                waiting.
               </p>
-              <h3>What Airwarm does not offer</h3>
+              <h3>No 24-hour service</h3>
               <p>
-                There is no 24-hour or emergency call-out service. If you have
-                no heating and it is urgent, please contact an emergency
-                heating engineer rather than waiting for us.
+                There is no emergency call-out. That is a deliberate limit
+                rather than an oversight, and it is better stated here than
+                discovered at ten o&rsquo;clock at night.
+              </p>
+            </div>
+
+            <div class="aw-card" style="margin-top:24px">
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-location"></use></svg>
+              <h3 class="aw-card__title">Registered office</h3>
+              <p>
+                AIRWARM LTD, 2 Aireview Crescent, Baildon, Shipley, BD17 7LS.
+                Registered in England and Wales, company number 17362672.
+              </p>
+              <p class="aw-small">
+                This is a registered office address for correspondence, not a
+                trade counter or a showroom. Please e-mail rather than calling
+                in.
               </p>
             </div>
 
@@ -223,14 +292,155 @@
 
       <!-- CONTACT FORM GOES HERE when there is somewhere to send it.
            Prerequisites, all of them: a chosen CRM or inbox endpoint, a
-           published privacy policy at /privacy/, a named data controller, an
+           published privacy policy at privacy/, a named data controller, an
            explicit unticked consent checkbox with its own label, a statement
-           of retention, and spam protection. -->
+           of retention, and spam protection.
+           Accessibility requirements for that form, which are WCAG 2.2 AA
+           obligations rather than preferences: a real <label for="..."> on
+           every field; each group in a <fieldset> with a <legend>;
+           autocomplete="name", autocomplete="email" and autocomplete="tel" on
+           those three fields; validation messages that name the field and are
+           tied to it with aria-describedby and aria-invalid; and no meaning
+           carried by colour alone. -->
+
+      <!-- WHAT HAPPENS NEXT -------------------------------------------- -->
+      <section class="aw-section aw-section--light">
+        <div class="aw-wrap">
+          <h2>What happens after you e-mail</h2>
+          <ol class="aw-steps aw-measure" style="margin-top:24px">
+            <li class="aw-step">
+              <h3 class="aw-step__title">A person reads it</h3>
+              <p>
+                Not an auto-responder and not a scoring engine. If your message
+                describes the property, the reply will be about your property.
+              </p>
+            </li>
+            <li class="aw-step">
+              <h3 class="aw-step__title">You get a straight answer</h3>
+              <p>
+                Including &ldquo;not yet&rdquo;, &ldquo;not us&rdquo; or
+                &ldquo;here is what would need to change first&rdquo; where
+                those are the honest answers.
+              </p>
+            </li>
+            <li class="aw-step">
+              <h3 class="aw-step__title">If it looks worth exploring, a short call</h3>
+              <p>
+                A conversation about what you want to achieve, what the property
+                is like and whether a survey is justified. No obligation, and
+                nothing to sign.
+              </p>
+            </li>
+          </ol>
+          <div class="aw-btn-row">
+            <a class="aw-btn aw-btn--primary" href="../home-energy-assessment/">Start the assessment first</a>
+            <a class="aw-btn aw-btn--outline" href="../how-it-works/">See the whole process</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQS ------------------------------------------------------- -->
+      <section class="aw-section">
+        <div class="aw-wrap">
+          <h2>Frequently asked questions</h2>
+          <div class="aw-faq" style="margin-top:24px">
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">Does Airwarm offer emergency call-out?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  No. Airwarm does not offer a 24-hour or emergency response
+                  service, and will not imply otherwise. Response expectations
+                  are stated plainly, and if you need cover of that kind it is
+                  better to know now.
+                </p>
+              </div>
+            </details>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">How much does a heat pump installation cost?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  Airwarm is not publishing prices ahead of its trading launch,
+                  and a figure quoted without a survey would be a guess. What
+                  determines the cost is the size of the system, how many
+                  emitters need changing, the cylinder and its position, the
+                  pipework and electrical work required, and access. The
+                  proposal sets all of it out itemised.
+                </p>
+              </div>
+            </details>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">Can Airwarm handle a grant application for me?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  That depends on the certification route Airwarm holds at the
+                  time you enquire, and Airwarm will confirm its current
+                  position directly rather than implying a capability it does not
+                  yet hold.
+                </p>
+                <p>
+                  <a href="../advice/grants-and-funding/">How grant funding works, in principle</a>
+                </p>
+                <!-- REVIEW: update once the MCS or umbrella certification route
+                     is confirmed. -->
+              </div>
+            </details>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">What if something goes wrong and I am unhappy?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  Airwarm acknowledges promptly, establishes the facts,
+                  distinguishes a comfort expectation from a technical fault,
+                  assigns ownership, agrees the next action and documents the
+                  outcome. Defensive communication is not acceptable. A published
+                  complaints procedure sets out the route including escalation.
+                </p>
+                <!-- COMPLAINTS PROCEDURE: link this to the published procedure
+                     once it exists. It is named in the brand pack footer
+                     structure and is not yet written. -->
+              </div>
+            </details>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">Why is there no telephone number?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  Because there is not one yet. The business line has not been
+                  provisioned, and putting a mobile number on the site that
+                  nobody can answer during a survey would be worse than not
+                  having one. When there is a number it will appear here and in
+                  the footer at the same time.
+                </p>
+              </div>
+            </details>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">Do you cover my area?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  Launch coverage is Bradford, Leeds and Shipley, which includes
+                  Saltaire, Baildon, Windhill, Wrose, Frizinghall, Thackley,
+                  Idle and Nab Wood. Bingley, Ilkley, Keighley, Halifax,
+                  Huddersfield and Wakefield will be added only where there is
+                  genuine service coverage rather than a page on a website. If
+                  you are just outside, ask, and you will get an honest answer
+                  rather than a booking.
+                </p>
+              </div>
+            </details>
+
+          </div>
+        </div>
+      </section>
 
       <!-- FINAL CALL TO ACTION — repeated on every page, per the blueprint.
            The assessment is the primary action; e-mail is the route for
-           anything unusual. -->
-      <section class="aw-section aw-section--navy">
+           anything unusual. This block is the same on every page: if you
+           change the wording, change it everywhere. -->
+      <section class="aw-section aw-section--navy aw-cta-band">
         <div class="aw-wrap">
           <h2>Start with your home, not a product</h2>
           <p class="aw-hero__support">
@@ -322,11 +532,28 @@
       <div class="aw-footer__base">
         <p>
           Airwarm is a new West Yorkshire business preparing to install and
-          support air source heat pumps. Company registration and VAT details
-          will be shown here once they are confirmed.
+          support air source heat pumps.
         </p>
-        <!-- COMPANY DETAILS GO HERE: registered name, company number,
-             registered office, VAT number. Do not add them until they exist. -->
+        <!-- STATUTORY COMPANY DISCLOSURE — required by law. Do not remove,
+             move off the footer, or hide it behind a link.
+             The Companies Act 2006 s.82, the Company, Limited Liability
+             Partnership and Business (Names and Trading Disclosures)
+             Regulations 2015 and the Electronic Commerce (EC Directive)
+             Regulations 2002 together require the registered name, the
+             company number, the place of registration and the registered
+             office address to be easily and permanently accessible on the
+             website. The footer appears on every page, which is what makes it
+             permanently accessible. If any of these details change, change
+             them here in every page at the same time. -->
+        <p class="aw-small">
+          AIRWARM LTD is a company registered in England and Wales, company
+          number 17362672. Registered office: 2 Aireview Crescent, Baildon,
+          Shipley, BD17 7LS.
+        </p>
+        <!-- VAT NUMBER GOES HERE if and when Airwarm registers for VAT. Add it
+             as a further sentence in the paragraph above, for example
+             "VAT registration number GB000000000." Do not invent one, and do
+             not display a VAT number before registration is confirmed. -->
         <!-- SOCIAL LINKS: add only channels that are actively maintained. -->
         <p>&copy; 2026 Airwarm.</p>
       </div>

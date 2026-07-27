@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ===========================================================================
+  AIRWARM — hero-pattern.svg
+  A very quiet geometric pattern for the navy hero panels. Long shallow waves
+  suggesting moving air, with a few markers where they cross. Nothing in it is
+  a picture of anything.
+
+  WHERE IT GOES
+  On a navy panel, as a repeating CSS background behind a headline. There is a
+  ready made class for it in css/airwarm.css called aw-hero-pattern: add it to
+  a hero or a navy section and the pattern appears. The exact CSS is written
+  out in assets/README.md.
+
+  (A CSS example cannot be shown in this comment: XML comments are not allowed
+  to contain two hyphens in a row, and CSS custom property names begin with
+  exactly that. The README has no such restriction.)
+
+  The 240 by 240 tile repeats seamlessly in both directions, so it can also be
+  scaled: a larger background size gives a calmer effect on a big panel.
+
+  TWO THINGS TO KNOW
+  1. The pattern is drawn in white at very low opacity on a TRANSPARENT
+     background, so the navy behind it shows through and the pattern never
+     competes with the headline. It is deliberately almost invisible: if you
+     can read it as a pattern before you read the headline, it is too strong.
+     To soften or strengthen it, change the two opacity values below. Please
+     do not take either above 0.16.
+  2. Because it is white on nothing, it only shows on a dark panel. On a white
+     or pale section it will look empty. That is expected: it is a navy panel
+     pattern, and there is no light version of it.
+  ===========================================================================
+-->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 240 240"
+     role="img"
+     aria-labelledby="hp-title hp-desc">
+
+  <title id="hp-title">Airwarm hero panel pattern</title>
+  <desc id="hp-desc">A decorative background of shallow repeating waves in
+    white at very low opacity, with small circular markers. It carries no
+    information.</desc>
+
+  <style>
+    /* White only. The navy comes from the panel underneath. */
+    .p-wave { fill: none; stroke: #FFFFFF; stroke-width: 1.5; opacity: 0.10; }
+    .p-mark { fill: #FFFFFF; opacity: 0.08; }
+  </style>
+
+  <!-- Six waves, forty apart, alternating which way they start, so the tile
+       joins itself cleanly at the top, the bottom and both sides. -->
+  <g class="p-wave">
+    <path d="M0 20 Q30 6 60 20 T120 20 T180 20 T240 20"/>
+    <path d="M0 60 Q30 74 60 60 T120 60 T180 60 T240 60"/>
+    <path d="M0 100 Q30 86 60 100 T120 100 T180 100 T240 100"/>
+    <path d="M0 140 Q30 154 60 140 T120 140 T180 140 T240 140"/>
+    <path d="M0 180 Q30 166 60 180 T120 180 T180 180 T240 180"/>
+    <path d="M0 220 Q30 234 60 220 T120 220 T180 220 T240 220"/>
+  </g>
+
+  <!-- A sparse scatter of markers. They sit well inside the tile, so they are
+       never cut in half by the repeat. -->
+  <g class="p-mark">
+    <circle cx="60" cy="40" r="3"/>
+    <circle cx="180" cy="120" r="3"/>
+    <circle cx="120" cy="200" r="3"/>
+  </g>
+</svg>

@@ -112,10 +112,15 @@
     </div>
   </nav>
 
-      <section class="aw-section aw-section--tight">
+      <!-- HERO. The quiet tiled pattern behind the type comes from the
+           .aw-hero-pattern class in the stylesheet, which puts
+           assets/hero-pattern.svg over navy. Remove that one class to get a
+           plain navy panel; there is nothing else to undo. -->
+      <section class="aw-hero aw-hero-pattern">
         <div class="aw-wrap">
+          <span class="aw-positioning">Air Source Heat Pumps &bull; West Yorkshire</span>
           <h1>Why Airwarm is being built this way round</h1>
-          <p class="aw-lead aw-measure">
+          <p class="aw-hero__support">
             Homeowners are routinely asked to make expensive heating decisions
             using inconsistent advice. Airwarm exists to reduce that
             uncertainty: to translate technical requirements into clear
@@ -136,24 +141,54 @@
         <h2>Where Airwarm is today</h2>
         <p class="aw-measure">
           Airwarm is a new business, and we would rather say so than pretend
-          otherwise. The process, the survey method and the aftercare
-          commitment described on this site are written down and being put in
-          place before we take on work. Reviews, photographs of completed
-          installations and accreditation details will appear here when they
-          are real and can be checked &mdash; not before.
+          otherwise. AIRWARM LTD is registered in England and Wales, company
+          number 17362672, with its registered office in Baildon &mdash; you
+          can look all of that up rather than take our word for it, and the
+          details are in the footer of every page. The process, the survey
+          method and the aftercare commitment described on this site are
+          written down and being put in place before we take on work.
+        </p>
+        <p class="aw-measure">
+          What we do not have yet is a trading history. There is no
+          installation count, no star rating, no review and no accreditation
+          claim on this site, because the company was only just incorporated.
+          Reviews, photographs of completed installations and certification
+          details will appear here when they are real and can be checked
+          &mdash; not before. When you get in touch we will tell you plainly
+          what we can and cannot do yet.
         </p>
       </div>
         </div>
       </section>
 
-      <section class="aw-section aw-section--light">
+      <section class="aw-section aw-section--tight">
+        <div class="aw-wrap">
+          <nav class="aw-toc" aria-label="On this page">
+            <h2>On this page</h2>
+            <ol>
+              <li><a href="#founder">Thomas Robinson, Founder &amp; Director</a></li>
+              <li><a href="#why">Why Airwarm exists</a></li>
+              <li><a href="#values">What we are committing to</a></li>
+              <li><a href="#standard">The Airwarm standard</a></li>
+              <li><a href="#how-built">How the company is being built</a></li>
+              <li><a href="#area">Starting small, on purpose</a></li>
+              <li><a href="#evidence">What we cannot show you yet</a></li>
+              <li><a href="#faqs">Frequently asked questions</a></li>
+            </ol>
+          </nav>
+        </div>
+      </section>
+
+      <!-- FOUNDER ---------------------------------------------------- -->
+      <section class="aw-section aw-section--light" id="founder">
         <div class="aw-wrap aw-split">
-          <div>
+          <div class="aw-prose">
             <h2>Thomas Robinson, Founder &amp; Director</h2>
             <p class="aw-measure">
               Airwarm is being set up by Thomas Robinson, who is responsible
               for its technical standards, the way it is run and the quality of
-              the work it puts its name to.
+              the work it puts its name to. He is the director of AIRWARM LTD,
+              which is registered in England and Wales.
             </p>
             <p class="aw-measure">
               The intention is a company that outlasts its founder rather than
@@ -161,6 +196,13 @@
               proper training and a management system, so the standard does not
               depend on one person being in the van.
             </p>
+            <p class="aw-measure">
+              That means the founder&rsquo;s job is to set the standard, build
+              the system and develop the people who can carry it &mdash; not to
+              become the permanent bottleneck for every survey approval,
+              purchase order and customer update.
+            </p>
+
             <!-- FOUNDER PHOTOGRAPH GOES HERE. The brand pack is explicit that
                  a genuine founder photograph builds more trust than an
                  anonymous stock model, and that stock imagery should not be
@@ -171,10 +213,19 @@
                  FOUNDER BIOGRAPHY GOES HERE once Tom has written and approved
                  it. Do not draft qualifications, trading history or years of
                  experience on his behalf. -->
+            <div class="aw-photo-placeholder">
+              <p>
+                <strong>Photograph to come:</strong> a genuine photograph of
+                Thomas Robinson. The brand pack is explicit that a real founder
+                photograph builds more trust than an anonymous stock model, so
+                this space stays empty until there is a real one.
+              </p>
+            </div>
           </div>
           <div>
             <div class="aw-card">
-              <h3>How decisions get made</h3>
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-check"></use></svg>
+              <h3 class="aw-card__title">How decisions get made</h3>
               <p>
                 A decision is only acceptable at Airwarm if it protects safety,
                 technical quality, customer trust, the cash position and
@@ -183,87 +234,428 @@
                 suitability or engineering judgement.
               </p>
             </div>
+            <div class="aw-card" style="margin-top:24px">
+              <h3 class="aw-card__title">What that looks like in practice</h3>
+              <ul class="aw-ticks">
+                <li>Turning down work that will not perform</li>
+                <li>Saying &ldquo;insulate first&rdquo; when that is the honest answer</li>
+                <li>Showing the assumptions behind a calculation</li>
+                <li>Writing verbal promises down</li>
+                <li>Naming what is excluded, not only what is included</li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
 
-      <section class="aw-section">
+      <!-- WHY ------------------------------------------------------- -->
+      <section class="aw-section" id="why">
+        <div class="aw-wrap">
+          <h2>Why Airwarm exists</h2>
+          <div class="aw-split" style="margin-top:24px">
+            <div class="aw-prose">
+              <h3>The problem it is answering</h3>
+              <p class="aw-measure">
+                Heat pumps have a reputation problem in this country, and most
+                of it is deserved by the installations rather than by the
+                technology. A unit sized from a rule of thumb, radiators left as
+                they were, controls on factory defaults and nobody available
+                afterwards will produce a house that is expensive to heat and an
+                owner who tells their neighbours so.
+              </p>
+              <p class="aw-measure">
+                Almost none of that is a heat pump problem. It is a design and
+                aftercare problem, and it is fixable by doing ordinary things
+                carefully and writing them down.
+              </p>
+            </div>
+            <div class="aw-prose">
+              <h3>What it is trying to be</h3>
+              <p class="aw-measure">
+                The ambition is to become one of Yorkshire&rsquo;s most trusted
+                renewable-heating companies, known for careful design,
+                respectful installation and long-term customer support. That is
+                an ambition rather than a description, and it will be earned
+                one installation at a time.
+              </p>
+              <p class="aw-measure">
+                The mission underneath it is narrower and more practical: help
+                homeowners make confident energy decisions by assessing homes
+                honestly, designing appropriate low-temperature heating systems,
+                installing them properly and supporting how they perform over
+                time.
+              </p>
+            </div>
+          </div>
+          <div class="aw-callout aw-callout--positive" style="margin-top:40px">
+            <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-check"></use></svg>
+            <h3>The customer Airwarm is built for</h3>
+            <p>
+              Someone who values correct design, is willing to consider the
+              emitter or fabric work that a calculation actually justifies,
+              understands that the home has to be assessed before anything is
+              promised, and wants an installer who is still accountable after
+              commissioning. If that is you, we will get on well.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- VALUES ---------------------------------------------------- -->
+      <section class="aw-section aw-section--light" id="values">
         <div class="aw-wrap">
           <h2>What we are committing to</h2>
-          <div class="aw-grid aw-grid--2" style="margin-top:24px">
+          <p class="aw-measure">
+            Five words that are easy to print and harder to keep. They are here
+            so you can measure us against them.
+          </p>
+          <div class="aw-card-grid" style="margin-top:24px">
             <div class="aw-card">
-              <h3>Integrity</h3>
+              <h3 class="aw-card__title">Integrity</h3>
               <p>
                 Recommending the correct solution even when it is the less
                 profitable one. That includes telling people when a heat pump
-                is not their best next step.
+                is not their best next step, and saying it before a survey fee
+                rather than after one.
               </p>
             </div>
             <div class="aw-card">
-              <h3>Technical care</h3>
+              <h3 class="aw-card__title">Technical care</h3>
               <p>
                 Checking assumptions rather than inheriting them, documenting
                 decisions so they can be reviewed, and continuing to train.
+                Every design is reviewed by someone other than the person who
+                produced it before the proposal is issued.
               </p>
             </div>
             <div class="aw-card">
-              <h3>Respect</h3>
+              <h3 class="aw-card__title">Respect</h3>
               <p>
-                Protecting the home, communicating clearly and arriving
-                prepared. The standard applies to the telephone manner and the
-                paperwork as much as to the pipework.
+                Protecting the home, communicating clearly, arriving when we
+                said we would and arriving prepared. The standard applies to the
+                telephone manner and the paperwork as much as to the pipework.
               </p>
             </div>
             <div class="aw-card">
-              <h3>Accountability</h3>
+              <h3 class="aw-card__title">Accountability</h3>
               <p>
                 Owning outcomes and correcting problems, and treating every
                 complaint as something that should improve the process rather
-                than something to defend.
+                than something to defend. Defensive communication is explicitly
+                prohibited.
+              </p>
+            </div>
+            <div class="aw-card">
+              <h3 class="aw-card__title">Improvement</h3>
+              <p>
+                Turning every project and every complaint into a better process.
+                Completed jobs are sampled for design accuracy, installation
+                finish, documentation, whether the customer actually understood
+                the handover, and what we would do differently.
+              </p>
+            </div>
+            <div class="aw-card">
+              <h3 class="aw-card__title">And one thing we will not do</h3>
+              <p>
+                Compete primarily on being the cheapest. Airwarm would rather
+                compete on the result, and tell you where a cheaper approach
+                would be a false economy and where it genuinely would not.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="aw-section aw-section--navy">
+      <!-- STANDARD -------------------------------------------------- -->
+      <section class="aw-section aw-section--navy" id="standard">
         <div class="aw-wrap aw-split">
           <div>
-            <h2>Starting small, on purpose</h2>
+            <h2>The Airwarm standard</h2>
             <p class="aw-hero__support">
+              The standard is not a poster in an office. It applies to every
+              point at which you deal with us, and it is deliberately written
+              to include the unglamorous ones &mdash; because those are the ones
+              customers actually notice.
+            </p>
+            <p class="aw-hero__support">
+              If any of these slips, we would rather hear about it than not.
+            </p>
+          </div>
+          <div>
+            <div class="aw-panel">
+              <h3>Where the standard applies</h3>
+              <ul class="aw-ticks">
+                <li>Telephone and e-mail manner</li>
+                <li>Survey accuracy</li>
+                <li>Quotation clarity</li>
+                <li>Van and appearance</li>
+                <li>Site protection</li>
+                <li>Pipework and finish</li>
+                <li>Commissioning</li>
+                <li>Paperwork</li>
+                <li>Follow-up</li>
+                <li>Complaint handling</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- HOW BUILT ------------------------------------------------- -->
+      <section class="aw-section" id="how-built">
+        <div class="aw-wrap">
+          <h2>How the company is being built</h2>
+          <div class="aw-card-grid" style="margin-top:24px">
+            <div class="aw-card">
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-document"></use></svg>
+              <h3 class="aw-card__title">Documented systems first</h3>
+              <p>
+                Survey, design review, installation control, commissioning and
+                aftercare are written procedures before they are habits. That is
+                what makes a standard survive growth.
+              </p>
+            </div>
+            <div class="aw-card">
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-design"></use></svg>
+              <h3 class="aw-card__title">Training, not assumption</h3>
+              <p>
+                Manufacturer and technical training is being completed rather
+                than claimed. Credentials will appear on this site once they are
+                held and current, and not a day earlier.
+              </p>
+            </div>
+            <div class="aw-card">
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-install"></use></svg>
+              <h3 class="aw-card__title">Specialists where they are needed</h3>
+              <p>
+                Electrical work goes to vetted regional contractors working to
+                Airwarm&rsquo;s design and coordination. Subcontracting does not
+                move Airwarm&rsquo;s responsibility to you onto somebody else.
+              </p>
+            </div>
+            <div class="aw-card">
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-survey"></use></svg>
+              <h3 class="aw-card__title">The people who install take part in the survey</h3>
+              <p>
+                Where practical, whoever would do the work is involved in or
+                reviews the survey. It removes the gap between what was promised
+                and what turns out to be possible.
+              </p>
+            </div>
+            <div class="aw-card">
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-service"></use></svg>
+              <h3 class="aw-card__title">Aftercare as a service, not a favour</h3>
+              <p>
+                48-hour contact, a two-week comfort review, seasonal
+                optimisation where required and an annual service reminder. It
+                protects your outcome and it tells us what to design better next
+                time.
+              </p>
+            </div>
+            <div class="aw-card">
+              <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-question"></use></svg>
+              <h3 class="aw-card__title">Limits stated out loud</h3>
+              <p>
+                No 24-hour or emergency response. No work outside our
+                competence. No properties outside the service area. No projects
+                where a genuinely necessary upgrade is refused.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- AREA ----------------------------------------------------- -->
+      <section class="aw-section aw-section--light" id="area">
+        <div class="aw-wrap aw-split">
+          <div class="aw-prose">
+            <h2>Starting small, on purpose</h2>
+            <p class="aw-measure">
               Airwarm is starting with Bradford, Leeds and Shipley &mdash; an
               area small enough to serve properly, learn from and get right.
               Neighbouring West Yorkshire towns will be added when there is
               genuine coverage to offer, not before.
             </p>
-            <p class="aw-hero__support">
+            <p class="aw-measure">
               For the same reason the early service range is deliberately
               narrow: suitability reviews, surveys, design, installation,
               emitter upgrades, controls, commissioning and aftercare.
               Servicing, optimisation visits and solar or battery coordination
               come next.
             </p>
+            <p class="aw-measure">
+              It is also a genuinely interesting area to learn in. Solid stone
+              terraces, back-to-backs, cellars, steep valley sides, exposed
+              tops and a World Heritage Site are all within a few miles of each
+              other, and between them they cover most of the hard problems in
+              domestic retrofit.
+            </p>
           </div>
           <div>
-            <!-- COMPANY FACTS GO HERE once they exist and can be checked:
-                 registered company name and number, registered office, VAT
-                 registration, insurance, accreditation or certification
-                 scheme, memberships. Until then this slot stays empty rather
-                 than being filled with something aspirational. -->
-            <div class="aw-evidence-slot">
-              <strong>Company and accreditation details:</strong> registration,
-              VAT, insurance and certification details will be published here
-              as they are confirmed. We would rather show you an empty space
-              than a badge we have not earned yet.
+            <div class="aw-card-grid">
+              <a class="aw-card aw-card--link" href="../areas/bradford/">
+                <h3 class="aw-card__title">Bradford</h3>
+                <p>Stone terraces, back-to-backs, cellars and real altitude.</p>
+              </a>
+              <a class="aw-card aw-card--link" href="../areas/leeds/">
+                <h3 class="aw-card__title">Leeds</h3>
+                <p>Back-to-backs, straightforward suburbs and city-centre flats.</p>
+              </a>
+              <a class="aw-card aw-card--link" href="../areas/shipley/">
+                <h3 class="aw-card__title">Shipley</h3>
+                <p>Cavity-walled semis, larger detached houses and listed Saltaire.</p>
+              </a>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- EVIDENCE ------------------------------------------------- -->
+      <section class="aw-section" id="evidence">
+        <div class="aw-wrap">
+          <h2>What we cannot show you yet</h2>
+          <p class="aw-measure">
+            This section exists because its absence would be more misleading
+            than its contents. Everything below is a genuine gap, and each one
+            will be filled with something checkable rather than something
+            flattering.
+          </p>
+          <!-- COMPANY FACTS GO HERE once they exist and can be checked:
+               registered company name and number, registered office, VAT
+               registration, insurance, accreditation or certification
+               scheme, memberships. Until then these slots stay empty rather
+               than being filled with something aspirational. -->
+          <div class="aw-grid aw-grid--2" style="margin-top:24px">
+            <div class="aw-evidence-slot">
+              <strong>Company registration:</strong> published. AIRWARM LTD,
+              registered in England and Wales, company number 17362672,
+              registered office 2 Aireview Crescent, Baildon, Shipley, BD17
+              7LS. It is in the footer of every page and it is checkable on the
+              public register.
+            </div>
+            <div class="aw-evidence-slot">
+              <strong>VAT, insurance and certification:</strong> not yet.
+              These will be published here as each one is confirmed. We would
+              rather show you an empty space than a badge we have not earned.
+            </div>
+            <div class="aw-evidence-slot">
+              <strong>Customer reviews and testimonials:</strong> none yet,
+              because there are no customers yet. When there are, they will be
+              real, attributed and published with permission.
+            </div>
+            <div class="aw-evidence-slot">
+              <strong>Case studies:</strong> the problem, what the survey
+              decided, what was installed and how it performed. Real projects
+              only, and only with the customer&rsquo;s agreement.
+            </div>
+            <div class="aw-evidence-slot">
+              <strong>Manufacturer and technical training:</strong> listed here
+              once completed and current, with the awarding body named so it can
+              be checked.
+            </div>
+            <div class="aw-evidence-slot">
+              <strong>Photographs of our work:</strong> tidy plant rooms,
+              finished pipework, real West Yorkshire homes. This site uses no
+              stock photography, so the space stays empty until the work exists.
+            </div>
+            <div class="aw-evidence-slot">
+              <strong>Complaints procedure:</strong> being written, and it will
+              be published and linked in the footer, including the escalation
+              route.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQS ----------------------------------------------------- -->
+      <section class="aw-section aw-section--light" id="faqs">
+        <div class="aw-wrap">
+          <h2>Frequently asked questions</h2>
+          <div class="aw-faq" style="margin-top:24px">
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">Is Airwarm MCS certified?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  Airwarm&rsquo;s certification route is being confirmed ahead
+                  of its trading launch, and it will be stated plainly and
+                  verifiably on this site once settled rather than claimed
+                  early. Any installer&rsquo;s certification can be checked on
+                  the certification body&rsquo;s public register, and you should
+                  check.
+                </p>
+                <!-- REVIEW: rewrite this answer once the MCS or umbrella
+                     certification route is confirmed. It also gates the grant
+                     messaging on /advice/grants-and-funding/. -->
+              </div>
+            </details>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">Why is Airwarm not the cheapest option?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  Airwarm&rsquo;s approach involves a proper heat loss
+                  calculation, a documented design, a design review before the
+                  proposal is issued and recorded commissioning. That work costs
+                  something. Airwarm would rather compete on the result than on
+                  being the lowest number, and will tell you where a cheaper
+                  approach would be a false economy and where it genuinely would
+                  not.
+                </p>
+              </div>
+            </details>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">Who does the electrical work?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  A heat pump is a substantial electrical load, so the incoming
+                  supply, main fuse and consumer unit are all checked at survey.
+                  Electrical work is carried out by vetted regional electrical
+                  contractors working to Airwarm&rsquo;s design and
+                  coordination, and where the network operator needs to be
+                  involved Airwarm will say so early.
+                </p>
+              </div>
+            </details>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">Airwarm has not traded yet. Why would I use it?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  That is a fair question and it deserves a straight answer. You
+                  should not use Airwarm because of a claim on a website. Judge
+                  it on the things that exist now: a documented process you can
+                  ask to see, a suitability-first approach that is happy to turn
+                  work down, calculations shown with their assumptions, and a
+                  named person responsible for the standard. If that is not
+                  enough for a decision of this size, that is a reasonable
+                  conclusion to reach.
+                </p>
+              </div>
+            </details>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">Does Airwarm offer emergency call-out?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  No. Airwarm does not offer a 24-hour or emergency response
+                  service, and will not imply otherwise. Response expectations
+                  are stated plainly, and if you need cover of that kind it is
+                  better to know now.
+                </p>
+              </div>
+            </details>
+
           </div>
         </div>
       </section>
 
       <!-- FINAL CALL TO ACTION — repeated on every page, per the blueprint.
            The assessment is the primary action; e-mail is the route for
-           anything unusual. -->
-      <section class="aw-section aw-section--navy">
+           anything unusual. This block is the same on every page: if you
+           change the wording, change it everywhere. -->
+      <section class="aw-section aw-section--navy aw-cta-band">
         <div class="aw-wrap">
           <h2>Start with your home, not a product</h2>
           <p class="aw-hero__support">
@@ -355,11 +747,28 @@
       <div class="aw-footer__base">
         <p>
           Airwarm is a new West Yorkshire business preparing to install and
-          support air source heat pumps. Company registration and VAT details
-          will be shown here once they are confirmed.
+          support air source heat pumps.
         </p>
-        <!-- COMPANY DETAILS GO HERE: registered name, company number,
-             registered office, VAT number. Do not add them until they exist. -->
+        <!-- STATUTORY COMPANY DISCLOSURE — required by law. Do not remove,
+             move off the footer, or hide it behind a link.
+             The Companies Act 2006 s.82, the Company, Limited Liability
+             Partnership and Business (Names and Trading Disclosures)
+             Regulations 2015 and the Electronic Commerce (EC Directive)
+             Regulations 2002 together require the registered name, the
+             company number, the place of registration and the registered
+             office address to be easily and permanently accessible on the
+             website. The footer appears on every page, which is what makes it
+             permanently accessible. If any of these details change, change
+             them here in every page at the same time. -->
+        <p class="aw-small">
+          AIRWARM LTD is a company registered in England and Wales, company
+          number 17362672. Registered office: 2 Aireview Crescent, Baildon,
+          Shipley, BD17 7LS.
+        </p>
+        <!-- VAT NUMBER GOES HERE if and when Airwarm registers for VAT. Add it
+             as a further sentence in the paragraph above, for example
+             "VAT registration number GB000000000." Do not invent one, and do
+             not display a VAT number before registration is confirmed. -->
         <!-- SOCIAL LINKS: add only channels that are actively maintained. -->
         <p>&copy; 2026 Airwarm.</p>
       </div>

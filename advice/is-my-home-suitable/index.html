@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <!-- ============================================================= -->
+  <!-- HEAD — the only per-page parts are the <title>, the meta       -->
+  <!-- description, the canonical URL and the Open Graph URL/title.   -->
+  <!-- Everything else is identical on every page.                    -->
+  <!-- ============================================================= -->
+  <meta charset="utf-8">
+  <!-- PREVIEW ONLY: remove this line on launch day so the site can be indexed. -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Is My Home Suitable for a Heat Pump? | Airwarm</title>
+  <meta name="description" content="How to tell whether your West Yorkshire home suits an air source heat pump, what needs checking first, and what to do if something needs improving.">
+  <link rel="canonical" href="https://airwarm.co.uk/advice/is-my-home-suitable/">
+
+  <!-- Open Graph: how the page looks when shared in a message or post. -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Airwarm">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:title" content="Is My Home Suitable for a Heat Pump? | Airwarm">
+  <meta property="og:description" content="How to tell whether your West Yorkshire home suits an air source heat pump, what needs checking first, and what to do if something needs improving.">
+  <meta property="og:url" content="https://airwarm.co.uk/advice/is-my-home-suitable/">
+  <!-- OG IMAGE GOES HERE once a real Airwarm share image exists, e.g.
+       <meta property="og:image" content="https://airwarm.co.uk/img/share.png">
+       Do not point this at a stock photograph or a third-party host. -->
+
+  <!-- FAVICON SWAP POINT: no icon files exist yet, because the circular
+       Airwarm emblem has not been supplied as an image. When it is, add:
+       <link rel="icon" href="../../favicon.ico" sizes="any">
+       <link rel="icon" href="../../img/airwarm-emblem.svg" type="image/svg+xml">
+       <link rel="apple-touch-icon" href="../../img/airwarm-emblem-180.png">
+       The favicon must be the emblem only, per the brand rules. -->
+
+  <!-- Montserrat, the fixed brand typeface. This is the only thing on the
+       whole site that loads from another company's server. The CSS names a
+       system-safe fallback stack so the site still reads correctly if the
+       font does not arrive. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;display=swap">
+
+  <!-- One stylesheet for the whole site. Colours live at the top of it. -->
+  <link rel="stylesheet" href="../../css/airwarm.css">
+</head>
+<body>
+
+  <a class="aw-skip" href="#main">Skip to main content</a>
+
+  <!-- ============================================================= -->
+  <!-- HEADER — keep identical across pages                            -->
+  <!-- If you change anything between here and /HEADER, make the same  -->
+  <!-- change in every index.html file, or the site will look           -->
+  <!-- inconsistent. There is no JavaScript and no hamburger menu: on   -->
+  <!-- small screens the navigation simply wraps onto more lines.       -->
+  <!-- ============================================================= -->
+  <header class="aw-header">
+    <div class="aw-wrap aw-header__inner">
+
+      <!-- LOGO SWAP POINT ------------------------------------------------
+           This is a TEXT wordmark, not the circular Airwarm emblem. No
+           vector version of the emblem exists in the brand pack yet, and the
+           brand rules forbid redrawing or approximating it. When the real
+           asset arrives, replace the two spans below with, for example:
+             <img src="../../img/airwarm-logo.svg" alt="Airwarm" width="180" height="48">
+           and update the favicon lines in the <head> of every page.
+           The tagline colour order is FIXED: orange, blue, green.
+           --------------------------------------------------------------- -->
+      <a class="aw-wordmark" href="../../">
+        <span class="aw-wordmark__name">AIRWARM</span>
+        <span class="aw-tagline">
+          <span class="warmer">WARMER HOMES</span><span class="aw-dot">&bull;</span><span class="bills">LOWER BILLS</span><span class="aw-dot">&bull;</span><span class="energy">CLEAN ENERGY</span>
+        </span>
+      </a>
+
+      <!-- The Home Energy Assessment is the principal action on the site,
+           so it gets a button in the header on every page. -->
+      <div class="aw-header__cta">
+        <a class="aw-btn aw-btn--primary" href="../../home-energy-assessment/">Start the assessment</a>
+      </div>
+
+      <nav class="aw-nav" aria-label="Main">
+        <ul class="aw-nav__list">
+          <li><a href="../../">Home</a></li>
+          <li><a href="../../air-source-heat-pumps/">Heat pumps</a></li>
+          <li><a href="../../how-it-works/">How it works</a></li>
+          <li><a href="../../home-energy-assessment/">Home Energy Assessment</a></li>
+          <li><a href="../../about/">About</a></li>
+          <li><a href="../../advice/">Advice</a></li>
+          <li><a href="../../contact/">Contact</a></li>
+          <!-- Phase 2 navigation, not built yet. Uncomment the matching
+               page first, otherwise this link will 404:
+          <li><a href="../../servicing-support/">Servicing &amp; support</a></li>
+          -->
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+  <!-- /HEADER -->
+
+  <main id="main">
+  <!-- Breadcrumbs: helps people and search engines see where this
+       page sits. Update if you move the page. -->
+  <nav class="aw-crumbs" aria-label="Breadcrumb">
+    <div class="aw-wrap">
+      <ol>
+        <li><a href="../../">Home</a></li>
+        <li><a href="../../advice/">Advice</a></li>
+        <li aria-current="page">Is my home suitable?</li>
+      </ol>
+    </div>
+  </nav>
+
+      <section class="aw-section aw-section--tight">
+        <div class="aw-wrap">
+          <span class="aw-eyebrow">Advice</span>
+          <h1>Is my home suitable for an air source heat pump?</h1>
+          <p class="aw-lede aw-measure">
+            Most homes can be heated well by an air source heat pump, but not
+            every home can be today and not every home without changes to
+            radiators, insulation or hot water. Suitability is a question about
+            your building rather than about the product, and it can usually be
+            answered by a short assessment followed by a proper survey.
+          </p>
+
+          <nav class="aw-toc" aria-labelledby="toc-heading">
+            <h2 id="toc-heading">On this page</h2>
+            <ol>
+              <li><a href="#what-suitability-means">What suitability actually means</a></li>
+              <li><a href="#why-it-matters">Why it matters for your home</a></li>
+              <li><a href="#outdoor-unit">Where the outdoor unit goes</a></li>
+              <li><a href="#what-airwarm-checks">What Airwarm checks</a></li>
+              <li><a href="#misconceptions">Common misconceptions, stated fairly</a></li>
+              <li><a href="#next">What you should do next</a></li>
+              <li><a href="#faqs">Frequently asked questions</a></li>
+            </ol>
+          </nav>
+        </div>
+      </section>
+
+      <section class="aw-section">
+        <div class="aw-wrap">
+          <div class="aw-prose aw-measure">
+
+            <h2 id="what-suitability-means">What suitability actually means</h2>
+
+            <p>
+              A heat pump does not create heat by burning fuel. It moves heat
+              that is already in the outside air into your heating system,
+              using electricity to do the moving.
+            </p>
+
+            <figure class="aw-figure">
+              <img src="../../assets/diagram-how-it-works.svg" alt="Diagram of an air source heat pump: an outdoor unit draws in cold outside air and extracts heat from it, a refrigerant circuit and compressor raise that heat to a useful temperature, and a heat exchanger passes it to the water circuit that feeds the radiators and the hot water cylinder inside the house. Colder air is discharged back outside." class="aw-diagram">
+              <figcaption class="aw-figure__caption">
+                A heat pump moves heat rather than making it. Because it moves
+                heat instead of burning fuel, it works best supplying water at
+                a lower temperature than a boiler does &mdash; and that single
+                difference is where every suitability question comes from.
+              </figcaption>
+            </figure>
+
+            <p>
+              A boiler can usually mask a poorly matched heating system by
+              pushing water round at 70 to 80 degrees. A heat pump generally
+              works at lower flow temperatures, so the heating system has to be
+              able to deliver enough warmth at that lower temperature. Typical
+              heat pump designs aim for a flow temperature somewhere in the
+              region of 35 to 50 degrees, depending on the property.
+            </p>
+
+            <p>
+              So &ldquo;is my home suitable&rdquo; really breaks down into five
+              practical questions.
+            </p>
+
+            <ul class="aw-ticks">
+              <li>How much heat does the house lose on a cold day?</li>
+              <li>Can the radiators or underfloor heating give out that much heat at a lower water temperature?</li>
+              <li>Is there a sensible place for the outdoor unit, with enough air flow and acceptable noise at the neighbours&rsquo; windows?</li>
+              <li>Is there room for a hot water cylinder, and a route for pipework and condensate drainage?</li>
+              <li>Is the electrical supply adequate?</li>
+            </ul>
+
+            <p>
+              None of those questions is about whether you deserve a heat pump.
+              They are all about the building.
+            </p>
+
+            <h2 id="why-it-matters">Why it matters for your home</h2>
+
+            <p>
+              If a system is designed around honest answers to those questions,
+              the result is a house that holds a steady temperature, a system
+              that runs quietly at low output for long periods, and hot water
+              that behaves normally.
+            </p>
+
+            <p>
+              If those questions are skipped, the usual outcome is a heat pump
+              forced to run hotter than intended to compensate for undersized
+              radiators or unaddressed heat loss. That is the single most
+              common cause of disappointment. The heating still works, but it
+              works harder than it needed to, and the household ends up feeling
+              that the technology was the problem when the design was.
+            </p>
+
+            <div class="aw-callout aw-callout--positive">
+              <p>
+                <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../../assets/icons.svg#icon-home"></use></svg>
+                This is why Airwarm looks at the building first. A good
+                heat-pump installation begins with the home, not the product.
+                Airwarm checks the building, emitters, hot-water requirements,
+                controls and practical installation details before making a
+                recommendation.
+              </p>
+            </div>
+
+            <h2 id="outdoor-unit">Where the outdoor unit goes</h2>
+
+            <p>
+              The outdoor unit needs air, and it needs to be somewhere its
+              sound is not a problem for you or for a neighbour. That is
+              usually straightforward, and occasionally it is the constraint
+              that decides the whole project.
+            </p>
+
+            <figure class="aw-figure">
+              <img src="../../assets/diagram-outdoor-unit-siting.svg" alt="Plan view of a house showing outdoor unit siting. Clear space is needed in front of the unit for discharge air, at the sides and above for intake, and behind it for service access; the unit sits on a level base with a condensate drainage route away from paths. Positions directly beneath a bedroom window, in a tight corner between two walls, or boxed in by a close fence are marked as poor choices because reflected air and vibration make them noisier." class="aw-diagram">
+              <figcaption class="aw-figure__caption">
+                What a good position looks like: free air flow, room to service
+                the unit, a level base, somewhere for condensate to go, and
+                distance from bedroom windows on both sides of the boundary.
+              </figcaption>
+            </figure>
+
+            <div class="aw-photo-placeholder">
+              <!-- PHOTOGRAPH GOES HERE: a real Airwarm outdoor unit installed at a
+                   West Yorkshire property, showing clearances, the mounting and
+                   the condensate route. Must be Airwarm's own work, published
+                   with the householder's permission. No stock photography. -->
+              <p>
+                A photograph of a finished Airwarm installation will appear
+                here. This site does not use stock photography, so the space
+                stays empty until we have our own work to show.
+              </p>
+            </div>
+
+            <h2 id="what-airwarm-checks">What Airwarm checks</h2>
+
+            <p>
+              The <a href="../../home-energy-assessment/">Home Energy Assessment</a>
+              is a short set of questions about your property type, age,
+              current heating, insulation, radiators, outdoor space and hot
+              water. It is deliberately quick and does not ask for
+              photographs.
+            </p>
+
+            <p>
+              The assessment gives one of three outcomes: likely suitable,
+              potentially suitable, or not currently suitable. Amber is the
+              most common and it is not a bad result. It means one or two
+              things need clarifying, which is normal.
+            </p>
+
+            <p>
+              Where the signs are positive, a
+              <a href="../../heat-pump-survey/">detailed survey</a> follows. It
+              records room dimensions, construction, insulation assumptions,
+              emitters and the temperature they can work at, hot-water demand,
+              cylinder options, outdoor unit positions, pipe routes,
+              electrical supply and your own comfort priorities, and it
+              produces a room-by-room
+              <a href="../../advice/heat-loss-explained/">heat loss calculation</a>
+              rather than an estimate from floor area. Every design is then
+              reviewed before a proposal is issued.
+            </p>
+
+            <h2 id="misconceptions">Common misconceptions, stated fairly</h2>
+
+            <p>
+              <strong>&ldquo;Heat pumps only work in new builds.&rdquo;</strong>
+              Not true. Plenty of older houses heat well with a heat pump. What
+              is true is that an older, less insulated house loses more heat,
+              so it needs more heat delivered, which usually means larger
+              emitters and sometimes fabric improvements first.
+            </p>
+
+            <p>
+              <strong>&ldquo;You have to rip out all your radiators.&rdquo;</strong>
+              Usually not all of them. Radiator output depends on the
+              temperature difference between the water and the room, so some
+              existing radiators are already large enough for lower-temperature
+              operation and some are not. It is normally
+              <a href="../../advice/radiators-and-emitters/">a per-room answer</a>,
+              not a whole-house one.
+            </p>
+
+            <p>
+              <strong>&ldquo;You need underfloor heating.&rdquo;</strong>
+              No. Underfloor heating is a good low-temperature emitter, but
+              correctly sized radiators work perfectly well.
+            </p>
+
+            <p>
+              <strong>&ldquo;My house is solid stone, so it is hopeless.&rdquo;</strong>
+              Solid-wall construction is common across
+              <a href="../../areas/bradford/">Bradford</a>,
+              <a href="../../areas/leeds/">Leeds</a> and
+              <a href="../../areas/shipley/">Shipley</a> and it does not rule a heat
+              pump out. It does mean heat loss needs calculating properly, and
+              the sensible order of work may be insulation or emitters first.
+            </p>
+
+            <p>
+              <strong>&ldquo;If I fail the assessment, that is the end of it.&rdquo;</strong>
+              It is not. A &ldquo;not currently suitable&rdquo; outcome is
+              about today&rsquo;s condition of the building, not a permanent
+              verdict. There is nearly always a route forward, even if it
+              starts with something other than a heat pump.
+            </p>
+
+            <h2 id="next">What you should do next</h2>
+
+            <p>
+              Start with the
+              <a href="../../home-energy-assessment/">Home Energy Assessment</a>. A
+              quick first step to understand whether a heat pump is worth
+              exploring for your property.
+            </p>
+
+            <div class="aw-callout">
+              <p>
+                <svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../../assets/icons.svg#icon-check"></use></svg>
+                If the answers point to a constraint, Airwarm will tell you
+                what the constraint is and what would resolve it, whether that
+                is loft insulation, a hot water cylinder position, a change to
+                one or two radiators, or agreement from a freeholder. If a heat
+                pump genuinely is not the right next step for your property,
+                you will be told that plainly, with the reason.
+              </p>
+            </div>
+
+            <!-- PLACEHOLDER: example project. Insert a real, permissioned case study
+                 here once Airwarm has completed installations. Do not add an
+                 illustrative example before then. -->
+
+          </div>
+        </div>
+      </section>
+
+      <section class="aw-section aw-section--light">
+        <div class="aw-wrap">
+          <h2 id="faqs">Frequently asked questions</h2>
+          <div class="aw-faq aw-measure">
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">Does the age of my house decide whether a heat pump will work?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  No. Age is a clue, not an answer. What matters is the actual
+                  heat loss of the building and the capacity of the emitters,
+                  both of which are measured rather than assumed.
+                </p>
+              </div>
+            </details>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">Do I have to insulate my whole house first?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  Not necessarily. Insulation reduces the heat you need to
+                  deliver, which makes the whole system easier. Airwarm will
+                  say which improvements genuinely change the design and which
+                  make little difference.
+                </p>
+              </div>
+            </details>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">Can I keep my combi boiler arrangement with no cylinder?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  A heat pump normally needs a
+                  <a href="../../advice/hot-water-and-cylinders/">hot water cylinder</a>.
+                  If there is no realistic space for one, that is a genuine
+                  constraint, and it is one of the first things the survey
+                  checks.
+                </p>
+              </div>
+            </details>
+
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">What if I live in a flat or a listed building?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  Both are possible but both add steps: permission from a
+                  freeholder or managing agent for a flat, and listed building
+                  consent where a property is listed. Airwarm will tell you what
+                  would need to happen rather than guessing.
+                </p>
+              </div>
+            </details>
+
+          </div>
+        </div>
+      </section>
+
+      <section class="aw-section">
+        <div class="aw-wrap">
+          <h2>Read next</h2>
+          <div class="aw-card-grid" style="margin-top:24px">
+            <a class="aw-card aw-card--link" href="../../advice/heat-loss-explained/">
+              <svg class="aw-icon aw-icon--lg" aria-hidden="true" focusable="false"><use href="../../assets/icons.svg#icon-survey"></use></svg>
+              <h3 class="aw-card__title">Heat loss explained</h3>
+              <p>The calculation that decides the size of the heat pump and every radiator in the house.</p>
+            </a>
+            <a class="aw-card aw-card--link" href="../../advice/radiators-and-emitters/">
+              <svg class="aw-icon aw-icon--lg" aria-hidden="true" focusable="false"><use href="../../assets/icons.svg#icon-radiator"></use></svg>
+              <h3 class="aw-card__title">Will I need new radiators?</h3>
+              <p>Which of your existing radiators are already big enough, and which are not.</p>
+            </a>
+            <a class="aw-card aw-card--link" href="../../how-it-works/">
+              <svg class="aw-icon aw-icon--lg" aria-hidden="true" focusable="false"><use href="../../assets/icons.svg#icon-design"></use></svg>
+              <h3 class="aw-card__title">The Airwarm process</h3>
+              <p>All eight stages, from first enquiry to ongoing support, with a decision point at each.</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- FINAL CALL TO ACTION — repeated on every page, per the blueprint.
+           The assessment is the primary action; e-mail is the route for
+           anything unusual. -->
+      <section class="aw-section aw-section--navy aw-cta-band">
+        <div class="aw-wrap">
+          <h2>Start with your home, not a product</h2>
+          <p class="aw-hero__support">
+            The Home Energy Assessment takes a few minutes, asks for no
+            photographs and gives you an honest first view of whether an air
+            source heat pump is worth exploring for your property.
+          </p>
+          <div class="aw-btn-row">
+            <a class="aw-btn aw-btn--primary" href="../../home-energy-assessment/">Check your home&rsquo;s suitability</a>
+            <a class="aw-btn aw-btn--secondary" href="mailto:hello@airwarm.co.uk">E-mail hello@airwarm.co.uk</a>
+          </div>
+          <p class="aw-small" style="margin-top:24px">
+            Unusual property? Listed building, off-grid, a renovation part way
+            through? E-mail us and describe it. We would rather have the
+            conversation than have you guess.
+          </p>
+        </div>
+      </section>
+  </main>
+
+  <!-- ============================================================= -->
+  <!-- FOOTER — keep identical across pages                            -->
+  <!-- ============================================================= -->
+  <footer class="aw-footer">
+    <div class="aw-wrap">
+      <div class="aw-footer__grid">
+
+        <div>
+          <!-- LOGO SWAP POINT (footer) — see the note in the header. -->
+          <span class="aw-wordmark" style="display:inline-flex">
+            <span class="aw-wordmark__name">AIRWARM</span>
+            <span class="aw-tagline">
+              <span class="warmer">WARMER HOMES</span><span class="aw-dot">&bull;</span><span class="bills">LOWER BILLS</span><span class="aw-dot">&bull;</span><span class="energy">CLEAN ENERGY</span>
+            </span>
+          </span>
+          <p class="aw-small" style="margin-top:16px">
+            Air Source Heat Pumps &bull; West Yorkshire
+          </p>
+          <ul>
+            <li><a href="../../">airwarm.co.uk</a></li>
+            <li><a href="mailto:hello@airwarm.co.uk">hello@airwarm.co.uk</a></li>
+            <!-- PHONE NUMBER GOES HERE once the business line is provisioned.
+                 Do not invent one. Format:
+            <li><a href="tel:+44NUMBER-GOES-HERE">NUMBER GOES HERE</a></li>
+            -->
+          </ul>
+        </div>
+
+        <div>
+          <h2>Services</h2>
+          <ul>
+            <li><a href="../../air-source-heat-pumps/">Air source heat pumps</a></li>
+            <li><a href="../../heat-pump-survey/">Heat pump survey</a></li>
+            <li><a href="../../heat-pump-installation/">Heat pump installation</a></li>
+            <li><a href="../../how-it-works/">How it works</a></li>
+            <li><a href="../../home-energy-assessment/">Home Energy Assessment</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2>Service areas</h2>
+          <ul>
+            <li><a href="../../areas/bradford/">Bradford</a></li>
+            <li><a href="../../areas/leeds/">Leeds</a></li>
+            <li><a href="../../areas/shipley/">Shipley</a></li>
+          </ul>
+          <h2 style="margin-top:24px">Company</h2>
+          <ul>
+            <li><a href="../../about/">About Airwarm</a></li>
+            <li><a href="../../advice/">Advice</a></li>
+            <li><a href="../../contact/">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2>Legal</h2>
+          <ul>
+            <li><a href="../../privacy/">Privacy policy</a></li>
+            <li><a href="../../cookies/">Cookie policy</a></li>
+            <li><a href="../../terms/">Terms and conditions</a></li>
+            <!-- STILL TO BE WRITTEN, then linked here:
+                 complaints procedure, accessibility statement.
+                 Both are named in the brand pack footer structure. -->
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="aw-footer__base">
+        <p>
+          Airwarm is a new West Yorkshire business preparing to install and
+          support air source heat pumps.
+        </p>
+        <p class="aw-small">
+          AIRWARM LTD is a company registered in England and Wales, company
+          number 17362672. Registered office: 2 Aireview Crescent, Baildon,
+          Shipley, BD17 7LS.
+        </p>
+        <!-- VAT NUMBER GOES HERE if and when Airwarm registers for VAT. Add it
+             as a further sentence in the paragraph above, for example
+             "VAT registration number GB000000000." Do not invent one, and do
+             not display a VAT number before registration is confirmed. -->
+        <!-- SOCIAL LINKS: add only channels that are actively maintained. -->
+        <!-- SOCIAL LINKS: add only channels that are actively maintained. -->
+        <p>&copy; 2026 Airwarm.</p>
+      </div>
+    </div>
+  </footer>
+  <!-- /FOOTER -->
+
+</body>
+</html>

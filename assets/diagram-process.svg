@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ===========================================================================
+  AIRWARM — diagram-process.svg
+  The eight steps from first enquiry to ongoing servicing. Four across and two
+  down: it reads left to right on a wide screen, and in two short rows on a
+  phone.
+
+  The eight steps come from the Airwarm website framework. If you change a step
+  name here, change it on the page too, so the drawing and the words agree.
+
+  HOW TO CHANGE A LABEL
+  Every word a visitor reads sits between <text ...> and </text>. Search this
+  file for the words you want to change and type over them. Nothing else has
+  to move. Keep labels short: they are set larger on small screens, and a long
+  label can run past the edge of the drawing.
+
+  The same wording is repeated in the description below, which is what a
+  screen reader announces. If you change a label, change that to match.
+
+  Colours are the approved Airwarm palette only. They are declared once, in
+  the style block, and nowhere else in this file.
+  ===========================================================================
+-->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 640 400"
+     role="img"
+     aria-labelledby="pr-title pr-desc">
+
+  <title id="pr-title">The eight steps, from first enquiry to ongoing servicing</title>
+  <desc id="pr-desc">Eight numbered steps in order. One, the Home Energy Assessment. Two,
+    Airwarm reviews your answers. Three, a short suitability call.
+    Four, a detailed home survey where it is justified. Five, design
+    and a clear proposal. Six, a planned installation. Seven,
+    commissioning and handover. Eight, ongoing servicing and support.</desc>
+
+  <style>
+    /* ---------------------------------------------------------------------
+       AIRWARM DIAGRAM STYLES
+       The approved palette, and nothing else:
+         navy #071A2B    white #FFFFFF        orange #F28C28
+         blue #2F80ED    green #63C174        light neutral #F4F7F9
+         mid grey #65717C                     dark text #14212B
+
+       These class names are identical in every Airwarm diagram, so the whole
+       set keeps one line weight and one set of type sizes.
+
+       ONE DELIBERATE EXCEPTION, FOR LEGIBILITY.
+       The brand orange #F28C28 reaches only 2.3:1 against this pale panel,
+       which is below the 3:1 that WCAG asks for a line or a shape that
+       carries meaning. So a thin orange LINE on the pale panel is drawn in
+       the darker orange #B55F0B (4.6:1), and switches back to #F28C28 on the
+       navy panel used by the dark browser theme, where the brand orange
+       reaches 7.2:1. Solid orange shapes keep the brand orange and are given
+       a navy outline instead, so their edge carries the contrast.
+       The same note is in css/airwarm.css and assets/README.md.
+       --------------------------------------------------------------------- */
+    .d-surface { fill: #F4F7F9; }
+    .d-frame   { fill: none; stroke: #071A2B; stroke-width: 1.5; opacity: 0.16; }
+    .d-box     { fill: #FFFFFF; stroke: #071A2B; stroke-width: 2; }
+    .d-box--quiet { fill: none; stroke: #65717C; stroke-width: 1.5; }
+    .d-line    { fill: none; stroke: #071A2B; stroke-width: 2;
+                 stroke-linecap: round; stroke-linejoin: round; }
+    .d-line--thin { stroke-width: 1.5; }
+    .d-line--dash { stroke-dasharray: 6 6; }
+    .d-hot     { stroke: #B55F0B; }   /* warmth, and the higher of two temperatures */
+    .d-cool    { stroke: #2F80ED; }   /* the cool side, and the lower of two temperatures */
+    .d-quiet   { stroke: #65717C; }
+    .d-fill-navy  { fill: #071A2B; }
+    .d-fill-hot   { fill: #B55F0B; }
+    .d-fill-cool  { fill: #2F80ED; }
+    .d-fill-quiet { fill: #65717C; }
+    .d-fill-white { fill: #FFFFFF; }
+
+    /* TEXT. .d-label is a name, .d-sub an explanatory line, .d-num a number
+       inside a step marker, .d-cap a small caption or key entry. */
+    .d-label { font-family: Montserrat, 'Segoe UI', Arial, sans-serif;
+               font-size: 18px; font-weight: 600; fill: #14212B; }
+    .d-sub   { font-family: Montserrat, 'Segoe UI', Arial, sans-serif;
+               font-size: 15px; font-weight: 500; fill: #65717C; }
+    .d-num   { font-family: Montserrat, 'Segoe UI', Arial, sans-serif;
+               font-size: 15px; font-weight: 700; fill: #FFFFFF; }
+    .d-cap   { font-family: Montserrat, 'Segoe UI', Arial, sans-serif;
+               font-size: 15px; font-weight: 500; fill: #65717C; }
+
+    /* NARROW SCREENS. Below about 520px the explanatory lines are hidden and
+       the remaining labels are set larger, so the drawing still reads on a
+       phone. Nothing is lost: the page copy carries the detail, and the
+       description near the top of this file carries it for screen readers. */
+    .d-narrow-only { display: none; }
+    @media (max-width: 520px) {
+      .d-label { font-size: 24px; }
+      .d-num   { font-size: 18px; }
+      .d-cap   { font-size: 20px; }
+      .d-sub, .d-wide-only { display: none; }
+      .d-narrow-only { display: inline; }
+    }
+
+    /* DARK BROWSER THEME. The panel turns navy and the ink turns white, so
+       the diagram never depends on sitting on a white page. Grey text is
+       replaced with the light neutral, because mid grey on navy is only
+       3.5:1 and that is not enough for small text. */
+    @media (prefers-color-scheme: dark) {
+      .d-surface { fill: #071A2B; }
+      .d-frame   { stroke: #FFFFFF; opacity: 0.28; }
+      .d-box     { fill: #071A2B; stroke: #FFFFFF; }
+      .d-line    { stroke: #FFFFFF; }
+      .d-hot     { stroke: #F28C28; }
+      .d-fill-hot { fill: #F28C28; }
+      .d-label   { fill: #FFFFFF; }
+      .d-sub, .d-cap { fill: #F4F7F9; }
+      .d-fill-navy  { fill: #FFFFFF; }
+      .d-fill-white { fill: #071A2B; }
+      .d-num        { fill: #071A2B; }
+    }
+
+    /* Extra styles for this diagram only. The step names are set slightly
+       smaller than in the other diagrams on a narrow screen, because they
+       have to fit inside a tile: about twelve characters is the most that
+       will fit on one line. */
+    @media (max-width: 520px) { .d-label { font-size: 21px; } }
+  </style>
+
+  <defs>
+    <!-- Arrowheads. One per colour, so each takes the dark theme change with
+         its line. There is no need to change these. -->
+    <marker id="arrow-ink" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path class="d-fill-navy" d="M0 0 L10 5 L0 10 Z"/>
+    </marker>
+    <marker id="arrow-hot" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path class="d-fill-hot" d="M0 0 L10 5 L0 10 Z"/>
+    </marker>
+    <marker id="arrow-cool" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path class="d-fill-cool" d="M0 0 L10 5 L0 10 Z"/>
+    </marker>
+    <marker id="arrow-quiet" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path class="d-fill-quiet" d="M0 0 L10 5 L0 10 Z"/>
+    </marker>
+  </defs>
+
+  <!-- The diagram carries its own background panel, so it stays legible on a
+       white, a pale grey or a navy section. -->
+  <rect class="d-surface" x="0" y="0" width="640" height="400" rx="12"/>
+  <rect class="d-frame" x="0.75" y="0.75" width="638.5" height="398.5" rx="11.25"/>
+
+  <!-- ======================= ROW ONE: STEPS 1 TO 4 ======================
+       Each step is one tile. To rename a step, change the words inside its
+       text elements. Two short lines fit inside a tile; a third will not.
+       =================================================================== -->
+  <rect class="d-box" x="20" y="40" width="140" height="130" rx="8"/>
+  <circle class="d-fill-navy" cx="44" cy="66" r="14"/>
+  <text class="d-num" x="44" y="71" text-anchor="middle">1</text>
+  <text class="d-label" x="90" y="118" text-anchor="middle">Home energy</text>
+  <text class="d-label" x="90" y="142" text-anchor="middle">assessment</text>
+
+  <path class="d-line d-line--thin d-quiet" d="M164 98 L171 105 L164 112"/>
+
+  <rect class="d-box" x="172" y="40" width="140" height="130" rx="8"/>
+  <circle class="d-fill-navy" cx="196" cy="66" r="14"/>
+  <text class="d-num" x="196" y="71" text-anchor="middle">2</text>
+  <text class="d-label" x="242" y="118" text-anchor="middle">We review</text>
+  <text class="d-label" x="242" y="142" text-anchor="middle">your answers</text>
+
+  <path class="d-line d-line--thin d-quiet" d="M316 98 L323 105 L316 112"/>
+
+  <rect class="d-box" x="324" y="40" width="140" height="130" rx="8"/>
+  <circle class="d-fill-navy" cx="348" cy="66" r="14"/>
+  <text class="d-num" x="348" y="71" text-anchor="middle">3</text>
+  <text class="d-label" x="394" y="118" text-anchor="middle">Suitability</text>
+  <text class="d-label" x="394" y="142" text-anchor="middle">call</text>
+
+  <path class="d-line d-line--thin d-quiet" d="M468 98 L475 105 L468 112"/>
+
+  <rect class="d-box" x="476" y="40" width="140" height="130" rx="8"/>
+  <circle class="d-fill-navy" cx="500" cy="66" r="14"/>
+  <text class="d-num" x="500" y="71" text-anchor="middle">4</text>
+  <text class="d-label" x="546" y="118" text-anchor="middle">Home</text>
+  <text class="d-label" x="546" y="142" text-anchor="middle">survey</text>
+
+  <!-- The order carries on from the end of the first row to the start of the
+       second. -->
+  <path class="d-line d-line--thin d-quiet" d="M546 174 V194 H90 V212"
+        marker-end="url(#arrow-quiet)"/>
+
+  <!-- ======================= ROW TWO: STEPS 5 TO 8 ====================== -->
+  <rect class="d-box" x="20" y="220" width="140" height="130" rx="8"/>
+  <circle class="d-fill-navy" cx="44" cy="246" r="14"/>
+  <text class="d-num" x="44" y="251" text-anchor="middle">5</text>
+  <text class="d-label" x="90" y="298" text-anchor="middle">Design and</text>
+  <text class="d-label" x="90" y="322" text-anchor="middle">proposal</text>
+
+  <path class="d-line d-line--thin d-quiet" d="M164 278 L171 285 L164 292"/>
+
+  <rect class="d-box" x="172" y="220" width="140" height="130" rx="8"/>
+  <circle class="d-fill-navy" cx="196" cy="246" r="14"/>
+  <text class="d-num" x="196" y="251" text-anchor="middle">6</text>
+  <text class="d-label" x="242" y="310" text-anchor="middle">Installation</text>
+
+  <path class="d-line d-line--thin d-quiet" d="M316 278 L323 285 L316 292"/>
+
+  <rect class="d-box" x="324" y="220" width="140" height="130" rx="8"/>
+  <circle class="d-fill-navy" cx="348" cy="246" r="14"/>
+  <text class="d-num" x="348" y="251" text-anchor="middle">7</text>
+  <text class="d-label" x="394" y="298" text-anchor="middle">Commission</text>
+  <text class="d-label" x="394" y="322" text-anchor="middle">and handover</text>
+
+  <path class="d-line d-line--thin d-quiet" d="M468 278 L475 285 L468 292"/>
+
+  <rect class="d-box" x="476" y="220" width="140" height="130" rx="8"/>
+  <circle class="d-fill-navy" cx="500" cy="246" r="14"/>
+  <text class="d-num" x="500" y="251" text-anchor="middle">8</text>
+  <text class="d-label" x="546" y="298" text-anchor="middle">Servicing</text>
+  <text class="d-label" x="546" y="322" text-anchor="middle">and support</text>
+
+  <text class="d-cap" x="320" y="380" text-anchor="middle">Step four happens where a survey is justified.</text>
+</svg>

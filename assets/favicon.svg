@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ===========================================================================
+  ###  P L A C E H O L D E R  —  R E P L A C E  T H I S  F I L E  ###
+
+  AIRWARM — favicon.svg
+
+  THIS IS NOT THE AIRWARM LOGO. It is a plain letter A in white on navy,
+  standing in for a favicon until the real asset exists.
+
+  WHY IT LOOKS LIKE THIS
+  The Airwarm identity is a circular emblem. No vector version of that emblem
+  exists in the brand pack, and the brand rules are explicit that the emblem is
+  used unchanged: it must not be redrawn, approximated, rotated, cropped or
+  reconstructed from a picture of it. So no attempt has been made to draw it
+  here, and none should be made. A letterform placeholder is the honest option.
+
+  WHAT TO DO WHEN THE REAL ASSET ARRIVES
+  1. Get the emblem as SVG, or as a high resolution PNG, from whoever holds the
+     original artwork.
+  2. Replace this whole file with it, keeping the name favicon.svg.
+  3. Generate the rest of the set from the same original: favicon.ico, a 180
+     pixel Apple touch icon, and a share image.
+  4. The head of every page already has a commented swap point for these. See
+     HANDOVER.md, decision 11.
+
+  Until then this file is safe to ship: it is unmistakably a placeholder and
+  it claims nothing.
+  ===========================================================================
+-->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 64 64"
+     role="img"
+     aria-labelledby="fav-title fav-desc">
+
+  <title id="fav-title">Airwarm</title>
+  <desc id="fav-desc">Placeholder icon: the letter A in white on a navy
+    square. It stands in for the Airwarm emblem, which is not available as a
+    vector file and must not be redrawn.</desc>
+
+  <style>
+    /* Two palette colours, and nothing else. White on navy is 17.6 to 1, so
+       it stays legible at sixteen pixels. */
+    .f-plate  { fill: #071A2B; }
+    .f-letter { fill: none; stroke: #FFFFFF; stroke-width: 7;
+                stroke-linecap: butt; stroke-linejoin: miter; }
+  </style>
+
+  <rect class="f-plate" x="0" y="0" width="64" height="64" rx="12"/>
+
+  <!-- A plain geometric A: two strokes and a crossbar. Nothing here is taken
+       from the Airwarm emblem. -->
+  <path class="f-letter" d="M15 51 L32 14 L49 51"/>
+  <path class="f-letter" d="M23 40 H41"/>
+</svg>
