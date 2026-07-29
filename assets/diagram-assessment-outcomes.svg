@@ -44,37 +44,37 @@
     /* ---------------------------------------------------------------------
        AIRWARM DIAGRAM STYLES
        The approved palette, and nothing else:
-         navy #071A2B    white #FFFFFF        orange #F28C28
-         blue #2F80ED    green #63C174        light neutral #F4F7F9
+         navy #010F23    white #FFFFFF        orange #F76201
+         blue #017FE1    green #689E14        light neutral #F4F7F9
          mid grey #65717C                     dark text #14212B
 
        These class names are identical in every Airwarm diagram, so the whole
        set keeps one line weight and one set of type sizes.
 
        ONE DELIBERATE EXCEPTION, FOR LEGIBILITY.
-       The brand orange #F28C28 reaches only 2.3:1 against this pale panel,
+       The brand orange #F76201 reaches only 2.9:1 against this pale panel,
        which is below the 3:1 that WCAG asks for a line or a shape that
        carries meaning. So a thin orange LINE on the pale panel is drawn in
-       the darker orange #B55F0B (4.6:1), and switches back to #F28C28 on the
+       the darker orange #C14D01 (4.5:1), and switches back to #F76201 on the
        navy panel used by the dark browser theme, where the brand orange
-       reaches 7.2:1. Solid orange shapes keep the brand orange and are given
+       reaches 6.1:1. Solid orange shapes keep the brand orange and are given
        a navy outline instead, so their edge carries the contrast.
        The same note is in css/airwarm.css and assets/README.md.
        --------------------------------------------------------------------- */
     .d-surface { fill: #F4F7F9; }
-    .d-frame   { fill: none; stroke: #071A2B; stroke-width: 1.5; opacity: 0.16; }
-    .d-box     { fill: #FFFFFF; stroke: #071A2B; stroke-width: 2; }
+    .d-frame   { fill: none; stroke: #010F23; stroke-width: 1.5; opacity: 0.16; }
+    .d-box     { fill: #FFFFFF; stroke: #010F23; stroke-width: 2; }
     .d-box--quiet { fill: none; stroke: #65717C; stroke-width: 1.5; }
-    .d-line    { fill: none; stroke: #071A2B; stroke-width: 2;
+    .d-line    { fill: none; stroke: #010F23; stroke-width: 2;
                  stroke-linecap: round; stroke-linejoin: round; }
     .d-line--thin { stroke-width: 1.5; }
     .d-line--dash { stroke-dasharray: 6 6; }
-    .d-hot     { stroke: #B55F0B; }   /* warmth, and the higher of two temperatures */
-    .d-cool    { stroke: #2F80ED; }   /* the cool side, and the lower of two temperatures */
+    .d-hot     { stroke: #C14D01; }   /* warmth, and the higher of two temperatures */
+    .d-cool    { stroke: #017FE1; }   /* the cool side, and the lower of two temperatures */
     .d-quiet   { stroke: #65717C; }
-    .d-fill-navy  { fill: #071A2B; }
-    .d-fill-hot   { fill: #B55F0B; }
-    .d-fill-cool  { fill: #2F80ED; }
+    .d-fill-navy  { fill: #010F23; }
+    .d-fill-hot   { fill: #C14D01; }
+    .d-fill-cool  { fill: #017FE1; }
     .d-fill-quiet { fill: #65717C; }
     .d-fill-white { fill: #FFFFFF; }
 
@@ -105,34 +105,34 @@
     /* DARK BROWSER THEME. The panel turns navy and the ink turns white, so
        the diagram never depends on sitting on a white page. Grey text is
        replaced with the light neutral, because mid grey on navy is only
-       3.5:1 and that is not enough for small text. */
+       3.9:1 and that is not enough for small text. */
     @media (prefers-color-scheme: dark) {
-      .d-surface { fill: #071A2B; }
+      .d-surface { fill: #010F23; }
       .d-frame   { stroke: #FFFFFF; opacity: 0.28; }
-      .d-box     { fill: #071A2B; stroke: #FFFFFF; }
+      .d-box     { fill: #010F23; stroke: #FFFFFF; }
       .d-line    { stroke: #FFFFFF; }
-      .d-hot     { stroke: #F28C28; }
-      .d-fill-hot { fill: #F28C28; }
+      .d-hot     { stroke: #F76201; }
+      .d-fill-hot { fill: #F76201; }
       .d-label   { fill: #FFFFFF; }
       .d-sub, .d-cap { fill: #F4F7F9; }
       .d-fill-navy  { fill: #FFFFFF; }
-      .d-fill-white { fill: #071A2B; }
-      .d-num        { fill: #071A2B; }
+      .d-fill-white { fill: #010F23; }
+      .d-num        { fill: #010F23; }
     }
 
     /* Extra styles for this diagram only.
        The state disc is filled with the state colour and outlined and marked
        in navy, so the glyph inside always has contrast against it and the edge
        of the disc has contrast against the panel. */
-    .d-disc-good  { fill: #63C174; stroke: #071A2B; stroke-width: 1.5; }
-    .d-disc-maybe { fill: #2F80ED; stroke: #071A2B; stroke-width: 1.5; }
-    .d-disc-notyet{ fill: #65717C; stroke: #071A2B; stroke-width: 1.5; }
-    .d-glyph { fill: none; stroke: #071A2B; stroke-width: 2.5;
+    .d-disc-good  { fill: #689E14; stroke: #010F23; stroke-width: 1.5; }
+    .d-disc-maybe { fill: #017FE1; stroke: #010F23; stroke-width: 1.5; }
+    .d-disc-notyet{ fill: #65717C; stroke: #010F23; stroke-width: 1.5; }
+    .d-glyph { fill: none; stroke: #010F23; stroke-width: 2.5;
                stroke-linecap: round; stroke-linejoin: round; }
     .d-glyph-text { font-family: Montserrat, 'Segoe UI', Arial, sans-serif;
-                    font-size: 26px; font-weight: 700; fill: #071A2B; }
-    .d-accent-good  { fill: #63C174; }
-    .d-accent-maybe { fill: #2F80ED; }
+                    font-size: 26px; font-weight: 700; fill: #010F23; }
+    .d-accent-good  { fill: #689E14; }
+    .d-accent-maybe { fill: #017FE1; }
     .d-accent-notyet{ fill: #65717C; }
   </style>
 

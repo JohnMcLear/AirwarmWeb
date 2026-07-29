@@ -54,7 +54,10 @@ of a domain, so a path beginning with `/` resolves to the wrong place and
 | `diagram-assessment-outcomes.svg` | The three assessment outcomes as a calm three-state graphic. Green for the positive one only; blue and mid grey for the others; **no red anywhere**. |
 | `icons.svg` | One sprite holding the twenty line icons. See [The icon sprite](#the-icon-sprite). |
 | `hero-pattern.svg` | A very quiet repeating pattern for navy hero panels. Decoration only. |
-| `favicon.svg` | **A placeholder.** A plain letter A in white on navy. It is not the Airwarm emblem and must be replaced — see the note at the top of the file. |
+| `airwarm-favicon.svg` | The Corporate Mark with its navy tile kept, used as the browser icon and the Apple touch icon. Derived from `brand/corporate-mark.svg`. |
+| `airwarm-mark.svg` | The Corporate Mark with its navy tile removed, so it sits on any background. This is the emblem in the header and footer lockup. |
+| `airwarm-hero-logo.svg` | The Hero Logo with its navy tile removed. The full lockup — mark, wordmark and tagline. Homepage hero only, and navy panels only: its wordmark is white. |
+| `brand/` | The five supplied identity files exactly as delivered. **Source of truth. Never edit these.** See [The brand artwork](#the-brand-artwork). |
 
 Every diagram is built the same way, on purpose:
 
@@ -319,35 +322,97 @@ The full explanation is at the top of `css/airwarm.css`, section 01. The short
 version, because it is easy to undo by accident:
 
 - **Orange and green fills always carry navy or dark text, never white.** White
-  on orange is 2.5:1 and white on green is 2.2:1. Both are unusable.
+  on orange is 3.1:1 and white on green is 3.2:1. Both fail for body text.
 - **Never set orange or green as text, or as a meaningful icon, on white or on
-  the light neutral.** Use `--airwarm-orange-text` (#B55F0B) or
-  `--airwarm-green-text` (#358644) instead. Those two are for text and line
+  the light neutral.** Use `--airwarm-orange-text` (#C14D01) or
+  `--airwarm-green-text` (#537D10) instead. Those two are for text and line
   work only, never for a fill.
-- **A blue fill with white text uses `--airwarm-blue-accessible`** (#1570EB),
-  not the brand blue, which reaches only 3.9:1 with white on it.
-- **Grey text never goes on navy** (3.5:1). On navy, captions and supporting
+- **A blue fill with white text uses `--airwarm-blue-accessible`** (#0178D5),
+  not the brand blue, which reaches only 4.1:1 with white on it.
+- **Grey text never goes on navy** (3.9:1). On navy, captions and supporting
   text are white or the light neutral.
 - **Colour is never the only signal.** Every state is paired with a shape or a
   word: the assessment outcomes have a tick, a question mark and a level dash;
   the FAQ has a plus and a dash; the callouts have headings. It all still reads
   in black and white.
 
-**This diverges from the brand pack, deliberately.** The pack's
-`airwarm-design-tokens.css` defines the primary button as white text on the
-brand blue, which measures 3.9:1 and fails WCAG AA; the framework also offers
-white on orange, which is worse at 2.5:1. Neither is used on this site. The
-three darkened tokens are **additions**, not replacements: the five brand
-colours are untouched and are still what appears on navy, in fills carrying
-dark text, and in the tagline.
+**The three darkened tokens are additions, not replacements.** A white-on-blue
+primary button measures 4.1:1 and fails WCAG AA, and white on orange is worse
+at 3.1:1, so neither is used on this site — the primary button is orange with
+dark text at 6.1:1. The identity artwork's own colours are untouched and are
+still what appears on navy, in fills carrying dark text, and in the tagline.
+The darkened variants exist only because nothing in the brand artwork is ever
+asked to sit as small text on white, and these three are.
 
 Inside the SVG files there is one related exception, noted in each file: a thin
-orange **line** on the pale panel is drawn in the darker `#B55F0B`, because the
-brand orange reaches only 2.3:1 there, which is below the 3:1 a line carrying
+orange **line** on the pale panel is drawn in the darker `#C14D01`, because the
+brand orange reaches only 2.9:1 there, which is below the 3:1 a line carrying
 meaning needs. It switches back to the brand orange on the navy panel used by
-the dark theme, where it reaches 7.2:1. Solid orange shapes keep the brand
+the dark theme, where it reaches 6.1:1. Solid orange shapes keep the brand
 orange and are given a navy outline instead, so their edge carries the
 contrast.
+
+---
+
+## The brand artwork
+
+`brand/` holds the five files of the permanent Airwarm identity **exactly as
+they were delivered**. They are the source of truth. Never edit them, never
+optimise them, never re-export them. Everything else with `airwarm-` in its
+name is derived from them by the one transformation described below.
+
+| File | Canvas | What it is |
+| --- | --- | --- |
+| `brand/hero-logo.svg` | 1254×1254 | The flagship. Mark, wordmark and tagline on navy. |
+| `brand/hero-horizontal.svg` | 1983×793 | The same lockup laid out wide. |
+| `brand/hero-mark.svg` | 1000×1000 | The detailed emblem, no type. |
+| `brand/corporate-mark.svg` | 1024×1024 | The simplified circular emblem. |
+| `brand/micro-mark.svg` | 1254×1254 | The emblem reduced to three arcs, for very small sizes. |
+
+### Which one goes where
+
+The brand rules assign each piece a job. Do not substitute one for another —
+in particular, do not put the Hero Logo where the Corporate Mark belongs.
+
+| Place | File |
+| --- | --- |
+| Homepage hero | `airwarm-hero-logo.svg` |
+| Header and footer lockup | `airwarm-mark.svg` + live text |
+| Favicon, loading screen | `airwarm-favicon.svg` |
+| Small UI, buttons, icons | `airwarm-mark.svg` |
+
+### The one change made to the supplied files
+
+Four of the five paint a full-canvas navy rectangle behind the artwork. That
+is right for a social avatar and wrong for a web page, where the mark has to
+sit on whatever is already there. So `airwarm-mark.svg` and
+`airwarm-hero-logo.svg` are copies with **that single rectangle deleted and
+nothing else altered**. Both carry a header comment saying so. The favicon
+keeps its tile, because browser chrome is an unknown colour.
+
+`hero-horizontal.svg`, `hero-mark.svg` and `micro-mark.svg` are auto-traced —
+hundreds of tiny paths, and 339KB in the horizontal case. Their backgrounds
+cannot be removed as cleanly, and at header size they render soft. That is why
+the header rebuilds the horizontal lockup from the Corporate Mark plus live
+text rather than using the ready-made file: it is sharper, it is a thirtieth
+of the weight, and the wordmark stays selectable text that honours the
+reader's font size. The supplied horizontal file is still the right choice
+anywhere large and static, such as a PDF letterhead or an Open Graph image.
+
+### Where the site's colours come from
+
+The four brand values in `css/airwarm.css` are sampled out of
+`brand/hero-logo.svg`, not typed in from a document:
+
+| Token | Value | Sampled from |
+| --- | --- | --- |
+| `--airwarm-navy` | `#010F23` | the Hero Logo canvas |
+| `--airwarm-orange` | `#F76201` | the words SMART HEATING |
+| `--airwarm-blue` | `#017FE1` | the tagline separator |
+| `--airwarm-green` | `#689E14` | the words GREENER FUTURES |
+
+If the artwork is ever reissued, re-sample it and re-measure the contrast
+table at the top of the stylesheet. Do not eyeball a near-match.
 
 ---
 
@@ -373,11 +438,15 @@ placeholder for them. They can stay once photography arrives.
 
 Also outstanding, and not something this folder can solve:
 
-- **`favicon.svg` is a placeholder.** The real circular emblem is needed as SVG
-  or high-resolution artwork, and from it: `favicon.ico`, a 180px Apple touch
-  icon, and a share image. See `HANDOVER.md`, decision 11.
-- **The header and footer wordmark is text**, not the emblem. Both are marked
-  `LOGO SWAP POINT` in the markup.
+- **A raster `favicon.ico` and a PNG Apple touch icon.** The SVG favicon covers
+  current browsers, but older ones and some Android launchers want bitmaps.
+  Generate both from `brand/corporate-mark.svg`.
+- **A share image for Open Graph.** Every page has an `OG IMAGE GOES HERE`
+  comment. `brand/hero-horizontal.svg` at 1200×630 on navy is the obvious
+  source, and unlike the header it can afford the file size there.
+- **The header and footer wordmark is live text**, not artwork. That is a
+  deliberate choice, not an outstanding job — see [The brand
+  artwork](#the-brand-artwork).
 
 ---
 
@@ -385,10 +454,11 @@ Also outstanding, and not something this folder can solve:
 
 So that nobody spends a day looking for it:
 
-- **The Airwarm emblem.** No vector version exists in the brand pack, and the
-  brand rules say the emblem is used unchanged: never redrawn, approximated,
-  rotated, cropped or rebuilt from a picture of it. `favicon.svg` is a plainly
-  marked letterform placeholder and no attempt at the emblem has been made.
+- **The Airwarm emblem.** It is supplied artwork and the brand rules say it is
+  used unchanged: never redrawn, approximated, rotated, cropped or rebuilt from
+  a picture of it. Nothing in this folder is an attempt at it. The two derived
+  files take the supplied artwork and delete one background rectangle; no path,
+  colour or proportion is touched.
 - **Percentages on the heat loss diagram.** Where heat goes differs in every
   property, and the pack does not allow figures that are not evidenced for the
   property in front of you.

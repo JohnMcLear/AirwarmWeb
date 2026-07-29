@@ -506,6 +506,12 @@ var AIRWARM_TRIAGE_CONFIG = {
     html += '<div class="aw-btn-row">';
     html += '<a class="aw-btn aw-btn--primary" href="mailto:hello@airwarm.co.uk' +
       '?subject=Home%20Energy%20Assessment%20enquiry">E-mail hello@airwarm.co.uk</a>';
+    /* The telephone is offered beside the e-mail because someone who has just
+       read an unexpected result often wants to talk to a person about it.
+       Both halves of the number must match the footer: the tel: href is the
+       full international form, the visible text keeps the UK grouping. */
+    html += '<a class="aw-btn aw-btn--secondary" href="tel:+441274947197">' +
+      "Call 01274 947 197</a>";
     html += "</div>";
 
     html += '<p class="aw-small" style="margin-top:24px">This result is an ' +
