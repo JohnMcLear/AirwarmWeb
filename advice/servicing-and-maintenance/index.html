@@ -26,8 +26,11 @@
        <meta property="og:image" content="https://airwarm.co.uk/img/share.png">
        Do not point this at a stock photograph or a third-party host. -->
 
-  <!-- Favicon: the Airwarm emblem on a navy tile. Source of truth for all brand
-       artwork is 02_Strategy_and_Brand/logo/ in the business pack. -->
+  <!-- Favicon: the Corporate Mark, which is the piece of the identity the
+       brand rules name for the favicon and the loading screen. It keeps its
+       navy tile because a favicon is composited against browser chrome of
+       unknown colour. Source of truth for all brand artwork is assets/brand/,
+       which holds the supplied files exactly as delivered. -->
   <link rel="icon" href="../../assets/airwarm-favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="../../assets/airwarm-favicon.svg">
 
@@ -56,21 +59,25 @@
   <header class="aw-header">
     <div class="aw-wrap aw-header__inner">
 
-      <!-- Logo: emblem + wordmark. The emblem is assets/airwarm-emblem.svg;
-           the wordmark stays live text so it scales and stays selectable.
-           Tagline colour order is FIXED: orange, blue, green. -->
+      <!-- Logo lockup: the supplied Corporate Mark (assets/airwarm-mark.svg)
+           plus the wordmark and tagline as live text, so they scale, stay
+           selectable and honour the reader's font size. The 339KB traced
+           hero-horizontal.svg is deliberately not used at this size.
+           Tagline rules are FIXED: SMART HEATING orange, separator blue,
+           GREENER FUTURES green, both statements on ONE line, never
+           stacked, no punctuation added. -->
       <a class="aw-wordmark" href="../../">
-        <img class="aw-wordmark__emblem" src="../../assets/airwarm-emblem.svg" alt="" width="44" height="44">
+        <img class="aw-wordmark__emblem" src="../../assets/airwarm-mark.svg" alt="" width="44" height="44">
         <span class="aw-wordmark__text">
         <span class="aw-wordmark__name">AIRWARM</span>
-        <span class="aw-tagline"><span class="aw-tagline__line"><span class="warmer">WARMER HOMES</span><span class="aw-dot">&bull;</span><span class="bills">LOWER BILLS</span></span><span class="aw-tagline__line"><span class="energy">CLEAN ENERGY</span></span></span>
+        <span class="aw-tagline"><span class="heating">SMART HEATING</span><span class="aw-sep" aria-hidden="true">|</span><span class="futures">GREENER FUTURES</span></span>
         </span>
       </a>
 
       <!-- The Home Energy Assessment is the principal action on the site,
            so it gets a button in the header on every page. -->
       <div class="aw-header__cta">
-        <a class="aw-btn aw-btn--primary" href="../../home-energy-assessment/">Start the assessment</a>
+        <a class="aw-btn aw-btn--primary" href="../../home-energy-assessment/">Book your assessment</a>
       </div>
 
       <nav class="aw-nav" aria-label="Main">
@@ -444,7 +451,7 @@
             source heat pump is worth exploring for your property.
           </p>
           <div class="aw-btn-row">
-            <a class="aw-btn aw-btn--primary" href="../../home-energy-assessment/">Check your home&rsquo;s suitability</a>
+            <a class="aw-btn aw-btn--primary" href="../../home-energy-assessment/">Check if your home is suitable</a>
             <a class="aw-btn aw-btn--secondary" href="mailto:hello@airwarm.co.uk">E-mail hello@airwarm.co.uk</a>
           </div>
           <p class="aw-small" style="margin-top:24px">
@@ -466,10 +473,10 @@
         <div>
           <!-- Footer logo. Same emblem, smaller. -->
           <span class="aw-wordmark" style="display:inline-flex">
-            <img class="aw-wordmark__emblem" src="../../assets/airwarm-emblem.svg" alt="" width="34" height="34">
+            <img class="aw-wordmark__emblem" src="../../assets/airwarm-mark.svg" alt="" width="34" height="34">
             <span class="aw-wordmark__text">
               <span class="aw-wordmark__name">AIRWARM</span>
-              <span class="aw-tagline"><span class="aw-tagline__line"><span class="warmer">WARMER HOMES</span><span class="aw-dot">&bull;</span><span class="bills">LOWER BILLS</span></span><span class="aw-tagline__line"><span class="energy">CLEAN ENERGY</span></span></span>
+              <span class="aw-tagline"><span class="heating">SMART HEATING</span><span class="aw-sep" aria-hidden="true">|</span><span class="futures">GREENER FUTURES</span></span>
             </span>
           </span>
           <p class="aw-small" style="margin-top:16px">
@@ -478,10 +485,10 @@
           <ul>
             <li><a href="../../">airwarm.co.uk</a></li>
             <li><a href="mailto:hello@airwarm.co.uk">hello@airwarm.co.uk</a></li>
-            <!-- PHONE NUMBER GOES HERE once the business line is provisioned.
-                 Do not invent one. Format:
-            <li><a href="tel:+44NUMBER-GOES-HERE">NUMBER GOES HERE</a></li>
-            -->
+            <!-- The business line. tel: needs the full international form
+                 with no spaces; the visible text keeps the readable UK
+                 grouping. Change both halves together if it ever moves. -->
+            <li><a href="tel:+441274947197">01274 947 197</a></li>
           </ul>
         </div>
 
@@ -528,8 +535,9 @@
 
       <div class="aw-footer__base">
         <p>
-          Airwarm is a new West Yorkshire business preparing to install and
-          support air source heat pumps.
+          Airwarm is a new West Yorkshire business preparing for its official
+          launch in April 2027. We are not carrying out installations yet.
+          Book your Home Energy Assessment today to reserve your place.
         </p>
         <p class="aw-small">
           AIRWARM LTD is a company registered in England and Wales, company

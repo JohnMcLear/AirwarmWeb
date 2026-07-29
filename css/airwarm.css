@@ -27,10 +27,23 @@
 
 /* ==========================================================================
    01. BRAND TOKENS
-   These come from website/02_Brand_System/airwarm-design-tokens.css in the
-   Airwarm brand pack. The eight colours below are the ENTIRE approved
-   palette. Nothing else in this file uses a colour value that is not
-   derived from them.
+
+   WHERE THESE COLOURS COME FROM. They are sampled directly out of the
+   permanent Airwarm identity artwork, not typed in from a document. The
+   Hero Logo (assets/brand/hero-logo.svg) sets the tagline in three colours
+   and paints itself onto a navy field, and those four values ARE the brand:
+
+     navy    #010F23   the Hero Logo canvas
+     orange  #F76201   the words SMART HEATING
+     blue    #017FE1   the separator and the rules either side of it
+     green   #689E14   the words GREENER FUTURES
+
+   This replaced the earlier temporary palette when the permanent identity
+   landed. If the artwork is ever reissued, re-sample it and re-measure the
+   table below; do not eyeball a near-match.
+
+   The brand rules name these as Air (blue), Heating (burnt orange) and
+   Renewables (green), and they are the site's accent colours everywhere.
 
    --------------------------------------------------------------------------
    CONTRAST RULES. READ THESE BEFORE PUTTING A COLOUR ON A COLOUR.
@@ -40,26 +53,27 @@
    judge whether a website meets it. AA asks for 4.5:1 for normal text, 3:1
    for large text, icons, borders that carry meaning, and focus rings.
 
-   Measured against this palette:
+   Every ratio below was measured against THIS palette, not inherited from
+   the old one. The navy went darker, which lifted everything sitting on it.
 
      PASSES                                 FAILS
-     white on navy          17.6:1          white on blue        3.9:1
-     orange on navy          7.2:1          white on orange      2.5:1
-     green on navy           7.9:1          white on green       2.2:1
-     blue on navy            4.6:1          blue on white        3.9:1
-     navy on orange          7.2:1          orange on white      2.5:1
-     navy on green           7.9:1          green on white       2.2:1
-     navy on blue            4.6:1          grey on navy         3.5:1
+     white on navy          19.2:1          white on blue        4.1:1
+     orange on navy          6.1:1          white on orange      3.1:1
+     green on navy           5.9:1          white on green       3.2:1
+     blue on navy            4.7:1          blue on white        4.1:1
+     navy on orange          6.1:1          orange on white      3.1:1
+     navy on green           5.9:1          green on white       3.2:1
+     navy on blue            4.7:1          grey on navy         3.9:1
      grey on white           5.0:1
      grey on light neutral   4.6:1
 
    So, as rules:
 
    1. ORANGE AND GREEN FILLS ALWAYS CARRY NAVY OR DARK TEXT, NEVER WHITE.
-      That is why the primary button is orange with dark text (7.2:1) and not
-      blue with white text (3.9:1). See section 05.
+      That is why the primary button is orange with dark text (6.1:1) and not
+      blue with white text (4.1:1). See section 05.
    2. NEVER SET ORANGE OR GREEN AS TEXT, OR AS A MEANINGFUL ICON, ON WHITE OR
-      ON THE LIGHT NEUTRAL. At 2.5:1 and 2.2:1 they are unreadable at any
+      ON THE LIGHT NEUTRAL. At 3.1:1 and 3.2:1 they fail for body copy at any
       size. Use --airwarm-orange-text or --airwarm-green-text instead, which
       are the same hues darkened until they pass. They are for text and line
       work only: never use them as a fill.
@@ -71,21 +85,21 @@
       stylesheet is paired with a shape, an icon or a word, so it still reads
       in black and white. WCAG 1.4.1.
 
-   THIS DIVERGES FROM THE BRAND PACK, DELIBERATELY. The pack's
-   airwarm-design-tokens.css defines the primary button as white text on the
-   brand blue, which measures 3.9:1 and fails, and the framework also offers
-   white on orange, which is worse at 2.5:1. Neither is used here. The three
-   darkened tokens below are additions to the pack, not replacements: the five
-   brand colours themselves are untouched, and are still what appears on navy,
-   in fills carrying dark text, and in the tagline.
+   THE THREE DARKENED TOKENS ARE ADDITIONS, NOT REPLACEMENTS. The identity
+   artwork's own colours are what appear on navy, in fills carrying dark
+   text, and in the tagline — untouched, exactly as supplied. The darkened
+   variants exist only because a logo colour and a body-copy colour are
+   different jobs: nothing in the brand artwork is ever asked to sit as small
+   text on white, and these three are.
    ========================================================================== */
 :root {
-  /* --- Approved colour palette (do not add to this list) --- */
-  --airwarm-navy: #071A2B;        /* principal background */
+  /* --- Approved colour palette (do not add to this list) ---
+     The four brand values are sampled from the Hero Logo. See above. */
+  --airwarm-navy: #010F23;        /* principal background; Hero Logo canvas */
   --airwarm-white: #FFFFFF;
-  --airwarm-orange: #F28C28;      /* WARMER HOMES */
-  --airwarm-blue: #2F80ED;        /* LOWER BILLS  */
-  --airwarm-green: #63C174;       /* CLEAN ENERGY, and positive outcomes only */
+  --airwarm-orange: #F76201;      /* Heating. The words SMART HEATING       */
+  --airwarm-blue: #017FE1;        /* Air. The tagline separator and rules   */
+  --airwarm-green: #689E14;       /* Renewables. The words GREENER FUTURES  */
   --airwarm-light-bg: #F4F7F9;    /* light neutral section background */
   --airwarm-grey: #65717C;        /* supporting text on white */
   --airwarm-dark-text: #14212B;   /* body copy */
@@ -93,10 +107,11 @@
   /* --- The same three hues, darkened until they pass on a light background.
      Read the contrast rules above before using any of them. These are not
      new brand colours and they never appear on navy, where the brand
-     colours themselves already pass. --- */
-  --airwarm-blue-accessible: #1570EB;  /* blue fill + white text: 4.6:1     */
-  --airwarm-orange-text: #B55F0B;      /* orange as text or line: 4.6:1     */
-  --airwarm-green-text: #358644;       /* green as text or line: 4.5:1      */
+     colours themselves already pass. Each is the brand hue with lightness
+     reduced until it clears 4.5:1 on BOTH white and the light neutral. --- */
+  --airwarm-blue-accessible: #0178D5;  /* blue fill + white text: 4.5:1     */
+  --airwarm-orange-text: #C14D01;      /* orange as text or line: 4.9:1     */
+  --airwarm-green-text: #537D10;       /* green as text or line: 4.9:1      */
 
   /* --- Translucent tints derived from the palette ---
      These are rgba() versions of white and navy. They are used for hairline
@@ -104,8 +119,8 @@
   --airwarm-white-line: rgba(255, 255, 255, 0.18);
   --airwarm-white-panel: rgba(255, 255, 255, 0.06);
   --airwarm-white-soft: rgba(255, 255, 255, 0.78);
-  --airwarm-navy-line: rgba(7, 26, 43, 0.14);
-  --airwarm-navy-shade: rgba(7, 26, 43, 0.05);
+  --airwarm-navy-line: rgba(1, 15, 35, 0.14);
+  --airwarm-navy-shade: rgba(1, 15, 35, 0.05);
 
   /* --- Typography --- */
   /* Montserrat is the fixed brand typeface. The rest of the stack is the
@@ -227,10 +242,30 @@ hr {
   background: var(--airwarm-navy);
   color: var(--airwarm-white);
 }
+/* Rule 4 in section 01: grey text never goes on navy. Every navy surface on
+   the site is listed here, not just .aw-section--navy — the hero and the
+   footer are navy too, they just carry different classes.
+
+   This matters because .aw-small sets its colour on the element itself, and a
+   rule applied directly to an element always beats a colour inherited from
+   its parent, whatever the specificity. So .aw-small inside a navy panel fell
+   back to the mid grey, which measures 3.9:1 on navy and fails AA for small
+   text. Naming each navy surface is what fixes it. */
 .aw-section--navy .aw-lead,
 .aw-section--navy .aw-small,
-.aw-section--navy small { color: var(--airwarm-white-soft); }
-.aw-section--navy a { color: var(--airwarm-white); }
+.aw-section--navy small,
+.aw-hero .aw-lead,
+.aw-hero .aw-small,
+.aw-hero small,
+.aw-footer .aw-lead,
+.aw-footer .aw-small,
+.aw-footer small { color: var(--airwarm-white-soft); }
+/* Links on navy, same reasoning as the rule above: the hero is a navy panel
+   carrying a different class. Without it, a link in hero copy fell back to
+   the base dark body colour, which on navy is 1.2:1 — a link you cannot see.
+   The button classes set their own colour and are unaffected. */
+.aw-section--navy a,
+.aw-hero a:not(.aw-btn) { color: var(--airwarm-white); }
 
 /* Simple responsive grid. Single column on mobile; see section 11. */
 .aw-grid {
@@ -277,12 +312,18 @@ hr {
 }
 
 /* ---- The wordmark ------------------------------------------------------
-   LOGO SWAP POINT. This is a text wordmark, not the Airwarm emblem. No
-   vector version of the circular emblem exists in the brand pack, and the
-   The emblem now exists as assets/airwarm-emblem.svg and sits to the left of
-   this wordmark; see section 13 for the lockup. The wordmark is deliberately
-   left as live text rather than baked into the SVG so it scales, reflows and
-   stays selectable and readable by a screen reader.
+   The permanent identity supplies a ready-made horizontal lockup
+   (assets/brand/hero-horizontal.svg) with the wordmark baked in. It is NOT
+   used here, deliberately. That file is a 339KB auto-traced vector: at the
+   44px the header gives it the letterforms go soft, the wordmark stops being
+   selectable text, and it ignores the reader's font-size setting.
+
+   So the header and footer rebuild the same lockup from its parts — the
+   supplied Corporate Mark (assets/airwarm-mark.svg, clean vector, 10KB) plus
+   the wordmark and tagline as live text in Montserrat, the brand typeface.
+   No artwork is redrawn or reinterpreted: the emblem is the supplied file
+   unaltered, and the type follows the supplied lockup's colours and order.
+   See section 13 for the lockup itself.
    ---------------------------------------------------------------------- */
 .aw-wordmark {
   display: inline-flex;
@@ -303,26 +344,43 @@ hr {
   color: var(--airwarm-white);
 }
 
-/* The tagline colour order is FIXED: orange, then blue, then green.
-   Never reorder or recolour these three spans. */
-/* The tagline sits under the wordmark and must not be wider than it, or the
-   whole identity block bloats and pushes the navigation around. Three promises
-   on one line measured 267px against the wordmark's 144px, so it breaks over
-   two lines. Fitting it on one line would need a ~5px type size. */
+/* ---- The tagline -------------------------------------------------------
+   SMART HEATING | GREENER FUTURES
+
+   THREE RULES FROM THE BRAND, ALL OF THEM HARD:
+   1. The colours are fixed. SMART HEATING is burnt orange, GREENER FUTURES
+      is green, and the separator between them is blue. Never reorder,
+      recolour or swap them.
+   2. Both statements stay on ONE line. They are never stacked. That is why
+      this is a plain inline row with nowrap and no column direction — the
+      previous three-part tagline did stack, and this one must not.
+   3. No punctuation is added. The blue bar is the separator; there is no
+      full stop, comma or ampersand anywhere in it.
+
+   Keeping it on one line makes the identity block wider than the wordmark
+   above it, which is why the type here is small and tightly tracked. The
+   supplied lockup does the same thing, so this matches the artwork.
+   ---------------------------------------------------------------------- */
 .aw-tagline {
-  display: flex;
-  flex-direction: column;
+  display: block;
+  /* nowrap enforces rule 2: the browser may not break this line, whatever
+     the viewport does. */
+  white-space: nowrap;
   font-size: 0.5rem;
   font-weight: 600;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   line-height: 1.4;
   text-transform: uppercase;
 }
-.aw-tagline__line { display: block; white-space: nowrap; }
-.aw-tagline .warmer { color: var(--airwarm-orange); }
-.aw-tagline .bills  { color: var(--airwarm-blue); }
-.aw-tagline .energy { color: var(--airwarm-green); }
-.aw-tagline .aw-dot { color: var(--airwarm-white-soft); padding: 0 2px; }
+.aw-tagline .heating { color: var(--airwarm-orange); }
+.aw-tagline .futures { color: var(--airwarm-green); }
+/* The separator. A blue bar, per the brand rules — not a bullet, slash or
+   dash, and not decoration that a screen reader should read out. */
+.aw-tagline .aw-sep {
+  color: var(--airwarm-blue);
+  padding: 0 0.5em;
+  font-weight: 500;
+}
 
 /* ---- Navigation ---- */
 .aw-nav {
@@ -364,9 +422,9 @@ hr {
 
    Why the primary button is orange with dark text: the brand rules allow a
    solid blue or orange primary button and ask for one consistent choice.
-   White text on the brand blue reaches only 3.9:1 against that blue, which
+   White text on the brand blue reaches only 4.1:1 against that blue, which
    fails the 4.5:1 accessibility threshold for normal-size text. Dark text on
-   the brand orange reaches 7.5:1, so orange is the accessible choice and is
+   the brand orange reaches 6.1:1, so orange is the accessible choice and is
    used consistently site-wide.
    ========================================================================== */
 .aw-btn {
@@ -436,6 +494,25 @@ hr {
   max-width: 56ch;
 }
 
+/* ---- The launch-status line --------------------------------------------
+   "Preparing for our April 2027 launch." Airwarm is not trading yet, and
+   nothing on this site may suggest otherwise, so this is styled to be read
+   rather than skimmed past: a blue rule to its left ties it to the Air
+   accent and stops it reading as small print.
+
+   Blue on navy is 4.7:1, so the rule clears the 3:1 that WCAG asks of a
+   graphical element carrying meaning. The text itself stays white, because
+   the rule is not the only signal — the sentence says it in words too. */
+.aw-hero__launch {
+  margin-top: var(--airwarm-space-md);
+  padding-left: var(--airwarm-space-sm);
+  border-left: 3px solid var(--airwarm-blue);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--airwarm-white);
+  max-width: 46ch;
+}
+
 /* The launch positioning line. The wording is fixed. */
 .aw-positioning {
   display: inline-block;
@@ -481,9 +558,9 @@ hr {
 
 /* The three brand benefits. Each keeps its own fixed accent colour. */
 .aw-benefit { border-top: 4px solid var(--airwarm-navy-line); }
-.aw-benefit--warmer { border-top-color: var(--airwarm-orange); }
-.aw-benefit--bills  { border-top-color: var(--airwarm-blue); }
-.aw-benefit--energy { border-top-color: var(--airwarm-green); }
+.aw-benefit--heating { border-top-color: var(--airwarm-orange); }
+.aw-benefit--air  { border-top-color: var(--airwarm-blue); }
+.aw-benefit--renewables { border-top-color: var(--airwarm-green); }
 
 /* ---- Line icons --------------------------------------------------------
    One consistent family, drawn by hand. They come from two places, and both
@@ -530,25 +607,25 @@ hr {
 }
 
 /* The benefit accent colours. On a white or light background these use the
-   darkened variants, because the brand orange and green reach only 2.5:1 and
-   2.2:1 there and an icon has to reach 3:1. The 4px rule along the top of
+   darkened variants, because the brand orange and green reach only 2.9:1 and
+   3.0:1 on the light neutral and an icon has to reach 3:1. The 4px rule along the top of
    each card keeps the brand colour itself: it is decoration, and the card
    heading says which benefit it is. See the contrast rules in section 01. */
-.aw-icon--warmer { color: var(--airwarm-orange-text); }
-.aw-icon--bills  { color: var(--airwarm-blue-accessible); }
-.aw-icon--energy { color: var(--airwarm-green-text); }
+.aw-icon--heating { color: var(--airwarm-orange-text); }
+.aw-icon--air  { color: var(--airwarm-blue-accessible); }
+.aw-icon--renewables { color: var(--airwarm-green-text); }
 
-/* On navy the brand colours themselves pass comfortably (7.2:1, 4.6:1 and
-   7.9:1), so they are used unchanged. */
-.aw-section--navy .aw-icon--warmer,
-.aw-hero .aw-icon--warmer,
-.aw-cta-band .aw-icon--warmer { color: var(--airwarm-orange); }
-.aw-section--navy .aw-icon--bills,
-.aw-hero .aw-icon--bills,
-.aw-cta-band .aw-icon--bills { color: var(--airwarm-blue); }
-.aw-section--navy .aw-icon--energy,
-.aw-hero .aw-icon--energy,
-.aw-cta-band .aw-icon--energy { color: var(--airwarm-green); }
+/* On navy the brand colours themselves pass comfortably (6.1:1, 4.7:1 and
+   5.9:1), so they are used unchanged. */
+.aw-section--navy .aw-icon--heating,
+.aw-hero .aw-icon--heating,
+.aw-cta-band .aw-icon--heating { color: var(--airwarm-orange); }
+.aw-section--navy .aw-icon--air,
+.aw-hero .aw-icon--air,
+.aw-cta-band .aw-icon--air { color: var(--airwarm-blue); }
+.aw-section--navy .aw-icon--renewables,
+.aw-hero .aw-icon--renewables,
+.aw-cta-band .aw-icon--renewables { color: var(--airwarm-green); }
 
 /* Numbered process steps, used on How It Works. */
 .aw-steps {
@@ -828,11 +905,12 @@ select { appearance: none; background-image: none; }
 
    It is two rings, not one, and that is on purpose. WCAG asks a focus
    indicator to reach 3:1 against whatever is next to it. The brand orange
-   reaches only 2.5:1 against white, so orange on its own is not enough on a
-   pale page. So the OUTER ring is navy, which reaches 17.6:1 on white and
-   7.2:1 against the orange inside it, and the orange stays as the inner ring
-   where it is unmistakably Airwarm. On navy panels the outer ring turns white
-   instead, which is 17.6:1 the other way round.
+   reaches only 3.1:1 against white, which clears 3:1 but only barely, so
+   orange on its own is not enough to rely on. So the OUTER ring is navy,
+   which reaches 19.2:1 on white and 6.1:1 against the orange inside it, and
+   the orange stays as the inner ring where it is unmistakably Airwarm. On
+   navy panels the outer ring turns white instead, which is 19.2:1 the other
+   way round.
 
    Both rings are 2px or more, and the offset keeps them clear of the element
    so nothing is obscured. */
@@ -962,7 +1040,7 @@ details:focus-visible,
   color: var(--airwarm-grey);
   text-align: center;
 }
-/* Grey on navy is only 3.5:1, so captions on navy go light instead. */
+/* Grey on navy is only 3.9:1, so captions on navy go light instead. */
 .aw-section--navy .aw-figure__caption,
 .aw-hero .aw-figure__caption,
 .aw-cta-band .aw-figure__caption { color: var(--airwarm-white-soft); }
@@ -1079,8 +1157,8 @@ details:focus-visible,
   font-size: 1.0625rem;
   margin-bottom: var(--airwarm-space-xs);
 }
-/* Green is reserved for positive outcomes and clean energy. This is one of
-   the few places it belongs. */
+/* Green is the Renewables accent and is reserved for positive outcomes.
+   This is one of the few places it belongs. */
 .aw-callout--positive { border-left-color: var(--airwarm-green); }
 .aw-callout--caution  { border-left-color: var(--airwarm-orange); }
 
@@ -1320,7 +1398,7 @@ details:focus-visible,
 .aw-cta-band .aw-lead,
 .aw-cta-band .aw-small,
 .aw-cta-band small { color: var(--airwarm-white-soft); }
-/* The button keeps its orange fill and dark text: 7.2:1. */
+/* The button keeps its orange fill and dark text: 6.1:1. */
 .aw-cta-band .aw-btn--primary { color: var(--airwarm-dark-text); }
 
 /* ---- The hero pattern ------------------------------------------------
@@ -1408,7 +1486,6 @@ details:focus-visible,
   /* The wordmark keeps its natural width and its tagline stays on one line;
      the navigation takes whatever is left. */
   .aw-wordmark { flex: 0 0 auto; }
-  .aw-tagline { white-space: nowrap; }
   .aw-nav { flex: 1 1 auto; min-width: 0; order: 2; margin-left: auto; }
   .aw-header__cta { order: 3; margin-left: var(--airwarm-space-sm); flex: 0 0 auto; }
   /* Navigation labels are small by design ("small navigation labels" are one
@@ -1416,8 +1493,9 @@ details:focus-visible,
      seven links on one line alongside the wordmark and the button. */
   .aw-nav__list { gap: var(--airwarm-space-xs) 14px; justify-content: flex-end; }
   .aw-nav__list a { font-size: 0.875rem; }
-  /* The tagline is slightly tighter here so the whole header stays on one
-     line. The colour order is unchanged: orange, blue, green. */
+  /* The tagline is the widest part of the identity, because the brand rules
+     forbid stacking it. Holding it at this size is what keeps the whole
+     header on one line. The colour order is unchanged: orange, blue, green. */
   .aw-tagline { font-size: 0.5rem; }
   .aw-header__cta .aw-btn { padding: 10px var(--airwarm-space-sm); font-size: 0.9375rem; }
 
@@ -1434,11 +1512,25 @@ details:focus-visible,
 
 /* ==========================================================================
    13. LOGO LOCKUP
-   Emblem plus live-text wordmark. The emblem is a flat SVG with no gradient
-   or glow; the wordmark stays real text so it scales, reflows and can be
-   selected and read by a screen reader. The emblem carries alt="" because
-   the wordmark beside it already names the company — announcing both would
-   make a screen reader say "Airwarm Airwarm".
+
+   WHICH FILE GOES WHERE. The permanent identity ships four pieces of
+   artwork, and the brand rules assign each one a job. Do not substitute one
+   for another — in particular, do not put the Hero Logo where the Corporate
+   Mark belongs.
+
+     assets/airwarm-hero-logo.svg   Homepage hero, brand introductions.
+                                    The flagship. Mark + wordmark + tagline.
+     assets/airwarm-mark.svg        Header, footer, small UI. The Corporate
+                                    Mark, background removed.
+     assets/airwarm-favicon.svg     Favicon and loading screen. The Corporate
+                                    Mark with its navy tile kept.
+     assets/brand/                  The supplied files, exactly as delivered.
+                                    Source of truth. Never edit these.
+
+   The header and footer lockup is the Corporate Mark plus a live-text
+   wordmark. The mark carries alt="" because the wordmark beside it already
+   names the company — announcing both would make a screen reader say
+   "Airwarm Airwarm".
    ========================================================================== */
 
 .aw-wordmark {
@@ -1466,6 +1558,28 @@ details:focus-visible,
 
 /* Footer lockup sits a little smaller. */
 footer .aw-wordmark__emblem { width: 34px; height: 34px; }
+
+/* ---- The Hero Logo -----------------------------------------------------
+   The flagship identity, used on the homepage hero and nowhere else on this
+   site. It is the whole lockup as artwork — mark, wordmark and tagline — so
+   the page must NOT repeat the wordmark as text beside it.
+
+   The brand rules ask for generous white space around it and forbid touching
+   its proportions, so it gets a max-width and a wide margin below, and its
+   aspect ratio is left to the SVG. Do not add a filter, shadow or glow: the
+   rules say no effects.
+
+   Its own navy background has been removed (see the file header), so it sits
+   directly on the hero's navy and the hero pattern reads through the gaps in
+   the mark. Its wordmark is white, which is why this asset is for navy
+   panels only — never put it on white or on the light neutral. -------- */
+.aw-hero__logo {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  margin: 0 0 var(--airwarm-space-lg) 0;
+}
 
 /* On narrow screens keep the emblem and drop to a tighter gap rather than
    shrinking the wordmark, which would hurt legibility. */

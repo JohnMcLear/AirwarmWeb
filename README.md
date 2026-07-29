@@ -78,8 +78,8 @@ marked `01. BRAND TOKENS`:
 
 ```css
 :root {
-  --airwarm-navy: #071A2B;
-  --airwarm-orange: #F28C28;
+  --airwarm-navy: #010F23;
+  --airwarm-orange: #F76201;
   ...
 }
 ```
@@ -88,14 +88,20 @@ Change the value there and it changes everywhere on the site. Do not put a
 colour anywhere else in the CSS, and do not add a new one.
 
 **Before you change one, though:** these eight values are the whole approved
-Airwarm palette, taken from the brand pack. Three of them are fixed by brand
-rules that are not ours to relax:
+Airwarm palette, and the four brand ones are sampled straight out of the
+identity artwork in `assets/brand/hero-logo.svg` rather than typed in from a
+document. Several rules here are not ours to relax:
 
-- The tagline is always **WARMER HOMES** orange, **LOWER BILLS** blue,
-  **CLEAN ENERGY** green, in that order. Never reordered, never recoloured.
-- Green is for positive outcomes and clean-energy messaging only. It is not a
+- The tagline is always **SMART HEATING** orange, a blue separator, then
+  **GREENER FUTURES** green, in that order. Never reordered, never recoloured.
+- Both halves of the tagline stay on **one line**. They are never stacked and
+  no punctuation is added.
+- Green is for positive outcomes and renewables messaging only. It is not a
   decoration.
 - Navy is the principal background.
+
+If the artwork is ever reissued, re-sample it and re-measure the contrast
+table at the top of the stylesheet. Do not eyeball a near-match.
 
 There is one more thing worth knowing. The primary button is orange with dark
 text rather than blue with white text, because white on the brand blue only
@@ -181,8 +187,11 @@ requests that name the file and the section:
 - Add a cookie banner or Google Analytics. Do not let it. Both are on the
   decisions list in `HANDOVER.md` and neither can go in until a privacy policy
   exists.
-- Invent a phone number, an address, or "trusted by 500 homeowners". Delete it.
-  Airwarm has no phone number yet and has not started trading.
+- Invent a phone number, an address, or "trusted by 500 homeowners". Delete
+  it. The business line is **01274 947 197** and the address is the registered
+  office in the footer; anything else is made up. Airwarm has not started
+  trading and the site must never imply that it has — it is preparing for an
+  April 2027 launch.
 - Add a stock photograph or an image from another website. Nothing on this site
   loads from anywhere except Google Fonts, and that is intentional.
 - Rewrite the header or footer in one file only. Check with
