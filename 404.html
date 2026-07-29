@@ -31,8 +31,8 @@
        navy tile because a favicon is composited against browser chrome of
        unknown colour. Source of truth for all brand artwork is assets/brand/,
        which holds the supplied files exactly as delivered. -->
-  <link rel="icon" href="/AirwarmWeb/assets/airwarm-favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="/AirwarmWeb/assets/airwarm-favicon.svg">
+  <link rel="icon" href="/assets/airwarm-favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/airwarm-favicon.svg">
 
   <!-- Montserrat, the fixed brand typeface. This is the only thing on the
        whole site that loads from another company's server. The CSS names a
@@ -43,7 +43,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;display=swap">
 
   <!-- One stylesheet for the whole site. Colours live at the top of it. -->
-  <link rel="stylesheet" href="/AirwarmWeb/css/airwarm.css">
+  <link rel="stylesheet" href="/css/airwarm.css">
 </head>
 <body>
 
@@ -66,8 +66,8 @@
            Tagline rules are FIXED: SMART HEATING orange, separator blue,
            GREENER FUTURES green, both statements on ONE line, never
            stacked, no punctuation added. -->
-      <a class="aw-wordmark" href="/AirwarmWeb/">
-        <img class="aw-wordmark__emblem" src="/AirwarmWeb/assets/airwarm-mark.svg" alt="" width="44" height="44">
+      <a class="aw-wordmark" href="/">
+        <img class="aw-wordmark__emblem" src="/assets/airwarm-mark.svg" alt="" width="44" height="44">
         <span class="aw-wordmark__text">
         <span class="aw-wordmark__name">AIRWARM</span>
         <span class="aw-tagline"><span class="heating">SMART HEATING</span><span class="aw-sep" aria-hidden="true">|</span><span class="futures">GREENER FUTURES</span></span>
@@ -77,21 +77,21 @@
       <!-- The Home Energy Assessment is the principal action on the site,
            so it gets a button in the header on every page. -->
       <div class="aw-header__cta">
-        <a class="aw-btn aw-btn--primary" href="/AirwarmWeb/home-energy-assessment/">Book your assessment</a>
+        <a class="aw-btn aw-btn--primary" href="/home-energy-assessment/">Book your assessment</a>
       </div>
 
       <nav class="aw-nav" aria-label="Main">
         <ul class="aw-nav__list">
-          <li><a href="/AirwarmWeb/">Home</a></li>
-          <li><a href="/AirwarmWeb/air-source-heat-pumps/">Heat pumps</a></li>
-          <li><a href="/AirwarmWeb/how-it-works/">How it works</a></li>
-          <li><a href="/AirwarmWeb/home-energy-assessment/">Home Energy Assessment</a></li>
-          <li><a href="/AirwarmWeb/about/">About</a></li>
-          <li><a href="/AirwarmWeb/advice/">Advice</a></li>
-          <li><a href="/AirwarmWeb/contact/">Contact</a></li>
+          <li><a href="/">Home</a></li>
+          <li><a href="/air-source-heat-pumps/">Heat pumps</a></li>
+          <li><a href="/how-it-works/">How it works</a></li>
+          <li><a href="/home-energy-assessment/">Home Energy Assessment</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/advice/">Advice</a></li>
+          <li><a href="/contact/">Contact</a></li>
           <!-- Phase 2 navigation, not built yet. Uncomment the matching
                page first, otherwise this link will 404:
-          <li><a href="/AirwarmWeb/servicing-support/">Servicing &amp; support</a></li>
+          <li><a href="/servicing-support/">Servicing &amp; support</a></li>
           -->
         </ul>
       </nav>
@@ -111,19 +111,19 @@
           </p>
           <h2 style="margin-top:40px">Where you probably wanted to go</h2>
           <div class="aw-grid aw-grid--2" style="margin-top:24px">
-            <a class="aw-card aw-card--link" href="/AirwarmWeb/home-energy-assessment/">
+            <a class="aw-card aw-card--link" href="/home-energy-assessment/">
               <h3>Home Energy Assessment</h3>
               <p>The quick online first step, and the main thing this site is for.</p>
             </a>
-            <a class="aw-card aw-card--link" href="/AirwarmWeb/air-source-heat-pumps/">
+            <a class="aw-card aw-card--link" href="/air-source-heat-pumps/">
               <h3>Air source heat pumps</h3>
               <p>What they do and what makes a home suitable.</p>
             </a>
-            <a class="aw-card aw-card--link" href="/AirwarmWeb/how-it-works/">
+            <a class="aw-card aw-card--link" href="/how-it-works/">
               <h3>How it works</h3>
               <p>All eight stages, from enquiry to aftercare.</p>
             </a>
-            <a class="aw-card aw-card--link" href="/AirwarmWeb/contact/">
+            <a class="aw-card aw-card--link" href="/contact/">
               <h3>Contact</h3>
               <p>E-mail hello@airwarm.co.uk and a person will reply.</p>
             </a>
@@ -142,7 +142,7 @@
         <div>
           <!-- Footer logo. Same emblem, smaller. -->
           <span class="aw-wordmark" style="display:inline-flex">
-            <img class="aw-wordmark__emblem" src="/AirwarmWeb/assets/airwarm-mark.svg" alt="" width="34" height="34">
+            <img class="aw-wordmark__emblem" src="/assets/airwarm-mark.svg" alt="" width="34" height="34">
             <span class="aw-wordmark__text">
               <span class="aw-wordmark__name">AIRWARM</span>
               <span class="aw-tagline"><span class="heating">SMART HEATING</span><span class="aw-sep" aria-hidden="true">|</span><span class="futures">GREENER FUTURES</span></span>
@@ -152,7 +152,7 @@
             Air Source Heat Pumps &bull; West Yorkshire
           </p>
           <ul>
-            <li><a href="/AirwarmWeb/">airwarm.co.uk</a></li>
+            <li><a href="/">airwarm.co.uk</a></li>
             <li><a href="mailto:hello@airwarm.co.uk">hello@airwarm.co.uk</a></li>
             <!-- The business line. tel: needs the full international form
                  with no spaces; the visible text keeps the readable UK
@@ -164,36 +164,36 @@
         <div>
           <h2>Services</h2>
           <ul>
-            <li><a href="/AirwarmWeb/air-source-heat-pumps/">Air source heat pumps</a></li>
-            <li><a href="/AirwarmWeb/heat-pump-survey/">Heat pump survey</a></li>
-            <li><a href="/AirwarmWeb/heat-pump-installation/">Heat pump installation</a></li>
-            <li><a href="/AirwarmWeb/how-it-works/">How it works</a></li>
-            <li><a href="/AirwarmWeb/home-energy-assessment/">Home Energy Assessment</a></li>
+            <li><a href="/air-source-heat-pumps/">Air source heat pumps</a></li>
+            <li><a href="/heat-pump-survey/">Heat pump survey</a></li>
+            <li><a href="/heat-pump-installation/">Heat pump installation</a></li>
+            <li><a href="/how-it-works/">How it works</a></li>
+            <li><a href="/home-energy-assessment/">Home Energy Assessment</a></li>
           </ul>
         </div>
 
         <div>
           <h2>Service areas</h2>
           <ul>
-            <li><a href="/AirwarmWeb/areas/bradford/">Bradford</a></li>
-            <li><a href="/AirwarmWeb/areas/leeds/">Leeds</a></li>
-            <li><a href="/AirwarmWeb/areas/shipley/">Shipley</a></li>
+            <li><a href="/areas/bradford/">Bradford</a></li>
+            <li><a href="/areas/leeds/">Leeds</a></li>
+            <li><a href="/areas/shipley/">Shipley</a></li>
           </ul>
           <h2 style="margin-top:24px">Company</h2>
           <ul>
-            <li><a href="/AirwarmWeb/about/">About Airwarm</a></li>
-            <li><a href="/AirwarmWeb/advice/">Advice</a></li>
-            <li><a href="/AirwarmWeb/contact/">Contact</a></li>
+            <li><a href="/about/">About Airwarm</a></li>
+            <li><a href="/advice/">Advice</a></li>
+            <li><a href="/contact/">Contact</a></li>
           </ul>
         </div>
 
         <div>
           <h2>Legal</h2>
           <ul>
-            <li><a href="/AirwarmWeb/privacy/">Privacy policy</a></li>
-            <li><a href="/AirwarmWeb/cookies/">Cookie policy</a></li>
-            <li><a href="/AirwarmWeb/terms/">Terms and conditions</a></li>
-            <li><a href="/AirwarmWeb/installation-terms/">Installation terms</a></li>
+            <li><a href="/privacy/">Privacy policy</a></li>
+            <li><a href="/cookies/">Cookie policy</a></li>
+            <li><a href="/terms/">Terms and conditions</a></li>
+            <li><a href="/installation-terms/">Installation terms</a></li>
             <!-- STILL TO BE WRITTEN, then linked here:
                  complaints procedure, accessibility statement.
                  Both are named in the brand pack footer structure. -->
