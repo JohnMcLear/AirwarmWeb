@@ -4,14 +4,19 @@
 
    TWO THINGS TO UNDERSTAND BEFORE EDITING THIS FILE
    -------------------------------------------------
-   1. NOTHING LEAVES THE BROWSER. This script does not send, save, upload or
-      store any answer anywhere. There is no form submission, no network
-      request, no cookie and no local storage. Everything happens on the
-      visitor's own device and is gone when they close the tab. That is
-      deliberate: Airwarm has no CRM, no privacy policy and no registered
-      data controller yet, so the site must not collect personal data. See
-      "WIRE-UP POINT" near the bottom of this file for the single place to
-      change when that is resolved.
+   1. NOTHING LEAVES THE BROWSER UNTIL THE VISITOR DECIDES IT SHOULD. The four
+      stages, the scoring and the result are all computed on the visitor's own
+      device. No cookie, no local storage, nothing written to disk.
+
+      There is exactly ONE network request in this file, and it only happens
+      when someone fills in the enquiry form after their result and ticks the
+      consent box. Everything about that is at the WIRE-UP POINT near the
+      bottom of this file. If you are adding a second place that transmits,
+      stop: put it there instead, or the privacy policy stops being true.
+
+      The form does not appear at all unless ENQUIRY_ENDPOINT below is set.
+      That is the safety catch — an unconfigured deployment cannot collect
+      anything, it just offers the e-mail and telephone route as before.
 
    2. THE SCORING BELOW IS NOT APPROVED. The Airwarm pack specifies the three
       outcomes and their wording, but it does not say which answers lead to
@@ -20,6 +25,32 @@
       one of them is listed as a question in TRIAGE_RULES_FOR_REVIEW.md in the
       root of this repository.
    ========================================================================== */
+
+/* ==========================================================================
+   ENQUIRY ENDPOINT — the one piece of configuration in this file.
+
+   Set this to the URL that receives the enquiry form. Leave it as an empty
+   string and the form is not rendered at all: visitors get the e-mail and
+   telephone invitation instead, and the site collects nothing. That is the
+   default on purpose, so no deployment can start collecting by accident.
+
+   BEFORE SETTING IT, all of the following must already be true:
+     - the privacy policy at /privacy/ describes this form   (done)
+     - it names the data controller                          (done — AIRWARM LTD)
+     - it states the lawful basis and the retention period   (done — consent, 12 months)
+     - the consent checkbox is unticked by default           (done — see buildEnquiryForm)
+     - the endpoint forwards to hello@airwarm.co.uk and keeps no copy
+
+   The endpoint is the Google Apps Script web app in /endpoint/. It sends one
+   e-mail and stores nothing, which is what keeps the privacy policy's "no
+   database, no third-party dashboard" sentence true. Setup instructions are
+   in endpoint/README.md.
+
+   If you ever point this somewhere that DOES keep a copy of submissions,
+   that service is a processor under UK GDPR and must be named in the privacy
+   policy BEFORE the URL changes here.
+   ========================================================================== */
+var ENQUIRY_ENDPOINT = "";
 
 /* ==========================================================================
    UNAPPROVED PLACEHOLDER LOGIC — requires Thomas Robinson's sign-off before
@@ -236,6 +267,13 @@ var AIRWARM_TRIAGE_CONFIG = {
      aria-describedby at the message about it. */
   var ERROR_ID = "aw-form-error";
 
+  /* The answers and the result from the last time the result was rendered.
+     Held only in memory, only for this page view, and only so the enquiry
+     form can send them if the visitor chooses to. Never written to storage;
+     closing the tab discards them. */
+  var lastAnswers = null;
+  var lastResult = null;
+
   /* ---- Marking a field as unanswered, for assistive technology ---------
      The visible message at the top of the form names the questions. These two
      helpers make the same information reachable from the field itself, which
@@ -347,6 +385,80 @@ var AIRWARM_TRIAGE_CONFIG = {
     return data;
   }
 
+  /* ---- Reading the answers as readable text --------------------------
+     readAnswers() above returns machine values — "semiDetached", "pre1919" —
+     which the scoring needs and a person reading an e-mail does not.
+
+     This returns the same answers as the question and answer a human would
+     recognise, in the order they were asked, so the enquiry e-mail can be
+     read straight off a phone without anyone decoding it.
+
+     It reads the wording out of the page rather than keeping a second copy
+     of it here. Reword a question in the HTML and the e-mail follows; there
+     is no list to keep in step. */
+  function readTranscript() {
+    var out = [];
+    var groupsSeen = {};
+
+    Array.prototype.forEach.call(form.elements, function (field) {
+      if (!field.name) { return; }
+
+      if (field.type === "radio") {
+        /* One entry per group, not per option. */
+        if (groupsSeen[field.name]) { return; }
+        groupsSeen[field.name] = true;
+
+        var fs = field.closest("fieldset");
+        var legend = fs && fs.querySelector("legend");
+        var checked = form.querySelector(
+          'input[name="' + field.name + '"]:checked');
+
+        out.push({
+          question: legend ? legend.textContent.trim() : field.name,
+          /* The radio sits inside its own <label>, so the label's text minus
+             nothing else is the answer as the visitor read it. */
+          answer: checked && checked.parentNode
+            ? checked.parentNode.textContent.trim()
+            : "(not answered)"
+        });
+        return;
+      }
+
+      if (field.tagName === "SELECT") {
+        var opt = field.options[field.selectedIndex];
+        out.push({
+          question: labelFor(field),
+          answer: opt && opt.value ? opt.text.trim() : "(not answered)"
+        });
+        return;
+      }
+
+      if (field.type === "text" || field.type === "email" || field.type === "tel") {
+        out.push({
+          question: labelFor(field),
+          answer: field.value.trim() || "(not answered)"
+        });
+      }
+    });
+
+    return out;
+  }
+
+  /* ---- The reference shown to the customer and quoted in the e-mail ---
+     Six characters, generated in the browser at submission time. It is a
+     label for a conversation, not a secret and not a key: it identifies
+     nothing on its own and nothing is stored against it. Its whole job is
+     to let someone say "I sent one yesterday, reference AW-4K2P9C" and be
+     found in an inbox. */
+  function makeReference() {
+    var alphabet = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"; /* no I, O, 0, 1 */
+    var out = "";
+    for (var i = 0; i < 6; i++) {
+      out += alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+    }
+    return "AW-" + out;
+  }
+
   /* ---- Applying the placeholder logic -------------------------------- */
   function assess(answers) {
     var cfg = AIRWARM_TRIAGE_CONFIG;
@@ -441,6 +553,288 @@ var AIRWARM_TRIAGE_CONFIG = {
     }
   };
 
+  /* ==================================================================
+     THE ENQUIRY FORM
+     The only part of this site that collects personal data. Read the
+     ENQUIRY_ENDPOINT comment at the top of this file before changing
+     anything here.
+
+     Accessibility is not optional in this block. The requirements are
+     WCAG 2.2 AA obligations, and they are also written down in the
+     comment on /contact/:
+       - a real <label for="..."> on every field, never a placeholder
+       - the group in a <fieldset> with a <legend>
+       - autocomplete on name, email and tel so browsers can fill them
+       - validation messages that name the field and are tied to it with
+         aria-describedby and aria-invalid
+       - no meaning carried by colour alone
+     ================================================================== */
+
+  var ENQUIRY_ERROR_ID = "aw-enquiry-error";
+
+  /* Every field: id, label, input type, autocomplete token, and whether it
+     is required. Kept as data so the markup, the validation and the payload
+     cannot drift apart — add a field here and all three follow. */
+  var ENQUIRY_FIELDS = [
+    { id: "enqName", label: "Your name", type: "text",
+      autocomplete: "name", required: true },
+    { id: "enqAddress", label: "Property address", type: "text",
+      autocomplete: "street-address", required: true,
+      hint: "The property the assessment was about, if it is not where you live." },
+    { id: "enqPostcode", label: "Postcode", type: "text",
+      autocomplete: "postal-code", required: true },
+    { id: "enqEmail", label: "E-mail address", type: "email",
+      autocomplete: "email", required: true },
+    { id: "enqPhone", label: "Telephone number", type: "tel",
+      autocomplete: "tel", required: true,
+      hint: "So we can talk it through if that is quicker than writing." }
+  ];
+
+  function buildEnquiryForm() {
+    var html = "";
+
+    html += '<div class="aw-enquiry">';
+    html += '<h4 id="aw-enquiry-heading">Would you like Airwarm to carry out a ' +
+      "more detailed desktop review before arranging a survey?</h4>";
+    html += "<p>If you send us your details, a person will check the public " +
+      "energy performance record for your address, read it alongside your " +
+      "answers, and come back to you. It is not automatic and it is not a " +
+      "sales sequence &mdash; it is one considered reply.</p>";
+
+    html += '<form id="aw-enquiry-form" novalidate aria-labelledby="aw-enquiry-heading">';
+
+    /* The validation summary. Empty until something is wrong; aria-live so a
+       screen reader announces it without moving focus unexpectedly. */
+    html += '<p class="aw-form__error" id="' + ENQUIRY_ERROR_ID +
+      '" role="status" aria-live="polite"></p>';
+
+    html += '<fieldset class="aw-fieldset"><legend>Your details</legend>';
+
+    ENQUIRY_FIELDS.forEach(function (field) {
+      var describedBy = field.hint ? field.id + "-hint" : "";
+      html += '<div class="aw-field">';
+      html += '<label for="' + field.id + '">' + field.label + "</label>";
+      if (field.hint) {
+        html += '<span class="aw-field__hint" id="' + field.id + '-hint">' +
+          field.hint + "</span>";
+      }
+      html += '<input type="' + field.type + '" id="' + field.id +
+        '" name="' + field.id + '"' +
+        ' autocomplete="' + field.autocomplete + '"' +
+        (describedBy ? ' aria-describedby="' + describedBy + '"' : "") +
+        (field.required ? " required" : "") + ">";
+      html += "</div>";
+    });
+
+    html += "</fieldset>";
+
+    /* Preferred contact method. Optional by design: making it required would
+       force a choice on someone who genuinely does not mind, and the honest
+       default is that either is fine. */
+    html += '<div class="aw-field">';
+    html += '<label for="enqPreferred">Preferred way to be contacted</label>';
+    html += '<span class="aw-field__hint" id="enqPreferred-hint">Optional. ' +
+      "We will use whichever you pick; leave it as it is if you do not " +
+      "mind.</span>";
+    html += '<select id="enqPreferred" name="enqPreferred" aria-describedby="enqPreferred-hint">';
+    html += '<option value="noPreference">No preference</option>';
+    html += '<option value="email">E-mail</option>';
+    html += '<option value="telephone">Telephone</option>';
+    html += "</select>";
+    html += "</div>";
+
+    /* ---- Spam protection ------------------------------------------------
+       A honeypot: a field a person never sees and never fills, which bots
+       fill because they complete every input they find. Hidden from
+       assistive technology too, so a screen-reader user is not asked to
+       complete a field that must stay empty.
+
+       Deliberately NOT a third-party CAPTCHA. Those load code from another
+       company, profile the visitor, and would make the cookie policy and
+       the "no third-party requests" claim false. This costs nothing and
+       stops the overwhelming majority of automated submissions. If real
+       spam gets through, add a server-side rate limit at the endpoint
+       before reaching for anything that tracks people. */
+    html += '<div class="aw-hp" aria-hidden="true">';
+    html += '<label for="enqWebsite">Website</label>';
+    html += '<input type="text" id="enqWebsite" name="enqWebsite" tabindex="-1" autocomplete="off">';
+    html += "</div>";
+
+    /* ---- Consent --------------------------------------------------------
+       Unticked, its own <label>, and specific about what is being agreed
+       to. UK GDPR Article 7 wants consent to be a clear affirmative act and
+       as easy to withdraw as to give, which is why the withdrawal route is
+       stated right here rather than only in the policy. */
+    html += '<div class="aw-consent">';
+    html += '<input type="checkbox" id="enqConsent" name="enqConsent">';
+    html += '<label for="enqConsent">Airwarm may hold these details and look ' +
+      "up the public energy performance record for this address, in order to " +
+      "reply to me about a heat pump. I can withdraw this at any time by " +
+      "e-mailing <strong>hello@airwarm.co.uk</strong>.</label>";
+    html += "</div>";
+
+    html += '<p class="aw-small">We keep enquiries for 12 months from our ' +
+      "last contact if they do not lead to work, then delete them. We will " +
+      "not add you to a mailing list. The full detail is in our " +
+      '<a href="../privacy/">privacy policy</a>.</p>';
+
+    html += '<div class="aw-btn-row" style="margin-top:24px">';
+    html += '<button type="submit" class="aw-btn aw-btn--primary" id="aw-enquiry-submit">' +
+      "Send this to Airwarm</button>";
+    html += "</div>";
+
+    html += "</form>";
+    html += "</div>";
+
+    return html;
+  }
+
+  /* Validates, then makes the single network request in this file.
+     `answers` is the assessment data already in memory; it is sent alongside
+     the contact details so the reply can be about the actual property. */
+  function submitEnquiry(formEl, answers, result) {
+    var errorEl = document.getElementById(ENQUIRY_ERROR_ID);
+    var consent = document.getElementById("enqConsent");
+    var honeypot = document.getElementById("enqWebsite");
+    var missing = [];
+    var invalidFields = [];
+
+    clearInvalid(formEl);
+    errorEl.textContent = "";
+
+    ENQUIRY_FIELDS.forEach(function (field) {
+      var el = document.getElementById(field.id);
+      if (field.required && !el.value.trim()) {
+        missing.push(field.label);
+        invalidFields.push(el);
+      }
+    });
+
+    /* A deliberately forgiving e-mail check. The only thing worth rejecting
+       here is an address that obviously cannot work; anything stricter
+       turns away real people with unusual addresses. */
+    var emailEl = document.getElementById("enqEmail");
+    if (emailEl.value.trim() && emailEl.value.indexOf("@") === -1) {
+      missing.push("a working e-mail address");
+      invalidFields.push(emailEl);
+    }
+
+    if (missing.length) {
+      errorEl.textContent = "Please add " + listToSentence(missing) +
+        " so we can reply to you.";
+      markInvalid(invalidFields);
+      invalidFields[0].focus();
+      return;
+    }
+
+    /* Consent is checked separately and after the fields, so the message can
+       be about consent specifically rather than buried in a list. */
+    if (!consent.checked) {
+      errorEl.textContent = "Please tick the box to confirm Airwarm may hold " +
+        "these details, so we know we have your permission.";
+      markInvalid([consent]);
+      consent.focus();
+      return;
+    }
+
+    /* Honeypot filled means an automated submission. Show the same success
+       state rather than an error: telling a bot it failed only teaches it to
+       try again. Nothing is sent. */
+    if (honeypot.value) {
+      showEnquirySent(formEl, makeReference());
+      return;
+    }
+
+    var submittedAt = new Date();
+    var reference = makeReference();
+
+    var payload = {
+      reference: reference,
+      submittedAt: submittedAt.toISOString(),
+      submittedAtLocal: submittedAt.toString(),
+      name: document.getElementById("enqName").value.trim(),
+      address: document.getElementById("enqAddress").value.trim(),
+      postcode: document.getElementById("enqPostcode").value.trim(),
+      email: emailEl.value.trim(),
+      telephone: document.getElementById("enqPhone").value.trim(),
+      preferredContact: document.getElementById("enqPreferred").value,
+      consentGiven: true,
+      consentAt: submittedAt.toISOString(),
+      assessmentOutcome: result.outcome,
+      assessmentOutcomeLabel: AIRWARM_TRIAGE_CONFIG.outcomeLabels[result.outcome],
+      assessmentScore: result.score,
+      /* The readable question-and-answer transcript. `answers` keeps the raw
+         machine values alongside it, because those are what any later
+         re-scoring would need. */
+      transcript: readTranscript(),
+      answers: answers
+    };
+
+    var submitBtn = document.getElementById("aw-enquiry-submit");
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Sending…";
+
+    /* The body is JSON, but the Content-Type is deliberately text/plain.
+
+       application/json makes this a "preflighted" cross-origin request: the
+       browser sends an OPTIONS request first and refuses to POST unless that
+       is answered with the right CORS headers. text/plain keeps it a simple
+       request, which skips the preflight entirely. The receiving end parses
+       the string as JSON, so nothing is lost.
+
+       This matters because the endpoint is a Google Apps Script web app,
+       which cannot answer an OPTIONS preflight. If you move to an endpoint
+       that can, application/json is the tidier choice — change it here and
+       in the receiving code together. */
+    fetch(ENQUIRY_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(payload)
+    }).then(function (response) {
+      if (!response.ok) { throw new Error("HTTP " + response.status); }
+      showEnquirySent(formEl, reference);
+    }).catch(function () {
+      /* Never lose the enquiry silently. The person has typed their details
+         and is entitled to know it did not arrive, plus a route that works. */
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Send this to Airwarm";
+      errorEl.innerHTML = "That did not send, and we would rather tell you " +
+        "than pretend. Please try again, or e-mail " +
+        '<a href="mailto:hello@airwarm.co.uk">hello@airwarm.co.uk</a> or ' +
+        'call <a href="tel:+441274947197">01274 947 197</a> ' +
+        "&mdash; your answers are still on this page.";
+      errorEl.focus();
+    });
+  }
+
+  function showEnquirySent(formEl, reference) {
+    var sent = document.createElement("div");
+    sent.className = "aw-enquiry-sent";
+    sent.setAttribute("role", "status");
+    sent.setAttribute("tabindex", "-1");
+    sent.innerHTML = "<h4>Thank you</h4>" +
+      "<p>Your assessment has been sent to Airwarm. We will review the " +
+      "information you have provided before contacting you to discuss the " +
+      "next steps.</p>" +
+      /* The reference is shown so someone can quote it if they ring before
+         we have replied. It is a label for a conversation, not a lookup
+         key — nothing is stored against it. */
+      '<p class="aw-small">Your reference is <strong>' + reference +
+      "</strong>. Quote it if you call before we get back to you.</p>" +
+      '<p class="aw-small">Preparing for our April 2027 launch, so this is ' +
+      "about reserving your place rather than booking an installation. If " +
+      "you need us sooner, call <a href=\"tel:+441274947197\">01274 947 197</a>.</p>";
+    formEl.parentNode.replaceChild(sent, formEl);
+    sent.focus();
+  }
+
+  /* "a, b and c" — used in validation messages so they read like a sentence
+     rather than a list of field names. */
+  function listToSentence(items) {
+    if (items.length === 1) { return items[0]; }
+    return items.slice(0, -1).join(", ") + " and " + items[items.length - 1];
+  }
+
   function renderResult(result) {
     var copy = OUTCOME_COPY[result.outcome];
     var label = AIRWARM_TRIAGE_CONFIG.outcomeLabels[result.outcome];
@@ -487,30 +881,26 @@ var AIRWARM_TRIAGE_CONFIG = {
         "straight away whether we can help or suggest looking elsewhere.</p>";
     }
 
-    /* ---- WIRE-UP POINT ------------------------------------------------
-       This is the ONLY place where contact details should ever be collected
-       or sent. Right now there is intentionally no form here: Airwarm has no
-       CRM, no privacy policy and no registered data controller, so the site
-       must not gather personal data. Instead the visitor is invited to send
-       an e-mail, which they control.
-
-       When those decisions are made, replace the e-mail invitation below
-       with a real form and a single fetch() to the chosen endpoint, and:
-         - publish the privacy policy at /privacy/ first;
-         - name the data controller on it;
-         - add an unticked, explicit consent checkbox with its own <label>;
-         - state what happens to the answers and how long they are kept;
-         - add spam protection that does not rely on a third-party tracker.
-       Nothing else in this file needs to change.
-       ------------------------------------------------------------------ */
+    /* The e-mail and telephone routes stay whether or not the form is
+       configured. Someone who has just read an unexpected result often wants
+       to talk to a person rather than fill anything in, and that should never
+       be the harder option. When the form is present these become the
+       secondary route, which is only a change of heading. */
+    html += '<h4 style="margin-top:32px">' +
+      (ENQUIRY_ENDPOINT ? "Or talk to us directly" : "Talk to us about this") +
+      "</h4>";
+    /* These buttons sit on the WHITE outcome card, so the light-background
+       secondary is aw-btn--outline. NOT aw-btn--secondary, which is white
+       text on a transparent background with a white border — correct on a
+       navy panel, invisible here. */
     html += '<div class="aw-btn-row">';
-    html += '<a class="aw-btn aw-btn--primary" href="mailto:hello@airwarm.co.uk' +
+    html += '<a class="aw-btn ' +
+      (ENQUIRY_ENDPOINT ? "aw-btn--outline" : "aw-btn--primary") +
+      '" href="mailto:hello@airwarm.co.uk' +
       '?subject=Home%20Energy%20Assessment%20enquiry">E-mail hello@airwarm.co.uk</a>';
-    /* The telephone is offered beside the e-mail because someone who has just
-       read an unexpected result often wants to talk to a person about it.
-       Both halves of the number must match the footer: the tel: href is the
+    /* Both halves of the number must match the footer: the tel: href is the
        full international form, the visible text keeps the UK grouping. */
-    html += '<a class="aw-btn aw-btn--secondary" href="tel:+441274947197">' +
+    html += '<a class="aw-btn aw-btn--outline" href="tel:+441274947197">' +
       "Call 01274 947 197</a>";
     html += "</div>";
 
@@ -520,14 +910,44 @@ var AIRWARM_TRIAGE_CONFIG = {
       "person at Airwarm makes that judgement, and will explain the " +
       "reasoning either way.</p>";
 
-    html += '<p class="aw-small">Your answers have not been sent anywhere. ' +
-      "Nothing you typed has left this device or been stored. Closing this " +
-      "page discards it.</p>";
+    /* This sentence is a privacy claim, so it has to track what the page
+       actually does. Unconfigured, nothing can be transmitted at all. With
+       the form present, the answers are still local until the visitor
+       submits it — which is a different promise, and worth stating exactly. */
+    if (ENQUIRY_ENDPOINT) {
+      html += '<p class="aw-small">Your answers are still on your device. ' +
+        "They reach Airwarm only if you fill in the form below and send it. " +
+        "Closing this page without sending discards everything.</p>";
+    } else {
+      html += '<p class="aw-small">Your answers have not been sent anywhere. ' +
+        "Nothing you typed has left this device or been stored. Closing this " +
+        "page discards it.</p>";
+    }
 
     html += "</div>";
 
     resultBox.innerHTML = html;
     resultBox.classList.remove("aw-hidden");
+
+    /* ---- WIRE-UP POINT ------------------------------------------------
+       The ONLY place in the site where contact details are collected or
+       transmitted. Adding a second one makes the privacy policy untrue —
+       extend this instead.
+
+       The form renders only when ENQUIRY_ENDPOINT (top of this file) is set;
+       unconfigured, the visitor gets the e-mail and telephone route and
+       nothing is collected.
+
+       It mounts OUTSIDE the assessment form, into #aw-enquiry-mount, because
+       HTML forbids nested forms — injected inside the result panel the
+       browser silently drops the <form> tag, leaving fields with no form
+       around them and a send button that does nothing at all. Do not move
+       this back into resultBox.
+       ------------------------------------------------------------------ */
+    var mount = document.getElementById("aw-enquiry-mount");
+    if (ENQUIRY_ENDPOINT && mount) {
+      mount.innerHTML = buildEnquiryForm();
+    }
   }
 
   /* ---- Buttons ------------------------------------------------------- */
@@ -546,9 +966,14 @@ var AIRWARM_TRIAGE_CONFIG = {
         return;
       }
       if (current < totalStages - 1) {
-        /* The final stage shows the result, so work it out on the way in. */
+        /* The final stage shows the result, so work it out on the way in.
+           The answers and the result are kept in scope because the enquiry
+           form sends them alongside the contact details — the whole point is
+           that the reply is about the actual property, not a generic one. */
         if (current === totalStages - 2) {
-          renderResult(assess(readAnswers()));
+          lastAnswers = readAnswers();
+          lastResult = assess(lastAnswers);
+          renderResult(lastResult);
         }
         showStage(current + 1);
       }
@@ -560,11 +985,26 @@ var AIRWARM_TRIAGE_CONFIG = {
     }
   });
 
-  /* Nothing is ever submitted. If a browser or a stray Enter key tries,
-     stop it here. */
+  /* The assessment form itself is never submitted. If a browser or a stray
+     Enter key tries, stop it here. The enquiry form is a separate <form>
+     inside the result panel and has its own handler below. */
   form.addEventListener("submit", function (event) {
     event.preventDefault();
   });
+
+  /* ---- The enquiry form ----------------------------------------------
+     Delegated from the mount point, because the form does not exist in the
+     document until a result has been rendered. This is the only listener in
+     the file that can cause a network request. */
+  var enquiryMount = document.getElementById("aw-enquiry-mount");
+  if (enquiryMount) {
+    enquiryMount.addEventListener("submit", function (event) {
+      var enquiryForm = event.target.closest("#aw-enquiry-form");
+      if (!enquiryForm) { return; }
+      event.preventDefault();
+      submitEnquiry(enquiryForm, lastAnswers, lastResult);
+    });
+  }
 
   /* Start on stage one with the progress indicator in step. */
   showStage(0);

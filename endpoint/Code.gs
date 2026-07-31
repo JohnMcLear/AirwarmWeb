@@ -1,0 +1,195 @@
+/**
+ * AIRWARM — enquiry form endpoint
+ * =============================================================================
+ * Receives the Home Energy Assessment enquiry form and e-mails it to Airwarm.
+ *
+ * WHAT THIS IS
+ * A Google Apps Script web app. It runs inside the Airwarm Google Workspace
+ * account, receives the form POST, and sends one e-mail. That is all it does.
+ *
+ * WHY THIS RATHER THAN A FORM SERVICE
+ * The privacy policy at /privacy/ says the form "sends us an e-mail and
+ * nothing else. There is no database, no customer relationship system and no
+ * third-party dashboard holding a list of enquiries."
+ *
+ * That sentence is only true if the receiving end keeps no copy. A hosted form
+ * service stores every submission in its own dashboard, which would make it a
+ * processor under UK GDPR — it would have to be named in the policy, given a
+ * data-processing agreement, and included in any deletion request. Running it
+ * here keeps the enquiry inside Google Workspace, which the policy ALREADY
+ * names as Airwarm's processor. No new vendor, no policy change.
+ *
+ * THE RULE THIS FILE EXISTS TO PROTECT
+ * Do not add storage. No Sheet, no Drive file, no Properties entry, no
+ * console.log of the payload. The moment this writes an enquiry anywhere
+ * other than the outbound e-mail, the privacy policy becomes false and has to
+ * be rewritten before the change ships.
+ *
+ * DEPLOYMENT
+ * See endpoint/README.md in this repository.
+ * =============================================================================
+ */
+
+/** Where enquiries are sent. Must match the address in the privacy policy. */
+var NOTIFY = "hello@airwarm.co.uk";
+
+/**
+ * Handles the form POST.
+ *
+ * The browser sends Content-Type: text/plain on purpose — see the comment in
+ * js/assessment.js. That keeps it a "simple" cross-origin request, so the
+ * browser does not send an OPTIONS preflight first. Apps Script cannot answer
+ * a preflight, so this is what makes the whole thing work.
+ */
+function doPost(e) {
+  try {
+    if (!e || !e.postData || !e.postData.contents) {
+      return json({ ok: false, error: "empty request" });
+    }
+
+    var d = JSON.parse(e.postData.contents);
+
+    /* Server-side validation. The browser checks these too, but a request can
+       reach this function without ever going through that page. */
+    var required = ["name", "address", "postcode", "email", "telephone"];
+    for (var i = 0; i < required.length; i++) {
+      if (!d[required[i]] || !String(d[required[i]]).trim()) {
+        return json({ ok: false, error: "missing " + required[i] });
+      }
+    }
+
+    /* Consent is not a formality. Without it there is no lawful basis to hold
+       any of this, so the enquiry is refused rather than quietly accepted. */
+    if (d.consentGiven !== true) {
+      return json({ ok: false, error: "consent not given" });
+    }
+
+    MailApp.sendEmail({
+      to: NOTIFY,
+      replyTo: String(d.email).trim(),
+      subject: "New Home Assessment Submission - " + clean(d.name) +
+               " - " + clean(d.postcode),
+      body: buildBody(d)
+    });
+
+    return json({ ok: true });
+  } catch (err) {
+    /* Deliberately vague to the caller: an error message that echoes back
+       what was sent would leak it into somewhere it should not be. The page
+       tells the visitor to e-mail or call instead, which is a real fallback. */
+    return json({ ok: false, error: "could not process" });
+  }
+}
+
+/**
+ * A GET returns a plain health check, so the deployment can be confirmed in a
+ * browser without submitting anything. It reveals nothing.
+ */
+function doGet() {
+  return ContentService
+    .createTextOutput("Airwarm enquiry endpoint is running.")
+    .setMimeType(ContentService.MimeType.TEXT);
+}
+
+/** The e-mail body. Plain text, laid out to be read on a phone. */
+function buildBody(d) {
+  var L = [];
+  L.push("A Home Energy Assessment submission has come in from airwarm.co.uk.");
+  L.push("");
+  L.push("REFERENCE:  " + clean(d.reference));
+  L.push("SUBMITTED:  " + clean(d.submittedAtLocal));
+  L.push("TIMESTAMP:  " + clean(d.submittedAt) + " (UTC)");
+  L.push("");
+  L.push(line());
+  L.push("CUSTOMER DETAILS");
+  L.push(line());
+  L.push("  Name:       " + clean(d.name));
+  L.push("  Address:    " + clean(d.address));
+  L.push("  Postcode:   " + clean(d.postcode));
+  L.push("  E-mail:     " + clean(d.email));
+  L.push("  Telephone:  " + clean(d.telephone));
+  L.push("  Prefers:    " + prefer(d.preferredContact));
+  L.push("");
+  L.push(line());
+  L.push("ASSESSMENT RESULT");
+  L.push(line());
+  L.push("  " + clean(d.assessmentOutcomeLabel));
+  L.push("");
+  L.push("  Internal score: " + clean(d.assessmentScore));
+  L.push("  The scoring behind this is still the unapproved placeholder");
+  L.push("  logic. Treat it as a conversation starter, not a finding.");
+  L.push("");
+  L.push(line());
+  L.push("QUESTIONNAIRE");
+  L.push(line());
+  L.push("");
+
+  /* Every question and every answer, in the order they were asked, in the
+     wording the customer actually saw. */
+  var t = d.transcript;
+  if (t && t.length) {
+    for (var i = 0; i < t.length; i++) {
+      L.push("Question: " + clean(t[i].question));
+      L.push("Answer:   " + clean(t[i].answer));
+      L.push("");
+    }
+  } else {
+    L.push("(No transcript received. Raw values follow.)");
+    L.push("");
+    var a = d.answers || {};
+    Object.keys(a).forEach(function (k) {
+      L.push("Question: " + k);
+      L.push("Answer:   " + clean(a[k]));
+      L.push("");
+    });
+  }
+
+  L.push(line());
+  L.push("CONSENT");
+  L.push(line());
+  L.push("  Given at: " + clean(d.consentAt));
+  L.push("  For:      holding these details and looking up the public EPC");
+  L.push("            record for this address, in order to reply.");
+  L.push("");
+  L.push(line());
+  L.push("NEXT STEP");
+  L.push(line());
+  L.push("  Look up the EPC for the address, read it against the answers,");
+  L.push("  then contact them. Nothing has gone to the customer beyond an");
+  L.push("  on-screen acknowledgement quoting the reference above — they are");
+  L.push("  expecting a person, not an autoreply.");
+  L.push("");
+  L.push("  Retention: 12 months from last contact if this does not lead to");
+  L.push("  work, per the privacy policy.");
+
+  return L.join("\n");
+}
+
+/** A rule, to break the sections up in a plain-text client. */
+function line() {
+  return "--------------------------------------------------";
+}
+
+/** The optional preferred-contact value, in words. */
+function prefer(v) {
+  if (v === "email") { return "e-mail"; }
+  if (v === "telephone") { return "telephone"; }
+  return "no preference given";
+}
+
+/**
+ * Strips anything that could turn a value into something other than text.
+ * The values arrive from a public form, so they are untrusted input even
+ * though they only ever land in a plain-text e-mail.
+ */
+function clean(v) {
+  if (v === undefined || v === null) { return "(not given)"; }
+  return String(v).replace(/[\r\n]+/g, " ").trim().slice(0, 500);
+}
+
+/** JSON response helper. */
+function json(obj) {
+  return ContentService
+    .createTextOutput(JSON.stringify(obj))
+    .setMimeType(ContentService.MimeType.JSON);
+}

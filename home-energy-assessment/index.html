@@ -12,7 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Home Energy Assessment | Airwarm</title>
-  <meta name="description" content="An indicative first step in four short stages: see whether an air source heat pump is worth exploring for your West Yorkshire home. No photographs, and nothing is sent to us.">
+  <meta name="description" content="An indicative first step in four short stages: see whether an air source heat pump is worth exploring for your West Yorkshire home. No photographs, and nothing is sent to us unless you choose to send it.">
   <link rel="canonical" href="https://airwarm.co.uk/home-energy-assessment/">
 
   <!-- Open Graph: how the page looks when shared in a message or post. -->
@@ -20,7 +20,7 @@
   <meta property="og:site_name" content="Airwarm">
   <meta property="og:locale" content="en_GB">
   <meta property="og:title" content="Home Energy Assessment | Airwarm">
-  <meta property="og:description" content="An indicative first step in four short stages: see whether an air source heat pump is worth exploring for your West Yorkshire home. No photographs, and nothing is sent to us.">
+  <meta property="og:description" content="An indicative first step in four short stages: see whether an air source heat pump is worth exploring for your West Yorkshire home. No photographs, and nothing is sent to us unless you choose to send it.">
   <meta property="og:url" content="https://airwarm.co.uk/home-energy-assessment/">
   <!-- OG IMAGE GOES HERE once a real Airwarm share image exists, e.g.
        <meta property="og:image" content="https://airwarm.co.uk/img/share.png">
@@ -127,8 +127,8 @@
             where your property stands and what a sensible next step would be.
           </p>
           <p class="aw-small" style="margin-top:24px">
-            Your answers stay in your browser. Nothing is sent to Airwarm,
-            stored or shared.
+            Your answers are worked out in your own browser. Nothing is sent to
+            Airwarm unless you choose to send it using the form at the end.
           </p>
           <!-- LAUNCH STATUS. This is the page people arrive on ready to act,
                so it has to be clear that acting now books a place rather than
@@ -151,10 +151,12 @@
                  <legend>, so it works with a screen reader and with a
                  keyboard alone.
 
-                 NOTHING IS SENT ANYWHERE. There is no action attribute and
-                 no submit button on purpose. See the WIRE-UP POINT comment
-                 in /js/assessment.js for the one place to change when a CRM
-                 and a privacy policy exist.
+                 THIS FORM STILL SENDS NOTHING. There is no action attribute
+                 and no submit button on purpose: the four stages are scored
+                 on the visitor's own device. The only thing that transmits is
+                 the separate enquiry form the script builds after the result,
+                 at the WIRE-UP POINT in /js/assessment.js, and that is
+                 optional and consent-gated.
 
                  DO NOT add, remove or rename anything inside this form
                  without reading /js/assessment.js first. The script finds the
@@ -470,6 +472,18 @@
               </section>
             </form>
 
+            <!-- ENQUIRY FORM MOUNT POINT.
+                 The enquiry form is a real <form>, and HTML forbids nesting
+                 one form inside another — a browser silently discards the
+                 inner tag, which would leave the fields on the page with no
+                 form around them and a send button that does nothing. So it
+                 mounts HERE, immediately after the assessment form closes,
+                 rather than inside the result panel.
+
+                 Left empty and untouched unless ENQUIRY_ENDPOINT is set in
+                 /js/assessment.js. Do not move this inside the form above. -->
+            <div id="aw-enquiry-mount"></div>
+
             <!-- If JavaScript is unavailable the form cannot work, so offer
                  the honest alternative rather than a broken page. -->
             <noscript>
@@ -497,13 +511,21 @@
                 price, and it is not a final answer &mdash; a person at Airwarm
                 makes that judgement.
               </p>
-              <h3>Your answers stay on your device</h3>
+              <h3>Your answers stay on your device until you send them</h3>
               <p>
-                Stages one to three run entirely in your browser. Nothing you
-                enter is sent to Airwarm, saved, or shared with anyone. There
-                are no cookies and no analytics on this website. If you want to
-                talk to us, you e-mail us &mdash; so you decide what to share
-                and when.
+                All four stages run entirely in your browser, and so does the
+                result. Nothing you enter reaches Airwarm while you are working
+                through it, nothing is saved to your device, and there are no
+                cookies and no analytics on this website.
+              </p>
+              <p>
+                At the end you can fill in a short form to send us your answers
+                and your contact details, so we can look at your property
+                properly and come back to you. That is the only point at which
+                anything is sent, it is entirely optional, and you can read your
+                result and close the page instead. What happens to the details
+                if you do send them is set out in our
+                <a href="../privacy/">privacy policy</a>.
               </p>
               <h3>No photographs needed</h3>
               <p>
@@ -642,8 +664,12 @@
               <a href="../how-it-works/">The full eight-stage process is here</a>,
               including what a survey covers and what you receive afterwards.
             </p>
+            <!-- On a light section the secondary button is aw-btn--outline.
+                 aw-btn--secondary is white text on a transparent background
+                 with a white border, which is correct on navy and invisible
+                 here. -->
             <div class="aw-btn-row">
-              <a class="aw-btn aw-btn--secondary" href="mailto:hello@airwarm.co.uk?subject=Home%20Energy%20Assessment%20enquiry">E-mail us about your result</a>
+              <a class="aw-btn aw-btn--outline" href="mailto:hello@airwarm.co.uk?subject=Home%20Energy%20Assessment%20enquiry">E-mail us about your result</a>
             </div>
           </div>
           <div>
