@@ -773,6 +773,7 @@ hr {
 
 input[type="text"],
 input[type="email"],
+input[type="tel"],
 select,
 textarea {
   font-family: inherit;
@@ -820,6 +821,79 @@ select { appearance: none; background-image: none; }
   font-weight: 500;
 }
 .aw-form__error:empty { display: none; }
+
+/* ---- The enquiry form -------------------------------------------------
+   The only part of this site that collects personal data. It sits inside the
+   result panel, after the visitor has already seen their outcome, so it reads
+   as an offer rather than a toll gate.
+
+   Set apart on the light neutral with a blue rule, because it is a change of
+   mode: everything above it is information, this is the one place something
+   is asked of you. The blue is the Air accent and reaches 4.7:1 on navy and
+   3.9:1 on the light neutral, which clears the 3:1 WCAG asks of a boundary
+   that carries meaning. It is not the only signal — the heading says what
+   the block is for.
+   --------------------------------------------------------------------- */
+.aw-enquiry {
+  margin-top: var(--airwarm-space-lg);
+  padding: var(--airwarm-space-md);
+  background: var(--airwarm-light-bg);
+  border-top: 3px solid var(--airwarm-blue);
+  border-radius: 0 0 var(--airwarm-radius-md) var(--airwarm-radius-md);
+}
+.aw-enquiry h4 { margin-top: 0; font-size: 1.15rem; }
+
+/* ---- The consent row --------------------------------------------------
+   The label is the tap target and carries the full sentence, so nobody has
+   to aim at a 20px box. Never add a `checked` attribute to this input:
+   pre-ticked consent is not consent under UK GDPR Article 7, and this is
+   the single most important line in the form. */
+.aw-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--airwarm-space-sm);
+  margin: var(--airwarm-space-md) 0;
+  padding: var(--airwarm-space-sm);
+  background: var(--airwarm-white);
+  border: 1px solid var(--airwarm-navy-line);
+  border-radius: var(--airwarm-radius-sm);
+}
+.aw-consent input {
+  margin: 2px 0 0 0;
+  width: 22px;
+  height: 22px;
+  flex: 0 0 auto;
+}
+.aw-consent label {
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  cursor: pointer;
+}
+
+/* ---- The honeypot -----------------------------------------------------
+   A field bots fill and people never see. Positioned off-screen rather than
+   `display:none`, because some bots skip hidden fields — this has to look
+   real to a script and be unreachable for a person. It also carries
+   aria-hidden and tabindex="-1" in the markup, so a screen-reader user is
+   never asked to complete a field that must stay empty. */
+.aw-hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* ---- The sent confirmation ------------------------------------------- */
+.aw-enquiry-sent {
+  margin-top: var(--airwarm-space-lg);
+  padding: var(--airwarm-space-md);
+  background: var(--airwarm-light-bg);
+  border-top: 3px solid var(--airwarm-green);
+  border-radius: 0 0 var(--airwarm-radius-md) var(--airwarm-radius-md);
+}
+.aw-enquiry-sent h4 { margin-top: 0; font-size: 1.15rem; }
+.aw-enquiry-sent:focus { outline: none; }
 
 /* ---- Outcome cards ----
    The traffic-light colour is a SUPPORTING indicator only. The explanation
