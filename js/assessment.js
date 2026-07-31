@@ -385,6 +385,80 @@ var AIRWARM_TRIAGE_CONFIG = {
     return data;
   }
 
+  /* ---- Reading the answers as readable text --------------------------
+     readAnswers() above returns machine values — "semiDetached", "pre1919" —
+     which the scoring needs and a person reading an e-mail does not.
+
+     This returns the same answers as the question and answer a human would
+     recognise, in the order they were asked, so the enquiry e-mail can be
+     read straight off a phone without anyone decoding it.
+
+     It reads the wording out of the page rather than keeping a second copy
+     of it here. Reword a question in the HTML and the e-mail follows; there
+     is no list to keep in step. */
+  function readTranscript() {
+    var out = [];
+    var groupsSeen = {};
+
+    Array.prototype.forEach.call(form.elements, function (field) {
+      if (!field.name) { return; }
+
+      if (field.type === "radio") {
+        /* One entry per group, not per option. */
+        if (groupsSeen[field.name]) { return; }
+        groupsSeen[field.name] = true;
+
+        var fs = field.closest("fieldset");
+        var legend = fs && fs.querySelector("legend");
+        var checked = form.querySelector(
+          'input[name="' + field.name + '"]:checked');
+
+        out.push({
+          question: legend ? legend.textContent.trim() : field.name,
+          /* The radio sits inside its own <label>, so the label's text minus
+             nothing else is the answer as the visitor read it. */
+          answer: checked && checked.parentNode
+            ? checked.parentNode.textContent.trim()
+            : "(not answered)"
+        });
+        return;
+      }
+
+      if (field.tagName === "SELECT") {
+        var opt = field.options[field.selectedIndex];
+        out.push({
+          question: labelFor(field),
+          answer: opt && opt.value ? opt.text.trim() : "(not answered)"
+        });
+        return;
+      }
+
+      if (field.type === "text" || field.type === "email" || field.type === "tel") {
+        out.push({
+          question: labelFor(field),
+          answer: field.value.trim() || "(not answered)"
+        });
+      }
+    });
+
+    return out;
+  }
+
+  /* ---- The reference shown to the customer and quoted in the e-mail ---
+     Six characters, generated in the browser at submission time. It is a
+     label for a conversation, not a secret and not a key: it identifies
+     nothing on its own and nothing is stored against it. Its whole job is
+     to let someone say "I sent one yesterday, reference AW-4K2P9C" and be
+     found in an inbox. */
+  function makeReference() {
+    var alphabet = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"; /* no I, O, 0, 1 */
+    var out = "";
+    for (var i = 0; i < 6; i++) {
+      out += alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+    }
+    return "AW-" + out;
+  }
+
   /* ---- Applying the placeholder logic -------------------------------- */
   function assess(answers) {
     var cfg = AIRWARM_TRIAGE_CONFIG;
@@ -520,7 +594,8 @@ var AIRWARM_TRIAGE_CONFIG = {
     var html = "";
 
     html += '<div class="aw-enquiry">';
-    html += '<h4 id="aw-enquiry-heading">Would you like Airwarm to look at this properly?</h4>';
+    html += '<h4 id="aw-enquiry-heading">Would you like Airwarm to carry out a ' +
+      "more detailed desktop review before arranging a survey?</h4>";
     html += "<p>If you send us your details, a person will check the public " +
       "energy performance record for your address, read it alongside your " +
       "answers, and come back to you. It is not automatic and it is not a " +
@@ -552,6 +627,21 @@ var AIRWARM_TRIAGE_CONFIG = {
     });
 
     html += "</fieldset>";
+
+    /* Preferred contact method. Optional by design: making it required would
+       force a choice on someone who genuinely does not mind, and the honest
+       default is that either is fine. */
+    html += '<div class="aw-field">';
+    html += '<label for="enqPreferred">Preferred way to be contacted</label>';
+    html += '<span class="aw-field__hint" id="enqPreferred-hint">Optional. ' +
+      "We will use whichever you pick; leave it as it is if you do not " +
+      "mind.</span>";
+    html += '<select id="enqPreferred" name="enqPreferred" aria-describedby="enqPreferred-hint">';
+    html += '<option value="noPreference">No preference</option>';
+    html += '<option value="email">E-mail</option>';
+    html += '<option value="telephone">Telephone</option>';
+    html += "</select>";
+    html += "</div>";
 
     /* ---- Spam protection ------------------------------------------------
        A honeypot: a field a person never sees and never fills, which bots
@@ -651,20 +741,32 @@ var AIRWARM_TRIAGE_CONFIG = {
        state rather than an error: telling a bot it failed only teaches it to
        try again. Nothing is sent. */
     if (honeypot.value) {
-      showEnquirySent(formEl);
+      showEnquirySent(formEl, makeReference());
       return;
     }
 
+    var submittedAt = new Date();
+    var reference = makeReference();
+
     var payload = {
+      reference: reference,
+      submittedAt: submittedAt.toISOString(),
+      submittedAtLocal: submittedAt.toString(),
       name: document.getElementById("enqName").value.trim(),
       address: document.getElementById("enqAddress").value.trim(),
       postcode: document.getElementById("enqPostcode").value.trim(),
       email: emailEl.value.trim(),
       telephone: document.getElementById("enqPhone").value.trim(),
+      preferredContact: document.getElementById("enqPreferred").value,
       consentGiven: true,
-      consentAt: new Date().toISOString(),
+      consentAt: submittedAt.toISOString(),
       assessmentOutcome: result.outcome,
+      assessmentOutcomeLabel: AIRWARM_TRIAGE_CONFIG.outcomeLabels[result.outcome],
       assessmentScore: result.score,
+      /* The readable question-and-answer transcript. `answers` keeps the raw
+         machine values alongside it, because those are what any later
+         re-scoring would need. */
+      transcript: readTranscript(),
       answers: answers
     };
 
@@ -690,7 +792,7 @@ var AIRWARM_TRIAGE_CONFIG = {
       body: JSON.stringify(payload)
     }).then(function (response) {
       if (!response.ok) { throw new Error("HTTP " + response.status); }
-      showEnquirySent(formEl);
+      showEnquirySent(formEl, reference);
     }).catch(function () {
       /* Never lose the enquiry silently. The person has typed their details
          and is entitled to know it did not arrive, plus a route that works. */
@@ -705,15 +807,20 @@ var AIRWARM_TRIAGE_CONFIG = {
     });
   }
 
-  function showEnquirySent(formEl) {
+  function showEnquirySent(formEl, reference) {
     var sent = document.createElement("div");
     sent.className = "aw-enquiry-sent";
     sent.setAttribute("role", "status");
     sent.setAttribute("tabindex", "-1");
-    sent.innerHTML = "<h4>Thank you &mdash; that has reached us</h4>" +
-      "<p>Airwarm has your details and your assessment answers. A person " +
-      "will look at the property, check the public energy record for it, " +
-      "and come back to you. You do not need to do anything else.</p>" +
+    sent.innerHTML = "<h4>Thank you</h4>" +
+      "<p>Your assessment has been sent to Airwarm. We will review the " +
+      "information you have provided before contacting you to discuss the " +
+      "next steps.</p>" +
+      /* The reference is shown so someone can quote it if they ring before
+         we have replied. It is a label for a conversation, not a lookup
+         key — nothing is stored against it. */
+      '<p class="aw-small">Your reference is <strong>' + reference +
+      "</strong>. Quote it if you call before we get back to you.</p>" +
       '<p class="aw-small">Preparing for our April 2027 launch, so this is ' +
       "about reserving your place rather than booking an installation. If " +
       "you need us sooner, call <a href=\"tel:+441274947197\">01274 947 197</a>.</p>";

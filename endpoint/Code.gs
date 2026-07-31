@@ -67,8 +67,8 @@ function doPost(e) {
     MailApp.sendEmail({
       to: NOTIFY,
       replyTo: String(d.email).trim(),
-      subject: "Home Energy Assessment enquiry — " + clean(d.name) +
-               " — " + clean(d.postcode),
+      subject: "New Home Assessment Submission - " + clean(d.name) +
+               " - " + clean(d.postcode),
       body: buildBody(d)
     });
 
@@ -94,51 +94,87 @@ function doGet() {
 /** The e-mail body. Plain text, laid out to be read on a phone. */
 function buildBody(d) {
   var L = [];
-  L.push("A Home Energy Assessment enquiry has come in from airwarm.co.uk.");
+  L.push("A Home Energy Assessment submission has come in from airwarm.co.uk.");
   L.push("");
-  L.push("CONTACT");
-  L.push("  Name:      " + clean(d.name));
-  L.push("  Address:   " + clean(d.address));
-  L.push("  Postcode:  " + clean(d.postcode));
-  L.push("  E-mail:    " + clean(d.email));
-  L.push("  Telephone: " + clean(d.telephone));
+  L.push("REFERENCE:  " + clean(d.reference));
+  L.push("SUBMITTED:  " + clean(d.submittedAtLocal));
+  L.push("TIMESTAMP:  " + clean(d.submittedAt) + " (UTC)");
   L.push("");
+  L.push(line());
+  L.push("CUSTOMER DETAILS");
+  L.push(line());
+  L.push("  Name:       " + clean(d.name));
+  L.push("  Address:    " + clean(d.address));
+  L.push("  Postcode:   " + clean(d.postcode));
+  L.push("  E-mail:     " + clean(d.email));
+  L.push("  Telephone:  " + clean(d.telephone));
+  L.push("  Prefers:    " + prefer(d.preferredContact));
+  L.push("");
+  L.push(line());
+  L.push("ASSESSMENT RESULT");
+  L.push(line());
+  L.push("  " + clean(d.assessmentOutcomeLabel));
+  L.push("");
+  L.push("  Internal score: " + clean(d.assessmentScore));
+  L.push("  The scoring behind this is still the unapproved placeholder");
+  L.push("  logic. Treat it as a conversation starter, not a finding.");
+  L.push("");
+  L.push(line());
+  L.push("QUESTIONNAIRE");
+  L.push(line());
+  L.push("");
+
+  /* Every question and every answer, in the order they were asked, in the
+     wording the customer actually saw. */
+  var t = d.transcript;
+  if (t && t.length) {
+    for (var i = 0; i < t.length; i++) {
+      L.push("Question: " + clean(t[i].question));
+      L.push("Answer:   " + clean(t[i].answer));
+      L.push("");
+    }
+  } else {
+    L.push("(No transcript received. Raw values follow.)");
+    L.push("");
+    var a = d.answers || {};
+    Object.keys(a).forEach(function (k) {
+      L.push("Question: " + k);
+      L.push("Answer:   " + clean(a[k]));
+      L.push("");
+    });
+  }
+
+  L.push(line());
   L.push("CONSENT");
-  L.push("  Given at:  " + clean(d.consentAt));
-  L.push("  For:       holding these details and looking up the public EPC");
-  L.push("             record for this address, in order to reply.");
+  L.push(line());
+  L.push("  Given at: " + clean(d.consentAt));
+  L.push("  For:      holding these details and looking up the public EPC");
+  L.push("            record for this address, in order to reply.");
   L.push("");
-  L.push("ASSESSMENT RESULT SHOWN TO THEM");
-  L.push("  Outcome:   " + clean(d.assessmentOutcome));
-  L.push("  Score:     " + clean(d.assessmentScore));
-  L.push("");
-  L.push("  Note: the scoring behind this is still the unapproved placeholder");
-  L.push("  logic. Treat the outcome as a conversation starter, not a finding.");
-  L.push("");
-  L.push("THEIR ANSWERS");
-
-  var answers = d.answers || {};
-  Object.keys(answers).forEach(function (k) {
-    L.push("  " + pad(k) + clean(answers[k]));
-  });
-
-  L.push("");
+  L.push(line());
   L.push("NEXT STEP");
+  L.push(line());
   L.push("  Look up the EPC for the address, read it against the answers,");
-  L.push("  then reply. Nothing has been sent to them beyond an on-screen");
-  L.push("  acknowledgement — they are expecting a person, not an autoreply.");
+  L.push("  then contact them. Nothing has gone to the customer beyond an");
+  L.push("  on-screen acknowledgement quoting the reference above — they are");
+  L.push("  expecting a person, not an autoreply.");
   L.push("");
-  L.push("Retention: 12 months from last contact if this does not lead to");
-  L.push("work, per the privacy policy.");
+  L.push("  Retention: 12 months from last contact if this does not lead to");
+  L.push("  work, per the privacy policy.");
 
   return L.join("\n");
 }
 
-/** Right-pads a field name so the answers line up in a monospaced client. */
-function pad(s) {
-  var out = String(s) + ":";
-  while (out.length < 26) { out += " "; }
-  return out;
+/** A rule, to break the sections up in a plain-text client. */
+function line() {
+  return "--------------------------------------------------";
+}
+
+/** The optional preferred-contact value, in words. */
+function prefer(v) {
+  if (v === "email") { return "e-mail"; }
+  if (v === "telephone") { return "telephone"; }
+  return "no preference given";
 }
 
 /**
