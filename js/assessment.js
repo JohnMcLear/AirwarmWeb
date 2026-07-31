@@ -41,9 +41,14 @@
      - the consent checkbox is unticked by default           (done — see buildEnquiryForm)
      - the endpoint forwards to hello@airwarm.co.uk and keeps no copy
 
-   That last one is the outstanding decision. Whatever is chosen, if it keeps
-   submissions in its own database then it is a processor, and the privacy
-   policy has to name it BEFORE this is switched on.
+   The endpoint is the Google Apps Script web app in /endpoint/. It sends one
+   e-mail and stores nothing, which is what keeps the privacy policy's "no
+   database, no third-party dashboard" sentence true. Setup instructions are
+   in endpoint/README.md.
+
+   If you ever point this somewhere that DOES keep a copy of submissions,
+   that service is a processor under UK GDPR and must be named in the privacy
+   policy BEFORE the URL changes here.
    ========================================================================== */
 var ENQUIRY_ENDPOINT = "";
 
@@ -667,9 +672,21 @@ var AIRWARM_TRIAGE_CONFIG = {
     submitBtn.disabled = true;
     submitBtn.textContent = "Sending…";
 
+    /* The body is JSON, but the Content-Type is deliberately text/plain.
+
+       application/json makes this a "preflighted" cross-origin request: the
+       browser sends an OPTIONS request first and refuses to POST unless that
+       is answered with the right CORS headers. text/plain keeps it a simple
+       request, which skips the preflight entirely. The receiving end parses
+       the string as JSON, so nothing is lost.
+
+       This matters because the endpoint is a Google Apps Script web app,
+       which cannot answer an OPTIONS preflight. If you move to an endpoint
+       that can, application/json is the tidier choice — change it here and
+       in the receiving code together. */
     fetch(ENQUIRY_ENDPOINT, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
       body: JSON.stringify(payload)
     }).then(function (response) {
       if (!response.ok) { throw new Error("HTTP " + response.status); }
