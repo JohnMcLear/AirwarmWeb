@@ -129,8 +129,8 @@ function buildBody(d) {
   var t = d.transcript;
   if (t && t.length) {
     for (var i = 0; i < t.length; i++) {
-      L.push("Question: " + clean(t[i].question));
-      L.push("Answer:   " + clean(t[i].answer));
+      L.push(wrap(clean(t[i].question), "Question: ", "          "));
+      L.push(wrap(clean(t[i].answer), "Answer:   ", "          "));
       L.push("");
     }
   } else {
@@ -142,6 +142,26 @@ function buildBody(d) {
       L.push("Answer:   " + clean(a[k]));
       L.push("");
     });
+  }
+
+  /* What the intake answers mean for the survey.
+     The two visual questions — the electrical panel and the radiator
+     pipework — are screening signals, not measurements. A photograph shows
+     the last visible inch of a pipe and the front of a fuse box; it cannot
+     confirm the distribution behind either. These notes carry that limit
+     into the review so the answer is not read as a settled figure. */
+  var notes = d.surveyNotes;
+  if (notes && notes.length) {
+    L.push(line());
+    L.push("SURVEY NOTES");
+    L.push(line());
+    L.push("  Screening signals from the intake questions, to be confirmed");
+    L.push("  on site. None of these affected the result above.");
+    L.push("");
+    for (var n = 0; n < notes.length; n++) {
+      L.push(wrap(clean(notes[n]), "  - ", "    "));
+      L.push("");
+    }
   }
 
   L.push(line());
@@ -168,6 +188,44 @@ function buildBody(d) {
 /** A rule, to break the sections up in a plain-text client. */
 function line() {
   return "--------------------------------------------------";
+}
+
+/**
+ * Wraps a long value so it can be read on a phone.
+ *
+ * Some of the questions are a full sentence long and the survey notes run to
+ * three. Left unwrapped they either run off the side of a plain-text client or
+ * get rewrapped by it, which loses the "Question: " and "  - " labels down the
+ * left and turns the whole e-mail into prose.
+ *
+ * `firstPrefix` starts the first line — "Question: ", "  - ". `contPrefix`
+ * starts every line after it, and should be the same width, so the text stays
+ * in one column and the labels stand alone in another.
+ */
+function wrap(text, firstPrefix, contPrefix) {
+  var WIDTH = 78;
+  var first = firstPrefix === undefined ? "" : firstPrefix;
+  var cont = contPrefix === undefined ? first.replace(/./g, " ") : contPrefix;
+  var words = String(text).split(/\s+/);
+  var lines = [];
+  var current = first;
+  var empty = true;
+
+  for (var i = 0; i < words.length; i++) {
+    if (!words[i]) { continue; }
+    var candidate = empty ? current + words[i] : current + " " + words[i];
+    if (!empty && candidate.length > WIDTH) {
+      lines.push(current);
+      current = cont + words[i];
+    } else {
+      current = candidate;
+    }
+    empty = false;
+  }
+  if (empty) { current = first + "(not given)"; }
+  lines.push(current);
+
+  return lines.join("\n");
 }
 
 /** The optional preferred-contact value, in words. */

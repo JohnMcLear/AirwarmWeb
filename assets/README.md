@@ -4,8 +4,10 @@ Every illustration on the Airwarm website lives in this folder. All of it is
 hand-written SVG: plain text files you can open in any editor, with no build
 step, no library and nothing loaded from another website.
 
-There is **no photography here, and no photography anywhere on the site yet**.
-See "What still needs real photography" at the end of this file.
+There is **no photography here except `assessment/`**, and none anywhere else
+on the site yet. See "What still needs real photography" at the end of this
+file, and [The assessment reference photographs](#the-assessment-reference-photographs)
+for the one exception and why it is one.
 
 - [A note on paths](#a-note-on-paths)
 - [What is in here](#what-is-in-here)
@@ -14,6 +16,7 @@ See "What still needs real photography" at the end of this file.
 - [The icon sprite](#the-icon-sprite)
 - [The CSS classes](#the-css-classes)
 - [Colour and contrast rules](#colour-and-contrast-rules)
+- [The assessment reference photographs](#the-assessment-reference-photographs)
 - [What still needs real photography](#what-still-needs-real-photography)
 - [What was deliberately not drawn](#what-was-deliberately-not-drawn)
 
@@ -58,6 +61,7 @@ of a domain, so a path beginning with `/` resolves to the wrong place and
 | `airwarm-mark.svg` | The Corporate Mark with its navy tile removed, so it sits on any background. This is the emblem in the header and footer lockup. |
 | `airwarm-hero-logo.svg` | The Hero Logo with its navy tile removed. The full lockup — mark, wordmark and tagline. Homepage hero only, and navy panels only: its wordmark is white. |
 | `brand/` | The five supplied identity files exactly as delivered. **Source of truth. Never edit these.** See [The brand artwork](#the-brand-artwork). |
+| `assessment/` | The two approved reference photographs used by the visual questions in the Home Energy Assessment. See [The assessment reference photographs](#the-assessment-reference-photographs). |
 
 Every diagram is built the same way, on purpose:
 
@@ -416,6 +420,66 @@ table at the top of the stylesheet. Do not eyeball a near-match.
 
 ---
 
+## The assessment reference photographs
+
+`assessment/` holds the two images the Home Energy Assessment shows when it
+asks someone to recognise their own electrical panel and their own radiator
+pipework. Approved by Thomas Robinson on 13 August 2026 and added to the site
+on 15 August 2026.
+
+| File | Question it serves |
+| --- | --- |
+| `consumer-unit-reference.webp` / `.jpg` | "Which of these looks most like the electrical panel in your home?" — the A/B/C composite. |
+| `radiator-pipework-reference.webp` / `.jpg` | "Look at the pipes coming out of the wall or floor into one of your radiators." — thin against standard. |
+
+**This is not a hole in the no-photography rule, it is the one job a drawing
+cannot do.** Every other picture on this site is a diagram, because a diagram
+explains a principle better than a photograph does. These two are the reverse
+case: the visitor is not being taught anything, they are being asked to match
+what is in front of them against what is on the screen. A drawing of a fuse
+box would be a worse fuse box. They are also not case-study photography and
+must never be used as any — no page may present them as an Airwarm
+installation.
+
+**Do not replace them.** Not with stock, not with a manufacturer's product
+shot, not with a web image, not with a newly generated alternative. They were
+arrived at over three rounds of review; the rejected candidates and the reasons
+are recorded in `Photo_Review_Summary.md` in the Airwarm working pack. One
+rejection was a photograph carrying another company's copyright watermark,
+which is the kind of thing a quick substitution reintroduces.
+
+**On the derivatives.** The approved originals are 1536×1024 PNGs, 2.2MB and
+2.8MB. Served as delivered they would have been the heaviest thing on the site
+by a factor of ten, on the one page that most needs to work on a phone. What
+ships is the same artwork at the same pixel dimensions, re-encoded to WebP at
+quality 82 and JPEG at 84 — 105KB and 103KB, with the JPEG as the fallback for
+anything that cannot take WebP. Measured difference from the originals is an
+RMS of about 2.3 out of 255, which is not visible. Nothing was cropped, scaled,
+recoloured or redrawn. The originals stay in the working pack as the masters;
+if either is reissued, re-encode from the new master rather than from these.
+
+**How they are used**, in `home-energy-assessment/index.html`:
+
+```html
+<picture>
+  <source srcset="../assets/assessment/consumer-unit-reference.webp" type="image/webp">
+  <img class="aw-visual-question__image"
+       src="../assets/assessment/consumer-unit-reference.jpg"
+       width="1536" height="1024" loading="lazy" decoding="async"
+       alt="Three photographs of electrical panels side by side…">
+</picture>
+```
+
+The `width` and `height` are the real pixel dimensions and must stay: they
+reserve the space before the image arrives, so answering the question above it
+does not get shoved down the page mid-tap. The `alt` text describes what
+distinguishes each option — rust and rewireable carriers, black rocker
+switches, blue switches with test buttons — so the question is answerable by
+someone who cannot see the image at all. If either image is ever reissued,
+rewrite the `alt` to match what the new one actually shows.
+
+---
+
 ## What still needs real photography
 
 Nothing in this folder is a photograph, and no stock photography may be used to
@@ -471,7 +535,12 @@ So that nobody spends a day looking for it:
   drawing says exactly that instead of inventing a figure.
 - **Anything photographic**: no photographs, no photorealistic rendering, no
   people, no identifiable real buildings, and nothing that could be mistaken
-  for a case study photograph.
+  for a case study photograph. The two assessment reference images added in
+  August 2026 are the single exception and are not drawings at all — see [The
+  assessment reference
+  photographs](#the-assessment-reference-photographs). They exist to be
+  recognised, not to illustrate, and they are still not case-study
+  photography.
 - **Efficiency, cost, saving or grant figures.** Not on a drawing, not in a
   caption, not anywhere.
 - **Red.** Not on the assessment outcomes, not on the warning icon, not

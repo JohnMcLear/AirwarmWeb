@@ -63,14 +63,14 @@
            plus the wordmark and tagline as live text, so they scale, stay
            selectable and honour the reader's font size. The 339KB traced
            hero-horizontal.svg is deliberately not used at this size.
-           Tagline rules are FIXED: SMART HEATING orange, separator blue,
-           GREENER FUTURES green, both statements on ONE line, never
-           stacked, no punctuation added. -->
+           Tagline rules are FIXED: ENGINEERED DESIGN blue, SMARTER
+           HEATING amber, GREENER FUTURES green, all three on ONE line,
+           never stacked, no punctuation added. -->
       <a class="aw-wordmark" href="../">
         <img class="aw-wordmark__emblem" src="../assets/airwarm-mark.svg" alt="" width="44" height="44">
         <span class="aw-wordmark__text">
         <span class="aw-wordmark__name">AIRWARM</span>
-        <span class="aw-tagline"><span class="heating">SMART HEATING</span><span class="aw-sep" aria-hidden="true">|</span><span class="futures">GREENER FUTURES</span></span>
+        <span class="aw-tagline"><span class="design">ENGINEERED DESIGN</span><span class="aw-sep" aria-hidden="true">|</span><span class="heating">SMARTER HEATING</span><span class="aw-sep" aria-hidden="true">|</span><span class="futures">GREENER FUTURES</span></span>
         </span>
       </a>
 
@@ -270,6 +270,26 @@
                   </select>
                 </div>
 
+                <!-- EPC. An intake question, not a scored one: it decides
+                     whether a desktop review can start at all, which is why it
+                     is asked here rather than discovered halfway through one.
+                     Airwarm does not arrange or broker EPCs, so the caveat
+                     states the requirement without offering to solve it. -->
+                <div class="aw-field">
+                  <label for="epcStatus">Do you have a valid, in-date EPC (Energy Performance Certificate) for this property?</label>
+                  <span class="aw-field__hint" id="epcStatus-hint">
+                    Properties wanting to take advantage of the Boiler Upgrade
+                    Scheme grant need a valid, in-date EPC.
+                  </span>
+                  <select id="epcStatus" name="epcStatus"
+                          aria-describedby="epcStatus-hint" required>
+                    <option value="">Please choose</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                    <option value="dontKnow">Don&rsquo;t know</option>
+                  </select>
+                </div>
+
                 </fieldset>
 
                 <div class="aw-form__actions">
@@ -299,6 +319,23 @@
                   <label class="aw-choice"><input type="radio" name="insulationConfidence" value="notSure" required> Not sure</label>
                 </fieldset>
 
+                <!-- Evidence, as distinct from belief. The question above asks
+                     what someone thinks; this asks what they can show. A cavity
+                     fill certificate turns an EPC assumption into a confirmed
+                     fact before the desktop review is written, which is the
+                     whole reason it is worth a separate question. -->
+                <fieldset class="aw-fieldset">
+                  <legend>Do you have any paperwork showing insulation work that has been done?</legend>
+                  <span class="aw-field__hint">
+                    For example a cavity wall fill certificate, a loft
+                    insulation receipt, or an EPC improvement record.
+                  </span>
+                  <label class="aw-choice"><input type="radio" name="insulationEvidence" value="paperwork" required> Yes, I have paperwork</label>
+                  <label class="aw-choice"><input type="radio" name="insulationEvidence" value="believedNoPaperwork" required> I think it has been done, but no paperwork</label>
+                  <label class="aw-choice"><input type="radio" name="insulationEvidence" value="noWorkDone" required> No work has been done</label>
+                  <label class="aw-choice"><input type="radio" name="insulationEvidence" value="notSure" required> Not sure</label>
+                </fieldset>
+
                 <div class="aw-field">
                   <label for="windows">What are the windows like?</label>
                   <select id="windows" name="windows" required>
@@ -321,6 +358,46 @@
                     <option value="notSure">Not sure</option>
                   </select>
                 </div>
+
+                <!-- ---------- VISUAL REFERENCE QUESTION: PIPEWORK ----------
+                     Airwarm shows the photographs; the visitor picks the
+                     closest match. This is NOT a photo upload — that was
+                     rejected for keeping the form phone-friendly, and adding
+                     one here would reverse that decision.
+
+                     The image is the approved asset supplied on 13 Aug 2026.
+                     Do not swap it for stock, a manufacturer product shot or a
+                     regenerated alternative. The .webp and .jpg in
+                     assets/assessment/ are compressed derivatives of that same
+                     approved artwork, nothing else.
+
+                     WHAT THIS QUESTION CAN AND CANNOT DO: it screens the last
+                     visible inch of pipe at one radiator, not the distribution
+                     behind it. 22mm mains feeding 10mm tails is fine; fully
+                     microbore often is not, and no photograph separates the
+                     two. That limit is carried into the enquiry e-mail as a
+                     named survey item in js/assessment.js — do not let the
+                     answer harden into a scored fact anywhere.
+                     -------------------------------------------------------- -->
+                <fieldset class="aw-fieldset aw-visual-question">
+                  <legend>Look at the pipes coming out of the wall or floor into one of your radiators. Which do they look most like?</legend>
+                  <span class="aw-field__hint">
+                    Any radiator will do. If you cannot see the pipes,
+                    &ldquo;not sure&rdquo; is a perfectly good answer.
+                  </span>
+
+                  <picture>
+                    <source srcset="../assets/assessment/radiator-pipework-reference.webp" type="image/webp">
+                    <img class="aw-visual-question__image"
+                         src="../assets/assessment/radiator-pipework-reference.jpg"
+                         width="1536" height="1024" loading="lazy" decoding="async"
+                         alt="Two photographs of a radiator valve side by side. On the left, thin or microbore pipework, a narrow copper pipe usually around 8 to 10mm across, about the thickness of a pencil. On the right, standard radiator pipework, a noticeably thicker copper pipe usually around 15mm across.">
+                  </picture>
+
+                  <label class="aw-choice"><input type="radio" name="radiatorPipework" value="thin" required> Thin &mdash; about the width of a pencil</label>
+                  <label class="aw-choice"><input type="radio" name="radiatorPipework" value="standard" required> Standard &mdash; noticeably thicker, more like a finger</label>
+                  <label class="aw-choice"><input type="radio" name="radiatorPipework" value="notSure" required> Not sure, or I cannot see it clearly</label>
+                </fieldset>
 
                 <fieldset class="aw-fieldset">
                   <legend>Is there space outside for the heat pump unit?</legend>
@@ -349,6 +426,65 @@
                     <option value="notSure">Not sure</option>
                   </select>
                 </div>
+
+                <!-- Where, not whether. The question above establishes that a
+                     cylinder can go somewhere; this gives the desktop review a
+                     starting point instead of "space unknown" on every enquiry
+                     that has no existing hot water storage. -->
+                <div class="aw-field">
+                  <label for="cylinderLocation">Where would the hot water cylinder go, or where is your current one?</label>
+                  <select id="cylinderLocation" name="cylinderLocation" required>
+                    <option value="">Please choose</option>
+                    <option value="airingCupboard">Airing cupboard</option>
+                    <option value="loft">Loft</option>
+                    <option value="garage">Garage</option>
+                    <option value="underStairs">Under the stairs</option>
+                    <option value="kitchenCupboard">Kitchen cupboard</option>
+                    <option value="noneNotSure">No cylinder currently, and not sure where</option>
+                    <option value="other">Somewhere else</option>
+                  </select>
+                </div>
+
+                <!-- ---------- VISUAL REFERENCE QUESTION: ELECTRICS ----------
+                     Same mechanism as the pipework question above, and the same
+                     rules: approved artwork only, no photo upload, and the
+                     answer is a screening signal rather than a fact.
+
+                     "Not sure" is a REAL fourth radio here, deliberately. The
+                     approved image ends with a "Not sure? That's fine" panel,
+                     and it would be reassurance that does nothing if the only
+                     way to proceed were to guess between A, B and C.
+
+                     The caveat below is Thomas's wording of 13 Aug 2026 and is
+                     shown with the question on purpose: an older fuse box
+                     meaning electrical work is far better understood here than
+                     as a surprise at quotation stage. Do not soften it into
+                     "may need minor work" or move it to the result page.
+                     -------------------------------------------------------- -->
+                <fieldset class="aw-fieldset aw-visual-question">
+                  <legend>Which of these looks most like the electrical panel in your home?</legend>
+
+                  <picture>
+                    <source srcset="../assets/assessment/consumer-unit-reference.webp" type="image/webp">
+                    <img class="aw-visual-question__image"
+                         src="../assets/assessment/consumer-unit-reference.jpg"
+                         width="1536" height="1024" loading="lazy" decoding="async"
+                         alt="Three photographs of electrical panels side by side. A, an old fuse box: a rusty metal box with black rewireable fuse carriers. B, a modern consumer unit with MCBs and RCDs: a white plastic box with a row of black rocker switches and a red main switch. C, a modern consumer unit with RCBOs: a white plastic box with a row of blue switches, each with its own small test button.">
+                  </picture>
+
+                  <label class="aw-choice"><input type="radio" name="consumerUnit" value="oldFuseBox" required> A &mdash; old fuse box</label>
+                  <label class="aw-choice"><input type="radio" name="consumerUnit" value="modernMcbRcd" required> B &mdash; modern consumer unit (MCBs and RCDs)</label>
+                  <label class="aw-choice"><input type="radio" name="consumerUnit" value="modernRcbo" required> C &mdash; modern consumer unit (RCBOs)</label>
+                  <label class="aw-choice"><input type="radio" name="consumerUnit" value="notSure" required> Not sure &mdash; we will check this at the survey</label>
+
+                  <p class="aw-small">
+                    If your home has an older-style fuse box, it may need
+                    upgrading &mdash; or in some cases a separate additional
+                    consumer unit fitted alongside it &mdash; as part of your
+                    heat pump installation. This is confirmed at survey and,
+                    where needed, included in your fixed price quotation.
+                  </p>
+                </fieldset>
 
                 <fieldset class="aw-fieldset">
                   <legend>Is the property listed, in a conservation area, or leasehold?</legend>
@@ -834,7 +970,7 @@
             <img class="aw-wordmark__emblem" src="../assets/airwarm-mark.svg" alt="" width="34" height="34">
             <span class="aw-wordmark__text">
               <span class="aw-wordmark__name">AIRWARM</span>
-              <span class="aw-tagline"><span class="heating">SMART HEATING</span><span class="aw-sep" aria-hidden="true">|</span><span class="futures">GREENER FUTURES</span></span>
+              <span class="aw-tagline"><span class="design">ENGINEERED DESIGN</span><span class="aw-sep" aria-hidden="true">|</span><span class="heating">SMARTER HEATING</span><span class="aw-sep" aria-hidden="true">|</span><span class="futures">GREENER FUTURES</span></span>
             </span>
           </span>
           <p class="aw-small" style="margin-top:16px">
