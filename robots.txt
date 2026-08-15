@@ -1,14 +1,19 @@
 # Airwarm — robots.txt
 #
-# PREVIEW STATE. This site is a work in progress hosted on a temporary
-# GitHub Pages URL. It is deliberately blocked from search engines so that
-# an unfinished site is not indexed under the Airwarm name.
+# LIVE. Search engines are welcome to crawl and index the whole site.
 #
-# ON LAUNCH DAY: delete the Disallow line below, restore the Sitemap line to
-# the real domain, and remove the <meta name="robots" content="noindex">
-# tag from every page.
+# This file used to carry "Disallow: /" while the site was an unfinished
+# preview on a temporary address. That block was removed on 15 August 2026,
+# along with the <meta name="robots" content="noindex, nofollow"> tag that
+# was on all 28 pages. Both had to go together: either one on its own is
+# enough to keep the site out of the results.
+#
+# Note that a page blocked here cannot be read, so a noindex tag on it would
+# never be seen. Blocking and de-indexing are different jobs. If a page ever
+# genuinely needs keeping out of the index, give it a noindex tag and leave
+# it crawlable, rather than adding a Disallow line.
 
 User-agent: *
-Disallow: /
+Allow: /
 
-# Sitemap: https://airwarm.co.uk/sitemap.xml
+Sitemap: https://airwarm.co.uk/sitemap.xml
