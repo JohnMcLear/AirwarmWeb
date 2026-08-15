@@ -28,22 +28,35 @@
 /* ==========================================================================
    01. BRAND TOKENS
 
-   WHERE THESE COLOURS COME FROM. They are sampled directly out of the
-   permanent Airwarm identity artwork, not typed in from a document. The
-   Hero Logo (assets/brand/hero-logo.svg) sets the tagline in three colours
-   and paints itself onto a navy field, and those four values ARE the brand:
+   WHERE THESE COLOURS COME FROM. They were sampled out of the permanent
+   Airwarm identity artwork when it landed, replacing an earlier temporary
+   palette:
 
      navy    #010F23   the Hero Logo canvas
-     orange  #F76201   the words SMART HEATING
-     blue    #017FE1   the separator and the rules either side of it
-     green   #689E14   the words GREENER FUTURES
+     orange  #F76201   the amber of the tagline
+     blue    #017FE1   the blue of the tagline
+     green   #689E14   the green of the tagline
 
-   This replaced the earlier temporary palette when the permanent identity
-   landed. If the artwork is ever reissued, re-sample it and re-measure the
-   table below; do not eyeball a near-match.
+   DO NOT RE-SAMPLE THESE FROM NEWER ARTWORK. Ruled by Thomas Robinson on
+   15 August 2026, and it overrides the instruction that used to sit here.
+
+   The August 2026 asset pack arrived with measurably different colours —
+   its blue #0494EF, amber #F27103 and green #74B305, the green furthest off
+   by a long way. The decision was that the documented palette stays the
+   source of truth and artwork that has drifted from it is the thing that is
+   wrong, not the documentation. One inconsistent image does not get to
+   redefine the colour system, and the intent of new artwork is to use the
+   branding rather than quietly replace it.
+
+   So: if reissued artwork disagrees with these values, flag the artwork for
+   correction. Do not change the numbers here, and do not eyeball a
+   near-match in either direction. Changing them means re-measuring every
+   ratio in the contrast table below, which is the real cost.
 
    The brand rules name these as Air (blue), Heating (burnt orange) and
    Renewables (green), and they are the site's accent colours everywhere.
+   In the tagline they carry ENGINEERED DESIGN, SMARTER HEATING and GREENER
+   FUTURES respectively.
 
    --------------------------------------------------------------------------
    CONTRAST RULES. READ THESE BEFORE PUTTING A COLOUR ON A COLOUR.
@@ -97,9 +110,9 @@
      The four brand values are sampled from the Hero Logo. See above. */
   --airwarm-navy: #010F23;        /* principal background; Hero Logo canvas */
   --airwarm-white: #FFFFFF;
-  --airwarm-orange: #F76201;      /* Heating. The words SMART HEATING       */
-  --airwarm-blue: #017FE1;        /* Air. The tagline separator and rules   */
-  --airwarm-green: #689E14;       /* Renewables. The words GREENER FUTURES  */
+  --airwarm-orange: #F76201;      /* Amber. The words SMARTER HEATING       */
+  --airwarm-blue: #017FE1;        /* Blue. The words ENGINEERED DESIGN      */
+  --airwarm-green: #689E14;       /* Green. The words GREENER FUTURES       */
   --airwarm-light-bg: #F4F7F9;    /* light neutral section background */
   --airwarm-grey: #65717C;        /* supporting text on white */
   --airwarm-dark-text: #14212B;   /* body copy */
@@ -345,21 +358,35 @@ hr {
 }
 
 /* ---- The tagline -------------------------------------------------------
-   SMART HEATING | GREENER FUTURES
+   ENGINEERED DESIGN | SMARTER HEATING | GREENER FUTURES
+
+   Confirmed by Thomas Robinson, 15 August 2026. This replaces the two-part
+   SMART HEATING | GREENER FUTURES, which is retired wording — and note that
+   "SMARTER" is deliberate. Some of the supplied hero artwork still reads
+   SMART HEATING; that artwork is flagged for reissue and is NOT the
+   authority for the wording. Do not change this back to match a picture.
 
    THREE RULES FROM THE BRAND, ALL OF THEM HARD:
-   1. The colours are fixed. SMART HEATING is burnt orange, GREENER FUTURES
-      is green, and the separator between them is blue. Never reorder,
-      recolour or swap them.
-   2. Both statements stay on ONE line. They are never stacked. That is why
-      this is a plain inline row with nowrap and no column direction — the
-      previous three-part tagline did stack, and this one must not.
-   3. No punctuation is added. The blue bar is the separator; there is no
-      full stop, comma or ampersand anywhere in it.
+   1. The colours are fixed and belong to specific words. ENGINEERED DESIGN
+      is blue, SMARTER HEATING is amber, GREENER FUTURES is green. Never
+      reorder, recolour or swap them.
+   2. All three statements stay on ONE line. They are never stacked. That is
+      why this is a plain inline row with nowrap and no column direction.
+   3. No punctuation is added. The bars are separators; there is no full
+      stop, comma or ampersand anywhere in it.
 
-   Keeping it on one line makes the identity block wider than the wordmark
-   above it, which is why the type here is small and tightly tracked. The
-   supplied lockup does the same thing, so this matches the artwork.
+   THE SEPARATOR IS NO LONGER BLUE. It was, when blue was spare. Blue now
+   carries ENGINEERED DESIGN, and a blue bar next to a blue word reads as
+   part of it rather than as the thing dividing it from the next. It is a
+   muted white instead, which is also what the supplied artwork does — the
+   separator is punctuation, not a fourth term.
+
+   ON THE SIZE: three statements on one unbroken line is much wider than two,
+   and this sits under a wordmark barely half its width. The type is small and
+   tightly tracked for that reason, and steps down again on narrow screens.
+   Rule 2 is what costs the width; it is not negotiable, so the size gives way
+   instead. Measured to fit without overflow at 320px, which is the narrowest
+   screen worth supporting.
    ---------------------------------------------------------------------- */
 .aw-tagline {
   display: block;
@@ -372,13 +399,14 @@ hr {
   line-height: 1.4;
   text-transform: uppercase;
 }
+.aw-tagline .design  { color: var(--airwarm-blue); }
 .aw-tagline .heating { color: var(--airwarm-orange); }
 .aw-tagline .futures { color: var(--airwarm-green); }
-/* The separator. A blue bar, per the brand rules — not a bullet, slash or
-   dash, and not decoration that a screen reader should read out. */
+/* The separator. A muted white bar — not a bullet, slash or dash, and not
+   decoration that a screen reader should read out. */
 .aw-tagline .aw-sep {
-  color: var(--airwarm-blue);
-  padding: 0 0.5em;
+  color: var(--airwarm-white-soft);
+  padding: 0 0.4em;
   font-weight: 500;
 }
 
@@ -803,6 +831,54 @@ select { appearance: none; background-image: none; }
 }
 .aw-choice:hover { border-color: var(--airwarm-navy); }
 .aw-choice input { margin: 3px 0 0 0; width: 20px; height: 20px; flex: 0 0 auto; }
+
+/* The chosen answer, shown as a change of weight and border as well as a
+   tint. The radio dot is the real indicator; this is the row catching up with
+   it, so someone scrolling back through a long stage can see what they picked
+   without hunting for a 20px circle. Colour is never the only signal. */
+.aw-choice:has(input:checked) {
+  border-color: var(--airwarm-navy);
+  box-shadow: inset 0 0 0 1px var(--airwarm-navy);
+  background: var(--airwarm-light-bg);
+  font-weight: 600;
+}
+/* Keyboard focus on the row, not just on the 20px control inside it. */
+.aw-choice:focus-within {
+  outline: 3px solid var(--airwarm-blue-accessible);
+  outline-offset: 2px;
+}
+
+/* ---- Visual reference questions ---------------------------------------
+   Two questions — the consumer unit and the radiator pipework — show
+   Airwarm's own approved photographs and ask the visitor to pick the closest
+   match. The picture does the explaining, which is the point: nobody can
+   describe their fuse box in a text field, but most people recognise theirs
+   in a photograph.
+
+   THIS IS NOT A PHOTO UPLOAD. Asking visitors for photographs was rejected
+   for keeping the form completable on a phone, and this pattern exists
+   precisely because it respects that decision.
+
+   The image sits above the answers and is decorative to nobody: it carries a
+   full alt description, so the question is answerable without seeing it.
+   ---------------------------------------------------------------------- */
+.aw-visual-question__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: var(--airwarm-space-xs) 0 var(--airwarm-space-sm);
+  border: 1px solid var(--airwarm-navy-line);
+  border-radius: var(--airwarm-radius-sm);
+  background: var(--airwarm-white);
+}
+/* The caveat that follows the electrical question. It is a condition of the
+   answer, so it stays attached to the question rather than drifting into the
+   page's general small print. */
+.aw-visual-question .aw-small {
+  margin-top: var(--airwarm-space-sm);
+  padding-left: var(--airwarm-space-sm);
+  border-left: 3px solid var(--airwarm-orange);
+}
 
 .aw-form__actions {
   display: flex;
@@ -1568,8 +1644,10 @@ details:focus-visible,
   .aw-nav__list { gap: var(--airwarm-space-xs) 14px; justify-content: flex-end; }
   .aw-nav__list a { font-size: 0.875rem; }
   /* The tagline is the widest part of the identity, because the brand rules
-     forbid stacking it. Holding it at this size is what keeps the whole
-     header on one line. The colour order is unchanged: orange, blue, green. */
+     forbid stacking it — and since August 2026 it carries three statements
+     rather than two, which made it wider again. Holding it at this size is
+     what keeps the whole header on one line. Colour order: blue, amber,
+     green. */
   .aw-tagline { font-size: 0.5rem; }
   .aw-header__cta .aw-btn { padding: 10px var(--airwarm-space-sm); font-size: 0.9375rem; }
 
@@ -1662,16 +1740,59 @@ footer .aw-wordmark__emblem { width: 34px; height: 34px; }
   .aw-wordmark__emblem { width: 34px; height: 34px; }
 }
 
+/* ---- The three-part tagline on small screens ---------------------------
+   Going from two statements to three in August 2026 made this line about 80%
+   wider. The brand rules forbid stacking it, so on a narrow screen it either
+   shrinks or it goes; it may not fold onto a second row.
+
+   Measured at 8px it wants 300px. A 320px phone has 254px to give it and a
+   360px phone has 294px, so both overflowed — and horizontal scroll on a
+   phone is a real defect, not a cosmetic one.
+
+   Between 360px and 480px it is set smaller and tracked tighter, which is
+   enough to fit.
+
+   Below 360px it is hidden altogether. That is a deliberate choice and the
+   less bad of two: the alternative is roughly 6px type, which is decorative
+   rather than readable, and a tagline nobody can read is worth less than the
+   clean mark. The emblem and the AIRWARM wordmark still carry the identity —
+   the Corporate Mark on its own is the everyday mark by the brand's own
+   rules — and the full statement is still there in the footer of the same
+   page, where the column is wide enough for it.
+
+   If the wording ever gets shorter, raise these breakpoints or delete this
+   block. Do NOT solve it by letting the line wrap.
+   ---------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  .aw-tagline { font-size: 0.4375rem; letter-spacing: 0.04em; }
+  .aw-tagline .aw-sep { padding: 0 0.3em; }
+}
+@media (max-width: 359px) {
+  .aw-tagline { display: none; }
+}
+
 /* Adding the emblem widened the identity, which pushed the last nav item onto
    a second line between roughly 1000px and 1400px. Tighten the nav gap and the
    emblem in that band rather than shrinking the type, which would hurt
-   legibility. Below the mobile breakpoint the nav collapses anyway. */
+   legibility. Below the mobile breakpoint the nav collapses anyway.
+
+   AUGUST 2026: the three-part tagline widened the identity by a further 122px,
+   and that broke this. The nav was being squashed 102px narrower than its own
+   contents, so "Contact" ran underneath the assessment button and disappeared.
+   Measured, not guessed — and it is why the two rules below now exist.
+   ------------------------------------------------------------------------- */
 @media (min-width: 901px) {
-  /* Keep the nav as one unit. If it does not fit beside the identity and the
-     call to action, the header wraps it onto its own row, which reads far
-     better than a single orphaned link dropping below the rest. No width
-     guesswork: the browser decides when it stops fitting. */
-  .aw-nav { flex: 1 1 auto; }
+  /* Let the header put the nav on its own row when it no longer fits beside
+     the identity and the button. This is what the nav was always supposed to
+     do; it could not, because the row was set to nowrap further up, so
+     instead the nav shrank and its links overflowed underneath the button.
+     A wrapped row is a visible layout, a squashed one is a broken one. */
+  .aw-header__inner { flex-wrap: wrap; }
+  /* min-width stops the nav shrinking below its own contents. Without it,
+     flexbox is free to squash the box while the links inside keep their
+     width, which is exactly the overlap described above — the nav has to
+     refuse to shrink before the row will agree to wrap. */
+  .aw-nav { flex: 1 1 auto; min-width: max-content; }
   .aw-nav__list {
     flex-wrap: nowrap;
     /* Left-aligned so that when the nav wraps onto its own row it lines up
@@ -1681,6 +1802,20 @@ footer .aw-wordmark__emblem { width: 34px; height: 34px; }
   }
   .aw-nav__list a { white-space: nowrap; }
   .aw-wordmark__emblem { width: 40px; height: 40px; }
+  /* When the row does wrap it is the button that drops, because it is last.
+     Keep it hard right on its own line so that reads as a deliberate second
+     row rather than something that fell off the first. Left-aligned it sits
+     directly under the wordmark and looks like a mistake. */
+  .aw-header__cta { margin-left: auto; }
+}
+
+/* Buy the row back on a wide screen. With the wider identity the nav needs
+   about 100px more than the 1200px content column leaves it, so without this
+   every desktop would carry a two-row header — including 1440px screens with
+   room to spare. The header, and only the header, gets a wider column when
+   the viewport can afford one. Content stays at 1200px everywhere. */
+@media (min-width: 1360px) {
+  .aw-header .aw-wrap { max-width: 1320px; }
 }
 
 /* An icon that introduces a heading belongs inside it. As a sibling it sat on

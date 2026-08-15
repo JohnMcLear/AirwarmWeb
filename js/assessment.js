@@ -22,8 +22,13 @@
       outcomes and their wording, but it does not say which answers lead to
       which outcome. Rather than hide an invented rule inside the code, every
       threshold is a named value in the one config object below, and every
-      one of them is listed as a question in TRIAGE_RULES_FOR_REVIEW.md in the
-      root of this repository.
+      one of them is listed as a question in TRIAGE_RULES_FOR_REVIEW.md.
+
+      That document is NOT in this repository — it was removed when the site
+      started serving from GitHub Pages, because it is an internal review
+      document and this repository is public. It lives in the Airwarm working
+      pack alongside HANDOVER.md. Part 13 covers the questions added with the
+      August 2026 form additions.
    ========================================================================== */
 
 /* ==========================================================================
@@ -50,7 +55,7 @@
    that service is a processor under UK GDPR and must be named in the privacy
    policy BEFORE the URL changes here.
    ========================================================================== */
-var ENQUIRY_ENDPOINT = "";
+var ENQUIRY_ENDPOINT = "https://script.google.com/macros/s/AKfycbwtF0cC5xgjLxxw5TvZn0yWYSCRLUGb6ApSHV87itDav2S0RZxQClnmRaCiDlkLEc8e/exec";
 
 /* ==========================================================================
    UNAPPROVED PLACEHOLDER LOGIC — requires Thomas Robinson's sign-off before
@@ -238,6 +243,91 @@ var AIRWARM_TRIAGE_CONFIG = {
     likely: "Likely suitable",
     potentially: "Potentially suitable",
     notCurrently: "Not currently suitable"
+  },
+
+  /* ---- Step 6: intake questions that deliberately do NOT score ---------
+     Added 13 Aug 2026 from Airwarm_Online_Assessment_Form_Additions.md.
+
+     Every one of these is asked because a person doing the desktop review
+     needs it, not because anyone has decided what it should do to the
+     outcome. The specification is explicit for two of them — the electrical
+     panel is a "screening signal, not a confirmed fact", the pipework is a
+     "named survey item, not a scored fact" — and silent on the other three.
+
+     So none of them appear in answerPoints above and none of them cap the
+     outcome. Giving them points would be inventing triage policy, which is
+     the one thing this file is built not to do. They travel to Airwarm in
+     the transcript and in the survey notes below, and a person decides what
+     they mean.
+
+     Listing them here is not decoration: two pieces of code read this list.
+     The "not sure" tally that explains a held-back result ignores them, so
+     that adding intake questions cannot quietly change anyone's result copy;
+     and the survey notes are built only from fields named here.
+
+     If Thomas ever decides one of these SHOULD score, it moves into
+     answerPoints and comes off this list. Both, or the two disagree. */
+  nonScoringIntakeFields: [
+    "epcStatus",
+    "insulationEvidence",
+    "cylinderLocation",
+    "consumerUnit",
+    "radiatorPipework"
+  ],
+
+  /* ---- Step 7: what the intake answers mean to the person reviewing ----
+     These notes go in the enquiry e-mail to Airwarm. They are NEVER shown to
+     the visitor: "trace via thermal imaging with heating running" is a job
+     instruction, not something a homeowner asked to read.
+
+     The pipework and electrical wording is quoted from the specification
+     rather than paraphrased, deliberately. Both exist to stop a photograph
+     being mistaken for a measurement, and a paraphrase is exactly how that
+     protection gets worn away one edit at a time. */
+  surveyNotes: {
+    consumerUnit: {
+      oldFuseBox: "Customer indicates A, an old fuse box — confirm fuse rating, " +
+        "spare capacity and condition on survey. Screening signal only, not a " +
+        "settled figure. An upgrade, or an additional consumer unit alongside " +
+        "the existing one, may be needed; the caveat shown with the question " +
+        "has already set that expectation.",
+      modernMcbRcd: "Customer indicates B, a modern consumer unit with MCBs and " +
+        "RCDs — confirm fuse rating, spare capacity and condition on survey. " +
+        "Screening signal only, not a settled figure.",
+      modernRcbo: "Customer indicates C, a modern consumer unit with RCBOs — " +
+        "confirm fuse rating, spare capacity and condition on survey. Screening " +
+        "signal only, not a settled figure.",
+      notSure: "Customer could not identify the electrical panel — establish " +
+        "type, fuse rating, spare capacity and condition on survey."
+    },
+    radiatorPipework: {
+      thin: "Customer indicates narrow pipework at the radiator they checked — " +
+        "trace via thermal imaging with heating running to confirm standard-bore " +
+        "distribution feeding reduced tails, versus microbore throughout. Where " +
+        "the run isn't traceable by thermal imaging (buried in screed, fully " +
+        "boxed in), this remains open pending further investigation.",
+      standard: "Customer indicates standard-bore tails at the radiator they " +
+        "checked. This identifies visible radiator tails only and is not " +
+        "confirmation of the distribution pipework — confirm on survey.",
+      notSure: "Customer could not see the radiator pipework clearly — establish " +
+        "pipe sizing on survey."
+    },
+    epcStatus: {
+      no: "No valid, in-date EPC. Boiler Upgrade Scheme grant funding requires " +
+        "one, and Airwarm does not arrange or broker EPCs — raise at first " +
+        "contact rather than partway through the review.",
+      dontKnow: "EPC status unknown — check the public register for the address " +
+        "before starting the desktop review.",
+      yes: "Customer reports a valid, in-date EPC — confirm against the public " +
+        "register."
+    },
+    insulationEvidence: {
+      paperwork: "Customer holds paperwork for insulation work — request copies. " +
+        "This is what turns an EPC assumption into a confirmed fact before the " +
+        "desktop review is written.",
+      believedNoPaperwork: "Insulation work believed done but unevidenced — " +
+        "treat as assumed rather than confirmed."
+    }
   }
 };
 /* ===================== END OF UNAPPROVED PLACEHOLDER LOGIC ============== */
@@ -459,6 +549,34 @@ var AIRWARM_TRIAGE_CONFIG = {
     return "AW-" + out;
   }
 
+  /* ---- Survey notes for the person doing the review -------------------
+     Turns the intake answers into the handling language the specification
+     asks for, for the enquiry e-mail only.
+
+     These are NOT shown to the visitor and must not be. They are written for
+     an engineer deciding what to check on site, and read as alarming or
+     baffling to a homeowner who has just been told their home looks
+     promising. The result panel is built in renderResult(); nothing here goes
+     near it.
+
+     Nothing is invented at this point either — every sentence comes from the
+     surveyNotes table in the config above. This function only decides which
+     ones apply. */
+  function buildSurveyNotes(answers) {
+    var table = AIRWARM_TRIAGE_CONFIG.surveyNotes;
+    var notes = [];
+
+    AIRWARM_TRIAGE_CONFIG.nonScoringIntakeFields.forEach(function (field) {
+      var given = answers[field];
+      if (!given || !table[field]) { return; }
+      if (Object.prototype.hasOwnProperty.call(table[field], given)) {
+        notes.push(table[field][given]);
+      }
+    });
+
+    return notes;
+  }
+
   /* ---- Applying the placeholder logic -------------------------------- */
   function assess(answers) {
     var cfg = AIRWARM_TRIAGE_CONFIG;
@@ -501,9 +619,17 @@ var AIRWARM_TRIAGE_CONFIG = {
     /* How many questions were answered "not sure". This does NOT affect the
        outcome. It is only used to explain the result honestly: someone who
        does not know much about their own house should be told that the answer
-       reflects missing information rather than a fault with their property. */
+       reflects missing information rather than a fault with their property.
+
+       Only the SCORED questions count. The intake questions added in August
+       2026 have "not sure" options of their own, and counting those would
+       mean someone who could not identify their fuse box got told that
+       missing information was holding their result back — when that answer
+       had no bearing on the result at all. The threshold in renderResult is
+       three, so two new fields alone could have flipped that message. */
     var notSureCount = 0;
     Object.keys(answers).forEach(function (field) {
+      if (cfg.nonScoringIntakeFields.indexOf(field) !== -1) { return; }
       if (answers[field] === "notSure") { notSureCount += 1; }
     });
 
@@ -767,7 +893,10 @@ var AIRWARM_TRIAGE_CONFIG = {
          machine values alongside it, because those are what any later
          re-scoring would need. */
       transcript: readTranscript(),
-      answers: answers
+      answers: answers,
+      /* What the intake answers mean for the survey. Internal handling
+         language — see buildSurveyNotes. The visitor never sees these. */
+      surveyNotes: buildSurveyNotes(answers)
     };
 
     var submitBtn = document.getElementById("aw-enquiry-submit");
