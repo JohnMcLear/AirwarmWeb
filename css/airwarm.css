@@ -1629,6 +1629,28 @@ details:focus-visible,
    wordmark, all seven navigation links and the assessment button fit on one
    line together. Below it, the tablet layout puts the navigation on its own
    full-width row, which is roomier. */
+/* Tablet landscape gets the same header order as desktop.
+
+   The base layout puts the button before the nav — right for a phone, where
+   the nav wraps underneath anyway. That ordering only flipped to
+   identity / nav / button at 1200px, so between roughly 1024 and 1199 the
+   button sat wedged between the wordmark and the nav. That was there before
+   the August 2026 work and was largely hidden by the nav wrapping; with five
+   nav items it fits on one row and the odd order became visible.
+
+   Below 1000px the wrapped layout stays: at 980px and down the nav genuinely
+   does not fit beside the identity and the button. There is a band of roughly
+   15px just under 1000 where it does fit and keeps the base order — visible
+   only if someone parks a window at exactly that width, and nothing overlaps
+   there, so it is not worth a third breakpoint. Measured at 901, 960, 980,
+   999, 1000, 1010, 1024 and 1280. */
+@media (min-width: 1000px) {
+  .aw-header__inner { flex-wrap: nowrap; gap: var(--airwarm-space-xs); }
+  .aw-wordmark { flex: 0 0 auto; }
+  .aw-nav { flex: 1 1 auto; min-width: 0; order: 2; margin-left: auto; }
+  .aw-header__cta { order: 3; margin-left: var(--airwarm-space-sm); flex: 0 0 auto; }
+}
+
 @media (min-width: 1200px) {
   /* On desktop the whole header fits on one line, so it can be sticky
      without getting in the way. */
@@ -1781,23 +1803,20 @@ footer .aw-wordmark__emblem { width: 34px; height: 34px; }
    emblem in that band rather than shrinking the type, which would hurt
    legibility. Below the mobile breakpoint the nav collapses anyway.
 
-   AUGUST 2026: the three-part tagline widened the identity by a further 122px,
-   and that broke this. The nav was being squashed 102px narrower than its own
-   contents, so "Contact" ran underneath the assessment button and disappeared.
-   Measured, not guessed — and it is why the two rules below now exist.
+   AUGUST 2026: the three-part tagline widened the identity by 122px and broke
+   this, so the nav was allowed to wrap onto its own row. Dropping "Heat pumps"
+   and "Home Energy Assessment" from the nav then made that unnecessary — five
+   items and the button fit beside the identity at every width from 901px up.
+   The wrapping rules have been removed rather than left lying around.
    ------------------------------------------------------------------------- */
 @media (min-width: 901px) {
-  /* Let the header put the nav on its own row when it no longer fits beside
-     the identity and the button. This is what the nav was always supposed to
-     do; it could not, because the row was set to nowrap further up, so
-     instead the nav shrank and its links overflowed underneath the button.
-     A wrapped row is a visible layout, a squashed one is a broken one. */
-  .aw-header__inner { flex-wrap: wrap; }
-  /* min-width stops the nav shrinking below its own contents. Without it,
-     flexbox is free to squash the box while the links inside keep their
-     width, which is exactly the overlap described above — the nav has to
-     refuse to shrink before the row will agree to wrap. */
-  .aw-nav { flex: 1 1 auto; min-width: max-content; }
+  /* The nav takes the space left between the identity and the button. It no
+     longer needs to be allowed to wrap onto its own row: that was necessary
+     in August 2026 when the nav carried seven items and the three-part
+     tagline had just widened the identity, and it caused the button to sit
+     between the wordmark and the nav at around 1024px. With five items it
+     fits on one row at every width from 901px up, measured. */
+  .aw-nav { flex: 1 1 auto; }
   .aw-nav__list {
     flex-wrap: nowrap;
     /* Left-aligned so that when the nav wraps onto its own row it lines up
@@ -1807,21 +1826,8 @@ footer .aw-wordmark__emblem { width: 34px; height: 34px; }
   }
   .aw-nav__list a { white-space: nowrap; }
   .aw-wordmark__emblem { width: 40px; height: 40px; }
-  /* When the row does wrap it is the button that drops, because it is last.
-     Keep it hard right on its own line so that reads as a deliberate second
-     row rather than something that fell off the first. Left-aligned it sits
-     directly under the wordmark and looks like a mistake. */
-  .aw-header__cta { margin-left: auto; }
 }
 
-/* Buy the row back on a wide screen. With the wider identity the nav needs
-   about 100px more than the 1200px content column leaves it, so without this
-   every desktop would carry a two-row header — including 1440px screens with
-   room to spare. The header, and only the header, gets a wider column when
-   the viewport can afford one. Content stays at 1200px everywhere. */
-@media (min-width: 1360px) {
-  .aw-header .aw-wrap { max-width: 1320px; }
-}
 
 /* An icon that introduces a heading belongs inside it. As a sibling it sat on
    its own line, because the heading is block level. Inside the heading it runs
