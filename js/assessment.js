@@ -651,31 +651,35 @@ var AIRWARM_TRIAGE_CONFIG = {
     likely: {
       className: "aw-outcome--likely",
       heading: "Your home shows several positive indicators",
-      body: "Your answers show several positive indicators. A short review " +
-        "call is worthwhile so Airwarm can confirm the main details and " +
-        "decide whether a full survey is the right next step.",
-      next: "Send us an e-mail and mention that you have completed the " +
-        "assessment. We will arrange a short call to go through the details."
+      body: "Your answers show several positive indicators: the fabric, the " +
+        "emitters and the space for the equipment all look workable on the " +
+        "information you have given us.",
+      next: "If you would like us to look properly, send us your details " +
+        "below. We will review your property alongside your answers and come " +
+        "back to you with what we have found and whether a survey is worth " +
+        "doing. You decide whether to go further."
     },
     potentially: {
       className: "aw-outcome--potentially",
       heading: "Your home may well be suitable, with a few things to check",
-      body: "Your property may be suitable, but one or two details need " +
-        "clarification. This is common. Airwarm will explain what matters " +
-        "and what may need improving before a survey.",
-      next: "Send us an e-mail describing your property. We will tell you " +
-        "which details would need checking and what order to tackle them in."
+      body: "Your property may well be suitable, but one or two details need " +
+        "clarification. This is the most common outcome and it is not a " +
+        "problem.",
+      next: "Send us your details below and we will review the property " +
+        "alongside your answers. You will get a written explanation of what " +
+        "would need checking and in what order, and you decide what to do " +
+        "with it."
     },
     notCurrently: {
       className: "aw-outcome--not-currently",
       heading: "A heat pump may not be the best next step for your home today",
-      body: "A heat pump may not be the best next step today based on the " +
-        "information provided. This is not necessarily a permanent " +
-        "rejection. Airwarm will explain the main constraints and suggest " +
-        "practical improvements or alternatives.",
-      next: "This is worth a conversation rather than a dead end. E-mail us " +
-        "with a short description of your property and we will tell you " +
-        "honestly what would need to change, and whether it is worth doing."
+      body: "On the information provided, a heat pump may not be the best " +
+        "next step today. That is not necessarily permanent, and it is not a " +
+        "reason to stop reading.",
+      next: "Send us your details below if you would like us to look more " +
+        "closely. We will tell you honestly what would need to change, in " +
+        "what order, and whether it is worth doing. There is no survey to " +
+        "book and nothing to sign."
     }
   };
 
@@ -941,15 +945,17 @@ var AIRWARM_TRIAGE_CONFIG = {
     sent.className = "aw-enquiry-sent";
     sent.setAttribute("role", "status");
     sent.setAttribute("tabindex", "-1");
-    sent.innerHTML = "<h4>Thank you</h4>" +
-      "<p>Your assessment has been sent to Airwarm. We will review the " +
-      "information you have provided before contacting you to discuss the " +
-      "next steps.</p>" +
+    sent.innerHTML = "<h4>Thank you &mdash; we will take it from here</h4>" +
+      "<p>Your assessment is with us. We will review your property alongside " +
+      "the answers you have given, and send you a written explanation of " +
+      "what we have found and whether a survey is worth doing. There is " +
+      "nothing else you need to do for now, and no call to sit through " +
+      "&mdash; you decide what happens next.</p>" +
       /* The reference is shown so someone can quote it if they ring before
          we have replied. It is a label for a conversation, not a lookup
          key — nothing is stored against it. */
       '<p class="aw-small">Your reference is <strong>' + reference +
-      "</strong>. Quote it if you call before we get back to you.</p>" +
+      "</strong>. Quote it if you contact us before we get back to you.</p>" +
       '<p class="aw-small">Preparing for our April 2027 launch, so this is ' +
       "about reserving your place rather than booking an installation. If " +
       "you need us sooner, call <a href=\"tel:+441274947197\">01274 947 197</a>.</p>";

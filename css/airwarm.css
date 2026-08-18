@@ -934,10 +934,15 @@ select { appearance: none; background-image: none; }
   border: 1px solid var(--airwarm-navy-line);
   border-radius: var(--airwarm-radius-sm);
 }
+/* 24px, not 22. WCAG 2.2 AA (2.5.8 Target Size) sets 24 by 24 CSS pixels as
+   the minimum, and this is the one control in the whole journey that a
+   submission cannot proceed without. The label beside it is clickable too, so
+   the real target is larger — but the box itself should clear the bar on its
+   own rather than relying on that. */
 .aw-consent input {
   margin: 2px 0 0 0;
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   flex: 0 0 auto;
 }
 .aw-consent label {

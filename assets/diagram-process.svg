@@ -29,7 +29,8 @@
 
   <title id="pr-title">The eight steps, from first enquiry to ongoing servicing</title>
   <desc id="pr-desc">Eight numbered steps in order. One, the Home Energy Assessment. Two,
-    Airwarm reviews your answers. Three, a short suitability call.
+    Airwarm reviews your property and your answers. Three, you receive that
+    review in writing and decide whether to continue.
     Four, a detailed home survey where it is justified. Five, design
     and a clear proposal. Six, a planned installation. Seven,
     commissioning and handover. Eight, ongoing servicing and support.</desc>
@@ -163,15 +164,15 @@
   <circle class="d-fill-navy" cx="196" cy="66" r="14"/>
   <text class="d-num" x="196" y="71" text-anchor="middle">2</text>
   <text class="d-label" x="242" y="118" text-anchor="middle">We review</text>
-  <text class="d-label" x="242" y="142" text-anchor="middle">your answers</text>
+  <text class="d-label" x="242" y="142" text-anchor="middle">your property</text>
 
   <path class="d-line d-line--thin d-quiet" d="M316 98 L323 105 L316 112"/>
 
   <rect class="d-box" x="324" y="40" width="140" height="130" rx="8"/>
   <circle class="d-fill-navy" cx="348" cy="66" r="14"/>
   <text class="d-num" x="348" y="71" text-anchor="middle">3</text>
-  <text class="d-label" x="394" y="118" text-anchor="middle">Suitability</text>
-  <text class="d-label" x="394" y="142" text-anchor="middle">call</text>
+  <text class="d-label" x="394" y="118" text-anchor="middle">You</text>
+  <text class="d-label" x="394" y="142" text-anchor="middle">decide</text>
 
   <path class="d-line d-line--thin d-quiet" d="M468 98 L475 105 L468 112"/>
 
