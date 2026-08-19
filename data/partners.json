@@ -1,0 +1,74 @@
+{
+  "_readme": [
+    "SINGLE SOURCE OF TRUTH for Airwarm's current delivery partners.",
+    "",
+    "Airwarm owns the customer journey, the assessment, the Desktop Review, the",
+    "calculations and the brand. Partners deliver parts of a project and are",
+    "expected to change. Airwarm must never become structurally dependent on one.",
+    "",
+    "THIS SITE IS STATIC HTML WITH NO BUILD STEP, so nothing reads this file at",
+    "runtime. It is the register, not a template engine. What makes a partner",
+    "removable is that every mention in the HTML is tagged with an HTML comment:",
+    "",
+    "    <!-- PARTNER: solar-capture -->",
+    "",
+    "so `grep -rn 'PARTNER:' --include=*.html .` returns the complete list in one",
+    "command. Keep that true. If you add a mention, tag it. If you remove a",
+    "partner, grep, delete every tagged block, and set status to 'former' here.",
+    "",
+    "RULES",
+    "  - Do not put a partner in the navigation, the homepage hero or the footer.",
+    "  - Do not make routes, assessment logic, scoring or page structure depend",
+    "    on a partner. Nothing in js/assessment.js references one, and nothing",
+    "    should.",
+    "  - Do not copy partner marketing claims. State the relationship only.",
+    "  - Do not send anyone's details to a partner without the customer asking.",
+    "  - Partner logos are not required and must not compete with Airwarm's.",
+    "",
+    "REPLACEMENT TEST: a developer should be able to swap Solar Capture for",
+    "Airwarm's own solar work, or the Ample umbrella for Airwarm's own MCS",
+    "certification, by editing the tagged blocks and this file. Nothing else."
+  ],
+  "partners": [
+    {
+      "id": "solar-capture",
+      "name": "Solar Capture Ltd",
+      "role": "Solar PV and battery storage installation",
+      "url": "https://solarcaptureltd.co.uk",
+      "status": "current",
+      "description": "West Yorkshire solar and battery installer. Where a customer wants new solar PV or battery storage, Solar Capture carries out that survey, design, quotation and installation as a separate part of the project.",
+      "relationship": "Delivery partner. Not part of AIRWARM LTD. Airwarm does not install solar itself.",
+      "appearsOn": [
+        "advice/solar-and-battery/index.html"
+      ],
+      "notes": [
+        "Official domain is solarcaptureltd.co.uk — NOT solarcapture.co.uk.",
+        "Referrals are customer-initiated only. No automatic data transfer exists,",
+        "and the privacy notice says so. If that ever changes, the privacy notice",
+        "must change first."
+      ]
+    },
+    {
+      "id": "ample",
+      "name": "Ample",
+      "role": "MCS umbrella and compliance framework for launch",
+      "url": "https://www.backedbyample.com/",
+      "status": "current",
+      "description": "Trading name of Fornax Energy Ltd. Airwarm plans to deliver qualifying installations through Ample's MCS umbrella rather than holding its own MCS certification at launch.",
+      "relationship": "Compliance framework provider. Airwarm carries out the survey, design and installation within that framework.",
+      "appearsOn": [
+        "about/index.html",
+        "advice/grants-and-funding/index.html",
+        "how-it-works/index.html"
+      ],
+      "notes": [
+        "NEVER write 'Airwarm is MCS certified'. Airwarm is not independently",
+        "certified and must not be described as such.",
+        "Only claim responsibilities verified by the actual agreement. The exact",
+        "contractual division is NOT in this repository, so the site wording is",
+        "deliberately cautious and says responsibilities are confirmed before a",
+        "customer commits. Tighten it only against the signed agreement."
+      ]
+    }
+  ]
+}
