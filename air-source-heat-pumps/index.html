@@ -332,10 +332,23 @@
             In roughly this order of importance. None of them is exotic, and all
             of them are checkable.
           </p>
-          <div class="aw-card-grid" style="margin-top:24px">
-            <div class="aw-card">
-              <h3 class="aw-card__title"><svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-home"></use></svg> 1. Building fabric</h3>
-              <p>
+          <!-- OPTIONAL, NOT COMPULSORY. These were six cards of 60-70 words each,
+               which on a phone is six full-height blocks a reader must scroll
+               past to reach anything else — and most readers only want one or
+               two of them.
+
+               As disclosures, the six factors read as a scannable list and open
+               only if you want them. Nothing is hidden from search engines:
+               <details> content is in the DOM and crawlable, and every canonical
+               Advice link inside is unchanged.
+
+               Do not turn these back into cards. If a seventh factor appears,
+               ask first whether it is really a factor or a sub-point of one. -->
+          <div class="aw-faq" style="margin-top:24px">
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">Building fabric</summary>
+              <div class="aw-faq__answer">
+<p>
                 How much heat the house loses sets everything else: the size of
                 the heat pump, the size of the radiators and the running cost.
                 Loft insulation, wall construction, draughts and glazing all
@@ -346,10 +359,12 @@
               <p class="aw-small">
                 <a href="../advice/heat-loss-explained/">How a heat loss calculation works</a>
               </p>
-            </div>
-            <div class="aw-card">
-              <h3 class="aw-card__title"><svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-radiator"></use></svg> 2. Radiators or underfloor heating</h3>
-              <p>
+              </div>
+            </details>
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">Radiators or underfloor heating</summary>
+              <div class="aw-faq__answer">
+<p>
                 Emitters sized for a boiler are often too small for lower flow
                 temperatures. Some rooms may need a larger radiator; others may
                 be fine as they are. This is measured room by room, not
@@ -359,10 +374,12 @@
               <p class="aw-small">
                 <a href="../advice/radiators-and-emitters/">Will I need new radiators?</a>
               </p>
-            </div>
-            <div class="aw-card">
-              <h3 class="aw-card__title"><svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-cylinder"></use></svg> 3. Hot water</h3>
-              <p>
+              </div>
+            </details>
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">Hot water</summary>
+              <div class="aw-faq__answer">
+<p>
                 Heat pumps heat hot water into a cylinder rather than on demand
                 like a combination boiler. That needs somewhere sensible to put
                 a well-insulated cylinder, and enough capacity for how your
@@ -372,10 +389,12 @@
               <p class="aw-small">
                 <a href="../advice/hot-water-and-cylinders/">Hot water and cylinders</a>
               </p>
-            </div>
-            <div class="aw-card">
-              <h3 class="aw-card__title"><svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-outdoor-unit"></use></svg> 4. The outdoor unit</h3>
-              <p>
+              </div>
+            </details>
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">The outdoor unit</summary>
+              <div class="aw-faq__answer">
+<p>
                 The unit needs a position with free air flow, sensible pipe and
                 condensate routes, tolerable noise for you and your neighbours,
                 and safe access for servicing. Terraces with no rear access,
@@ -385,10 +404,12 @@
               <p class="aw-small">
                 <a href="../heat-pump-survey/#siting">How siting is assessed</a>
               </p>
-            </div>
-            <div class="aw-card">
-              <h3 class="aw-card__title"><svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-controls"></use></svg> 5. Controls and how you live</h3>
-              <p>
+              </div>
+            </details>
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">Controls and how you live</summary>
+              <div class="aw-faq__answer">
+<p>
                 Heat pumps prefer steady, gentle running to short blasts.
                 Weather compensation, sensible setback and a system that has
                 been balanced make a real difference. So does knowing how the
@@ -398,10 +419,12 @@
               <p class="aw-small">
                 <a href="../advice/weather-compensation/">What weather compensation does</a>
               </p>
-            </div>
-            <div class="aw-card">
-              <h3 class="aw-card__title"><svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-install"></use></svg> And the electrical supply</h3>
-              <p>
+              </div>
+            </details>
+            <details class="aw-faq__item">
+              <summary class="aw-faq__question">And the electrical supply</summary>
+              <div class="aw-faq__answer">
+<p>
                 A heat pump is a substantial electrical load, so the incoming
                 supply, main fuse and consumer unit are all checked at survey.
                 Electrical work is carried out by appropriately qualified regional electrical
@@ -409,7 +432,8 @@
                 and where the network operator needs to be involved Airwarm will
                 say so early.
               </p>
-            </div>
+              </div>
+            </details>
           </div>
         </div>
       </section>
@@ -433,59 +457,30 @@
             </figcaption>
           </figure>
 
-          <div class="aw-card-grid" style="margin-top:40px">
-            <div class="aw-card">
-              <h3 class="aw-card__title"><svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-outdoor-unit"></use></svg> The outdoor unit</h3>
-              <p>
-                Sized from the heat loss calculation, positioned for air flow,
+          <!-- A LIST, NOT SIX CARDS. These are 25-word definitions and the diagram
+               above already carries the picture; six bordered boxes stacked into
+               six full-height blocks on a phone for no gain. Same words, same
+               order, a fraction of the scroll. -->
+          <ul class="aw-ticks aw-measure" style="margin-top:24px">
+              <li><strong>The outdoor unit.</strong> Sized from the heat loss calculation, positioned for air flow,
                 noise and service access, mounted clear of the ground with a
-                route for condensate to drain safely.
-              </p>
-            </div>
-            <div class="aw-card">
-              <h3 class="aw-card__title"><svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-cylinder"></use></svg> The cylinder</h3>
-              <p>
-                Sized for your household&rsquo;s actual hot water pattern, with
+                route for condensate to drain safely.</li>
+              <li><strong>The cylinder.</strong> Sized for your household&rsquo;s actual hot water pattern, with
                 a coil large enough for a heat pump rather than a boiler, and
-                placed where the pipe runs are short and serviceable.
-              </p>
-            </div>
-            <div class="aw-card">
-              <h3 class="aw-card__title"><svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-radiator"></use></svg> The emitters</h3>
-              <p>
-                Radiators or underfloor circuits checked room by room against
+                placed where the pipe runs are short and serviceable.</li>
+              <li><strong>The emitters.</strong> Radiators or underfloor circuits checked room by room against
                 the design flow temperature. Some are already adequate; some
-                need to be larger.
-              </p>
-            </div>
-            <div class="aw-card">
-              <h3 class="aw-card__title"><svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-controls"></use></svg> The controls</h3>
-              <p>
-                Weather compensation set from the heat loss calculation,
+                need to be larger.</li>
+              <li><strong>The controls.</strong> Weather compensation set from the heat loss calculation,
                 configured at commissioning and refined during the first
-                season &mdash; not left on factory defaults.
-              </p>
-            </div>
-            <div class="aw-card">
-              <h3 class="aw-card__title"><svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-install"></use></svg> The hydraulics</h3>
-              <p>
-                Pipe sizes, flow rates and balancing. Unglamorous, invisible,
+                season &mdash; not left on factory defaults.</li>
+              <li><strong>The hydraulics.</strong> Pipe sizes, flow rates and balancing. Unglamorous, invisible,
                 and one of the commonest reasons a system that looks right on
-                paper disappoints in the house.
-              </p>
-            </div>
-            <div class="aw-card">
-              <h3 class="aw-card__title"><svg class="aw-icon" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#icon-solar"></use></svg> And sometimes solar</h3>
-              <p>
-                Solar will contribute, mostly outside the heating season and
+                paper disappoints in the house.</li>
+              <li><strong>And sometimes solar.</strong> Solar will contribute, mostly outside the heating season and
                 mostly to hot water. If you are considering both, it is worth
-                planning them together.
-              </p>
-              <p class="aw-small">
-                <a href="../advice/solar-and-battery/">Solar and battery integration</a>
-              </p>
-            </div>
-          </div>
+                planning them together.</li>
+          </ul>
         </div>
       </section>
 
@@ -588,16 +583,7 @@
             <details class="aw-faq__item">
               <summary class="aw-faq__question">Will a heat pump work in my house?</summary>
               <div class="aw-faq__answer">
-                <p>
-                  Most homes can be heated well by a heat pump, but not every
-                  home today and not every home without changes. It depends on
-                  how much heat your house loses, whether the radiators can
-                  deliver that heat at a lower water temperature, whether there
-                  is a sensible position for the outdoor unit and room for a hot
-                  water cylinder, and whether the electrical supply is adequate.
-                  The Home Energy Assessment is a short first check, and a
-                  survey gives the real answer.
-                </p>
+                <p>Most homes can be heated well by a heat pump, though not every home today and not every home without changes. <a href="../advice/is-my-home-suitable/">What actually decides it</a>.</p>
               </div>
             </details>
 
@@ -700,17 +686,25 @@
               </div>
             </details>
 
+            <details class="aw-faq__item" id="faq-listed">
+              <summary class="aw-faq__question">My property is listed or in a conservation area. What changes?</summary>
+              <div class="aw-faq__answer">
+                <p>
+                  Permitted development rights are restricted or removed, so
+                  consent is likely to be needed for anything visible externally.
+                  That does not automatically make a heat pump impossible, but it
+                  makes early engagement with the local authority&rsquo;s
+                  conservation team important, and it can mean the outdoor unit
+                  position is the deciding factor. Internal work such as emitters
+                  and a cylinder is usually less constrained.
+                </p>
+              </div>
+            </details>
+
             <details class="aw-faq__item">
               <summary class="aw-faq__question">How much does a heat pump installation cost?</summary>
               <div class="aw-faq__answer">
-                <p>
-                  Airwarm is not publishing prices ahead of its trading launch,
-                  and a figure quoted without a survey would be a guess. What
-                  determines the cost is the size of the system, how many
-                  emitters need changing, the cylinder and its position, the
-                  pipework and electrical work required, and access. The
-                  proposal sets all of it out itemised.
-                </p>
+                <p>It depends on the property, the design and what the survey finds, so we do not publish a headline figure. <a href="../heat-pump-installation/#faq-cost">What actually drives the cost</a>.</p>
               </div>
             </details>
 
