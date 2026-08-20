@@ -6,7 +6,7 @@
 
   IMPORTANT, and set by the Airwarm pack: green is used for the positive
   outcome only. The other two use blue and mid grey. There is no red anywhere,
-  and "not currently suitable" is never presented as a rejection: it always
+  and "unlikely to be suitable" is never presented as a rejection: it always
   comes with an explanation and a next step.
 
   Each outcome carries a shape as well as a colour (a tick, a question mark, a
@@ -34,9 +34,8 @@
   <title id="ao-title">The three possible outcomes of the assessment</title>
   <desc id="ao-desc">Three calm outcome cards side by side. The first, likely suitable, is
     marked in green with a tick: the next step is a home survey. The
-    second, potentially suitable, is marked in blue with a question
-    mark: there are a few things to look at first. The third, not
-    currently suitable, is marked in mid grey with a level dash: it
+    second, may be suitable, is marked in blue with a question
+    mark: there are a few things to look at first. The third, unlikely to be suitable, is marked in mid grey with a level dash: it
     comes with an explanation of what would need to change. None of
     the three is a refusal.</desc>
 
@@ -175,17 +174,17 @@
   <text class="d-sub"   x="112" y="240" text-anchor="middle">the next step is</text>
   <text class="d-sub"   x="112" y="258" text-anchor="middle">a home survey</text>
 
-  <!-- ======================= 2. POTENTIALLY SUITABLE (blue) ============= -->
+  <!-- ======================= 2. MAY BE SUITABLE (blue) ============= -->
   <rect class="d-box" x="227" y="60" width="185" height="220" rx="10"/>
   <rect class="d-accent-maybe" x="239" y="57" width="161" height="6" rx="3"/>
   <circle class="d-disc-maybe" cx="319" cy="118" r="24"/>
   <text class="d-glyph-text" x="319" y="128" text-anchor="middle">?</text>
-  <text class="d-label" x="319" y="188" text-anchor="middle">Potentially</text>
+  <text class="d-label" x="319" y="188" text-anchor="middle">May be</text>
   <text class="d-label" x="319" y="212" text-anchor="middle">suitable</text>
   <text class="d-sub"   x="319" y="240" text-anchor="middle">a few things to</text>
   <text class="d-sub"   x="319" y="258" text-anchor="middle">look at first</text>
 
-  <!-- ======================= 3. NOT CURRENTLY SUITABLE (mid grey) =======
+  <!-- ======================= 3. UNLIKELY TO BE SUITABLE (mid grey) =======
        A level dash, not a cross. This outcome is an explanation, never a
        refusal, so it is never drawn in red and never drawn as a rejection.
        =================================================================== -->
@@ -193,7 +192,7 @@
   <rect class="d-accent-notyet" x="446" y="57" width="161" height="6" rx="3"/>
   <circle class="d-disc-notyet" cx="526" cy="118" r="24"/>
   <path class="d-glyph" d="M514 118 H538"/>
-  <text class="d-label" x="526" y="188" text-anchor="middle">Not currently</text>
+  <text class="d-label" x="526" y="188" text-anchor="middle">Unlikely to be</text>
   <text class="d-label" x="526" y="212" text-anchor="middle">suitable</text>
   <text class="d-sub"   x="526" y="240" text-anchor="middle">we explain what</text>
   <text class="d-sub"   x="526" y="258" text-anchor="middle">would change that</text>

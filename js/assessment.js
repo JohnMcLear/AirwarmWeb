@@ -165,8 +165,8 @@ var AIRWARM_TRIAGE_CONFIG = {
 
   /* ---- Step 2: the two score thresholds -------------------------------
      A total at or above likelySuitableMinimumScore gives "Likely suitable".
-     A total at or above potentiallySuitableMinimumScore gives "Potentially
-     suitable". Anything below that gives "Not currently suitable".
+     A total at or above potentiallySuitableMinimumScore gives "May be
+     suitable". Anything below that gives "Unlikely to be suitable".
      For reference, the maximum achievable total is about 26. */
   outcomeThresholds: {
     likelySuitableMinimumScore: 17,
@@ -176,7 +176,7 @@ var AIRWARM_TRIAGE_CONFIG = {
   /* ---- Step 3: answers that stop a "Likely suitable" outcome ----------
      These are the practical obstacles listed in the Airwarm operating
      manual as common reasons a property is not currently a good candidate.
-     Each one caps the result at "Potentially suitable" or lower, whatever
+     Each one caps the result at "May be suitable" or lower, whatever
      the score, and each one produces a named explanation for the visitor so
      they always know WHY. Nothing here produces a blunt rejection. */
   constraintsThatCapTheOutcome: [
@@ -240,9 +240,17 @@ var AIRWARM_TRIAGE_CONFIG = {
   /* ---- Step 5: wording of the outcome labels --------------------------
      These three labels are fixed by the Airwarm pack. Do not reword them. */
   outcomeLabels: {
+    /* Customer-facing wording, confirmed by Thomas Robinson 20 Aug 2026.
+       The two replaced labels read like scoring categories; these read like
+       something a person would say. The CSS
+       uppercases them, so keep sentence case here.
+
+       "Unlikely to be suitable" is deliberately not "Not suitable". This is a
+       questionnaire, not a heat-loss survey, and it must not present itself as
+       a final engineering judgement on somebody's house. */
     likely: "Likely suitable",
-    potentially: "Potentially suitable",
-    notCurrently: "Not currently suitable"
+    potentially: "May be suitable",
+    notCurrently: "Unlikely to be suitable"
   },
 
   /* ---- Step 6: intake questions that deliberately do NOT score ---------
@@ -644,42 +652,61 @@ var AIRWARM_TRIAGE_CONFIG = {
 
   /* ---- The outcome copy ---------------------------------------------
      This wording comes from website/06_Home_Energy_Assessment/Result_Copy.md
-     and is approved. The "not currently suitable" version deliberately is
+     and is approved. The least-positive version deliberately is
      not a rejection screen: it explains the constraint and gives a route
      forward. Do not turn it into one. */
   var OUTCOME_COPY = {
     likely: {
       className: "aw-outcome--likely",
       heading: "Your home shows several positive indicators",
-      body: "Your answers show several positive indicators: the fabric, the " +
-        "emitters and the space for the equipment all look workable on the " +
-        "information you have given us.",
-      next: "If you would like us to look properly, send us your details " +
-        "below. We will review your property alongside your answers and come " +
-        "back to you with what we have found and whether a survey is worth " +
-        "doing. You decide whether to go further."
+      body: "Based on your answers, there are no obvious reasons at this " +
+        "stage why a heat pump would not be worth investigating further."
     },
     potentially: {
       className: "aw-outcome--potentially",
-      heading: "Your home may well be suitable, with a few things to check",
-      body: "Your property may well be suitable, but one or two details need " +
-        "clarification. This is the most common outcome and it is not a " +
-        "problem.",
-      next: "Send us your details below and we will review the property " +
-        "alongside your answers. You will get a written explanation of what " +
-        "would need checking and in what order, and you decide what to do " +
-        "with it."
+      heading: "There are a few things we would want to understand better",
+      body: "Some of your answers suggest a heat pump could work, but there " +
+        "are points we would want to look at more closely before " +
+        "recommending a survey."
     },
     notCurrently: {
       className: "aw-outcome--not-currently",
-      heading: "A heat pump may not be the best next step for your home today",
-      body: "On the information provided, a heat pump may not be the best " +
-        "next step today. That is not necessarily permanent, and it is not a " +
-        "reason to stop reading.",
-      next: "Send us your details below if you would like us to look more " +
-        "closely. We will tell you honestly what would need to change, in " +
-        "what order, and whether it is worth doing. There is no survey to " +
-        "book and nothing to sign."
+      heading: "Your answers have highlighted some issues",
+      body: "Based on the information you have given us, there are currently " +
+        "some significant barriers to a heat pump installation. That does " +
+        "not necessarily mean it cannot be done, but we would not recommend " +
+        "moving straight to a heat-loss survey without looking at those " +
+        "issues first."
+    }
+  };
+
+  /* The invitation that sits directly above the form. It is the only thing
+     that changes between routes: same journey, same form, same button.
+
+     The third one asks a different question on purpose. Somebody who has just
+     been told their home has barriers is deciding whether to give up, not
+     whether to press on, so the offer has to meet them there. */
+  var NEXT_STEP = {
+    likely: {
+      heading: "Want us to take a closer look?",
+      body: "Send us your details below and we will review your property " +
+        "alongside your answers and available public property information. " +
+        "We will come back to you with what we have found and whether we " +
+        "think a heat-loss survey is worthwhile."
+    },
+    potentially: {
+      heading: "Want us to take a closer look?",
+      body: "Send us your details below and we will review your property " +
+        "alongside your answers and available public property information. " +
+        "We will come back to you with what we have found and whether we " +
+        "think a heat-loss survey is worthwhile."
+    },
+    notCurrently: {
+      heading: "Want us to check before you rule it out?",
+      body: "Send us your details below and we will review your property " +
+        "alongside your answers and the issues the assessment has " +
+        "highlighted. We will tell you whether we think there is a realistic " +
+        "route forward before you arrange a survey."
     }
   };
 
@@ -717,19 +744,19 @@ var AIRWARM_TRIAGE_CONFIG = {
       autocomplete: "email", required: true },
     { id: "enqPhone", label: "Telephone number", type: "tel",
       autocomplete: "tel", required: true,
-      hint: "So we can talk it through if that is quicker than writing." }
+      hint: "For arranging a survey, or if we need to clarify something later." }
   ];
 
-  function buildEnquiryForm() {
+  function buildEnquiryForm(outcome) {
     var html = "";
+    /* The invitation changes with the route; everything below it does not.
+       Same form, same button, same journey — see NEXT_STEP. */
+    var step = NEXT_STEP[outcome] || NEXT_STEP.potentially;
 
     html += '<div class="aw-enquiry">';
-    html += '<h4 id="aw-enquiry-heading">Would you like Airwarm to carry out a ' +
-      "more detailed desktop review before arranging a survey?</h4>";
-    html += "<p>If you send us your details, a person will check the public " +
-      "energy performance record for your address, read it alongside your " +
-      "answers, and come back to you. It is not automatic and it is not a " +
-      "sales sequence &mdash; it is one considered reply.</p>";
+    html += '<h4 id="aw-enquiry-heading">' + step.heading + "</h4>";
+    html += "<p>" + step.body + "</p>";
+    html += '<p><strong>You decide whether to go any further.</strong></p>';
 
     html += '<form id="aw-enquiry-form" novalidate aria-labelledby="aw-enquiry-heading">';
 
@@ -758,20 +785,11 @@ var AIRWARM_TRIAGE_CONFIG = {
 
     html += "</fieldset>";
 
-    /* Preferred contact method. Optional by design: making it required would
-       force a choice on someone who genuinely does not mind, and the honest
-       default is that either is fine. */
-    html += '<div class="aw-field">';
-    html += '<label for="enqPreferred">Preferred way to be contacted</label>';
-    html += '<span class="aw-field__hint" id="enqPreferred-hint">Optional. ' +
-      "We will use whichever you pick; leave it as it is if you do not " +
-      "mind.</span>";
-    html += '<select id="enqPreferred" name="enqPreferred" aria-describedby="enqPreferred-hint">';
-    html += '<option value="noPreference">No preference</option>';
-    html += '<option value="email">E-mail</option>';
-    html += '<option value="telephone">Telephone</option>';
-    html += "</select>";
-    html += "</div>";
+    /* PREFERRED CONTACT METHOD REMOVED, 20 Aug 2026. It asked the customer to
+       choose between e-mail and a telephone call at the exact point in the
+       journey where neither is a stage any more: the answer comes back as a
+       written review. The payload still carries preferredContact so the
+       endpoint and the e-mail template keep working — see submitEnquiry. */
 
     /* ---- Spam protection ------------------------------------------------
        A honeypot: a field a person never sees and never fills, which bots
@@ -797,10 +815,11 @@ var AIRWARM_TRIAGE_CONFIG = {
        stated right here rather than only in the policy. */
     html += '<div class="aw-consent">';
     html += '<input type="checkbox" id="enqConsent" name="enqConsent">';
-    html += '<label for="enqConsent">Airwarm may hold these details and look ' +
-      "up the public energy performance record for this address, in order to " +
-      "reply to me about a heat pump. I can withdraw this at any time by " +
-      "e-mailing <strong>hello@airwarm.co.uk</strong>.</label>";
+    html += '<label for="enqConsent">Airwarm may hold these details and my ' +
+      "assessment answers, look up available public property information for " +
+      "this address, and use them to review my property and reply to me. I " +
+      "can withdraw this at any time by e-mailing " +
+      "<strong>hello@airwarm.co.uk</strong>.</label>";
     html += "</div>";
 
     html += '<p class="aw-small">We keep enquiries for 12 months from our ' +
@@ -887,7 +906,12 @@ var AIRWARM_TRIAGE_CONFIG = {
       postcode: document.getElementById("enqPostcode").value.trim(),
       email: emailEl.value.trim(),
       telephone: document.getElementById("enqPhone").value.trim(),
-      preferredContact: document.getElementById("enqPreferred").value,
+      /* The customer is no longer asked to pick. The field stays in the
+         payload with a neutral value so the endpoint's validation and the
+         e-mail template keep working unchanged — removing it from the wire
+         format would mean redeploying the Apps Script to fix a line that
+         reads "Prefers: no preference given" either way. */
+      preferredContact: "noPreference",
       consentGiven: true,
       consentAt: submittedAt.toISOString(),
       assessmentOutcome: result.outcome,
@@ -956,9 +980,12 @@ var AIRWARM_TRIAGE_CONFIG = {
          key — nothing is stored against it. */
       '<p class="aw-small">Your reference is <strong>' + reference +
       "</strong>. Quote it if you contact us before we get back to you.</p>" +
-      '<p class="aw-small">Preparing for our April 2027 launch, so this is ' +
-      "about reserving your place rather than booking an installation. If " +
-      "you need us sooner, call <a href=\"tel:+441274947197\">01274 947 197</a>.</p>";
+      /* No "call us if you need us sooner" here. It invites a chase on a
+         journey whose whole point is that the customer does not have to
+         phone anybody, and it sat oddly beside "there is nothing else you
+         need to do". The number is on /contact/ and in the footer. */
+      '<p class="aw-small">Airwarm begins installations in April 2027, so ' +
+      "this is a review of your property rather than a booking.</p>";
     formEl.parentNode.replaceChild(sent, formEl);
     sent.focus();
   }
@@ -995,49 +1022,36 @@ var AIRWARM_TRIAGE_CONFIG = {
           "obstacle. What is holding the result back is missing information " +
           "&mdash; you answered &ldquo;not sure&rdquo; to several questions, " +
           "which is completely normal and not a mark against your home. Most " +
-          "people do not know how their walls were built. A short " +
-          "conversation would fill those gaps in quickly, and the answer " +
-          "could easily improve.</p>";
+          "people do not know how their walls were built. Those gaps are " +
+          "exactly what our review fills in, and the answer could easily " +
+          "improve.</p>";
       } else {
         html += "<p>There is no single obstacle here. The result reflects the " +
           "overall picture rather than one particular problem, which usually " +
           "means a few things would each need a small improvement rather than " +
-          "one thing needing a big one. That is worth talking through, " +
-          "because it is often the most fixable situation of the three.</p>";
+          "one thing needing a big one. That is often the most fixable " +
+          "situation of the three.</p>";
       }
     }
-
-    html += "<h4>A practical next step</h4><p>" + copy.next + "</p>";
 
     if (!result.inServiceArea) {
       html += "<p class=\"aw-small\">Your postcode area looks as though it " +
         "may be outside the Bradford, Leeds and Shipley area Airwarm is " +
-        "starting with. Do still get in touch &mdash; we will tell you " +
-        "straight away whether we can help or suggest looking elsewhere.</p>";
+        "starting with. Send your details anyway &mdash; we will tell you " +
+        "straight away whether we can help.</p>";
     }
 
-    /* The e-mail and telephone routes stay whether or not the form is
-       configured. Someone who has just read an unexpected result often wants
-       to talk to a person rather than fill anything in, and that should never
-       be the harder option. When the form is present these become the
-       secondary route, which is only a change of heading. */
-    html += '<h4 style="margin-top:32px">' +
-      (ENQUIRY_ENDPOINT ? "Or talk to us directly" : "Talk to us about this") +
-      "</h4>";
-    /* These buttons sit on the WHITE outcome card, so the light-background
-       secondary is aw-btn--outline. NOT aw-btn--secondary, which is white
-       text on a transparent background with a white border — correct on a
-       navy panel, invisible here. */
-    html += '<div class="aw-btn-row">';
-    html += '<a class="aw-btn ' +
-      (ENQUIRY_ENDPOINT ? "aw-btn--outline" : "aw-btn--primary") +
-      '" href="mailto:hello@airwarm.co.uk' +
-      '?subject=Home%20Energy%20Assessment%20enquiry">E-mail hello@airwarm.co.uk</a>';
-    /* Both halves of the number must match the footer: the tel: href is the
-       full international form, the visible text keeps the UK grouping. */
-    html += '<a class="aw-btn aw-btn--outline" href="tel:+441274947197">' +
-      "Call 01274 947 197</a>";
-    html += "</div>";
+    /* NO COMPETING CONTACT CTAs HERE. This card used to end with an
+       "Or talk to us directly" block offering an e-mail button and a
+       telephone button beside the form.
+
+       The visitor has just answered twenty questions. The one useful next
+       action is to send them, and putting two other routes next to that
+       button only asks them to choose again. The number and the address are
+       still on /contact/ and in the footer of this page — they are simply not
+       competing with the form at this point in the journey.
+
+       Do not add a mailto or a tel: link back into this function. */
 
     html += '<p class="aw-small" style="margin-top:24px">This result is an ' +
       "indicative first step produced from your answers. It is not a " +
@@ -1081,7 +1095,7 @@ var AIRWARM_TRIAGE_CONFIG = {
        ------------------------------------------------------------------ */
     var mount = document.getElementById("aw-enquiry-mount");
     if (ENQUIRY_ENDPOINT && mount) {
-      mount.innerHTML = buildEnquiryForm();
+      mount.innerHTML = buildEnquiryForm(result.outcome);
     }
   }
 

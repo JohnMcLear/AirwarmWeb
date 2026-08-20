@@ -598,8 +598,12 @@
               <section class="aw-stage" id="aw-stage-4" aria-label="Stage 4: your result">
                 <h2>Your result</h2>
                 <div id="aw-result" class="aw-hidden" role="status" aria-live="polite"></div>
+                <!-- SECONDARY, on purpose. Changing an answer must stay
+                     possible, but it is not the action we are asking for: the
+                     Desktop Review form below is. A full-width outline button
+                     here competed with it. -->
                 <div class="aw-form__actions">
-                  <button type="button" class="aw-btn aw-btn--outline" data-aw-back>Back to change an answer</button>
+                  <button type="button" class="aw-btn aw-btn--quiet" data-aw-back>&larr; Change an answer</button>
                 </div>
               </section>
             </form>
@@ -693,7 +697,7 @@
           </p>
 
           <figure class="aw-figure" style="margin-top:24px">
-            <img class="aw-diagram" src="../assets/diagram-assessment-outcomes.svg" alt="The three assessment outcomes and what follows each: likely suitable leads to a written review and then a survey if you want one; potentially suitable leads to an explanation of the specific details that need checking; not currently suitable leads to an explanation of the constraint and the improvements that would change it.">
+            <img class="aw-diagram" src="../assets/diagram-assessment-outcomes.svg" alt="The three assessment outcomes and what follows each: likely suitable leads to a written review and then a survey if you want one; may be suitable leads to an explanation of the specific details that need checking; unlikely to be suitable leads to an explanation of the constraint and the improvements that would change it.">
             <figcaption class="aw-figure__caption">
               The outcome decides the next conversation, not whether there is
               one. The colour is a supporting indicator, never the whole
@@ -725,11 +729,11 @@
                   </td>
                 </tr>
                 <tr>
-                  <th scope="row">Potentially suitable</th>
+                  <th scope="row">May be suitable</th>
                   <td>
-                    Your property may well be suitable, but one or two details
-                    need clarification. This is the most common outcome and it
-                    is not a problem.
+                    A heat pump could work, but there are points we would want
+                    to look at more closely first. This is the most common
+                    outcome and it is not a problem.
                   </td>
                   <td>
                     We explain which details matter and what may need improving
@@ -737,11 +741,12 @@
                   </td>
                 </tr>
                 <tr>
-                  <th scope="row">Not currently suitable</th>
+                  <th scope="row">Unlikely to be suitable</th>
                   <td>
-                    A heat pump may not be the best next step today. Note the
-                    word <em>currently</em> &mdash; this is about the
-                    property&rsquo;s condition now, not for ever.
+                    The assessment has found significant barriers. Note the
+                    word <em>unlikely</em> &mdash; this is a questionnaire
+                    rather than a survey, and it describes the property&rsquo;s
+                    condition now, not for ever.
                   </td>
                   <td>
                     We name the main constraint, explain what would resolve it,
@@ -838,7 +843,7 @@
             </details>
 
             <details class="aw-faq__item">
-              <summary class="aw-faq__question">What if the assessment says my home is not currently suitable?</summary>
+              <summary class="aw-faq__question">What if the assessment says my home is unlikely to be suitable?</summary>
               <div class="aw-faq__answer">
                 <p>
                   You will be told which constraint caused that and what would
@@ -934,12 +939,10 @@
           </p>
           <div class="aw-btn-row">
             <a class="aw-btn aw-btn--primary" href="../home-energy-assessment/">Start your Home Energy Assessment</a>
-            <a class="aw-btn aw-btn--secondary" href="mailto:hello@airwarm.co.uk">E-mail hello@airwarm.co.uk</a>
           </div>
           <p class="aw-small" style="margin-top:24px">
             Unusual property? Listed building, off-grid, a renovation part way
-            through? E-mail us and describe it. We would rather have the
-            conversation than have you guess.
+            through? <a href="mailto:hello@airwarm.co.uk">E-mail us</a> and describe it if the assessment does not fit your situation.
           </p>
         </div>
       </section>

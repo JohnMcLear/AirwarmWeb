@@ -495,6 +495,29 @@ hr {
 }
 .aw-btn--outline:hover { background: var(--airwarm-navy); color: var(--airwarm-white); }
 
+/* A deliberately quiet action. Used for "Change an answer" under the
+   assessment result, where the action must stay available but must not
+   compete with the Desktop Review form directly beneath it. No border and no
+   fill: it reads as a link with a proper tap target rather than a button
+   asking to be pressed.
+
+   Still 48px tall and still underlined on hover and focus, because quiet is
+   not the same as hard to hit or hard to see. */
+.aw-btn--quiet {
+  background: transparent;
+  color: var(--airwarm-grey);
+  border-color: transparent;
+  padding-left: 0;
+  padding-right: var(--airwarm-space-sm);
+  font-weight: 500;
+}
+.aw-btn--quiet:hover,
+.aw-btn--quiet:focus-visible {
+  background: transparent;
+  color: var(--airwarm-dark-text);
+  text-decoration: underline;
+}
+
 /* A row of buttons that stacks on very small screens. */
 .aw-btn-row {
   display: flex;
