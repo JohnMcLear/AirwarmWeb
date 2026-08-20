@@ -1042,8 +1042,8 @@ var AIRWARM_TRIAGE_CONFIG = {
     }
 
     /* NO COMPETING CONTACT CTAs HERE. This card used to end with an
-       "Or talk to us directly" block offering an e-mail button and a
-       telephone button beside the form.
+       block offering an e-mail button and a telephone button beside the
+       form, under a heading inviting people to contact us instead.
 
        The visitor has just answered twenty questions. The one useful next
        action is to send them, and putting two other routes next to that
