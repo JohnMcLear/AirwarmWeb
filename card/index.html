@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <!-- ============================================================= -->
+  <!-- HEAD — the only per-page parts are the <title>, the meta       -->
+  <!-- description, the canonical URL and the Open Graph URL/title.   -->
+  <!-- Everything else is identical on every page.                    -->
+  <!-- ============================================================= -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Airwarm Contact Card | Save Our Details</title>
+  <meta name="description" content="Save Airwarm’s contact details to your phone. Air source heat pump design, installation and servicing in West Yorkshire.">
+  <link rel="canonical" href="https://airwarm.co.uk/card/">
+
+  <!-- This is an operational asset for the physical NFC cards, not an
+       acquisition page. It must not compete in search with the real
+       pages, so it is excluded from indexing and from sitemap.xml. -->
+  <meta name="robots" content="noindex,follow">
+
+  <!-- Open Graph: how the page looks when shared in a message or post. -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Airwarm">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:title" content="Airwarm Contact Card">
+  <meta property="og:description" content="Save Airwarm’s contact details to your phone.">
+  <meta property="og:url" content="https://airwarm.co.uk/card/">
+  <!-- OG IMAGE GOES HERE once a real Airwarm share image exists, e.g.
+       <meta property="og:image" content="https://airwarm.co.uk/img/share.png">
+       Do not point this at a stock photograph or a third-party host. -->
+
+  <!-- Favicon: the Corporate Mark, which is the piece of the identity the
+       brand rules name for the favicon and the loading screen. It keeps its
+       navy tile because a favicon is composited against browser chrome of
+       unknown colour. Source of truth for all brand artwork is assets/brand/,
+       which holds the supplied files exactly as delivered. -->
+  <link rel="icon" href="../assets/airwarm-favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../assets/airwarm-favicon.svg">
+
+  <!-- Montserrat, the fixed brand typeface. This is the only thing on the
+       whole site that loads from another company's server. The CSS names a
+       system-safe fallback stack so the site still reads correctly if the
+       font does not arrive. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;display=swap">
+
+  <!-- One stylesheet for the whole site. Colours live at the top of it. -->
+  <link rel="stylesheet" href="../css/airwarm.css">
+</head>
+<body>
+
+  <a class="aw-skip" href="#main">Skip to main content</a>
+
+  <!-- ============================================================= -->
+  <!-- HEADER — keep identical across pages                            -->
+  <!-- If you change anything between here and /HEADER, make the same  -->
+  <!-- change in every index.html file, or the site will look           -->
+  <!-- inconsistent. There is no JavaScript and no hamburger menu: on   -->
+  <!-- small screens the navigation simply wraps onto more lines.       -->
+  <!-- ============================================================= -->
+  <header class="aw-header">
+    <div class="aw-wrap aw-header__inner">
+
+      <!-- Logo lockup: the supplied Corporate Mark (assets/airwarm-mark.svg)
+           plus the wordmark and tagline as live text, so they scale, stay
+           selectable and honour the reader's font size. The 339KB traced
+           hero-horizontal.svg is deliberately not used at this size.
+           Tagline rules are FIXED: ENGINEERED DESIGN blue, SMARTER
+           HEATING amber, GREENER FUTURES green, all three on ONE line,
+           never stacked, no punctuation added. -->
+      <a class="aw-wordmark" href="../">
+        <img class="aw-wordmark__emblem" src="../assets/airwarm-mark.svg" alt="" width="44" height="44">
+        <span class="aw-wordmark__text">
+        <span class="aw-wordmark__name">AIRWARM</span>
+        <span class="aw-tagline"><span class="design">ENGINEERED DESIGN</span><span class="aw-sep" aria-hidden="true">|</span><span class="heating">SMARTER HEATING</span><span class="aw-sep" aria-hidden="true">|</span><span class="futures">GREENER FUTURES</span></span>
+        </span>
+      </a>
+
+      <!-- The Home Energy Assessment is the principal action on the site,
+           so it gets a button in the header on every page. -->
+      <div class="aw-header__cta">
+        <a class="aw-btn aw-btn--primary" href="../home-energy-assessment/">Check my home</a>
+      </div>
+
+      <nav class="aw-nav" aria-label="Main">
+        <ul class="aw-nav__list">
+          <li><a href="../">Home</a></li>
+          <li><a href="../how-it-works/">How it works</a></li>
+          <li><a href="../about/">About</a></li>
+          <li><a href="../advice/">Advice</a></li>
+          <li><a href="../contact/">Contact</a></li>
+          <!-- Phase 2 navigation, not built yet. Uncomment the matching
+               page first, otherwise this link will 404:
+          <li><a href="../servicing-support/">Servicing &amp; support</a></li>
+          -->
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+  <!-- /HEADER -->
+
+  <main id="main">
+  <!-- Breadcrumbs: helps people and search engines see where this
+       page sits. Update if you move the page. -->
+  <nav class="aw-crumbs" aria-label="Breadcrumb">
+    <div class="aw-wrap">
+      <ol>
+        <li><a href="../">Home</a></li>
+        <li aria-current="page">Contact card</li>
+      </ol>
+    </div>
+  </nav>
+
+      <!-- =============================================================
+           AIRWARM CONTACT CARD — /card/
+
+           THIS URL IS PROGRAMMED INTO PHYSICAL NFC CARDS. IT MUST NOT MOVE.
+           Once a card is written and handed to somebody, the destination is
+           out of Airwarm's hands forever. Renaming this directory, or
+           changing where airwarm.vcf sits, silently breaks every card
+           already in circulation with no way to fix them.
+
+           If the site architecture changes later, keep /card/ and
+           /card/airwarm.vcf working — redirect to the new location rather
+           than deleting these.
+
+           The vCard is generated, not hand-written: it carries the Hero Mark
+           as an embedded base64 PNG, so the details and photo must be changed
+           together. See card/README.md for how to regenerate it.
+           ============================================================= -->
+      <section class="aw-section">
+        <div class="aw-wrap">
+          <h1>Airwarm contact card</h1>
+          <p class="aw-lede aw-measure">
+            Save our details to your phone. The button below adds Airwarm to
+            your contacts &mdash; telephone, e-mail and website in one go, so
+            you are not copying anything down by hand.
+          </p>
+
+          <div class="aw-btn-row" style="margin-top:24px">
+            <!-- The download attribute matters: without it some browsers
+                 render the vCard as plain text on screen instead of handing
+                 it to the contacts app. -->
+            <a class="aw-btn aw-btn--primary" href="airwarm.vcf" download="Airwarm.vcf">
+              Save Airwarm to contacts
+            </a>
+          </div>
+
+          <p class="aw-small aw-measure" style="margin-top:16px">
+            On an iPhone or Android handset this opens your contacts app with
+            the details already filled in; you just confirm. On a desktop
+            computer it downloads a <code>.vcf</code> file that Outlook, Apple
+            Contacts and Google Contacts all import.
+          </p>
+        </div>
+      </section>
+
+      <!-- The same details as live text. Someone whose phone refuses the
+           download, or who is reading this on a machine with no contacts
+           app, still leaves with the information. It is also what a screen
+           reader reads out — a .vcf file announces nothing useful. -->
+      <section class="aw-section">
+        <div class="aw-wrap">
+          <h2>Our details</h2>
+          <div class="aw-measure">
+            <ul>
+              <li><strong>Airwarm</strong></li>
+              <li>Telephone: <a href="tel:+441274947197">01274 947 197</a></li>
+              <li>E-mail: <a href="mailto:hello@airwarm.co.uk">hello@airwarm.co.uk</a></li>
+              <li>Website: <a href="../">airwarm.co.uk</a></li>
+            </ul>
+            <p>
+              Air source heat pump design, installation and servicing.
+              Serving West Yorkshire.
+            </p>
+          </div>
+
+          <div class="aw-btn-row" style="margin-top:24px">
+            <a class="aw-btn aw-btn--primary" href="../home-energy-assessment/">Check my home</a>
+            <a class="aw-btn aw-btn--outline" href="../contact/">Contact us</a>
+          </div>
+        </div>
+      </section>
+  </main>
+
+  <!-- ============================================================= -->
+  <!-- FOOTER — keep identical across pages                            -->
+  <!-- ============================================================= -->
+  <footer class="aw-footer">
+    <div class="aw-wrap">
+      <div class="aw-footer__grid">
+
+        <div>
+          <!-- Footer logo. Same emblem, smaller. -->
+          <span class="aw-wordmark" style="display:inline-flex">
+            <img class="aw-wordmark__emblem" src="../assets/airwarm-mark.svg" alt="" width="34" height="34">
+            <span class="aw-wordmark__text">
+              <span class="aw-wordmark__name">AIRWARM</span>
+              <span class="aw-tagline"><span class="design">ENGINEERED DESIGN</span><span class="aw-sep" aria-hidden="true">|</span><span class="heating">SMARTER HEATING</span><span class="aw-sep" aria-hidden="true">|</span><span class="futures">GREENER FUTURES</span></span>
+            </span>
+          </span>
+          <p class="aw-small" style="margin-top:16px">
+            Air Source Heat Pumps &bull; West Yorkshire
+          </p>
+          <ul>
+            <li><a href="../">airwarm.co.uk</a></li>
+            <li><a href="mailto:hello@airwarm.co.uk">hello@airwarm.co.uk</a></li>
+            <!-- The business line. tel: needs the full international form
+                 with no spaces; the visible text keeps the readable UK
+                 grouping. Change both halves together if it ever moves. -->
+            <li><a href="tel:+441274947197">01274 947 197</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2>Services</h2>
+          <ul>
+            <li><a href="../air-source-heat-pumps/">Air source heat pumps</a></li>
+            <li><a href="../heat-pump-survey/">Heat pump survey</a></li>
+            <li><a href="../heat-pump-installation/">Heat pump installation</a></li>
+            <li><a href="../how-it-works/">How it works</a></li>
+            <li><a href="../home-energy-assessment/">Home Energy Assessment</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2>Service areas</h2>
+          <ul>
+            <li><a href="../areas/bradford/">Bradford</a></li>
+            <li><a href="../areas/leeds/">Leeds</a></li>
+            <li><a href="../areas/shipley/">Shipley</a></li>
+          </ul>
+          <h2 style="margin-top:24px">Company</h2>
+          <ul>
+            <li><a href="../about/">About Airwarm</a></li>
+            <li><a href="../advice/">Advice</a></li>
+            <li><a href="../contact/">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2>Legal</h2>
+          <ul>
+            <li><a href="../privacy/">Privacy policy</a></li>
+            <li><a href="../cookies/">Cookie policy</a></li>
+            <li><a href="../terms/">Terms and conditions</a></li>
+            <li><a href="../installation-terms/">Installation terms</a></li>
+            <!-- STILL TO BE WRITTEN, then linked here:
+                 complaints procedure, accessibility statement.
+                 Both are named in the brand pack footer structure. -->
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="aw-footer__base">
+        <p>
+          Airwarm is a new West Yorkshire business preparing for its official
+          launch in April 2027. We are not carrying out installations yet.
+          The Home Energy Assessment is still worth doing: it tells you where
+          your property stands and what would need to change.
+        </p>
+        <p class="aw-small">
+          AIRWARM LTD is a company registered in England and Wales, company
+          number 17362672. Registered office: 2 Aireview Crescent, Baildon,
+          Shipley, BD17 7LS.
+        </p>
+        <!-- VAT NUMBER GOES HERE if and when Airwarm registers for VAT. Add it
+             as a further sentence in the paragraph above, for example
+             "VAT registration number GB000000000." Do not invent one, and do
+             not display a VAT number before registration is confirmed. -->
+        <!-- SOCIAL LINKS: add only channels that are actively maintained. -->
+        <!-- SOCIAL LINKS: add only channels that are actively maintained. -->
+        <p>&copy; 2026 Airwarm.</p>
+      </div>
+    </div>
+  </footer>
+  <!-- /FOOTER -->
+
+</body>
+</html>
