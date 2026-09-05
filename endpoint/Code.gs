@@ -105,10 +105,23 @@ function buildBody(d) {
   L.push(line());
   L.push("  Name:       " + clean(d.name));
   L.push("  Address:    " + clean(d.address));
+  L.push("  House no:   " + clean(d.houseNumber));
   L.push("  Postcode:   " + clean(d.postcode));
   L.push("  E-mail:     " + clean(d.email));
   L.push("  Telephone:  " + clean(d.telephone));
   L.push("  Prefers:    " + prefer(d.preferredContact));
+  L.push("");
+  L.push(line());
+  L.push("PROPERTY (customer's own figures)");
+  L.push(line());
+  L.push("  Occupants:  " + count(d.property && d.property.occupants));
+  L.push("  Rooms:      " + count(d.property && d.property.rooms));
+  L.push("  Radiators:  " + count(d.property && d.property.radiators));
+  L.push("");
+  L.push("  These were asked after the result and are not scored. They are");
+  L.push("  the customer's recollection, not a survey: treat them as the");
+  L.push("  starting point for the Desktop Review, and expect to correct");
+  L.push("  them on site. \"Not stated\" means unknown, not zero and not no.");
   L.push("");
   L.push(line());
   L.push("ASSESSMENT RESULT");
@@ -229,6 +242,29 @@ function wrap(text, firstPrefix, contPrefix) {
 }
 
 /** The optional preferred-contact value, in words. */
+/**
+ * A property count for the e-mail: "4", "More than 12", or "Not stated".
+ *
+ * The form sends the raw select value, so the phrasing is decided here rather
+ * than in the browser. "notSure" deliberately reads as "Not stated" — the
+ * person reading this needs to know the figure is missing, not that the
+ * customer failed a question.
+ */
+function count(value) {
+  /* Checked before clean(), which turns a missing value into "(not given)".
+     An older cached copy of the form posts no property block at all, and that
+     should read the same as an explicit "Not sure" rather than as a second,
+     slightly different kind of missing. */
+  if (value === undefined || value === null || value === "") {
+    return "Not stated";
+  }
+  var v = clean(value);
+  if (v === "notSure") { return "Not stated"; }
+  var more = v.match(/^moreThan(\d+)$/);
+  if (more) { return "More than " + more[1]; }
+  return v;
+}
+
 function prefer(v) {
   if (v === "email") { return "e-mail"; }
   if (v === "telephone") { return "telephone"; }

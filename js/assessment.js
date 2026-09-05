@@ -543,18 +543,91 @@ var AIRWARM_TRIAGE_CONFIG = {
   }
 
   /* ---- The reference shown to the customer and quoted in the e-mail ---
-     Six characters, generated in the browser at submission time. It is a
-     label for a conversation, not a secret and not a key: it identifies
-     nothing on its own and nothing is stored against it. Its whole job is
-     to let someone say "I sent one yesterday, reference AW-4K2P9C" and be
-     found in an inbox. */
-  function makeReference() {
-    var alphabet = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"; /* no I, O, 0, 1 */
-    var out = "";
-    for (var i = 0; i < 6; i++) {
-      out += alphabet.charAt(Math.floor(Math.random() * alphabet.length));
-    }
-    return "AW-" + out;
+     Format: HOUSE-POSTCODE-DDMMYYYY, e.g. 379-BD4-9JL-27082026.
+
+     It replaced a random six-character code (AW-4K2P9C) in September 2026.
+     The random version was unambiguous but meant nothing to anybody: a
+     customer ringing up could quote it and still have to spell out their
+     address before they could be found, and the person searching the inbox
+     had no way to guess it from what they already knew.
+
+     This one is derived entirely from information already in the enquiry, so
+     it can be reconstructed from either end of the conversation. Someone who
+     has lost the e-mail can still be found from their address and the day
+     they sent it.
+
+     It identifies nothing on its own and nothing is stored against it. It is
+     a label for a conversation, not a key and not a secret — which is also
+     why it is safe for it to be guessable.
+
+     Two enquiries from the same property on the same day produce the same
+     reference. That is deliberate: they are the same conversation, and
+     appending a counter would need state this form does not have. */
+  /* Reads one property select. Returns the raw value — "4", "moreThan12" or
+     "notSure" — and leaves the wording to whatever displays it, so the e-mail
+     template can phrase it for a person without this having an opinion. */
+  function readPropertyField(id) {
+    var el = document.getElementById(id);
+    return el ? el.value : "notSure";
+  }
+
+  function makeReference(address, postcode, when) {
+    return [
+      houseIdentifier(address),
+      formatPostcodeForReference(postcode),
+      formatReferenceDate(when)
+    ].join("-");
+  }
+
+  /* The house number, or the best available stand-in.
+
+     Most UK addresses start with a number, sometimes with a letter attached
+     (12A) — that is what the first branch catches, including the "Flat 2, 14
+     Mill Lane" case where the first number found is the flat rather than the
+     building. That is fine: the reference only has to be recognisable, not
+     correct, and a person reading it alongside the full address will not be
+     confused.
+
+     Named properties have no number at all. Rather than fail the form or
+     invent a number, fall back to the first word of the address — "Rose
+     Cottage" becomes ROSE — which is still recognisable to the person
+     handling it. NOHSE is the last resort if the address is unusable. */
+  function houseIdentifier(address) {
+    var text = String(address || "").trim();
+
+    var number = text.match(/\d+[A-Za-z]?/);
+    if (number) { return number[0].toUpperCase(); }
+
+    var word = text.match(/[A-Za-z]+/);
+    if (word) { return word[0].toUpperCase().slice(0, 12); }
+
+    return "NOHSE";
+  }
+
+  /* BD4 9JL -> BD4-9JL.
+
+     The specification asks for the space removed and hyphens used as the
+     separator, so the space becomes a hyphen. UK postcodes always end in
+     digit-letter-letter, so splitting three from the right gets the outward
+     and inward halves without needing to know the (many) outward formats.
+
+     A postcode too short to split is passed through as typed rather than
+     mangled — a typo should still produce a usable reference. */
+  function formatPostcodeForReference(postcode) {
+    var clean = String(postcode || "").toUpperCase().replace(/[^A-Z0-9]/g, "");
+    if (clean.length < 5) { return clean || "NOPC"; }
+    return clean.slice(0, clean.length - 3) + "-" + clean.slice(-3);
+  }
+
+  /* DDMMYYYY, in the customer's own timezone.
+
+     Local rather than UTC on purpose: someone submitting at half past midnight
+     UK time in summer should get the date they saw on their own clock, not
+     yesterday's. */
+  function formatReferenceDate(when) {
+    var d = when || new Date();
+    function pad(n) { return n < 10 ? "0" + n : String(n); }
+    return pad(d.getDate()) + pad(d.getMonth() + 1) + d.getFullYear();
   }
 
   /* ---- Survey notes for the person doing the review -------------------
@@ -747,6 +820,90 @@ var AIRWARM_TRIAGE_CONFIG = {
       hint: "For arranging a survey, or if we need to clarify something later." }
   ];
 
+  /* Property facts for the Desktop Review, added September 2026 (SEPT-001).
+
+     These exist because the submission e-mail is the working input to the
+     Desktop Review, not just a lead notification: whoever picks it up needs
+     to know roughly what size of system is being talked about before they
+     ring anybody.
+
+     They are deliberately NOT assessment questions. They are asked after the
+     result, they carry no score, and nothing here can change whether a home
+     came out as suitable. Two reasons. The triage questionnaire is already at
+     the upper limit of what someone will sit through, and — more
+     importantly — a homeowner guessing at a radiator count is not evidence
+     about their property. It is a starting point for a survey.
+
+     Hence the default of "Not sure", which follows the rule set for the whole
+     assessment:
+
+         NOT SURE = UNKNOWN / ENGINEER CHECK
+
+     Not knowing is a normal answer from someone who has never had to count.
+     It must never read as a wrong one, and must never count against them. */
+  var PROPERTY_FIELDS = [
+    {
+      id: "enqOccupants",
+      label: "How many people live in the property?",
+      hint: "Roughly is fine. It affects how much hot water a system needs to provide.",
+      max: 8
+    },
+    {
+      id: "enqRooms",
+      label: "How many rooms does the property have?",
+      hint: "Count the rooms you heat, including the kitchen and bathroom.",
+      max: 12
+    },
+    {
+      id: "enqRadiators",
+      label: "How many radiators are there?",
+      hint: "A rough count from memory is genuinely useful. Include towel rails.",
+      max: 15,
+      allowZero: true
+    }
+  ];
+
+  /* One <select> per property field.
+
+     A select rather than a number input: it cannot be given nonsense, it needs
+     no validation message, and on a phone it opens a picker instead of a
+     keyboard. "Not sure" is the initial value, so leaving the section
+     untouched submits an honest answer rather than an empty one. */
+  function buildPropertyFields() {
+    var html = "";
+
+    html += '<fieldset class="aw-fieldset"><legend>About the property</legend>';
+    html += '<p class="aw-small">These help us picture the property before we ' +
+      "reply. Answer what you know and leave the rest as " +
+      "<strong>Not sure</strong> &mdash; none of it changes your result above.</p>";
+
+    PROPERTY_FIELDS.forEach(function (field) {
+      var hintId = field.id + "-hint";
+      html += '<div class="aw-field">';
+      html += '<label for="' + field.id + '">' + field.label + "</label>";
+      html += '<span class="aw-field__hint" id="' + hintId + '">' +
+        field.hint + "</span>";
+      html += '<select id="' + field.id + '" name="' + field.id +
+        '" aria-describedby="' + hintId + '">';
+
+      var start = field.allowZero ? 0 : 1;
+      for (var n = start; n <= field.max; n++) {
+        html += '<option value="' + n + '">' + n + "</option>";
+      }
+      html += '<option value="moreThan' + field.max + '">More than ' +
+        field.max + "</option>";
+
+      /* Last in the list but selected, so the control reads "Not sure" before
+         anyone touches it while the numbers stay in their natural order. */
+      html += '<option value="notSure" selected>Not sure</option>';
+      html += "</select>";
+      html += "</div>";
+    });
+
+    html += "</fieldset>";
+    return html;
+  }
+
   function buildEnquiryForm(outcome) {
     var html = "";
     /* The invitation changes with the route; everything below it does not.
@@ -784,6 +941,11 @@ var AIRWARM_TRIAGE_CONFIG = {
     });
 
     html += "</fieldset>";
+
+    /* Property facts for the Desktop Review — see PROPERTY_FIELDS. Placed
+       after the contact details because they are the less important half:
+       an enquiry with no radiator count is still a usable enquiry. */
+    html += buildPropertyFields();
 
     /* PREFERRED CONTACT METHOD REMOVED, 20 Aug 2026. It asked the customer to
        choose between e-mail and a telephone call at the exact point in the
@@ -886,24 +1048,33 @@ var AIRWARM_TRIAGE_CONFIG = {
       return;
     }
 
+    /* Read these before the honeypot check: the reference is now derived from
+       the address, postcode and date rather than generated at random, so both
+       the real path and the bot path need them. */
+    var submittedAt = new Date();
+    var addressValue = document.getElementById("enqAddress").value.trim();
+    var postcodeValue = document.getElementById("enqPostcode").value.trim();
+    var reference = makeReference(addressValue, postcodeValue, submittedAt);
+
     /* Honeypot filled means an automated submission. Show the same success
        state rather than an error: telling a bot it failed only teaches it to
        try again. Nothing is sent. */
     if (honeypot.value) {
-      showEnquirySent(formEl, makeReference());
+      showEnquirySent(formEl, reference);
       return;
     }
-
-    var submittedAt = new Date();
-    var reference = makeReference();
 
     var payload = {
       reference: reference,
       submittedAt: submittedAt.toISOString(),
       submittedAtLocal: submittedAt.toString(),
       name: document.getElementById("enqName").value.trim(),
-      address: document.getElementById("enqAddress").value.trim(),
-      postcode: document.getElementById("enqPostcode").value.trim(),
+      address: addressValue,
+      /* The house number on its own, as SEPT-008 asks for it in the case
+         record. Same value the reference is built from, sent rather than
+         recomputed at the endpoint so the two can never disagree. */
+      houseNumber: houseIdentifier(addressValue),
+      postcode: postcodeValue,
       email: emailEl.value.trim(),
       telephone: document.getElementById("enqPhone").value.trim(),
       /* The customer is no longer asked to pick. The field stays in the
@@ -914,6 +1085,15 @@ var AIRWARM_TRIAGE_CONFIG = {
       preferredContact: "noPreference",
       consentGiven: true,
       consentAt: submittedAt.toISOString(),
+      /* Property facts (SEPT-001). Kept as their own block, deliberately
+         apart from `answers` and `assessmentScore`: these were never scored
+         and must not look as though they were to anyone reading the e-mail
+         or re-running the triage later. "notSure" means unknown, not no. */
+      property: {
+        occupants: readPropertyField("enqOccupants"),
+        rooms: readPropertyField("enqRooms"),
+        radiators: readPropertyField("enqRadiators")
+      },
       assessmentOutcome: result.outcome,
       assessmentOutcomeLabel: AIRWARM_TRIAGE_CONFIG.outcomeLabels[result.outcome],
       assessmentScore: result.score,
